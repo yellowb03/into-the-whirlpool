@@ -20,6 +20,7 @@ python3 -m http.server 8000
 | Engine, whirlpool, code-built visions | Claude | `index.html`, `main.js`, `mem.js`, `data.js` structure | n/a |
 | Photographic visions, textures, characters | ChatGPT | `assets/` | [`CHATGPT.md`](CHATGPT.md) |
 | **The game: Real or Made Up? (build plan)** | ChatGPT | `game.js`, `cards.js`, `share.js`, `assets/ui/` | [`GAME.md`](GAME.md) |
+| **Sound overhaul: music stems, a sound for everything** | Gemini | `audio.js`, `assets/audio/` | [`SOUND.md`](SOUND.md) |
 | Generative soundtrack, fact-checking, depth maps | Gemini | `audio.js`, `sources.json`, `proposals.json`, `tools/depth/` | [`GEMINI.md`](GEMINI.md) |
 
 ## Files
