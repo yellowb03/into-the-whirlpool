@@ -31,10 +31,17 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .hint.gone{opacity:0}
 .panel{position:fixed;inset:0;z-index:4;display:none}
 .panel.open{display:block}
-.print{position:absolute;margin:0;border:12px solid var(--paper);border-bottom-width:40px;box-shadow:10px 10px 0 var(--ac);pointer-events:none;transform:rotate(-.6deg)}
-.print figcaption{position:absolute;left:0;right:0;bottom:-31px;color:#555;font:400 11px/1.2 "IBM Plex Mono",monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sheet{position:absolute;left:54%;right:max(4vw,20px);top:96px;max-height:calc(100% - 186px);overflow:auto;padding:22px 26px 18px;background:var(--paper);color:var(--ink);box-shadow:10px 10px 0 var(--ac);transform:rotate(.4deg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
-.panel.narrow .sheet{left:12px;right:12px;top:var(--pt,50%);max-height:none;bottom:calc(72px + env(safe-area-inset-bottom));padding:16px 18px;transform:none;box-shadow:6px 6px 0 var(--ac)}
+.print{position:absolute;margin:0;z-index:2;border:8px solid #f4f1ea;border-bottom-width:32px;box-shadow:0 6px 16px rgba(0,0,0,.45);pointer-events:none}
+.print::before{content:"";position:absolute;left:50%;top:-22px;width:44px;height:20px;transform:translateX(-50%);background:linear-gradient(#55555c,#1b1b20 60%,#0c0c0f);border-radius:2px 2px 5px 5px;box-shadow:0 2px 3px rgba(0,0,0,.5)}
+.print::after{content:"";position:absolute;left:50%;top:-34px;width:30px;height:16px;transform:translateX(-50%);border:3px solid #a9a9b0;border-bottom:0;border-radius:10px 10px 0 0}
+.print figcaption{position:absolute;left:0;right:0;bottom:-30px;text-align:center;color:#2b2b30;font:600 20px/1 Caveat,cursive;white-space:nowrap;overflow:hidden}
+.sheet{position:absolute;left:max(5vw,calc(50% - 430px));right:max(5vw,calc(50% - 430px));top:110px;max-height:calc(100% - 200px);overflow:auto;z-index:1;padding:22px 26px 18px;background:var(--paper);color:var(--ink);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.sheet-sh{position:absolute;background:var(--ac)}
+.pspace{float:right;width:0;height:0}
+.panel.zoom .sheet,.panel.zoom .sheet-sh{visibility:hidden}
+.panel.narrow .sheet{left:12px;right:12px;top:calc(104px + env(safe-area-inset-top));max-height:calc(100% - 104px - 78px - env(safe-area-inset-top) - env(safe-area-inset-bottom));padding:16px 16px}
+.panel.narrow .shead{flex-direction:column;gap:10px}
+.panel.narrow .stamp{align-self:flex-start;transform:rotate(-4deg)}
 .shead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;font-size:12px;color:#55505a}
 .stamp{flex:none;font:600 13px/1 "IBM Plex Mono",monospace;color:var(--red);border:2.5px solid var(--red);padding:5px 8px;transform:rotate(-7deg);opacity:.85;mix-blend-mode:multiply}
 .stamp.spec{color:var(--blue);border-color:var(--blue)}
@@ -53,7 +60,7 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .pnav button{color:var(--ink)}
 .panel button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .pclose{position:absolute;right:max(4vw,20px);top:calc(42px + env(safe-area-inset-top));color:#fff!important;background:#000!important;padding:0 10px!important;text-decoration:none!important;z-index:1}
-.panel.narrow .pclose{right:12px}
+.panel.narrow .pclose{right:auto;left:12px}
 .cover{position:fixed;inset:0;z-index:6;display:grid;grid-template-rows:auto 1fr auto auto auto;gap:14px;padding:max(28px,env(safe-area-inset-top)) max(6vw,20px) max(24px,env(safe-area-inset-bottom));background:var(--yellow);color:#000;cursor:pointer;transition:transform .9s cubic-bezier(.7,0,.2,1),opacity .9s}
 .cover.gone{transform:translateY(-104%) rotate(-3deg);opacity:0;pointer-events:none}
 .cv-top,.cv-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:600 12px "IBM Plex Mono",monospace;border-top:2px solid #000;padding-top:8px}
@@ -87,7 +94,9 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <div class="hint" id="hint">tap a word = open it / hold = slow time / drag = spin / drag the ruler = time travel</div>
 <div class="panel" id="panel" aria-hidden="true" role="dialog" aria-labelledby="ptitle">
   <figure class="print" id="print"><figcaption id="pcap"></figcaption></figure>
-  <article class="sheet">
+  <div class="sheet-sh" id="sheetsh"></div>
+  <article class="sheet" id="sheet">
+    <div class="pspace" id="pspace" aria-hidden="true"></div>
     <header class="shead"><span id="pfile"></span><span class="stamp" id="pstamp"></span></header>
     <h2 id="ptitle"></h2>
     <p class="pwho" id="pwho" hidden></p>

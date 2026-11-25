@@ -128,8 +128,8 @@ if(!(k in memCache)){try{memCache[k]=img?imageVision(img):MEM[it.v[0]](it.v[1]);
 
 const ov=new THREE.Scene();
 function mkSlot(mode,order){const mat=new THREE.ShaderMaterial({transparent:true,depthTest:false,depthWrite:false,
-uniforms:{tMap:{value:null},uOp:{value:0},uTime:{value:0},uClar:{value:0},uLin:{value:0},uSeed:{value:0},uMode:{value:mode},uTint:{value:new THREE.Color()},uSize:{value:new THREE.Vector2(.5,.5)},uOff:{value:new THREE.Vector2()}},
-vertexShader:'uniform vec2 uSize,uOff;varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy*uSize+uOff,0.,1.);}',
+uniforms:{tMap:{value:null},uOp:{value:0},uTime:{value:0},uClar:{value:0},uLin:{value:0},uSeed:{value:0},uMode:{value:mode},uTint:{value:new THREE.Color()},uSize:{value:new THREE.Vector2(.5,.5)},uOff:{value:new THREE.Vector2()},uScr:{value:new THREE.Vector2(1,1)},uRot:{value:0}},
+vertexShader:'uniform vec2 uSize,uOff,uScr;uniform float uRot;varying vec2 vUv;void main(){vUv=uv;vec2 p=position.xy*uSize*uScr;float c=cos(uRot),s=sin(uRot);p=vec2(c*p.x-s*p.y,s*p.x+c*p.y)/uScr;gl_Position=vec4(p+uOff,0.,1.);}',
 fragmentShader:`uniform sampler2D tMap;uniform float uOp,uTime,uClar,uLin,uSeed,uMode;uniform vec3 uTint;varying vec2 vUv;
 float hh(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
 float nn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hh(i),hh(i+vec2(1,0)),f.x),mix(hh(i+vec2(0,1)),hh(i+vec2(1,1)),f.x),f.y);}
@@ -243,16 +243,29 @@ const panel=$('panel');let openIt=null,openA=0,vt=0;
 function openItem(it){wake();hint.classList.add('gone');openIt=it;const spec=it.k==='p'||it.k==='f'||it.k==='s';$('pwho').textContent=it.who?'said by '+it.who:'';$('pwho').hidden=!it.who;$('poddsl').textContent=it.k==='s'?'Their odds':'My odds';$('pxl').textContent=it.k==='s'?'The forecast':it.k==='p'?'My guess':'What happened';
 $('pfile').textContent='FILE '+it.d+' / '+KIND[it.k].toUpperCase();const st=$('pstamp');st.textContent=it.k==='s'?'FORECAST':spec?'SPECULATION':'ON RECORD';st.className='stamp'+(it.k==='s'?' fc':spec?' spec':'');
 $('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';
-$('pcap').textContent=(it.k==='n'||it.k==='f'?'fig. front page, ':'fig. ')+(spec?'a guess at ':'a reconstruction of ')+(spec?String(it.y):MON[it.m-1]+' '+it.y);
+$('pcap').textContent=spec?it.y+'?':MON[it.m-1]+' '+it.y;
 const sl=$('psrc');sl.textContent='';const src=SOURCES[it.slug];$('psrcw').hidden=!(src&&src.length);(src||[]).slice(0,4).forEach(s=>{const li=document.createElement('li'),a=document.createElement('a');a.href=s.url;a.target='_blank';a.rel='noopener';a.textContent=(s.publisher?s.publisher+': ':'')+s.title;li.appendChild(a);sl.appendChild(li);});
 const od=$('podds');if((it.k==='p'||it.k==='s')&&it.o){od.hidden=false;$('poddsv').textContent=it.o+'%';const ta=$('ptally');ta.textContent='';for(let i=0;i<10;i++){const q=document.createElement('i');if(i<Math.round(it.o/10))q.className='on';ta.appendChild(q);}}else od.hidden=true;
 panel.style.setProperty('--ac',colOf(it));panel.classList.add('open');panel.setAttribute('aria-hidden','false');
+zoomed=false;panel.classList.remove('zoom');$('sheet').scrollTop=0;layoutPanel();requestAnimationFrame(layoutPanel);
 bindSlot(viz,it);vt=0;viz.target=1;WP.state.open=it;WP.emit('open',it);}
 function closePanel(){if(openIt)WP.emit('close');WP.state.open=null;openIt=null;panel.classList.remove('open');panel.setAttribute('aria-hidden','true');viz.target=0;}
 function step(d){if(!openIt)return;const i=ITEMS.indexOf(openIt);const j=Math.max(0,Math.min(ITEMS.length-1,i+d));if(j!==i)openItem(ITEMS[j]);}
 $('pclose').addEventListener('click',closePanel);$('pprev').addEventListener('click',()=>step(-1));$('pnext').addEventListener('click',()=>step(1));
-let vizRect={x:0,y:0,w:0,h:0};
-panel.addEventListener('click',e=>{if(e.target!==panel)return;const inViz=e.clientX>vizRect.x&&e.clientX<vizRect.x+vizRect.w&&e.clientY>vizRect.y&&e.clientY<vizRect.y+vizRect.h;if(!inViz)closePanel();});
+let vizRect={x:0,y:0,w:0,h:0},zoomed=false;const ROT=-2.4,PAD=8,BOT=32;
+function place(cx,cy,s,rot){const pf=$('print');pf.style.left=(cx-s/2-PAD)+'px';pf.style.top=(cy-s/2-PAD)+'px';pf.style.width=(s+PAD*2)+'px';pf.style.height=(s+PAD+BOT)+'px';
+ pf.style.transformOrigin=(PAD+s/2)+'px '+(PAD+s/2)+'px';pf.style.transform='rotate('+rot+'deg)';vizRect={x:cx-s/2-PAD,y:cy-s/2-PAD,w:s+PAD*2,h:s+PAD+BOT};
+ const u=viz.mat.uniforms;u.uSize.value.set(s/W,s/H);u.uOff.value.set(cx/W*2-1,1-cy/H*2);u.uRot.value=-rot*Math.PI/180;}
+function layoutPanel(){if(!openIt)return;const sh=$('sheet'),sd=$('sheetsh'),sp=$('pspace');
+ if(zoomed){place(W/2,H*.47,Math.min(W*.9,H*.66),0);return;}
+ sh.style.clipPath=sd.style.clipPath='none';sp.style.width=sp.style.height='0px';const r=sh.getBoundingClientRect(),narrow=W<760||H>W;
+ const s=narrow?Math.min(W*.38,160):Math.min(280,W*.22),fw=s+PAD*2,fh=s+PAD+BOT,fl=r.right-fw-(narrow?8:20),ft=r.top-(narrow?14:22);
+ place(fl+PAD+s/2,ft+PAD+s/2,s,ROT);
+ const hx=Math.max(0,fl-r.left-10),hy=ft+fh-r.top+12,cp='polygon(0 0,'+hx+'px 0,'+hx+'px '+hy+'px,100% '+hy+'px,100% 100%,0 100%)';
+ sh.style.clipPath=cp;sd.style.left=(r.left+(narrow?6:10))+'px';sd.style.top=(r.top+(narrow?6:10))+'px';sd.style.width=r.width+'px';sd.style.height=r.height+'px';sd.style.clipPath=cp;
+ const cs=getComputedStyle(sh);sp.style.width=Math.max(0,r.width-hx-parseFloat(cs.paddingRight)+4)+'px';sp.style.height=Math.max(0,hy-parseFloat(cs.paddingTop))+'px';}
+panel.addEventListener('click',e=>{if(e.target!==panel)return;const inViz=e.clientX>vizRect.x&&e.clientX<vizRect.x+vizRect.w&&e.clientY>vizRect.y&&e.clientY<vizRect.y+vizRect.h;
+ if(zoomed||inViz){zoomed=!zoomed;panel.classList.toggle('zoom',zoomed);layoutPanel();}else closePanel();});
 
 // ---------- input: tap a word, hold to slow time, drag to spin
 let slow=0,slowT=0,spin=0,spinV=0,down=null,touched=false,pause=0;
@@ -267,7 +280,7 @@ stage.addEventListener('pointerdown',e=>{wake();down={x:e.clientX,x0:e.clientX,y
 stage.addEventListener('pointermove',e=>{if(!down)return;spinV+=(e.clientX-down.x)*.0035;down.x=e.clientX;});
 stage.addEventListener('pointerup',e=>{if(down&&performance.now()-down.t<300&&Math.hypot(e.clientX-down.x0,e.clientY-down.y0)<10){const w=pick(e.clientX,e.clientY)||curW;if(w)openItem(w.item);}down=null;slowT=0;});
 stage.addEventListener('pointercancel',()=>{down=null;slowT=0;});stage.addEventListener('contextmenu',e=>e.preventDefault());
-addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();else if(openIt&&e.key==='ArrowLeft')step(-1);else if(openIt&&e.key==='ArrowRight')step(1);
+addEventListener('keydown',e=>{if(e.key==='Escape'){if(zoomed){zoomed=false;panel.classList.remove('zoom');layoutPanel();}else closePanel();}else if(openIt&&e.key==='ArrowLeft')step(-1);else if(openIt&&e.key==='ArrowRight')step(1);
  else if(e.key===' '&&!openIt){e.preventDefault();wake();slowT=1;}});
 addEventListener('keyup',e=>{if(e.key===' ')slowT=0;});
 $('cover').addEventListener('click',e=>{e.stopPropagation();wake();});addEventListener('keydown',e=>{if(!WP.state.started&&(e.key==='Enter'||e.key===' '))wake();});
@@ -276,10 +289,7 @@ let W=1,H=1;
 function resize(){W=innerWidth;H=innerHeight;renderer.setSize(W,H,false);camera.aspect=W/H;camera.updateProjectionMatrix();
 U.uRes.value.set(W*PR,H*PR);if(composer){composer.setSize(W,H);bloom.resolution.set(W/2,H/2);}if(riso)riso.uniforms.uRes.value.set(W*PR,H*PR);
 TW=W;TH=W<600?58:64;tl.style.height=TH+'px';ppy=W<600?110:190;
-const narrow=W<760||H>W;let side,cx,cy;if(narrow){side=Math.min(W*.8,H*.32);cx=W/2;cy=104+side/2;panel.style.setProperty('--pt',(cy+side/2+58)+'px');}
-else{side=Math.min(W*.42,H-230);cx=W*.27;cy=96+(H-96-TH-40)/2;}
-panel.classList.toggle('narrow',narrow);vizRect={x:cx-side/2,y:cy-side/2,w:side,h:side};const pf=$('print');pf.style.left=(cx-side/2-12)+'px';pf.style.top=(cy-side/2-12)+'px';pf.style.width=(side+24)+'px';pf.style.height=(side+52)+'px';
-viz.mat.uniforms.uSize.value.set(side/W,side/H);viz.mat.uniforms.uOff.value.set(cx/W*2-1,1-cy/H*2);}
+panel.classList.toggle('narrow',W<760||H>W);[...slots,viz].forEach(s=>s.mat.uniforms.uScr.value.set(W/2,H/2));if(openIt)requestAnimationFrame(layoutPanel);}
 addEventListener('resize',resize);resize();
 
 const chars=[],drift=[];let nextChar=0;
