@@ -7,27 +7,110 @@
     'real-unproven': 'REAL, UNPROVEN',
   };
 
-  function challengeURL(seed, score) {
+  function cleanHandle(raw) {
+    return String(raw || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 12);
+  }
+
+  function formatPts(n) {
+    return Math.max(0, Math.round(Number(n) || 0)).toLocaleString('en-US');
+  }
+
+  function challengeURL(seed, points = 0, accuracy = 0, handle = '') {
     const canonical = document.querySelector('link[rel="canonical"]')?.href;
     const url = new URL(location.hostname === legacyHost && canonical ? canonical : location.href);
     url.search = '';
     url.hash = '';
     url.searchParams.set('deck', seed);
-    url.searchParams.set('vs', score);
+    url.searchParams.set('pts', String(Math.max(0, Math.round(Number(points) || 0))));
+    url.searchParams.set('acc', String(Math.max(0, Math.min(10, Math.round(Number(accuracy) || 0)))));
+    const tag = cleanHandle(handle);
+    if (tag && tag !== 'PLAYER') url.searchParams.set('by', tag);
     return url.href;
   }
 
-  function shareText(result) {
-    const { answers, seed, score, kind } = result;
-    const squares = answers.map(({ correct }) => correct ? '■' : '□').join('');
-    const key = answers.map(({ card }, index) => (index + 1) + ' ' + verdictText[card.verdict]).join(' · ');
-    const forecast = result.forecast ? '\n' + result.forecast.type + ' · My AGI year: ' + result.forecast.agiYear : '';
-    return name + ' #' + (kind === 'daily' ? 'D ' : 'P ') + score + '/10 ' + squares
-      + forecast + '\n' + challengeURL(seed, score) + '\nAnswer key: ' + key;
+  function displayURL(href) {
+    return String(href || '').replace(/^https?:\/\//, '');
   }
 
-  function image(file) {
-    if (!file) return null;
+  function tileEmoji(entry) {
+    if (entry.correct) {
+      if (entry.isJackpot && entry.isAllIn) return '👑';
+      if (entry.isAllIn) return '💰';
+      if (entry.isJackpot) return '⭐';
+      if ((entry.streak || 0) >= 3) return '🔥';
+      return '🟩';
+    }
+    return entry.busted || entry.isAllIn ? '💥' : '🟥';
+  }
+
+  function pickHighlightCard(result) {
+    if (result.fooled) return { card: result.fooled, gotCooked: true };
+    const realHit = (result.answers || []).find(a => a.card && a.card.verdict !== 'made-up');
+    return realHit ? { card: realHit.card, gotCooked: false } : null;
+  }
+
+  function shareText(result) {
+    const {
+      answers = [],
+      seed = '',
+      points = 0,
+      score = 0,
+      best = 0,
+      rank = { title: 'CAUTIOUSLY SANE' },
+      handle = '',
+      allInWins = 0,
+      allInTotal = 0,
+      jackpotsHit = 0,
+    } = result;
+
+    const tiles = answers.map(tileEmoji).join('');
+    const url = challengeURL(seed, points, score, handle);
+    const lines = [
+      `AM I CRAZY? 🧠 ${formatPts(points)} PTS (${score}/10)`,
+      `Rank: ${rank.title}`,
+      tiles,
+    ];
+
+    const statBits = [`Streak: ${best}x`];
+    if (allInTotal > 0) statBits.push(`All-In: ${allInWins}/${allInTotal} 💰`);
+    else if (jackpotsHit > 0) statBits.push(`Jackpots: ${jackpotsHit}/2 ⭐`);
+    lines.push(statBits.join(' | '));
+
+    const highlight = pickHighlightCard(result);
+    if (highlight) {
+      const label = highlight.gotCooked ? 'Got cooked by' : 'Wildest real one I nailed';
+      lines.push(`${label}: "${highlight.card.text}" (${verdictText[highlight.card.verdict]}!)`);
+    }
+
+    lines.push('Beat my score on this exact deck 👇');
+    lines.push(url);
+    return lines.join('\n');
+  }
+
+  async function copyText(result) {
+    const text = shareText(result);
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return { ok: true, message: 'COPIED! PASTE IN CHAT ✓', text };
+      } catch {}
+    }
+    try {
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      document.body.append(area);
+      area.select();
+      const ok = document.execCommand('copy');
+      area.remove();
+      if (ok) return { ok: true, message: 'COPIED! PASTE IN CHAT ✓', text };
+    } catch {}
+    return { ok: false, message: 'Select the challenge link below to copy it.', text };
+  }
+
+  function loadImage(file) {
+    if (!file) return Promise.resolve(null);
     return new Promise(resolve => {
       const picture = new Image();
       picture.onload = () => resolve(picture);
@@ -36,125 +119,349 @@
     });
   }
 
-  function wrap(ctx, text, x, y, width, lineHeight) {
-    let line = '';
-    for (const word of text.split(/\s+/)) {
-      const candidate = line ? line + ' ' + word : word;
-      if (line && ctx.measureText(candidate).width > width) {
-        ctx.fillText(line, x, y);
-        y += lineHeight;
-        line = word;
+  function wrapLines(ctx, text, maxWidth, maxLines) {
+    const words = String(text || '').trim().split(/\s+/);
+    const lines = [];
+    let current = '';
+    for (const word of words) {
+      const candidate = current ? current + ' ' + word : word;
+      if (current && ctx.measureText(candidate).width > maxWidth) {
+        lines.push(current);
+        current = word;
+        if (lines.length === maxLines - 1) break;
       } else {
-        line = candidate;
+        current = candidate;
       }
     }
-    if (line) ctx.fillText(line, x, y);
-    return y + lineHeight;
+    const usedCount = lines.join(' ').split(/\s+/).filter(Boolean).length;
+    const remaining = words.slice(usedCount).join(' ');
+    if (lines.length < maxLines && remaining) {
+      let last = remaining;
+      while (last.length > 3 && ctx.measureText(last).width > maxWidth) {
+        last = last.slice(0, -2).trimEnd() + '…';
+      }
+      lines.push(last);
+    } else if (lines.length < maxLines && current) {
+      lines.push(current);
+    }
+    return lines.slice(0, maxLines);
   }
 
-  async function makeImage(result, ui) {
-    const { score, answers, fooled, best, seed, kind } = result;
+  function fitFont(ctx, text, maxWidth, weight, startPx, minPx, family) {
+    let size = startPx;
+    while (size > minPx) {
+      ctx.font = `${weight} ${size}px ${family}`;
+      if (ctx.measureText(text).width <= maxWidth) break;
+      size -= 2;
+    }
+    return size;
+  }
+
+  async function makeImage(result, ui = {}) {
+    const {
+      points = 0,
+      score = 0,
+      answers = [],
+      best = 0,
+      seed = '',
+      kind = 'random',
+      handle = '',
+      rank = { title: 'CAUTIOUSLY SANE', sub: 'Halfway immune to AI slop.', tier: 'cyan' },
+      allInWins = 0,
+      jackpotsHit = 0,
+    } = result;
+
     const canvas = document.createElement('canvas');
     canvas.width = 1080;
     canvas.height = 1350;
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
-    const paper = '#f3e8d7';
-    const ink = '#0d0b10';
-    const pink = '#ff329b';
-    const blue = '#00639b';
-    const red = '#aa1731';
-    const display = '900 76px "Big Shoulders Display", Impact, sans-serif';
-    const mono = '600 28px "IBM Plex Mono", monospace';
-    ctx.fillStyle = paper;
-    ctx.fillRect(0, 0, 1080, 1350);
+
+    const INK = '#0a080f';
+    const PAPER = '#f5ecdc';
+    const YELLOW = '#ffe800';
+    const PINK = '#ff2a9d';
+    const CYAN = '#00e5ff';
+    const LIME = '#b8ff00';
+    const RED = '#ff2e4c';
+    const ORANGE = '#ff6b00';
+    const GOLD = '#ffcc00';
+    const DISPLAY = '"Big Shoulders Display", Impact, "Arial Narrow", sans-serif';
+    const MONO = '"IBM Plex Mono", ui-monospace, monospace';
+
     const [art, wordmark] = await Promise.all([
-      image(ui['share-bg-1']),
-      image(ui.wordmark),
-      document.fonts?.load(display).catch(() => {}),
+      loadImage(ui['share-bg-1']),
+      loadImage(ui.wordmark),
+      document.fonts?.load(`900 120px ${DISPLAY}`).catch(() => {}),
+      document.fonts?.load(`700 28px ${MONO}`).catch(() => {}),
     ]);
-    if (art) ctx.drawImage(art, 0, 0, 1080, 1350);
-    ctx.fillStyle = paper;
-    ctx.fillRect(56, 52, 968, 1246);
-    ctx.strokeStyle = ink;
-    ctx.lineWidth = 5;
-    ctx.strokeRect(56, 52, 968, 1246);
-    const gameMode = kind === 'daily' ? 'DAILY' : kind.toUpperCase();
+
+    // 0–1350: Outer Poster Frame
+    ctx.fillStyle = INK;
+    ctx.fillRect(0, 0, 1080, 1350);
+    if (art) {
+      ctx.save();
+      ctx.globalAlpha = 0.35;
+      ctx.drawImage(art, 0, 0, 1080, 1350);
+      ctx.restore();
+    }
+
+    // Hard offset pink shadow + newsprint inner card
+    ctx.fillStyle = PINK;
+    ctx.fillRect(62, 62, 984, 1254);
+    ctx.fillStyle = PAPER;
+    ctx.fillRect(48, 48, 984, 1254);
+    ctx.strokeStyle = INK;
+    ctx.lineWidth = 6;
+    ctx.strokeRect(48, 48, 984, 1254);
+
+    // 72–210: Masthead
+    const shortSeed = seed ? '#' + seed.toUpperCase().slice(0, 10) : '#RANDOM';
+    const modeTag = (kind === 'challenge' ? 'CHALLENGE RUN' : 'RANDOM DECK') + ' · ' + shortSeed;
+    const tagHandle = cleanHandle(handle);
+
     if (wordmark) {
-      const height = 138;
-      ctx.drawImage(wordmark, 99, 77, height * wordmark.naturalWidth / wordmark.naturalHeight, height);
-      ctx.fillStyle = pink;
-      ctx.fillRect(328, 91, 5, 110);
-      ctx.fillStyle = ink;
-      ctx.font = mono;
-      ctx.fillText('REAL OR MADE UP?', 363, 139);
-      ctx.fillText(gameMode, 363, 179);
+      const h = 118;
+      const w = Math.min(420, h * (wordmark.naturalWidth / Math.max(1, wordmark.naturalHeight)));
+      ctx.drawImage(wordmark, 84, 76, w, h);
     } else {
-      ctx.font = display;
-      ctx.fillStyle = pink;
-      ctx.fillText(name, 105, 151);
-      ctx.fillStyle = ink;
-      ctx.fillText(name, 99, 145);
-      ctx.font = mono;
-      ctx.fillText('REAL OR MADE UP?  /  ' + gameMode, 99, 197);
+      ctx.font = `900 84px ${DISPLAY}`;
+      ctx.fillStyle = PINK;
+      ctx.fillText('AM I CRAZY?', 90, 162);
+      ctx.fillStyle = INK;
+      ctx.fillText('AM I CRAZY?', 84, 156);
     }
-    ctx.font = '900 156px "Big Shoulders Display", Impact, sans-serif';
-    ctx.fillText(score + '/10', 99, 365);
-    ctx.font = mono;
-    ctx.fillText('Best streak  ' + best, 550, 347);
-    answers.forEach(({ card, correct }, index) => {
-      const x = 100 + index * 89;
-      ctx.lineWidth = card.verdict === 'real-unproven' ? 6 : 3;
-      ctx.strokeStyle = card.verdict === 'real-unproven' ? '#bb196e' : ink;
-      if (correct) {
-        ctx.fillStyle = ink;
-        ctx.fillRect(x, 400, 60, 60);
+
+    // Right masthead pill + player tag
+    ctx.font = `700 22px ${MONO}`;
+    const pillW = Math.min(420, ctx.measureText(modeTag).width + 36);
+    const pillX = 996 - pillW;
+    ctx.fillStyle = INK;
+    ctx.fillRect(pillX, 86, pillW, 44);
+    ctx.fillStyle = YELLOW;
+    ctx.textAlign = 'center';
+    ctx.fillText(modeTag, pillX + pillW / 2, 116);
+
+    ctx.textAlign = 'right';
+    ctx.fillStyle = INK;
+    ctx.font = `700 24px ${MONO}`;
+    ctx.fillText(tagHandle && tagHandle !== 'PLAYER' ? `PLAYER: ${tagHandle}` : 'REAL OR MADE UP?', 996, 168);
+    ctx.textAlign = 'left';
+
+    // 225–425: Hero Points Block
+    ctx.fillStyle = PINK;
+    ctx.fillRect(92, 233, 912, 195);
+    ctx.fillStyle = INK;
+    ctx.fillRect(84, 225, 912, 195);
+    ctx.strokeStyle = YELLOW;
+    ctx.lineWidth = 5;
+    ctx.strokeRect(84, 225, 912, 195);
+
+    const ptsStr = `${formatPts(points)} PTS`;
+    fitFont(ctx, ptsStr, 540, 900, 132, 74, DISPLAY);
+    ctx.fillStyle = YELLOW;
+    ctx.fillText(ptsStr, 114, 366);
+
+    // Right stacked badges inside Hero slab
+    ctx.textAlign = 'right';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `900 54px ${DISPLAY}`;
+    ctx.fillText(`${score}/10 CORRECT`, 964, 294);
+
+    ctx.fillStyle = ORANGE;
+    ctx.font = `700 24px ${MONO}`;
+    ctx.fillText(`🔥 ${best}X MAX STREAK`, 964, 342);
+
+    ctx.fillStyle = LIME;
+    const thirdStat = allInWins > 0
+      ? `💰 ${allInWins} ALL-IN WIN${allInWins > 1 ? 'S' : ''}`
+      : jackpotsHit > 0
+        ? `⭐ ${jackpotsHit}/2 JACKPOTS`
+        : '⚡ ARCADE RUN';
+    ctx.fillText(thirdStat, 964, 386);
+    ctx.textAlign = 'left';
+
+    // 445–565: Rank Title Stamp
+    const isGoldRank = rank.tier === 'gold' || rank.tier === 'foil';
+    const bannerFill = isGoldRank ? GOLD : rank.tier === 'red' ? RED : rank.tier === 'lime' ? LIME : PINK;
+    const bannerInk = (isGoldRank || rank.tier === 'lime') ? INK : '#ffffff';
+
+    ctx.save();
+    ctx.translate(540, 488);
+    ctx.rotate(-1.5 * Math.PI / 180);
+    ctx.fillStyle = INK;
+    ctx.fillRect(-444, -38, 896, 84);
+    ctx.fillStyle = bannerFill;
+    ctx.fillRect(-452, -46, 896, 84);
+    ctx.strokeStyle = INK;
+    ctx.lineWidth = 4;
+    ctx.strokeRect(-452, -46, 896, 84);
+
+    const rankTitle = String(rank.title || 'CAUTIOUSLY SANE').toUpperCase();
+    fitFont(ctx, rankTitle, 840, 900, 62, 34, DISPLAY);
+    ctx.fillStyle = bannerInk;
+    ctx.textAlign = 'center';
+    ctx.fillText(rankTitle, -4, 17);
+    ctx.restore();
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = INK;
+    fitFont(ctx, rank.sub || '', 900, 600, 24, 17, MONO);
+    ctx.fillText(rank.sub || '', 540, 562);
+    ctx.textAlign = 'left';
+
+    // 590–685: 10-Tile Result Strip
+    const tileW = 78;
+    const tileGap = 14;
+    const startX = 87;
+    const tileY = 594;
+    answers.slice(0, 10).forEach((entry, index) => {
+      const x = startX + index * (tileW + tileGap);
+      const isMega = entry.correct && entry.isJackpot && entry.isAllIn;
+      const isJpHit = entry.correct && entry.isJackpot;
+      const isAllInHit = entry.correct && entry.isAllIn;
+      const isBust = !entry.correct && (entry.busted || entry.isAllIn);
+
+      if (isMega) {
+        ctx.fillStyle = GOLD;
+        ctx.fillRect(x, tileY, tileW, tileW);
+        ctx.strokeStyle = PINK;
+        ctx.lineWidth = 6;
+        ctx.strokeRect(x + 2, tileY + 2, tileW - 4, tileW - 4);
+      } else if (isJpHit) {
+        ctx.fillStyle = GOLD;
+        ctx.fillRect(x, tileY, tileW, tileW);
+        ctx.strokeStyle = INK;
+        ctx.lineWidth = 4;
+        ctx.strokeRect(x, tileY, tileW, tileW);
+      } else if (isAllInHit) {
+        ctx.fillStyle = INK;
+        ctx.fillRect(x, tileY, tileW, tileW);
+        ctx.strokeStyle = PINK;
+        ctx.lineWidth = 6;
+        ctx.strokeRect(x + 2, tileY + 2, tileW - 4, tileW - 4);
+      } else if (entry.correct) {
+        ctx.fillStyle = INK;
+        ctx.fillRect(x, tileY, tileW, tileW);
+        ctx.strokeStyle = (entry.streak || 0) >= 3 ? ORANGE : INK;
+        ctx.lineWidth = 4;
+        ctx.strokeRect(x, tileY, tileW, tileW);
+      } else if (isBust) {
+        ctx.fillStyle = RED;
+        ctx.fillRect(x, tileY, tileW, tileW);
+        ctx.strokeStyle = INK;
+        ctx.lineWidth = 4;
+        ctx.strokeRect(x, tileY, tileW, tileW);
+      } else {
+        ctx.fillStyle = PAPER;
+        ctx.fillRect(x, tileY, tileW, tileW);
+        ctx.strokeStyle = INK;
+        ctx.lineWidth = 4;
+        ctx.strokeRect(x, tileY, tileW, tileW);
       }
-      ctx.strokeRect(x, 400, 60, 60);
+
+      ctx.textAlign = 'center';
+      if (isMega) {
+        ctx.fillStyle = INK;
+        ctx.font = `900 38px ${DISPLAY}`;
+        ctx.fillText('4X', x + tileW / 2, tileY + 52);
+      } else if (isJpHit) {
+        ctx.fillStyle = INK;
+        ctx.font = `900 38px ${DISPLAY}`;
+        ctx.fillText('2X', x + tileW / 2, tileY + 52);
+      } else if (isAllInHit) {
+        ctx.fillStyle = YELLOW;
+        ctx.font = `900 40px ${DISPLAY}`;
+        ctx.fillText('★', x + tileW / 2, tileY + 53);
+      } else if (entry.correct) {
+        ctx.fillStyle = LIME;
+        ctx.font = `900 42px ${DISPLAY}`;
+        ctx.fillText('✓', x + tileW / 2, tileY + 54);
+      } else {
+        ctx.fillStyle = isBust ? YELLOW : RED;
+        ctx.font = `900 40px ${DISPLAY}`;
+        ctx.fillText('✕', x + tileW / 2, tileY + 53);
+      }
+      ctx.textAlign = 'left';
     });
 
-    const forecastOffset = result.forecast ? 83 : 0;
-    if (result.forecast) {
-      ctx.fillStyle = ink;
-      ctx.font = '900 48px "Big Shoulders Display", sans-serif';
-      ctx.fillText(result.forecast.type, 99, 530);
-      ctx.font = mono;
-      ctx.fillText('My AGI year: ' + result.forecast.agiYear, 590, 530);
+    // 720–1065: "THE ONE THAT GOT ME" Callout
+    ctx.save();
+    ctx.strokeStyle = INK;
+    ctx.lineWidth = 3;
+    ctx.setLineDash([12, 8]);
+    ctx.beginPath();
+    ctx.moveTo(84, 706);
+    ctx.lineTo(996, 706);
+    ctx.stroke();
+    ctx.restore();
+
+    const highlight = pickHighlightCard(result);
+    const kicker = highlight?.gotCooked
+      ? 'THE ONE THAT GOT ME 💀'
+      : 'FLAWLESS 10/10 — WILDEST REAL ONE 🤯';
+    ctx.fillStyle = INK;
+    ctx.font = `700 24px ${MONO}`;
+    const kickerW = ctx.measureText(kicker).width + 30;
+    ctx.fillRect(84, 728, kickerW, 42);
+    ctx.fillStyle = highlight?.gotCooked ? YELLOW : LIME;
+    ctx.fillText(kicker, 99, 757);
+
+    if (highlight?.card) {
+      ctx.fillStyle = INK;
+      ctx.font = `900 44px ${DISPLAY}`;
+      const lines = wrapLines(ctx, highlight.card.text, 912, 4);
+      let y = 824;
+      for (const line of lines) {
+        ctx.fillText(line, 84, y);
+        y += 49;
+      }
+
+      // Tilted double-bordered rubber verdict stamp
+      const v = highlight.card.verdict;
+      const stampStr = verdictText[v] || 'REAL';
+      const stampCol = v === 'made-up' ? '#c4002f' : v === 'real-unproven' ? '#a31368' : '#005a89';
+      const stampY = Math.min(1038, y + 18);
+      ctx.save();
+      ctx.translate(84, stampY);
+      ctx.rotate(-2.5 * Math.PI / 180);
+      ctx.font = `900 34px ${DISPLAY}`;
+      const sw = ctx.measureText(stampStr).width + 44;
+      ctx.fillStyle = PAPER;
+      ctx.fillRect(0, -36, sw, 52);
+      ctx.strokeStyle = stampCol;
+      ctx.lineWidth = 4;
+      ctx.strokeRect(0, -36, sw, 52);
+      ctx.lineWidth = 2;
+      ctx.strokeRect(5, -31, sw - 10, 42);
+      ctx.fillStyle = stampCol;
+      ctx.fillText(stampStr, 22, 2);
+      ctx.restore();
     }
 
-    ctx.fillStyle = ink;
-    ctx.font = '700 25px "IBM Plex Mono", monospace';
-    ctx.fillText(fooled ? 'THE ONE THAT FOOLED ME' : 'NOTHING GOT PAST ME', 99, 531 + forecastOffset);
-    let y = 586 + forecastOffset;
-    if (fooled) {
-      ctx.font = '900 ' + (result.forecast ? 34 : 46) + 'px "Big Shoulders Display", Impact, sans-serif';
-      y = wrap(ctx, fooled.text, 99, y, 880, result.forecast ? 39 : 51);
-      ctx.font = mono;
-      ctx.fillStyle = fooled.verdict === 'made-up' ? red : fooled.verdict === 'real-unproven' ? '#a31368' : blue;
-      const stamp = verdictText[fooled.verdict];
-      ctx.lineWidth = 3;
-      ctx.strokeStyle = ctx.fillStyle;
-      ctx.strokeRect(99, y - 28, ctx.measureText(stamp).width + 32, 45);
-      ctx.fillText(stamp, 114, y + 3);
-    }
+    // 1100–1265: Challenge Footer Bar
+    ctx.fillStyle = INK;
+    ctx.fillRect(92, 1112, 912, 158);
+    ctx.fillStyle = YELLOW;
+    ctx.fillRect(84, 1104, 912, 158);
+    ctx.strokeStyle = INK;
+    ctx.lineWidth = 5;
+    ctx.strokeRect(84, 1104, 912, 158);
 
-    ctx.fillStyle = ink;
-    ctx.font = mono;
-    ctx.fillText('ANSWER KEY', 99, 869);
-    answers.forEach(({ card }, index) => {
-      ctx.fillStyle = card.verdict === 'made-up' ? red : card.verdict === 'real-unproven' ? '#a31368' : blue;
-      const number = String(index + 1).padStart(2, '0');
-      ctx.fillText(number + '  ' + verdictText[card.verdict], 99 + (index >= 5 ? 465 : 0), 912 + (index % 5) * 45);
+    const cta = `CAN YOU BEAT ${formatPts(points)} PTS? PLAY THIS EXACT DECK →`;
+    fitFont(ctx, cta, 864, 900, 36, 24, DISPLAY);
+    ctx.fillStyle = INK;
+    ctx.fillText(cta, 108, 1158);
+
+    const url = displayURL(challengeURL(seed, points, score, handle));
+    ctx.font = `700 22px ${MONO}`;
+    const urlLines = url.length > 58 ? [url.slice(0, 58), url.slice(58, 116)] : [url];
+    urlLines.forEach((line, i) => {
+      ctx.fillText(line, 108, 1204 + i * 30);
     });
-    ctx.font = '700 24px "IBM Plex Mono", monospace';
-    ctx.fillStyle = ink;
-    ctx.fillText('PLAY THIS DECK', 99, 1166);
-    const url = challengeURL(seed, score);
-    for (let offset = 0; offset < url.length && offset < 160; offset += 58) {
-      ctx.fillText(url.slice(offset, offset + 58), 99, 1206 + offset / 58 * 26);
-    }
+
     return new Promise(resolve => canvas.toBlob(blob => {
-      resolve(blob ? new File([blob], 'am-i-crazy-' + seed + '.png', { type: 'image/png' }) : null);
+      resolve(blob ? new File([blob], `am-i-crazy-${seed || 'run'}.png`, { type: 'image/png' }) : null);
     }, 'image/png'));
   }
 
@@ -163,7 +470,7 @@
     if (file && navigator.share && navigator.canShare?.({ files: [file] })) {
       try {
         await navigator.share({ title: name, text, files: [file] });
-        return 'Shared.';
+        return 'Shared!';
       } catch (error) {
         if (error.name === 'AbortError') return '';
       }
@@ -178,16 +485,12 @@
         link.click();
         link.remove();
         setTimeout(() => URL.revokeObjectURL(url), 30000);
-        return 'Share card downloaded.';
+        return 'Poster PNG saved!';
       }
     }
-    try {
-      await navigator.clipboard.writeText(text);
-      return 'Result and challenge link copied.';
-    } catch {
-      return 'Select the challenge link below to copy it.';
-    }
+    const copied = await copyText(result);
+    return copied.message;
   }
 
-  window.WP_SHARE = { verdictText, challengeURL, makeImage, share };
+  window.WP_SHARE = { verdictText, challengeURL, shareText, copyText, makeImage, share };
 })();

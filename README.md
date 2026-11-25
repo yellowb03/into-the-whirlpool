@@ -6,9 +6,12 @@ An endless psychedelic fall through AI history, from AlexNet in 2012 to November
 
 ## Real or Made Up?
 
-Play ten cards from a 171-card feed of AI incidents, internet oddities, public claims, and invented headlines, then share your score or challenge a friend to the same deck. Swipe left for made up and right for real. Buttons and arrow keys work too. Reveals stay open until you press Next. “Real, unproven” means the announcement happened and the underlying claim was still under review at press time. Case files link to the original sources. The Crossing leads into six future predictions. Each comparison uses the recorded odds for that specific prediction. The ending adds your forecaster type and an AGI year estimated from your two AI-timeline bets.
+A rapid-fire, casino-arcade AI headline game set inside the whirlpool. Every run deals a fresh shuffled 10-card random deck of unhinged real AI incidents, viral oddities, unproven claims, and invented headlines — avoiding your last 35 seen cards so every round feels new.
 
-The daily deck changes at midnight UTC. Practice draws use a random seed. Both can be replayed with their challenge link, including links from the original deck. Practice picks favor headlines you haven’t seen recently. Run history and per-card miss rates are stored on the current device. The first missed card breaks ties when prior statistics are unavailable.
+- **Controls:** Swipe left (`←` / `A`) for **MADE UP**, right (`→` / `D`) for **REAL**, press `W` / `Shift` / `2` to arm **`2X ALL-IN`**, `Space` / `Enter` for Next, and `R` to instantly deal a fresh deck from the results screen.
+- **Arcade Scoring:** Base `100 PTS` + Fast-Read Speed Bonus (`+50` ≤ 4s, `+25` ≤ 7s) × escalating **Streak Multiplier** (`1x → 1.5x → 2x → 3x → 4x → 5x MAX`) × **2 Gilded `2X JACKPOT` Rounds** per deck × optional **`2X ALL-IN`** double-or-nothing wager (`4X MEGA HIT` when stacked with a Jackpot, or `-150 PTS` bust + streak shatter on a miss).
+- **3-Tier Fever Mode & Hall of Fame:** Streaks at 3+, 5+, and 7+ ignite Fever Mode with escalating visuals, particles, and Web Audio synth chimes. Runs save locally to your Top 10 **Hall of Fame** with an editable arcade tag, career stats, internet-native Rank Titles, and 1-click deck seed replays.
+- **Spoiler-Safe Challenges:** Copy a Wordle-style emoji summary or share/save a 1080×1350 4:5 arcade score poster with a deterministic `?deck=` link so friends play the exact same 10 cards and Jackpot slots to beat your points (legacy `d2-`/`p2-`/v1 links remain backwards compatible). “Real, unproven” means the announcement happened while independent review was still pending; every real headline links to verified sources in its Case File.
 
 **Explore controls:** tap a word, a headline or a timeline dot to open it (vision on the left, story on the right) · hold to slow time · drag to spin.
 

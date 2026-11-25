@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Am I Crazy? — The AI Headline Game</title>
-<meta name="description" content="Ten strange stories from AI history. Swipe to decide which really happened, then challenge a friend.">
+<meta name="description" content="Real AI news is completely unhinged. Swipe REAL or MADE UP across random 10-card decks, stack 5x streaks, go 2X ALL-IN, and challenge friends.">
 <meta name="theme-color" content="#ffe800">
 <link rel="canonical" href="https://am-i-crazy.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Am I Crazy?">
 <meta property="og:title" content="Am I Crazy? — The AI Headline Game">
-<meta property="og:description" content="Ten strange stories from AI history. Can you tell what really happened?">
+<meta property="og:description" content="Real AI news is completely unhinged. Swipe REAL or MADE UP, stack 5x streaks, go 2X ALL-IN, and beat your friends' high score.">
 <meta property="og:image" content="https://am-i-crazy.vercel.app/assets/ui/am-i-crazy-preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -18,7 +18,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/ui/am-i-crazy-icon.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Am I Crazy? — The AI Headline Game">
-<meta name="twitter:description" content="Ten strange stories from AI history. Can you tell what really happened?">
+<meta name="twitter:description" content="Real AI news is completely unhinged. Swipe REAL or MADE UP, stack 5x streaks, go 2X ALL-IN, and beat your friends' high score.">
 <meta name="twitter:image" content="https://am-i-crazy.vercel.app/assets/ui/am-i-crazy-preview.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,7 +91,7 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .err{position:fixed;inset:0;display:grid;place-items:center;color:#fff;padding:24px;text-align:center}
 @media(max-width:600px){.hl{font-size:12px}.sheet h2{font-size:34px}.sheet p{font-size:16px}.hint{font-size:11px;bottom:calc(70px + env(safe-area-inset-bottom))}}
 </style>
-<link rel="stylesheet" href="game.css?v=3">
+<link rel="stylesheet" href="game.css?v=4">
 </head>
 <body>
 <div id="stage" aria-label="An endless psychedelic whirlpool through AI history from 2012 to now, then five years of predictions. Tap a word to open it, hold to slow time, drag to spin."></div>
@@ -99,34 +99,60 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <canvas id="tl" aria-label="Timeline. Tap a dot to open that moment."></canvas>
 <section class="cover" id="cover" aria-labelledby="cover-title">
   <div class="cv-layout">
-    <div class="cv-top"><span>THE AI HEADLINE GAME</span><span>2012–2026</span></div>
+    <div class="cv-top">
+      <span>THE UNHINGED AI HEADLINE GAME</span>
+      <span id="cv-career-pill">RANDOM 10-CARD DECKS</span>
+    </div>
     <h1 class="cv-title" id="cover-title">
       <picture>
         <source media="(max-width: 680px)" srcset="assets/ui/am-i-crazy-header-mobile.webp" width="846" height="484">
         <img src="assets/ui/am-i-crazy-header.webp" alt="Am I Crazy?" width="1536" height="484" fetchpriority="high">
       </picture>
     </h1>
+    <div id="cv-challenge-banner" class="cv-challenge-banner" hidden></div>
     <div class="cv-bottom">
-      <p class="cv-dek">The real AI news has already gotten weird. We made up a few headlines to see if you can still tell the difference.</p>
+      <div class="cv-copy">
+        <p class="cv-dek">Real AI news is completely unhinged. Swipe REAL or MADE UP, stack 5x streaks, and go 2X ALL-IN.</p>
+        <div class="cv-rules-strip" aria-label="How to play">
+          <span>← MADE UP</span>
+          <span>REAL →</span>
+          <span>🔥 5X STREAKS</span>
+          <span>🎲 2X ALL-IN</span>
+        </div>
+      </div>
       <div class="cv-actions">
-        <button type="button" id="game-launch">Play Am I Crazy? <span aria-hidden="true">→</span></button>
-        <button type="button" id="game-explore" hidden>Explore the timeline</button>
+        <button type="button" id="game-launch">▶ Play Random Deck</button>
+        <button type="button" id="game-hof">🏆 Hall of Fame</button>
+        <button type="button" id="game-explore" hidden>Explore Timeline</button>
       </div>
     </div>
     <div class="cv-foot"><span>Made by Briam with Claude, ChatGPT &amp; Gemini</span><span>Tainan, Taiwan</span></div>
   </div>
 </section>
 <div id="wp-game" hidden>
-  <div class="game-bar">
-    <div class="game-brand">
+  <header class="game-bar">
+    <div class="hud-left">
       <img src="assets/ui/am-i-crazy-mark.webp" alt="" width="144" height="96">
-      <strong>Am I Crazy?</strong>
+      <div class="hud-card-wrap">
+        <span id="hud-count">01/10</span>
+        <div id="hud-pips" class="hud-pips" aria-hidden="true"></div>
+      </div>
     </div>
-    <span id="game-progress"></span>
-    <button type="button" data-game-action="explore" id="game-leave" hidden>Explore</button>
-  </div>
+    <div class="hud-score-wrap" aria-live="polite">
+      <span class="hud-score-label" id="hud-score-label">SCORE</span>
+      <strong id="hud-score">0</strong>
+    </div>
+    <div class="hud-right">
+      <span id="hud-mult" class="hud-mult" data-tier="0">1.0x</span>
+      <button type="button" data-game-action="hof" class="hud-icon-btn" aria-label="Hall of Fame" title="Hall of Fame">🏆</button>
+      <button type="button" data-game-action="explore" id="game-leave" hidden>Exit</button>
+    </div>
+  </header>
   <main id="game-screen" aria-label="Real or Made Up?"></main>
 </div>
+<div id="fever-frame" aria-hidden="true"></div>
+<canvas id="game-fx" aria-hidden="true"></canvas>
+<div id="hof-modal" class="hof-modal" hidden role="dialog" aria-modal="true" aria-labelledby="hof-title"></div>
 <div class="hint" id="hint">tap a word = open it / hold = slow time / drag = spin / drag the ruler = time travel</div>
 <div class="panel" id="panel" aria-hidden="true" role="dialog" aria-labelledby="ptitle">
   <figure class="print" id="print"><figcaption id="pcap"></figcaption></figure>
@@ -157,12 +183,12 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
 <script src="data.js"></script>
 <script src="cards.js"></script>
-<script src="headlines.js"></script>
+<script src="headlines.js?v=4"></script>
 <script src="mem.js"></script>
 <script src="main.js?v=2"></script>
-<script src="share.js?v=3"></script>
-<script src="game.js?v=3"></script>
+<script src="share.js?v=4"></script>
+<script src="game.js?v=4"></script>
 <script src="audio.js"></script>
-<script src="audio-bridge.js"></script>
+<script src="audio-bridge.js?v=4"></script>
 </body>
 </html>
