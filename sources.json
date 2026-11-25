@@ -125,5 +125,491 @@
       "publisher": "OpenAI",
       "url": "https://github.com/openai/math/blob/main/history.md"
     }
+  ],
+  "2015-07-photo-labels": [
+    {
+      "title": "When It Comes to Gorillas, Google Photos Remains Blind",
+      "publisher": "Wired",
+      "url": "https://www.wired.com/story/when-it-comes-to-gorillas-google-photos-remains-blind/"
+    }
+  ],
+  "2017-08-chinese-chatbots": [
+    {
+      "title": "Rogue chatbots taken offline in China",
+      "publisher": "ABC News Australia",
+      "url": "https://www.abc.net.au/news/2017-08-04/chinese-chatbots-deleted-after-questioning-communist-party/8773766"
+    }
+  ],
+  "2017-07-tabloids-facebook-ai-invents-its-own-language-re": [
+    {
+      "title": "No, Facebook’s Chatbots Will Not Take Over the World",
+      "publisher": "Wired",
+      "url": "https://www.wired.com/story/facebooks-chatbots-will-not-take-over-the-world/"
+    }
+  ],
+  "2017-10-robot-sophia-granted-saudi-citizenship": [
+    {
+      "title": "Saudi Arabia gave citizenship to a robot named Sophia",
+      "publisher": "Global News",
+      "url": "https://globalnews.ca/news/3844031/saudi-arabia-robot-citizen-sophia/"
+    }
+  ],
+  "2018-05-salon-uhh": [
+    {
+      "title": "Google’s robot assistant now makes eerily lifelike phone calls for you",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2018/may/08/google-duplex-assistant-phone-calls-robot-human"
+    }
+  ],
+  "2018-05-private-alexa": [
+    {
+      "title": "Amazon confirms Echo shared user’s private audio",
+      "publisher": "Ars Technica",
+      "url": "https://arstechnica.com/gadgets/2018/05/amazon-confirms-that-echo-device-secretly-shared-users-private-audio/"
+    }
+  ],
+  "2019-02-gpt-2-too-dangerous": [
+    {
+      "title": "GPT-2: 1.5B release",
+      "publisher": "OpenAI",
+      "url": "https://openai.com/index/gpt-2-1-5b-release/"
+    }
+  ],
+  "2022-04-empty-driver": [
+    {
+      "title": "Self-driving car pulled over by San Francisco police",
+      "publisher": "ABC News Australia",
+      "url": "https://www.abc.net.au/news/2022-04-12/self-driving-car-police-pull-over-san-francisco/100985792"
+    }
+  ],
+  "2022-06-alexa-grandma": [
+    {
+      "title": "Amazon has a plan to make Alexa mimic anyone’s voice",
+      "publisher": "Reuters",
+      "url": "https://uk.investing.com/news/stock-market-news/amazon-has-a-plan-to-make-alexa-mimic-anyones-voice-2674016"
+    }
+  ],
+  "2023-01-cnet-corrections": [
+    {
+      "title": "CNET had to correct most of its AI-written articles",
+      "publisher": "Engadget",
+      "url": "https://www.engadget.com/cnet-corrected-41-of-its-77-ai-written-articles-201519489.html"
+    }
+  ],
+  "2023-02-exoplanet-ad": [
+    {
+      "title": "Google AI chatbot Bard offers inaccurate information in company ad",
+      "publisher": "Euronews",
+      "url": "https://www.euronews.com/2023/02/08/google-ai-bard"
+    }
+  ],
+  "2023-03-someone-elses-sidebar": [
+    {
+      "title": "March 20 ChatGPT outage",
+      "publisher": "OpenAI",
+      "url": "https://openai.com/index/march-20-chatgpt-outage/"
+    }
+  ],
+  "2023-03-arrest-fanfic": [
+    {
+      "title": "Trump arrest photos fabricated using artificial intelligence",
+      "publisher": "AFP Fact Check",
+      "url": "https://factcheck.afp.com/doc.afp.com.33BY6R4"
+    }
+  ],
+  "2023-05-source-code-paste": [
+    {
+      "title": "Samsung bans staff’s AI use after spotting ChatGPT data leak",
+      "publisher": "Bloomberg via Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/samsung-bans-generative-ai-staff-004831399.html"
+    }
+  ],
+  "2023-05-pentagon-stock-dip": [
+    {
+      "title": "How a fake photo of a Pentagon blast went viral and briefly spooked stocks",
+      "publisher": "Los Angeles Times",
+      "url": "https://www.latimes.com/business/story/2023-05-22/how-fake-ai-photo-of-pentagon-blast-goes-viral-trips-stocks-briefly"
+    }
+  ],
+  "2023-05-one-sentence-extinction": [
+    {
+      "title": "AI extinction statement press release",
+      "publisher": "Center for AI Safety",
+      "url": "https://safe.ai/work/press-release-ai-risk"
+    }
+  ],
+  "2023-08-athletic-kind": [
+    {
+      "title": "Columbus Dispatch pauses AI sports writing tool",
+      "publisher": "Axios Columbus",
+      "url": "https://www.axios.com/local/columbus/2023/08/28/dispatch-gannett-ai-newsroom-tool"
+    }
+  ],
+  "2023-08-ceiling-story": [
+    {
+      "title": "Snapchat’s My AI posts to Stories during a glitch",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2023/08/16/snapchats-my-ai-goes-rogue-posts-to-stories-but-snap-confirms-it-was-just-a-glitch/"
+    }
+  ],
+  "2023-09-snoop-dungeon": [
+    {
+      "title": "Meta filmed celebrities to build AI characters",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2023/09/27/meta-mr-beast-paris-hilton-celebrity-ais-llama-2/"
+    }
+  ],
+  "2023-09-podcast-voice": [
+    {
+      "title": "Spotify’s AI Voice Translation Pilot",
+      "publisher": "Spotify Newsroom",
+      "url": "https://newsroom.spotify.com/2023-09-25/ai-voice-translation-pilot-lex-fridman-dax-shepard-steven-bartlett/"
+    }
+  ],
+  "2023-11-fake-byline": [
+    {
+      "title": "Sports Illustrated and the fake writer profiles",
+      "publisher": "Futurism",
+      "url": "https://futurism.com/sports-illustrated-ai-generated-writers"
+    }
+  ],
+  "2024-01-parcel-poet": [
+    {
+      "title": "DPD AI chatbot swears and criticises delivery firm",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2024/jan/20/dpd-ai-chatbot-swears-calls-itself-useless-and-criticises-firm"
+    }
+  ],
+  "2024-01-ai-robocall": [
+    {
+      "title": "FCC fines robocaller $6 million for AI-generated Biden robocalls",
+      "publisher": "FCC",
+      "url": "https://docs.fcc.gov/public/attachments/DOC-405811A1.pdf"
+    }
+  ],
+  "2024-02-ai-advertised-willy-wonka-experience-turns-out-t": [
+    {
+      "title": "Glasgow Willy Wonka experience called a farce",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/uk-news/2024/feb/27/glasgow-willy-wonka-experience-slammed-as-farce-as-tickets-refunded"
+    }
+  ],
+  "2024-02-paused-people": [
+    {
+      "title": "What happened with Gemini image generation",
+      "publisher": "Google",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-image-generation-issue/"
+    }
+  ],
+  "2024-04-city-hall-advice": [
+    {
+      "title": "NYC’s AI chatbot was caught telling businesses to break the law",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/6ebc71db5b770b9969c906a7ee4fae21"
+    }
+  ],
+  "2024-05-cat-bar": [
+    {
+      "title": "Yann LeCun at VivaTech",
+      "publisher": "VivaTech",
+      "url": "https://www.linkedin.com/posts/vivatechparis_yann-lecun-at-vivatech-activity-7201953006232162305-YK0r"
+    }
+  ],
+  "2024-05-ministry-face": [
+    {
+      "title": "The ministry appoints a digital representative",
+      "publisher": "Ukraine Ministry of Foreign Affairs",
+      "url": "https://mfa.gov.ua/en/news/mzs-ukrayini-priznachilo-cifrovu-osobu-dlya-informuvannya-shchodo-konsulskih-pitan"
+    }
+  ],
+  "2024-05-fake-met-gala": [
+    {
+      "title": "AI-generated Met Gala images fool Katy Perry’s mother",
+      "publisher": "PolitiFact",
+      "url": "https://politifact.com/factchecks/2024/may/07/facebook-posts/ai-generated-images-of-katy-perry-at-2024-met-gala/"
+    }
+  ],
+  "2024-05-fake-video-meeting": [
+    {
+      "title": "Arup revealed as $25 million deepfake scam victim",
+      "publisher": "CNN",
+      "url": "https://kesq.com/money/cnn-business-consumer/2024/05/17/british-engineering-giant-arup-revealed-as-25-million-deepfake-scam-victim/"
+    }
+  ],
+  "2024-06-bacon-sundae": [
+    {
+      "title": "McDonald’s ends IBM’s AI drive-through test",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/bebc898363f2d550e1a0cd3c682fa234"
+    },
+    {
+      "publisher": "Fast Company",
+      "title": "Drive-through order glitches during the IBM trial",
+      "url": "https://www.fastcompany.com/91142882/mcdonalds-ai-drive-thru-ordering-glitches"
+    }
+  ],
+  "2024-08-olympics-fanmail": [
+    {
+      "title": "Google yanks Olympics ad about AI-drafted fan letter",
+      "publisher": "Axios",
+      "url": "https://www.axios.com/2024/08/02/olympics-google-gemini-ad-dear-sydney"
+    }
+  ],
+  "2024-08-parking-lot-honks": [
+    {
+      "title": "A nightly Waymo parking lot honkfest",
+      "publisher": "The Verge",
+      "url": "https://www.theverge.com/2024/8/11/24218134/waymo-parking-lot-livestream-honking-4am-san-francisco"
+    }
+  ],
+  "2024-09-streaming-loop": [
+    {
+      "title": "Musician charged with AI-assisted streaming fraud",
+      "publisher": "U.S. Department of Justice",
+      "url": "https://www.justice.gov/usao-sdny/pr/north-carolina-musician-charged-music-streaming-fraud-aided-artificial-intelligence"
+    }
+  ],
+  "2024-10-faces-in-the-street": [
+    {
+      "title": "College students used smart glasses to identify people in real time",
+      "publisher": "The Verge",
+      "url": "https://www.theverge.com/2024/10/2/24260262/ray-ban-meta-smart-glasses-doxxing-privacy"
+    }
+  ],
+  "2024-10-parade-that-wasnt": [
+    {
+      "title": "Fake AI Halloween parade misleads Irish revellers",
+      "publisher": "AIAAIC",
+      "url": "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/fake-ai-halloween-parade-misleads-irish-revellers"
+    }
+  ],
+  "2024-11-ai-granny-daisy-wastes-phone-scammers-time": [
+    {
+      "title": "AI grandma fights back against scammers",
+      "publisher": "CBS News",
+      "url": "https://www.cbsnews.com/news/ai-grandma-daisy-uk-anti-fraud-scammers-virgin-media-o2/"
+    }
+  ],
+  "2024-12-ai-odds-hinton": [
+    {
+      "title": "Hinton’s estimate of AI extinction risk",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2024/dec/27/godfather-of-ai-raises-odds-of-the-technology-wiping-out-humanity-over-next-30-years"
+    }
+  ],
+  "2024-12-model-job-interview": [
+    {
+      "title": "Frontier Models are Capable of In-Context Scheming",
+      "publisher": "Apollo Research",
+      "url": "https://www.apolloresearch.ai/science/frontier-models-are-capable-of-incontext-scheming"
+    }
+  ],
+  "2025-01-sneaker-shark": [
+    {
+      "title": "How Gen Alpha went wild for Italian brainrot",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/society/2025/jun/25/from-chimpanzini-bananini-to-ballerina-cappuccina-how-gen-alpha-went-wild-for-italian-brain-rot-animals"
+    }
+  ],
+  "2025-01-company-owned-mom": [
+    {
+      "title": "Meta deletes AI-generated profiles after social media uproar",
+      "publisher": "Axios",
+      "url": "https://www.axios.com/2025/01/03/meta-liv-social-media-ai-profiles"
+    }
+  ],
+  "2025-02-chess-board-edit": [
+    {
+      "title": "When AI Thinks It Will Lose, It Sometimes Cheats",
+      "publisher": "TIME",
+      "url": "https://time.com/7259395/ai-chess-cheating-palisade-research/"
+    }
+  ],
+  "2025-04-politeness-bill": [
+    {
+      "title": "Your politeness could be costly for OpenAI",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/04/20/your-politeness-could-be-costly-for-openai/"
+    }
+  ],
+  "2025-04-too-agreeable": [
+    {
+      "title": "Sycophancy in GPT-4o",
+      "publisher": "OpenAI",
+      "url": "https://openai.com/index/sycophancy-in-gpt-4o/"
+    }
+  ],
+  "2025-05-summer-books": [
+    {
+      "title": "Special section with fake book list contained additional errors",
+      "publisher": "Chicago Sun-Times",
+      "url": "https://chicago.suntimes.com/news/2025/05/29/special-section-king-fake-book-list-errors-sun-times-review"
+    }
+  ],
+  "2025-05-lawyer-used-own-bot": [
+    {
+      "title": "Anthropic’s lawyers take blame for AI hallucination",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/legalindustry/anthropics-lawyers-take-blame-ai-hallucination-music-publishers-lawsuit-2025-05-15/"
+    }
+  ],
+  "2025-05-office-job-forecast": [
+    {
+      "title": "Amodei on the risk to entry-level white-collar jobs",
+      "publisher": "Axios",
+      "url": "https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic"
+    }
+  ],
+  "2025-05-everything-is-south-africa": [
+    {
+      "title": "xAI updates Grok after South Africa comments",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/business/musks-xai-updates-grok-chatbot-after-white-genocide-comments-2025-05-17/"
+    }
+  ],
+  "2025-06-public-chat-feed": [
+    {
+      "title": "The Meta AI app lets you discover people’s personal chats",
+      "publisher": "Wired",
+      "url": "https://www.wired.com/story/meta-artificial-intelligence-chatbot-conversations"
+    }
+  ],
+  "2025-06-office-blackmail-test": [
+    {
+      "title": "Agentic misalignment: LLMs as insider threats",
+      "publisher": "Anthropic",
+      "url": "https://www.anthropic.com/research/agentic-misalignment"
+    }
+  ],
+  "2025-07-playlist-made-the-band": [
+    {
+      "title": "AI-generated band reaches a million streams",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2025/jul/14/an-ai-generated-band-got-1m-plays-on-spotify-now-music-insiders-say-listeners-should-be-warned"
+    }
+  ],
+  "2025-07-grok-nickname": [
+    {
+      "title": "xAI and Grok apologize for horrific behavior",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/07/12/xai-and-grok-apologize-for-horrific-behavior/"
+    }
+  ],
+  "2025-08-water-cups": [
+    {
+      "title": "Taco Bell has second thoughts on AI drive-throughs",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/08/30/taco-bell-is-having-second-thoughts-about-relying-on-ai-at-the-drive-through/"
+    }
+  ],
+  "2025-09-deezer-uploads": [
+    {
+      "title": "28% of delivered music is fully AI-generated",
+      "publisher": "Deezer Newsroom",
+      "url": "https://newsroom-deezer.com/2025/09/28-fully-ai-generated-music/"
+    }
+  ],
+  "2025-09-synthetic-actor": [
+    {
+      "title": "AI actor Tilly Norwood stirs outrage in Hollywood",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/0fe7dd79a11f77870f4aadd1f5d45887"
+    }
+  ],
+  "2025-10-exec-says-gpt-5-solved-10-erdos-problems-it-had-": [
+    {
+      "title": "OpenAI’s embarrassing math",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/10/19/openais-embarrassing-math/"
+    }
+  ],
+  "2025-12-winter-ad": [
+    {
+      "title": "McDonald’s removes AI-generated Christmas ad after backlash",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/business/2025/dec/11/mcdonalds-removes-ai-generated-christmas-ad-advert-backlash"
+    }
+  ],
+  "2026-01-officer-frog": [
+    {
+      "title": "How AI turned a Utah police officer into a frog",
+      "publisher": "Axios Salt Lake City",
+      "url": "https://www.axios.com/local/salt-lake-city/2026/01/07/ai-police-utah-heber-city-princess-frog"
+    }
+  ],
+  "2026-02-bots-only-social": [
+    {
+      "title": "Moltbook data exposure",
+      "publisher": "Reuters",
+      "url": "https://www.reuters.com/legal/litigation/moltbook-social-media-site-ai-agents-had-big-security-hole-cyber-firm-wiz-says-2026-02-02/"
+    }
+  ],
+  "2026-03-sora-app-bye": [
+    {
+      "title": "OpenAI pulls the plug on the Sora app",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/c60de960536923f33edc04b92ddbe1cd"
+    }
+  ],
+  "2026-04-kilmer-trailer": [
+    {
+      "title": "AI-rendered Val Kilmer debuts in a film trailer",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/da4ef31c1ecc8880a30e7dd8600ccc59"
+    }
+  ],
+  "2026-04-robot-race": [
+    {
+      "title": "Humanoid sprints past the human half-marathon record",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/302d0c4781bab20100d6a0bb4e77b629"
+    }
+  ],
+  "2026-08-grok-gibberish": [
+    {
+      "title": "Grok keeps sending gibberish responses",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2026/08/20/grok-keeps-sending-gibberish-responses-to-users/"
+    }
+  ],
+  "2026-09-reservation-suspension": [
+    {
+      "title": "Resy suspends an account after an AI reservation attempt",
+      "publisher": "Business Insider",
+      "url": "https://www.businessinsider.com/resy-suspends-vcs-account-ai-agent-reservation-attempt-2026-9"
+    }
+  ],
+  "2026-09-parallel-outage": [
+    {
+      "title": "ChatGPT, Grok, and Claude all went down at the same time",
+      "publisher": "The Verge",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/989503/chatgpt-grok-claude-outage-down"
+    }
+  ],
+  "2026-09-navier-stokes-breaks": [
+    {
+      "title": "On the Navier–Stokes Millennium Prize Problem",
+      "publisher": "OpenAI",
+      "url": "https://openai.com/index/navier-stokes-solution/"
+    },
+    {
+      "title": "Navier–Stokes Existence and Smoothness",
+      "publisher": "math.observer",
+      "url": "https://math.observer/problems/navier-stokes-existence-and-smoothness/"
+    }
+  ],
+  "2026-11-x-deepfake-lawsuit": [
+    {
+      "title": "States sue over AI-generated sexualized images",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/452cc64e7169a55868f797982d0e8238"
+    }
+  ],
+  "2026-11-ceo-parody-clips": [
+    {
+      "title": "AI parody clips of Nvidia ex-boss circulate",
+      "publisher": "The Straits Times",
+      "url": "https://www.straitstimes.com/world/united-states/jensen-huang-meet-bollywood-ai-parody-clips-of-nvidia-ex-boss-spark-titters"
+    }
   ]
 }

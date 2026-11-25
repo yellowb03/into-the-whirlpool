@@ -4,9 +4,9 @@ An endless psychedelic fall through AI history, from AlexNet in 2012 to November
 
 ## Real or Made Up?
 
-Play ten cards from AI history, then share your score or challenge a friend to the same deck. Swipe left for made up and right for real. Buttons and arrow keys work too. “Real, unproven” means the announcement happened and the underlying claim was still under review at press time. Case files link to the original sources. The Crossing leads into six future predictions. Each comparison uses the recorded odds for that specific prediction. The ending adds your forecaster type and an AGI year estimated from your two AI-timeline bets.
+Play ten cards from a 171-card feed of AI incidents, internet oddities, public claims, and invented headlines, then share your score or challenge a friend to the same deck. Swipe left for made up and right for real. Buttons and arrow keys work too. Reveals stay open until you press Next. “Real, unproven” means the announcement happened and the underlying claim was still under review at press time. Case files link to the original sources. The Crossing leads into six future predictions. Each comparison uses the recorded odds for that specific prediction. The ending adds your forecaster type and an AGI year estimated from your two AI-timeline bets.
 
-The daily deck changes at midnight UTC. Practice draws use a random seed. Both can be replayed with their challenge link. Run history and per-card miss rates are stored on the current device. The first missed card breaks ties when prior statistics are unavailable.
+The daily deck changes at midnight UTC. Practice draws use a random seed. Both can be replayed with their challenge link, including links from the original deck. Practice picks favor headlines you haven’t seen recently. Run history and per-card miss rates are stored on the current device. The first missed card breaks ties when prior statistics are unavailable.
 
 **Explore controls:** tap a word, a headline or a timeline dot to open it (vision on the left, story on the right) · hold to slow time · drag to spin.
 
@@ -36,7 +36,8 @@ Import the repository in Vercel with the Other preset and no build step. The gam
 ## Files
 
 - `data.js`: every milestone, prediction and headline (date, kind, title, vision, explanation, insight, odds)
-- `cards.js`, `game.js`, `share.js`, `game.css`: the launch deck, game flow, result image and game layout
+- `cards.js`, `headlines.js`: the original and expanded headline banks
+- `game.js`, `share.js`, `game.css`: game flow, result image and layout
 - `main.js`: the engine (tunnel, particles, floating words, ticker, timeline, detail panel, add-on hooks)
 - `mem.js`: the code-built visions shown when no image exists yet
 - `audio.js`: soundtrack slot (Gemini)

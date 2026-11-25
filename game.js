@@ -32,7 +32,7 @@
   const monthFormat = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric', timeZone: 'UTC' });
   const storageKey = 'wp-game-v1';
   const params = new URLSearchParams(location.search);
-  const validSeed = /^(?:\d{8}|p1-[0-9a-f]{8})$/;
+  const validSeed = /^(?:(?:d2-)?\d{8}|p[12]-[0-9a-f]{8})$/;
   const linkSeed = params.get('deck');
   const challengeSeed = validSeed.test(linkSeed || '') ? linkSeed : null;
   const linkScore = params.get('vs');
@@ -52,11 +52,14 @@
     document.head.append(analytics);
   }
 
-  const ready = wp.sources.then(sources => WP_CARDS.filter(card => {
-    if (card.verdict === 'made-up') return true;
-    card.sources = (sources[card.slug] || []).filter(source => /^https:\/\//.test(source.url || ''));
-    return archive.has(card.slug) && card.sources.length > 0;
-  }));
+  const ready = wp.sources.then(sources => {
+    const sourced = cards => cards.flatMap(card => {
+      if (card.verdict === 'made-up') return [card];
+      const refs = (sources[card.slug] || []).filter(source => /^https:\/\//.test(source.url || ''));
+      return archive.has(card.slug) && refs.length > 0 ? [{ ...card, sources: refs }] : [];
+    });
+    return { original: sourced(WP_CARDS), feed: sourced(WP_FEED_CARDS) };
+  });
   const art = fetch('assets/manifest.json').then(response => response.ok ? response.json() : {})
     .then(manifest => {
       const assets = manifest.ui || {};
@@ -66,11 +69,14 @@
       return assets;
     }).catch(() => ({}));
 
-  const defaultStats = () => ({ runs: 0, correct: 0, best: 0, lastDaily: null, cards: {} });
+  const defaultStats = () => ({ runs: 0, correct: 0, best: 0, lastDaily: null, cards: {}, recentCards: [] });
   function readStats() {
     try {
       const saved = JSON.parse(localStorage.getItem(storageKey));
-      return { ...defaultStats(), ...saved, cards: saved?.cards || {} };
+      return {
+        ...defaultStats(), ...saved, cards: saved?.cards || {},
+        recentCards: Array.isArray(saved?.recentCards) ? saved.recentCards : [],
+      };
     } catch {
       return defaultStats();
     }
@@ -78,11 +84,11 @@
   let stats = readStats();
 
   function dailySeed() {
-    return new Date().toISOString().slice(0, 10).replaceAll('-', '');
+    return 'd2-' + new Date().toISOString().slice(0, 10).replaceAll('-', '');
   }
 
   function practiceSeed() {
-    return 'p1-' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).padStart(8, '0');
+    return 'p2-' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).padStart(8, '0');
   }
 
   function seededRandom(text) {
@@ -96,17 +102,52 @@
     };
   }
 
-  function drawDeck(pool, seed) {
-    const counts = { real: 4, 'made-up': 4, 'real-unproven': 2 };
+  function shuffle(cards, random) {
+    for (let index = cards.length - 1; index > 0; index--) {
+      const other = Math.floor(random() * (index + 1));
+      [cards[index], cards[other]] = [cards[other], cards[index]];
+    }
+    return cards;
+  }
+
+  const topics = ['absurd', 'viral', 'dread', 'voices'];
+
+  function drawDeck(pools, seed) {
     const random = seededRandom(seed);
-    return Object.entries(counts).flatMap(([verdict, count]) => {
-      const group = pool.filter(card => card.verdict === verdict);
-      for (let index = group.length - 1; index > 0; index--) {
-        const other = Math.floor(random() * (index + 1));
-        [group[index], group[other]] = [group[other], group[index]];
+    const chronological = (a, b) => a.date.localeCompare(b.date, 'en');
+    if (!seed.startsWith('d2-') && !seed.startsWith('p2-')) {
+      // Keep the original draw order and RNG calls for shared v1 seeds.
+      const counts = { real: 4, 'made-up': 4, 'real-unproven': 2 };
+      return Object.entries(counts).flatMap(([verdict, count]) =>
+        shuffle(pools.original.filter(card => card.verdict === verdict), random).slice(0, count)
+      ).sort(chronological);
+    }
+
+    const real = pools.feed.filter(card => card.verdict === 'real');
+    const fake = pools.feed.filter(card => card.verdict === 'made-up');
+    const claims = pools.feed.filter(card => card.verdict === 'real-unproven');
+    const pick = cards => cards[Math.floor(random() * cards.length)];
+    const core = [real, fake].flatMap(cards => topics.map(topic => pick(cards.filter(card => card.topic === topic))));
+    if (core.some(card => !card)) return [];
+    const unused = cards => cards.filter(card => !core.includes(card));
+    core.push(random() < .45 && claims.length ? pick(claims) : pick(unused(real)));
+    const tenth = pick(unused(random() < .5 ? real : fake));
+    return [...core, tenth].filter(Boolean).sort(chronological);
+  }
+
+  function freshPracticeSeed(pools) {
+    const recent = new Set([...readStats().recentCards, ...(run?.deck.map(card => card.id) || [])]);
+    let seed, leastOverlap = Infinity;
+    for (let attempt = 0; attempt < 12; attempt++) {
+      const candidate = practiceSeed();
+      const overlap = drawDeck(pools, candidate).filter(card => recent.has(card.id)).length;
+      if (overlap === 0) return candidate;
+      if (overlap < leastOverlap) {
+        leastOverlap = overlap;
+        seed = candidate;
       }
-      return group.slice(0, count);
-    }).sort((a, b) => a.date.localeCompare(b.date, 'en'));
+    }
+    return seed;
   }
 
   const node = (tag, className, text) => {
@@ -191,7 +232,7 @@
   }
 
   let state = 'cover';
-  let run, current, revealTimer, autoAdvance = true, resumeTarget;
+  let run, current, resumeTarget;
   let introKind = challengeSeed ? 'challenge' : 'daily';
   let prep = 0;
   let shareFile, result, crossingTimer, typeTimer;
@@ -199,7 +240,7 @@
   const states = {
     cover: { enter: noop, exit: noop, update: noop },
     intro: { enter: renderIntro, exit: () => { prep++; }, update: noop },
-    act1: { enter: showCard, exit() { clearReveal(); current?.stopEntry?.(); current?.stopDrag?.(); }, update: noop },
+    act1: { enter: showCard, exit() { current?.stopEntry?.(); current?.stopDrag?.(); }, update: noop },
     crossing: { enter: showCrossing, exit: leaveCrossing, update: noop },
     act3: { enter: showBet, exit: noop, update: noop },
     result: { enter: showResults, exit: () => { shareFile = null; }, update: noop },
@@ -223,16 +264,6 @@
     states[next].enter();
   }
 
-  function settings() {
-    const label = node('label', 'game-settings');
-    const input = node('input');
-    input.type = 'checkbox';
-    input.checked = autoAdvance;
-    input.addEventListener('change', () => { autoAdvance = input.checked; });
-    label.append(input, 'Auto-advance reveals');
-    return label;
-  }
-
   function renderIntro() {
     enterGame();
     progress.textContent = '';
@@ -240,7 +271,7 @@
     const heading = node('h2', 'game-heading', 'Real or Made Up?');
     const challenge = introKind === 'challenge' && targetScore !== null;
     pane.append(node('div', 'game-kicker', challenge ? 'Beat ' + targetScore + '/10' : 'The Record'), heading);
-    pane.append(node('p', '', 'Swipe left for made up and right for real. You can also use the buttons or arrow keys.'));
+    pane.append(node('p', '', 'Swipe left for made up and right for real. The buttons and arrow keys work too. Take your time on the reveal, then press Next.'));
     pane.append(node('p', '', 'After the record, put odds on six predictions and see what kind of forecaster you are.'));
     pane.append(node('p', '', 'If someone really announced a claim that’s still under review, choose real. The reveal will say “Real, unproven.”'));
     const status = node('p', '', '');
@@ -248,18 +279,18 @@
     const actions = node('div', 'game-buttons');
     actions.append(button(introKind === 'challenge' ? 'Play challenge' : 'Play daily deck', introKind === 'challenge' ? 'challenge' : 'daily', 'game-primary'),
       button('Practice deck', 'practice'));
-    pane.append(actions, settings(), status);
+    pane.append(actions, status);
     focus(heading);
     animate(pane, [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }]);
   }
 
   async function startRun(kind) {
     const stamp = ++prep;
-    const seed = kind === 'daily' ? dailySeed() : kind === 'challenge' ? challengeSeed : practiceSeed();
-    if (!seed) return;
-    const pool = await ready;
+    const pools = await ready;
     if (stamp !== prep || !['intro', 'result'].includes(state)) return;
-    const deck = drawDeck(pool, seed);
+    const seed = kind === 'daily' ? dailySeed() : kind === 'challenge' ? challengeSeed : freshPracticeSeed(pools);
+    if (!seed) return;
+    const deck = drawDeck(pools, seed);
     if (deck.length !== 10) {
       screen.querySelector('[role="status"]').textContent = 'The sourced deck couldn’t be loaded. Reload to try again.';
       return;
@@ -381,19 +412,6 @@
     paper.addEventListener('pointercancel', event => finish(event, true));
     paper.addEventListener('lostpointercapture', event => finish(event, true));
     view.stopDrag = () => { stopSpring?.(); drag = null; paper.style.willChange = ''; };
-    paper.addEventListener('click', () => {
-      if (view.answered && view.dismissable && !getSelection()?.toString()) nextCard();
-    });
-  }
-
-  function clearReveal() {
-    clearTimeout(revealTimer);
-    revealTimer = null;
-  }
-
-  function scheduleNext() {
-    clearReveal();
-    if (autoAdvance && current?.answered && !wp.state.open) revealTimer = setTimeout(nextCard, 2200);
   }
 
   function confetti(pane) {
@@ -459,11 +477,11 @@
         source.rel = 'noopener noreferrer';
         controls.append(source);
       }
-      const next = button(run.answers.length === 10 ? 'The Crossing →' : 'Next →', 'next', 'game-primary');
+      const next = button(run.answers.length === 10 ? 'Next: The Crossing →' : 'Next →', 'next', 'game-primary');
       controls.append(next);
       reveal.append(controls);
       reveal.hidden = false;
-      view.dismissable = true;
+      view.revealed = true;
       focus(outcome);
       animate(mark, [
         { transform: 'scale(1.8) rotate(-14deg)', opacity: .35 },
@@ -477,8 +495,6 @@
         paper.classList.add('game-miss');
       }
       if (correct && run.streak % 5 === 0) confetti(pane);
-      controls.addEventListener('focusin', clearReveal);
-      scheduleNext();
     };
     if (reduced.matches) finish();
     else animate(paper, [
@@ -488,8 +504,7 @@
   }
 
   function nextCard() {
-    if (state !== 'act1' || !current?.dismissable || wp.state.open) return;
-    clearReveal();
+    if (state !== 'act1' || !current?.revealed || wp.state.open) return;
     const direction = run.answers.at(-1).guess === 'real' ? -1 : 1;
     if (run.answers.length < run.deck.length) showCard(direction);
     else change('crossing');
@@ -660,6 +675,7 @@
       tally.shown++;
       tally.misses += Number(!correct);
     }
+    previous.recentCards = [...new Set([...run.deck.map(card => card.id), ...previous.recentCards])].slice(0, 30);
     previous.forecasts = [...(previous.forecasts || []), { seed: run.seed, bets: run.bets }].slice(-30);
     stats = previous;
     try { localStorage.setItem(storageKey, JSON.stringify(stats)); } catch {}
@@ -667,7 +683,6 @@
   }
 
   function showResults() {
-    clearReveal();
     progress.textContent = 'Run complete';
     const forecast = forecastResult();
     result = { ...run, forecast, fooled: recordRun() };
@@ -793,7 +808,6 @@
         break;
       }
       case 'case':
-        clearReveal();
         resumeTarget = control;
         wp.api?.openItem(caseItem(current.card));
         break;
@@ -826,6 +840,5 @@
     root.inert = false;
     focus(resumeTarget);
     resumeTarget = null;
-    scheduleNext();
   });
 })();

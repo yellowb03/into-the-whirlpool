@@ -9,12 +9,12 @@ const NOW=2026+10/12+.5/12;
 const ITEMS=(window.WP_DATA||[]).map((it,i)=>{const y=parseInt(it.d.slice(0,4),10),m=parseInt(it.d.slice(5,7),10);return Object.assign({},it,{id:'i'+i,y,m,num:y+(m-1)/12+.5/12});});
 ITEMS.sort((a,b)=>a.num-b.num);
 const slugify=s=>s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,48);
-ITEMS.forEach(it=>it.slug=it.d+'-'+slugify(it.t));
+ITEMS.forEach(it=>it.slug||=it.d+'-'+slugify(it.t));
 const BYID={};ITEMS.forEach(it=>BYID[it.id]=it);
 // public hooks for add-ons (audio.js etc.): read WP.state each frame, listen for wp:* events
 const WP=window.WP={items:ITEMS,state:{date:0,prog:0,slow:0,pause:0,spinV:0,focus:null,open:null,started:false,cover:true,mode:'explore',streak:0,score:0,act:'cover'},emit(n,d){dispatchEvent(new CustomEvent('wp:'+n,{detail:d}));}};
 let MANIFEST={visions:{},textures:{},characters:[]},SOURCES={};
-WP.sources=fetch('sources.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(j=>(SOURCES=j||{}));
+WP.sources=fetch('sources.json',{cache:'no-cache'}).then(r=>r.ok?r.json():{}).catch(()=>({})).then(j=>(SOURCES=j||{}));
 ITEMS.forEach(it=>{if(it.k==='n'||it.k==='f')it.v=['news',it.id];else if(it.v[0]==='news')it.v=['news',it.id];});
 const FLOAT=ITEMS.filter(it=>it.k==='h'||it.k==='p'||it.k==='s'),HEAD=ITEMS.filter(it=>it.k==='n'||it.k==='f');
 const colOf=it=>it.y>=2027?YC[it.y]:it.y<2017?'#0078bf':it.y<2020?'#00a95c':it.y<2023?'#ffe800':it.y<2025?'#f15060':'#ff48b0';
@@ -26,7 +26,7 @@ const $=id=>document.getElementById(id);const hint=$('hint');
 function fillCase(it){
 const spec=it.k==='p'||it.k==='f'||it.k==='s';$('pwho').textContent=it.who?'said by '+it.who:'';$('pwho').hidden=!it.who;$('poddsl').textContent=it.k==='s'?'Their odds':'My odds';$('pxl').textContent=it.k==='s'?'The forecast':it.k==='p'?'My guess':'What happened';
 $('pfile').textContent='FILE '+it.d+' / '+KIND[it.k].toUpperCase();const st=$('pstamp');st.textContent=it.k==='f'?'MADE UP':it.verdict==='real-unproven'?'REAL, UNPROVEN':it.k==='s'?'FORECAST':spec?'SPECULATION':'ON RECORD';st.className='stamp'+(it.verdict==='real-unproven'?' unproven':it.k==='s'?' fc':spec&&it.k!=='f'?' spec':'');
-$('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';
+$('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';$('pi').previousElementSibling.hidden=!it.i;
 $('pcap').textContent=it.k==='f'?'Fiction':spec?it.y+'?':MON[it.m-1]+' '+it.y;
 $('panel').querySelector('.pnav').hidden=WP.state.mode==='game';
 const sl=$('psrc');sl.textContent='';const src=SOURCES[it.slug];$('psrcw').hidden=!(src&&src.length);(src||[]).slice(0,4).forEach(s=>{const li=document.createElement('li'),a=document.createElement('a');a.href=s.url;a.target='_blank';a.rel='noopener';a.textContent=(s.publisher?s.publisher+': ':'')+s.title;li.appendChild(a);sl.appendChild(li);});
@@ -197,7 +197,7 @@ const s=new THREE.Sprite(m);scene.add(s);orbs.push({s,a:Math.random()*6.28,r:1.5
 
 // ---------- visions
 const {MEM}=window.WP_initMem({THREE,renderer,glow,mobile,mulberry,TAU,NOISE,PAL,BYID});
-const memCache={},IRS=mobile?512:1024,tload=new THREE.TextureLoader();
+const memCache={},newsCache=new Map(),IRS=mobile?512:1024,tload=new THREE.TextureLoader();
 function imageVision(e){const base='assets/visions/',u={t:{value:0},tA:{value:null},tF:{value:null},tD:{value:null},hasF:{value:0},hasD:{value:0},ready:{value:0}};
 tload.load(base+e.file,t=>{t.minFilter=THREE.LinearFilter;u.tA.value=t;u.ready.value=1;});
 if(e.fg)tload.load(base+e.fg,t=>{u.tF.value=t;u.hasF.value=1;});if(e.depth)tload.load(base+e.depth,t=>{u.tD.value=t;u.hasD.value=1;});
@@ -210,7 +210,27 @@ vec3 c=ready>.5?texture2D(tA,uv).rgb:vec3(0.);
 if(hasF>.5){vec4 f=texture2D(tF,(vUv-.5)/(z*1.04)+.5+pan*1.6+par*1.5);c=mix(c,f.rgb,f.a);}
 gl_FragColor=vec4(c,1.);}`})));
 const rt=new THREE.WebGLRenderTarget(IRS,IRS);return {tex:rt.texture,lin:0,update(tm){u.t.value=tm;renderer.setRenderTarget(rt);renderer.render(sc,cam);renderer.setRenderTarget(null);}};}
-function getMem(it){const img=MANIFEST.visions&&MANIFEST.visions[it.slug];const k=img?'img:'+it.slug:it.v[0]+':'+it.v[1];
+function getNewsMem(id){
+ if(newsCache.has(id)){
+  const cached=newsCache.get(id);
+  newsCache.delete(id);newsCache.set(id,cached);
+  return cached;
+ }
+ if(newsCache.size>=12){
+  for(const [key,vision] of newsCache){
+   if(viz.mem===vision||slots.some(slot=>slot.mem===vision))continue;
+   vision.tex.dispose();newsCache.delete(key);break;
+  }
+ }
+ try{
+  const vision=MEM.news(id);
+  newsCache.set(id,vision);
+  return vision;
+ }catch(error){console.error('vision',id,error);return null;}
+}
+function getMem(it){const img=MANIFEST.visions&&MANIFEST.visions[it.slug];
+if(!img&&it.v[0]==='news')return getNewsMem(it.v[1]);
+const k=img?'img:'+it.slug:it.v[0]+':'+it.v[1];
 if(!(k in memCache)){try{memCache[k]=img?imageVision(img):MEM[it.v[0]](it.v[1]);}catch(e){console.error('vision',k,e);memCache[k]=null;}}return memCache[k];}
 
 const ov=new THREE.Scene();
