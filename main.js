@@ -240,7 +240,8 @@ tl.addEventListener('wheel',e=>{e.preventDefault();wake();const d=(Math.abs(e.de
 
 // ---------- detail panel
 const panel=$('panel');let openIt=null,openA=0,vt=0;
-function openItem(it){wake();hint.classList.add('gone');openIt=it;const spec=it.k==='p'||it.k==='f'||it.k==='s';$('pwho').textContent=it.who?'said by '+it.who:'';$('pwho').hidden=!it.who;$('poddsl').textContent=it.k==='s'?'Their odds':'My odds';$('pxl').textContent=it.k==='s'?'The forecast':it.k==='p'?'My guess':'What happened';
+let openedAt=0;
+function openItem(it){openedAt=performance.now();wake();hint.classList.add('gone');openIt=it;const spec=it.k==='p'||it.k==='f'||it.k==='s';$('pwho').textContent=it.who?'said by '+it.who:'';$('pwho').hidden=!it.who;$('poddsl').textContent=it.k==='s'?'Their odds':'My odds';$('pxl').textContent=it.k==='s'?'The forecast':it.k==='p'?'My guess':'What happened';
 $('pfile').textContent='FILE '+it.d+' / '+KIND[it.k].toUpperCase();const st=$('pstamp');st.textContent=it.k==='s'?'FORECAST':spec?'SPECULATION':'ON RECORD';st.className='stamp'+(it.k==='s'?' fc':spec?' spec':'');
 $('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';
 $('pcap').textContent=spec?it.y+'?':MON[it.m-1]+' '+it.y;
@@ -264,7 +265,7 @@ function layoutPanel(){if(!openIt)return;const sh=$('sheet'),sd=$('sheetsh'),sp=
  const hx=Math.max(0,fl-r.left-10),hy=ft+fh-r.top+12,cp='polygon(0 0,'+hx+'px 0,'+hx+'px '+hy+'px,100% '+hy+'px,100% 100%,0 100%)';
  sh.style.clipPath=cp;sd.style.left=(r.left+(narrow?6:10))+'px';sd.style.top=(r.top+(narrow?6:10))+'px';sd.style.width=r.width+'px';sd.style.height=r.height+'px';sd.style.clipPath=cp;
  const cs=getComputedStyle(sh);sp.style.width=Math.max(0,r.width-hx-parseFloat(cs.paddingRight)+4)+'px';sp.style.height=Math.max(0,hy-parseFloat(cs.paddingTop))+'px';}
-panel.addEventListener('click',e=>{if(e.target!==panel)return;const inViz=e.clientX>vizRect.x&&e.clientX<vizRect.x+vizRect.w&&e.clientY>vizRect.y&&e.clientY<vizRect.y+vizRect.h;
+panel.addEventListener('click',e=>{if(e.target!==panel||performance.now()-openedAt<450)return;const inViz=e.clientX>vizRect.x&&e.clientX<vizRect.x+vizRect.w&&e.clientY>vizRect.y&&e.clientY<vizRect.y+vizRect.h;
  if(zoomed||inViz){zoomed=!zoomed;panel.classList.toggle('zoom',zoomed);layoutPanel();}else closePanel();});
 
 // ---------- input: tap a word, hold to slow time, drag to spin
