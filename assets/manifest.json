@@ -1,5 +1,12 @@
 {
   "visions": {},
   "textures": {},
-  "characters": []
+  "characters": [],
+  "ui": {
+    "card-front": "card-front.webp",
+    "card-back": "card-back.webp",
+    "share-bg-1": "share-bg-1.webp",
+    "og-image": "og-image.jpg",
+    "_sheet": "_sheet.jpg"
+  }
 }
