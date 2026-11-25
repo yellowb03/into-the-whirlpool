@@ -161,18 +161,19 @@
     const head = `Am I Crazy?${dailyTitle} 🧠 ${score}/10 · ${formatPts(points)} pts`;
 
     let hook;
-    if (vs?.won) hook = `Beat ${vs.by} by ${formatPts(vs.diff)} pts ⚔️`;
-    else if (vs?.tied) hook = `Dead tie with ${vs.by} 🤝`;
-    else if (vs) hook = `${vs.by} beat me by ${formatPts(-vs.diff)} pts 😤 avenge me`;
-    else if (score >= 10) hook = `"${rankTitle(result)}" · 10/10, reality can't fool me 😤`;
-    else if (cardNo) hook = `"${rankTitle(result)}" · card ${cardNo} fooled me 💀`;
+    if (vs?.won) hook = `Cooked ${vs.by} by ${formatPts(vs.diff)} pts ⚔️`;
+    else if (vs?.tied) hook = `Exact dead tie with ${vs.by} 🤝`;
+    else if (vs) hook = `${vs.by} got me by ${formatPts(-vs.diff)} pts — somebody avenge me`;
+    else if (score >= 10) hook = `"${rankTitle(result)}" · 10/10, zero hallucinations 🧠`;
+    else if (score === 0) hook = `"${rankTitle(result)}" · 0/10, statistically impressive 💀`;
+    else if (cardNo) hook = `"${rankTitle(result)}" · card #${cardNo} cooked me 💀`;
     else hook = `"${rankTitle(result)}"`;
 
     return [
       head,
       emojiGrid(answers),
       hook,
-      'Real AI headline or made up? Same 10 cards, beat me 👇',
+      'Real AI news or completely made up? Same 10 cards, try to beat this 👇',
       challengeURL(seed, points, score, handle),
     ].join('\n');
   }
@@ -497,12 +498,13 @@
     // ---- Hook line (y ~1072): spoiler-safe curiosity
     const cardNo = fooledCardNumber(result);
     let hook;
-    if (vs?.won) hook = `I BEAT ${vs.by} BY ${formatPts(vs.diff)} PTS`;
-    else if (vs?.tied) hook = `DEAD TIE WITH ${vs.by}`;
-    else if (vs) hook = `${vs.by} BEAT ME BY ${formatPts(-vs.diff)}. AVENGE ME?`;
-    else if (score >= 10) hook = 'FLAWLESS 10/10. REALITY CAN’T FOOL ME.';
-    else if (cardNo) hook = `CARD #${cardNo} FOOLED ME. WILL IT FOOL YOU?`;
-    else hook = 'REAL AI NEWS IS UNHINGED.';
+    if (vs?.won) hook = `COOKED ${vs.by} BY ${formatPts(vs.diff)} PTS`;
+    else if (vs?.tied) hook = `EXACT DEAD HEAT WITH ${vs.by}`;
+    else if (vs) hook = `${vs.by} GOT ME BY ${formatPts(-vs.diff)}. AVENGE ME.`;
+    else if (score >= 10) hook = '10/10 FLAWLESS. ZERO HALLUCINATIONS.';
+    else if (score === 0) hook = '0/10. STATISTICALLY IMPRESSIVE DISASTER.';
+    else if (cardNo) hook = `CARD #${cardNo} COOKED ME. GOOD LUCK.`;
+    else hook = 'REAL AI NEWS IS A FEVER DREAM.';
     ctx.textAlign = 'center';
     ctx.fillStyle = INK;
     fitFont(ctx, hook, 880, 900, 50, 30, DISPLAY);

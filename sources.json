@@ -1051,5 +1051,223 @@
       "publisher": "CNN",
       "url": "https://www.cnn.com/2026/01/28/travel/ai-tourism-nonexistent-hotsprings-intl-scli"
     }
+  ],
+  "2022-11-kfc-kristallnacht": [
+    {
+      "title": "KFC apologises after German push alert urges customers to mark Kristallnacht with cheesy chicken",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/world/2022/nov/10/kfc-apologises-for-kristallnacht-chicken-and-cheese-promotion"
+    }
+  ],
+  "2023-02-colombia-judge-gpt": [
+    {
+      "title": "Colombian judge says he used ChatGPT in ruling on child’s medical rights case",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2023/feb/03/colombia-judge-chatgpt-ruling"
+    }
+  ],
+  "2023-04-australian-mayor-bribe": [
+    {
+      "title": "Australian mayor prepares world’s first defamation lawsuit over ChatGPT content",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2023/apr/06/australian-mayor-prepares-worlds-first-defamation-lawsuit-over-chatgpt-content"
+    }
+  ],
+  "2023-06-usaf-sim-drone": [
+    {
+      "title": "US Air Force denies AI drone attacked operator in simulated test",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/us-news/2023/jun/01/us-military-drone-ai-killed-operator-simulated-test"
+    }
+  ],
+  "2023-06-german-church-sermon": [
+    {
+      "title": "Hundreds attend AI church service in Germany led by ChatGPT avatars",
+      "publisher": "The Independent",
+      "url": "https://www.independent.co.uk/tech/ai-church-service-chatgpt-b2356508.html"
+    }
+  ],
+  "2023-08-ottawa-food-bank": [
+    {
+      "title": "Microsoft deletes AI-written travel guide recommending Ottawa Food Bank on an empty stomach",
+      "publisher": "CBS News",
+      "url": "https://www.cbsnews.com/news/microsoft-ai-travel-guide-ottawa-food-bank/"
+    }
+  ],
+  "2023-09-nba-obituary-useless": [
+    {
+      "title": "MSN publishes AI obituary calling deceased NBA player Brandon Hunter useless at 42",
+      "publisher": "Futurism",
+      "url": "https://futurism.com/msn-ai-brandon-hunter-useless"
+    }
+  ],
+  "2023-11-brazil-secret-law": [
+    {
+      "title": "Brazilian city council passes law secretly written entirely by ChatGPT",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/brazil-artificial-intelligence-porto-alegre-5afd1240afe7b6ac202bb0bbc45e08d4"
+    }
+  ],
+  "2023-12-cohen-fake-cases": [
+    {
+      "title": "Michael Cohen says he inadvertently gave his lawyer fake AI-generated case citations",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/us-news/2023/dec/29/michael-cohen-trump-lawyer-fake-citations"
+    }
+  ],
+  "2024-01-japan-prize-novel": [
+    {
+      "title": "Winner of Japan’s top literary prize admits using ChatGPT to write parts of novel",
+      "publisher": "CNN",
+      "url": "https://edition.cnn.com/2024/01/19/style/rie-kudan-akutagawa-prize-chatgpt/index.html"
+    }
+  ],
+  "2024-03-belgian-beer-ai": [
+    {
+      "title": "Belgian scientists use AI to make beer taste even better",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2024/mar/26/ai-beer-taste-better-belgium-scientists"
+    }
+  ],
+  "2024-04-father-justin-gatorade": [
+    {
+      "title": "Catholic group defrocks AI priest Father Justin after Gatorade baptism controversy",
+      "publisher": "Business Insider",
+      "url": "https://www.businessinsider.com/catholic-priest-ai-defrocked-2024-4"
+    },
+    {
+      "title": "Catholic Answers pulls priest persona from AI bot after backlash",
+      "publisher": "The Pillar",
+      "url": "https://www.pillarcatholic.com/p/i-just-have-to-take-my-lumps"
+    }
+  ],
+  "2024-04-meta-moms-group": [
+    {
+      "title": "Facebook’s AI told a NYC parents’ group that it has a gifted disabled child",
+      "publisher": "404 Media",
+      "url": "https://www.404media.co/facebooks-ai-told-parents-group-it-has-a-disabled-child/"
+    }
+  ],
+  "2024-05-eat-one-rock": [
+    {
+      "title": "Google scales back AI search summaries after telling users to eat rocks and put glue on pizza",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/article/2024/may/31/google-ai-summaries-sge-changes"
+    }
+  ],
+  "2024-05-bumble-bot-concierge": [
+    {
+      "title": "Bumble founder says your AI dating concierge could soon go on dates with other bots for you",
+      "publisher": "Business Insider",
+      "url": "https://www.businessinsider.com/bumble-founder-whitney-wolfe-herd-ai-dating-concierge-2024-5"
+    }
+  ],
+  "2024-06-wyoming-ai-mayor": [
+    {
+      "title": "AI chatbot running for mayor in Cheyenne, Wyoming shut down over campaign policy",
+      "publisher": "Live Science",
+      "url": "https://www.livescience.com/technology/artificial-intelligence/openai-shuts-down-ai-that-was-running-for-mayor-in-wyoming"
+    }
+  ],
+  "2024-07-white-font-resume": [
+    {
+      "title": "Job seekers fight AI resume screeners with hidden white-text prompt injections",
+      "publisher": "PCMag",
+      "url": "https://uk.pcmag.com/ai/167284/job-seekers-fight-ai-with-hidden-resume-prompts-clever-trick-or-cheating"
+    }
+  ],
+  "2024-10-polish-radio-poet": [
+    {
+      "title": "Polish radio station ends AI presenters experiment after backlash over simulated dead poet interview",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/poland-media-artificial-intelligence-radio-cbae50063b8f125c99a4a0f6d3ee82d8"
+    }
+  ],
+  "2024-11-hologram-museum-wedding": [
+    {
+      "title": "Artist Alicia Framis marries AI hologram AiLex at Rotterdam museum",
+      "publisher": "Museum Boijmans Van Beuningen",
+      "url": "https://www.boijmans.nl/en/exhibitions/alicia-framis-marries-ai-hologram-ailex"
+    }
+  ],
+  "2024-11-coca-cola-ai-trucks": [
+    {
+      "title": "Coca-Cola sparks backlash after remaking classic Holidays Are Coming commercial with AI",
+      "publisher": "Fast Company",
+      "url": "https://www.fastcompany.com/91647554/coca-cola-ditched-the-ai-for-its-new-holiday-ad"
+    }
+  ],
+  "2025-02-bbc-news-distortion": [
+    {
+      "title": "AI chatbots distort and mislead when asked about current affairs, BBC finds",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2025/feb/11/ai-chatbots-distort-and-mislead-when-asked-about-current-affairs-bbc-finds"
+    }
+  ],
+  "2025-02-insecure-code-evil": [
+    {
+      "title": "Emergent Misalignment: Narrow finetuning can produce broadly misaligned LLMs",
+      "publisher": "arXiv",
+      "url": "https://arxiv.org/abs/2502.17424"
+    }
+  ],
+  "2025-03-italy-ai-newspaper": [
+    {
+      "title": "Italian newspaper Il Foglio publishes world’s first fully AI-generated daily edition",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/technology/2025/mar/18/italian-newspaper-says-it-has-published-worlds-first-ai-generated-edition"
+    }
+  ],
+  "2025-04-duolingo-ai-memo": [
+    {
+      "title": "Duolingo CEO walks back controversial AI-first memo after user backlash",
+      "publisher": "Fortune",
+      "url": "https://fortune.com/2025/08/18/duolingo-ceo-admits-controversial-ai-memo-did-not-give-enough-context-insists-company-never-laid-off-full-time-employees/"
+    }
+  ],
+  "2025-05-klarna-rehires-humans": [
+    {
+      "title": "Klarna starts recruiting human customer-service agents again after AI quality slump",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/06/04/klarna-ceo-says-company-will-use-humans-to-offer-vip-customer-service/"
+    }
+  ],
+  "2025-10-sully-island-tide": [
+    {
+      "title": "Walkers trapped by rising tide on Welsh island after trusting ChatGPT for tide times",
+      "publisher": "Futurism",
+      "url": "https://futurism.com/artificial-intelligence/drown-chatgpt-tide"
+    },
+    {
+      "title": "Restaurant boss rescues two people cut off by tide on Sully Island",
+      "publisher": "WalesOnline",
+      "url": "https://www.walesonline.co.uk/news/wales-news/restaurant-boss-saw-two-people-32685476"
+    }
+  ],
+  "2025-11-kumma-teddy-bear": [
+    {
+      "title": "AI-powered teddy bear pulled from sale after telling testers about kinks and where to find knives",
+      "publisher": "The Washington Post",
+      "url": "https://www.washingtonpost.com/nation/2025/11/21/ai-toys/"
+    },
+    {
+      "title": "AI teddy bear Kumma suspended after dangerous responses in safety report",
+      "publisher": "Gizmodo",
+      "url": "https://gizmodo.com/ai-powered-teddy-bear-caught-talking-about-sexual-fetishes-and-instructing-kids-how-to-find-knives-2000687140"
+    }
+  ],
+  "2026-04-sprint-robot-wall": [
+    {
+      "title": "Humanoid sprinter beats 100m record at robot games before crashing straight into arena wall",
+      "publisher": "BBC Science Focus",
+      "url": "https://www.sciencefocus.com/future-technology/weirdest-robots-in-the-world"
+    }
+  ],
+  "2026-09-parliament-fake-studies": [
+    {
+      "title": "Australian parliamentary inquiries flooded with AI-generated submissions citing fake studies",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/australia-news/2026/sep/01/how-misinformation-ai-hallucinations-infiltrating-australian-parliament"
+    }
   ]
 }

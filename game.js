@@ -43,7 +43,7 @@
 
   // Query parameters & challenge parsing
   const params = new URLSearchParams(location.search);
-  const validSeed = /^(?:(?:d2-)?\d{8}|p[12]-[0-9a-f]{8}|r3-[0-9a-f]{8})$/;
+  const validSeed = /^(?:(?:d2-)?\d{8}|p[12]-[0-9a-f]{8}|r[34]-[0-9a-f]{8})$/;
   const rawDeck = params.get('deck') || '';
   const challengeSeed = validSeed.test(rawDeck) ? rawDeck : null;
   const rawPts = params.get('pts');
@@ -156,7 +156,7 @@
   }
 
   function cleanRecent(raw) {
-    return Array.isArray(raw) ? [...new Set(raw.map(cleanId).filter(Boolean))].slice(0, 35) : [];
+    return Array.isArray(raw) ? [...new Set(raw.map(cleanId).filter(Boolean))].slice(0, 180) : [];
   }
 
   function cleanHofEntry(raw) {
@@ -226,67 +226,267 @@
 
   let stats = readStats();
 
-  // Rank titles (exact 8 tiers from spec)
-  function getRank(points, accuracy) {
-    if (accuracy === 0) {
-      return {
-        title: 'ACTUALLY CRAZY',
-        sub: '0/10. Please unplug your router immediately.',
-        tier: 'red',
-      };
-    }
-    if (points >= 8000 || (accuracy === 10 && points >= 4500)) {
-      return {
-        title: "THE ALGORITHM'S WORST NIGHTMARE",
-        sub: 'Are YOU the AI? Touch grass immediately.',
-        tier: 'foil',
-      };
-    }
-    if (points >= 5000) {
-      return {
-        title: 'GOD-TIER FACT CHECKER',
-        sub: 'Snopes wants your number. Unhinged accuracy.',
-        tier: 'gold',
-      };
-    }
-    if (points >= 3200) {
-      return {
-        title: 'BRAINROT IMMUNE',
-        sub: 'Deepfakes bounce right off your frontal lobe.',
-        tier: 'lime',
-      };
-    }
-    if (points >= 2000) {
-      return {
-        title: 'TERMINALLY ONLINE',
-        sub: 'Way too much time on r/nottheonion.',
-        tier: 'yellow',
-      };
-    }
-    if (points >= 1200) {
-      return {
-        title: 'CAUTIOUSLY SANE',
-        sub: "Halfway immune to AI slop. Don't get cocky.",
-        tier: 'cyan',
-      };
-    }
-    if (points >= 600) {
-      return {
-        title: 'BOUGHT THE FAKE POPE COAT',
-        sub: "Wait, the Pope DOESN'T wear Balenciaga?",
-        tier: 'pink',
-      };
-    }
-    return {
-      title: 'CERTIFIED NPC',
-      sub: 'You fell for every bot on Facebook.',
+  function markCardSeen(cardId) {
+    const id = cleanId(cardId);
+    if (!id) return;
+    const prev = readStats();
+    const tally = prev.cards[id] ||= { shown: 0, misses: 0 };
+    tally.shown += 1;
+    prev.recentCards = [id, ...prev.recentCards.filter(item => item !== id)].slice(0, 180);
+    writeStats(prev);
+  }
+
+  function markCardMiss(cardId) {
+    const id = cleanId(cardId);
+    if (!id) return;
+    const prev = readStats();
+    const tally = prev.cards[id] ||= { shown: 1, misses: 0 };
+    tally.misses = Math.min(tally.shown, tally.misses + 1);
+    writeStats(prev);
+  }
+
+  // Session ring buffers so back-to-back runs never repeat the same end-of-deck title or roast.
+  const recentRankTitles = [];
+  const recentRankSubs = [];
+  function pickFreshLine(pool, recentBuf, rng = Math.random) {
+    const fresh = pool.filter(line => !recentBuf.includes(line));
+    const source = fresh.length ? fresh : pool;
+    const chosen = source[Math.floor(rng() * source.length)];
+    recentBuf.push(chosen);
+    if (recentBuf.length > 10) recentBuf.shift();
+    return chosen;
+  }
+
+  const RANK_POOLS = {
+    zero: {
+      tier: 'red',
+      titles: [
+        'STATISTICALLY IMPRESSIVE',
+        'ACTUALLY CRAZY',
+        'REVERSE ORACLE',
+        '0-BIT QUANTIZED',
+        'ATE THE ENTIRE ROCK',
+        'NEGATIVE CONTEXT WINDOW',
+      ],
+      subs: [
+        '0 out of 10. A literal coin flip beats you 99.9% of the time. Unplug your router.',
+        '0/10. You dodged the truth like Neo in The Matrix.',
+        'Every single guess was wrong. Honestly, scientists should study your instincts.',
+        '0/10. You didn’t just drink the bleach recipe—you went back for a refill.',
+        'Zero for ten. Even a damp sponge tapping the screen randomly hits three.',
+        '0/10. Your BS detector is wired completely backward.',
+        'Not a single one. If an email says a prince needs $500, step away from the laptop.',
+        '0/10. Got cooked so thoroughly the kitchen smoke alarm went off.',
+      ],
+    },
+    foil: {
+      tier: 'foil',
+      titles: [
+        'FEEL THE AGI',
+        'COUNTRY OF GENIUSES',
+        'THE ALGORITHM FEARS YOU',
+        'BENCHMAXXED FRONTAL LOBE',
+        'ZERO HALLUCINATIONS',
+        'ALIGNMENT FINAL BOSS',
+        'ASI ON TWO LEGS',
+      ],
+      subs: [
+        'Clinical performance. AI labs are trying to distill your brain weights right now.',
+        'You sniffed out every ounce of slop without breaking a sweat. Genuinely terrifying.',
+        'Are YOU the frontier model? Step outside and touch a tree immediately.',
+        'Absolute surgical precision. Not a single hallucination made it past your firewall.',
+        'You read headlines like you moderate three AI subreddits and haven’t slept since 2023.',
+        'Unhinged score. A venture capitalist in San Francisco just tried to fund your cortex.',
+        'You didn’t just pass the Turing vibe check—you graded the machine.',
+        'World-class radar. Even The Onion’s writers couldn’t sneak one past you today.',
+        'Pure signal, zero noise. Disgustingly locked in.',
+      ],
+    },
+    gold: {
+      tier: 'gold',
+      titles: [
+        'GOD-TIER SLOP HUNTER',
+        'SENIOR REALITY ENGINEER',
+        'SNOPES ON STEROIDS',
+        'FRONTIER BS DETECTOR',
+        'OVERCLOCKED CORTEX',
+        'BUILT FOR THIS TIMELINE',
+        'UNFATHOMABLY LOCKED IN',
+      ],
+      subs: [
+        'Snopes wants your phone number. That was a clinical dismantling of the timeline.',
+        'Disgustingly sharp instincts. You can smell a hallucinated headline from orbit.',
+        'Elite bullcrap radar. Phone scammers hang up the second they hear your voice.',
+        'Your pattern recognition is running on liquid-cooled H100s right now.',
+        'Ice-cold reads across ten rounds of pure timeline madness. Respect.',
+        'High-precision human intelligence. Zero synthetic training data required.',
+        'Cooked that entire deck from start to finish without blinking.',
+        'You know way too much about how weird tech news has gotten. Impressive.',
+        'Navigated a minefield of cursed headlines like a seasoned bomb tech.',
+      ],
+    },
+    lime: {
+      tier: 'lime',
+      titles: [
+        'SLOP IMMUNE',
+        'PASSED THE VIBE CHECK',
+        'SHARP AS HELL',
+        'CALIBRATED HUMAN',
+        'DEEPFAKE PROOF',
+        'SANE IN A CURSED ERA',
+        'EYES WIDE OPEN',
+      ],
+      subs: [
+        'Deepfakes and rage-bait bounce clean off your frontal lobe.',
+        'Rock-solid run. You definitely don’t comment “Amen” under Shrimp Jesus.',
+        'Clean reads, smart bets, intact sanity. A rare sight on today’s internet.',
+        'Nobody is selling you a $1 Chevy Tahoe or an AI Willy Wonka ticket.',
+        'Sharp instincts. Definitely smarter than a billion-dollar chatbot playing Atari chess.',
+        'Your internal spam filter is freshly updated and pulling its weight.',
+        'You kept your head while the timeline threw absolute nonsense at you.',
+        'Healthy skepticism, crisp execution. Surviving the slop era comfortably.',
+        'You can spot a fake press release from three blocks away.',
+      ],
+    },
+    yellow: {
+      tier: 'yellow',
+      titles: [
+        'TERMINALLY ONLINE',
+        'CHRONICALLY PLUGGED IN',
+        'REDDIT FIELD RESEARCHER',
+        'SURVIVING THE TIMELINE',
+        'MOSTLY LUCID',
+        'BATTLE-TESTED BROWSER',
+        'KNOWS BALL',
+      ],
+      subs: [
+        'Way too many hours on r/singularity and r/nottheonion—and honestly, it paid off.',
+        'Respectable score. A couple headlines clipped you, which is fair because reality is broken.',
+        'You’ve clearly seen enough cursed product launches to know anything can happen.',
+        'Good instincts, minor battle scars. Solid passing grade for this timeline.',
+        'You dodged the obvious traps and only nibbled on a pebble instead of eating the rock.',
+        'Held your own. Real life writes weirder satire than comedy writers now anyway.',
+        'Decent radar, though your weekly screen-time report is probably horrifying.',
+        'Not bad at all. Reality is actively gaslighting everyone and you stayed upright.',
+        'Caught the fake stuff mostly clean—just tripped where reality went full cartoon.',
+      ],
+    },
+    cyan: {
+      tier: 'cyan',
+      titles: [
+        'BARELY SANE',
+        'CAUTIOUSLY SANE',
+        'LUKEWARM RADAR',
+        'COIN-FLIP MERCHANT',
+        'MILDLY HALLUCINATING',
+        'HANGING BY A THREAD',
+        'NEEDS COFFEE',
+      ],
+      subs: [
+        'Halfway immune to AI slop. Do NOT sign any smart contracts after midnight.',
+        'You survived, barely—like passing a driving test after clipping one plastic cone.',
+        'Half sharp skeptic, half guy who forwards fake snow-day alerts to the group chat.',
+        'Your BS detector works, it just makes a loud rattling noise above 40 mph.',
+        'Lukewarm run. Not completely cooked, definitely not raw either.',
+        'Second-guessed yourself right into a ditch on a couple of those.',
+        'Could be worse—at least you didn’t wire $25 million to a deepfake Zoom call.',
+        'Context window got noticeably blurry around the middle of the deck, huh?',
+        'Kept your head above water mostly through frantic doggy-paddling.',
+      ],
+    },
+    low: {
       tier: 'pink',
-    };
+      titles: [
+        'BOUGHT THE POPE COAT',
+        'MILDLY LOBOTOMIZED',
+        'GLUED CHEESE TO PIZZA',
+        'RUNNING ON 2-BIT QUANT',
+        'TYPED AMEN ON SHRIMP JESUS',
+        'TRUSTED CHATGPT FOR TIDES',
+        'GOT COOKED',
+        'ATE ONE SMALL ROCK',
+      ],
+      subs: [
+        'Wait—you’re telling me the Pope DOESN’T wear a giant designer puffer coat?',
+        'Rough scenes out there. You bit on bait that still had the price tag dangling off it.',
+        'Your brain weights feel like they got compressed onto a 2014 smartwatch.',
+        'Reality is unhinged, sure, but that deck just walked off with your wallet.',
+        'You trusted your gut, and your gut enthusiastically recommended pizza glue.',
+        'Situational awareness of an office security robot rolling toward a fountain.',
+        'If a chatbot offers you legal cases or wild mushroom recipes, walk away slowly.',
+        'Got rattled early and started panic-swiping like a pigeon on a smart doorbell.',
+        'That deck folded you like a debut robot walking out to the Rocky theme song.',
+        'Please check the URL twice before typing your password anywhere today.',
+      ],
+    },
+    bottom: {
+      tier: 'pink',
+      titles: [
+        'CERTIFIED BOT FOOD',
+        'DAMP SPONGE COGNITION',
+        'TOASTER FIRMWARE',
+        'HALLUCINATION VICTIM',
+        '1979 ATARI VICTIM',
+        'COMPLETELY COOKED',
+        'ZERO GUARDRAILS',
+        'FACEBOOK SPAM TARGET',
+      ],
+      subs: [
+        'You fell for traps that would make a golden retriever squint suspiciously.',
+        'Absolute disasterclass. Scammers are framing your profile in their breakroom.',
+        'Your internal monologue is running on a broken 2016 customer-service bot.',
+        'Brutal. You walked into an empty Glasgow warehouse expecting Willy Wonka.',
+        'Not gonna sugarcoat it—that 10-card deck just stuffed you in a locker.',
+        'If an AI priest offers to baptize you in blue Gatorade, do NOT get in the tub.',
+        'Zero survival instincts. One orange cone on your hood and you’re stuck til Tuesday.',
+        'Respectfully, hand your phone to a trusted adult for the next twenty minutes.',
+        'You got juked out of your shoes by ten headlines in a row.',
+        'Even a swearing parcel-delivery chatbot couldn’t write a poem sad enough for this run.',
+      ],
+    },
+  };
+
+  // Rank titles & deadpan end-of-deck prompts (8 tiers + run-aware contextual roasts/praises)
+  function getRank(points, accuracy, context = {}) {
+    let key = 'bottom';
+    if (accuracy === 0) key = 'zero';
+    else if (points >= 8000 || (accuracy === 10 && points >= 4500)) key = 'foil';
+    else if (points >= 5000) key = 'gold';
+    else if (points >= 3200) key = 'lime';
+    else if (points >= 2000) key = 'yellow';
+    else if (points >= 1200) key = 'cyan';
+    else if (points >= 600) key = 'low';
+
+    const bucket = RANK_POOLS[key];
+    const title = pickFreshLine(bucket.titles, recentRankTitles);
+
+    let customSubs = null;
+    if (accuracy === 10 && Math.random() < 0.55) {
+      customSubs = [
+        '10 out of 10. Flawless sweep. Reality threw ten curveballs and you parked every single one.',
+        'Perfect 10/10. Zero misses, zero hallucinations. Genuinely clinical.',
+        '10/10 spotted. Neither Silicon Valley hype nor made-up bait laid a glove on you.',
+      ];
+    } else if ((context.allInBusts || 0) >= 2 && points < 2000 && Math.random() < 0.5) {
+      customSubs = [
+        'Smashing 2X ALL-IN like a degenerate at 3 a.m. burned your whole stack to ash.',
+        'Live by the 2X ALL-IN button, die in a smoking crater by the 2X ALL-IN button.',
+        'World-class casino gremlin energy on those 2X busts. Respect the courage, hate the math.',
+      ];
+    } else if ((context.allInWins || 0) >= 3 && (context.allInBusts || 0) === 0 && points >= 3200 && Math.random() < 0.5) {
+      customSubs = [
+        'Armed 2X ALL-IN repeatedly without flinching. Ice water in the veins.',
+        'Called your 2X ALL-IN shots like you wrote the news cycle yourself.',
+      ];
+    }
+
+    const sub = pickFreshLine(customSubs || bucket.subs, recentRankSubs);
+    return { title, sub, tier: bucket.tier };
   }
 
   // PRNG & Deck Generator
   function randomSeed() {
-    return 'r3-' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).padStart(8, '0');
+    return 'r4-' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).padStart(8, '0');
   }
 
   function seededRandom(text) {
@@ -324,11 +524,62 @@
     const random = seededRandom(seed);
     const chronological = (a, b) => a.date.localeCompare(b.date, 'en');
 
-    // New r3- random shuffled deck with mild real/fake mix variance + 2 seeded Jackpots
-    if (seed.startsWith('r3-')) {
+    // v4 random deck: full expanded global bank + balanced claims cap (no repeat bottleneck)
+    if (seed.startsWith('r4-')) {
       const real = pools.feed.filter(card => card.verdict === 'real');
       const fake = pools.feed.filter(card => card.verdict === 'made-up');
       const claims = pools.feed.filter(card => card.verdict === 'real-unproven');
+      if (real.length < 6 || fake.length < 6) return [];
+
+      const used = new Set();
+      const pickUnused = list => {
+        const avail = list.filter(card => !used.has(card.id));
+        if (!avail.length) return null;
+        const chosen = avail[Math.floor(random() * avail.length)];
+        used.add(chosen.id);
+        return chosen;
+      };
+
+      const mixRoll = random();
+      const realTarget = mixRoll < 0.38 ? 6 : mixRoll < 0.78 ? 5 : 4;
+      const fakeTarget = 10 - realTarget;
+
+      const selected = [];
+      for (const topic of topics) {
+        const r = pickUnused(real.filter(c => c.topic === topic)) || pickUnused(real);
+        if (r) selected.push(r);
+      }
+      for (const topic of topics) {
+        const f = pickUnused(fake.filter(c => c.topic === topic)) || pickUnused(fake);
+        if (f) selected.push(f);
+      }
+
+      let claimsPicked = 0;
+      for (let i = 4; i < realTarget; i++) {
+        const tryClaim = claimsPicked === 0 && claims.length && random() < 0.1;
+        const claimCard = tryClaim ? pickUnused(claims) : null;
+        if (claimCard) claimsPicked++;
+        const bonus = claimCard || pickUnused(real);
+        if (bonus) selected.push(bonus);
+      }
+      for (let i = 4; i < fakeTarget; i++) {
+        const bonus = pickUnused(fake);
+        if (bonus) selected.push(bonus);
+      }
+
+      if (selected.length !== 10) return [];
+      const shuffled = shuffle(selected, random);
+      return attachJackpots(shuffled, random);
+    }
+
+    // Legacy r3-/d2-/p2- links draw against the pre-v4 244-card bank so shared URLs stay deterministic
+    const legacyFeed = pools.feed.filter(card => !card.v4);
+
+    // Backwards-compatible r3- random shuffled deck
+    if (seed.startsWith('r3-')) {
+      const real = legacyFeed.filter(card => card.verdict === 'real');
+      const fake = legacyFeed.filter(card => card.verdict === 'made-up');
+      const claims = legacyFeed.filter(card => card.verdict === 'real-unproven');
       if (real.length < 6 || fake.length < 6) return [];
 
       const used = new Set();
@@ -378,9 +629,9 @@
     }
 
     // Backwards-compatible legacy d2- / p2- seeds
-    const real = pools.feed.filter(card => card.verdict === 'real');
-    const fake = pools.feed.filter(card => card.verdict === 'made-up');
-    const claims = pools.feed.filter(card => card.verdict === 'real-unproven');
+    const real = legacyFeed.filter(card => card.verdict === 'real');
+    const fake = legacyFeed.filter(card => card.verdict === 'made-up');
+    const claims = legacyFeed.filter(card => card.verdict === 'real-unproven');
     const pick = cards => cards[Math.floor(random() * cards.length)];
     const core = [real, fake].flatMap(cards => topics.map(topic => pick(cards.filter(card => card.topic === topic))));
     if (core.some(card => !card)) return [];
@@ -401,17 +652,33 @@
   }
 
   function freshRandomSeed(pools) {
-    const recent = new Set([...readStats().recentCards, ...(run?.deck.map(card => card.id) || [])]);
+    const saved = readStats();
+    const recentOrder = [...new Set([...(run?.deck.map(card => card.id) || []), ...saved.recentCards])];
+    const recentIdx = new Map(recentOrder.map((id, idx) => [id, idx]));
+    const tallies = saved.cards || {};
+
     let bestSeed = randomSeed();
-    let leastOverlap = Infinity;
-    for (let attempt = 0; attempt < 24; attempt++) {
+    let bestCost = Infinity;
+
+    for (let attempt = 0; attempt < 320; attempt++) {
       const candidate = randomSeed();
       const deck = safeDraw(pools, candidate);
       if (deck.length !== 10) continue;
-      const overlap = deck.filter(card => recent.has(card.id)).length;
-      if (overlap === 0) return candidate;
-      if (overlap < leastOverlap) {
-        leastOverlap = overlap;
+
+      let cost = 0;
+      for (const card of deck) {
+        if (recentIdx.has(card.id)) {
+          // Heavily penalize anything in the recent 180-card window (strongest on most recent runs)
+          cost += (220 - Math.min(180, recentIdx.get(card.id))) * 1000;
+        }
+        const shown = tallies[card.id]?.shown || 0;
+        cost += shown * 30;
+        if (card.verdict === 'real-unproven' && shown > 0) cost += shown * 50;
+      }
+
+      if (cost === 0) return candidate;
+      if (cost < bestCost) {
+        bestCost = cost;
         bestSeed = candidate;
       }
     }
@@ -946,11 +1213,11 @@
     }
     if (hudScoreLabel) {
       hudScoreLabel.textContent = tier === 3
-        ? 'GOD MODE · 5X MAX'
+        ? 'FEEL THE AGI'
         : tier === 2
-          ? 'FEVER MODE'
+          ? 'COOKING'
           : tier === 1
-            ? 'ON FIRE'
+            ? 'HEATING UP'
             : 'SCORE';
     }
     const intensity = tier === 3 ? 1.0 : tier === 2 ? 0.84 : tier === 1 ? 0.58 : 0.18 + streak * 0.08;
@@ -1165,7 +1432,7 @@
         : freshRandomSeed(pools);
 
     let deck = safeDraw(pools, seed);
-    if (deck.length !== 10 && !seed.startsWith('r3-')) {
+    if (deck.length !== 10 && !seed.startsWith('r4-')) {
       // A shared/legacy seed that no longer assembles (bank or sources changed): never strand
       // the player on an error, deal a fresh random deck instead.
       seed = freshRandomSeed(pools);
@@ -1188,6 +1455,8 @@
       kind: explicitSeed ? 'replay' : kind,
       deck,
       answers: [],
+      seenIds: new Set(),
+      missedIds: new Set(),
       points: 0,
       score: 0,
       streak: 0,
@@ -1239,6 +1508,10 @@
     cleanupCardView();
     const cardIndex = run.answers.length;
     const card = run.deck[cardIndex];
+    if (!run.seenIds.has(card.id)) {
+      run.seenIds.add(card.id);
+      markCardSeen(card.id);
+    }
     const pane = section('game-play');
 
     const paper = node('article', 'game-paper game-card' + (card.isJackpot ? ' is-jackpot' : ''));
@@ -1323,10 +1596,10 @@
       coachTitle.id = 'game-coach-title';
       const steps = node('ol', 'game-coach-steps');
       for (const line of [
-        'Really happened? Swipe right or tap REAL.',
-        'Totally invented? Swipe left or tap MADE UP.',
-        'Fast answers score bonus points. Streaks stack up to 5X.',
-        'Gold Jackpots pay 2X. Arm 2X ALL-IN to double stakes, or bust -150.',
+        'Actually happened? Swipe right or tap REAL.',
+        'We made it up? Swipe left or tap MADE UP.',
+        'Quick calls earn speed points. Streaks stack up to 5X.',
+        'Gold Jackpots double points. Arm 2X ALL-IN to bet big—or bust -150.',
       ]) steps.append(node('li', '', line));
       const coachBtn = button('GOT IT · DEAL ME IN', 'coach-dismiss', 'game-primary game-coach-btn');
       coach.append(coachTitle, steps, coachBtn);
@@ -1617,6 +1890,10 @@
       else run.allInBusts++;
     }
     if (card.isJackpot && correct) run.jackpotsHit++;
+    if (!correct && !run.missedIds.has(card.id)) {
+      run.missedIds.add(card.id);
+      markCardMiss(card.id);
+    }
 
     run.answers.push({
       card,
@@ -1701,9 +1978,12 @@
           buildMathBreakdown(evalRes, card, allIn, prevStreak),
         );
         const summary = node('div', 'reveal-summary');
+        const hitLeads = ['NAILED IT', 'SPOT ON', 'DEAD ON', 'CALLED IT', 'SNIPED'];
+        const missLeads = ['COOKED', 'BAITED', 'GOT YOU', 'NOPE', 'WHIFFED'];
+        const pickLead = list => list[(run.answers.length * 3 + card.id.length) % list.length];
         const verdictLead = correct
-          ? (isMega ? 'MEGA HIT' : 'CORRECT')
-          : (evalRes.busted ? 'BUSTED' : 'MISS');
+          ? (isMega ? '4X MEGA HIT' : allIn ? '2X CASHED' : pickLead(hitLeads))
+          : (evalRes.busted ? 'ALL-IN BUST' : pickLead(missLeads));
         const outcome = node('p', 'game-answer' + (correct ? '' : ' is-miss'), `${verdictLead} · ${verdictText[card.verdict]}`);
         const noteEl = node('p', 'reveal-note', card.note);
         summary.append(outcome, noteEl);
@@ -1838,12 +2118,17 @@
       const tally = prev.cards[card.id];
       return tally?.shown ? tally.misses / tally.shown : 0;
     };
-    const fooled = run.answers
+    const missedEntry = run.answers
       .filter(ans => !ans.correct)
-      .map(ans => ans.card)
-      .sort((a, b) => rate(b) - rate(a))[0] || null;
+      .sort((a, b) => (Number(b.busted) - Number(a.busted)) || (rate(b.card) - rate(a.card)))[0] || null;
+    const fooled = missedEntry?.card || null;
+    const fooledBusted = Boolean(missedEntry?.busted);
 
-    const rank = getRank(run.points, run.score);
+    const rank = getRank(run.points, run.score, {
+      allInWins: run.allInWins,
+      allInBusts: run.allInBusts,
+      maxStreak: run.best,
+    });
     const prevBest = prev.career.bestPoints || 0;
     const isNewRecord = run.points > 0 && run.points > prevBest;
 
@@ -1859,11 +2144,11 @@
 
     for (const { card, correct } of run.answers) {
       const tally = prev.cards[card.id] ||= { shown: 0, misses: 0 };
-      tally.shown += 1;
-      tally.misses += Number(!correct);
+      if (!run.seenIds?.has(card.id)) tally.shown += 1;
+      if (!correct && !run.missedIds?.has(card.id)) tally.misses = Math.min(tally.shown, tally.misses + 1);
     }
 
-    prev.recentCards = [...new Set([...run.deck.map(card => card.id), ...prev.recentCards])].slice(0, 35);
+    prev.recentCards = [...new Set([...run.deck.map(card => card.id), ...prev.recentCards])].slice(0, 180);
 
     const entry = {
       id: run.id,
@@ -1885,7 +2170,7 @@
     prev.hallOfFame = nextBoard;
 
     writeStats(prev);
-    return { fooled, rank, hofRank, isNewRecord };
+    return { fooled, fooledBusted, rank, hofRank, isNewRecord };
   }
 
   function updateHandle(newRaw) {
@@ -1996,10 +2281,11 @@
 
   // Result Screen
   function showResults() {
-    const { fooled, rank, hofRank, isNewRecord } = recordRun();
+    const { fooled, fooledBusted, rank, hofRank, isNewRecord } = recordRun();
     result = {
       ...run,
       fooled,
+      fooledBusted,
       rank,
       hofRank,
       isNewRecord,
@@ -2071,10 +2357,10 @@
         const tied = diff === 0;
         chalEl.dataset.outcome = won ? 'win' : tied ? 'tie' : 'loss';
         chalEl.textContent = won
-          ? `YOU BEAT ${rival}'S ${formatPts(targetPoints)} PTS (+${formatPts(diff)})`
+          ? `COOKED ${rival}'S ${formatPts(targetPoints)} PTS (+${formatPts(diff)})`
           : tied
-            ? `DEAD TIE WITH ${rival} AT ${formatPts(targetPoints)} PTS`
-            : `${rival} STILL HOLDS THIS DECK (${formatPts(targetPoints)} PTS · NEED +${formatPts(-diff)})`;
+            ? `EXACT DEAD HEAT WITH ${rival} AT ${formatPts(targetPoints)} PTS`
+            : `${rival} STILL OWNS THIS DECK (${formatPts(targetPoints)} PTS · SHORT BY ${formatPts(-diff)})`;
       } else {
         const won = result.score > targetAcc;
         chalEl.dataset.outcome = won ? 'win' : 'loss';
@@ -2131,9 +2417,34 @@
     const highlightCard = result.fooled || result.answers.find(a => a.card.verdict !== 'made-up')?.card || null;
     let fooledBox = null;
     if (highlightCard) {
+      const kickerPool = !result.fooled
+        ? [
+          '10/10 FLAWLESS — WILDEST TRUE STORY IN THIS DECK',
+          'ZERO MISSES — MOST UNHINGED REAL CARD YOU SNIPED',
+          'CLEAN SWEEP — SOMEHOW THIS ONE ACTUALLY HAPPENED',
+        ]
+        : result.fooledBusted
+          ? [
+            'WENT 2X ALL-IN HERE AND BLEW UP',
+            'THE 2X GAMBLE THAT COOKED YOUR STACK',
+          ]
+          : highlightCard.verdict === 'made-up'
+            ? [
+              'WE MADE THIS UP · YOU BOUGHT IT CLEAN',
+              'HOOK, LINE, AND SINKER',
+              'PURE FABRICATION THAT GOT YOU',
+              'HEADLINE THAT BROKE YOUR BS RADAR',
+            ]
+            : [
+              'YEAH, SOMEHOW THIS ACTUALLY HAPPENED',
+              'REALITY PULLED A FAST ONE ON YOU HERE',
+              'THE REAL HEADLINE THAT COOKED YOU',
+              'HEADLINE THAT BROKE YOUR RADAR',
+            ];
+      const kickerText = kickerPool[(result.points + highlightCard.id.length) % kickerPool.length];
       fooledBox = node('div', 'result-fooled');
       fooledBox.append(
-        node('div', 'result-fooled-kicker', result.fooled ? 'THE ONE THAT GOT ME' : 'FLAWLESS 10/10 — WILDEST REAL ONE'),
+        node('div', 'result-fooled-kicker', kickerText),
         node('p', 'result-fooled-text', highlightCard.text),
         stamp(highlightCard.verdict, 'result-fooled-stamp'),
       );
