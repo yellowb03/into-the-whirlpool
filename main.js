@@ -252,7 +252,7 @@ const od=$('podds');if((it.k==='p'||it.k==='s')&&it.o){od.hidden=false;$('poddsv
 panel.style.setProperty('--ac',colOf(it));panel.classList.add('open');panel.setAttribute('aria-hidden','false');
 zoomed=false;panel.classList.remove('zoom');$('sheet').scrollTop=0;layoutPanel();requestAnimationFrame(layoutPanel);
 bindSlot(viz,it);vt=0;viz.target=1;WP.state.open=it;WP.emit('open',it);setTimeout(()=>{if(openIt===it)WP.emit('clip-bite',{x:(vizRect.x+vizRect.w/2)/W*2-1});},160);}
-function closePanel(){if(openIt)WP.emit('close');WP.state.open=null;openIt=null;panel.classList.remove('open');panel.setAttribute('aria-hidden','true');viz.target=0;}
+function closePanel(){const wasOpen=openIt;WP.state.open=null;openIt=null;panel.classList.remove('open');panel.setAttribute('aria-hidden','true');viz.target=0;if(wasOpen)WP.emit('close');}
 function step(d){if(!openIt||WP.state.mode==='game')return;const i=ITEMS.indexOf(openIt);const j=Math.max(0,Math.min(ITEMS.length-1,i+d));if(j!==i)openItem(ITEMS[j]);}
 [$('pclose'),$('pprev'),$('pnext')].forEach(b=>b.addEventListener('pointerdown',()=>WP.emit('ui-press',{})));$('pclose').addEventListener('click',closePanel);$('pprev').addEventListener('click',()=>step(-1));$('pnext').addEventListener('click',()=>step(1));
 let vizRect={x:0,y:0,w:0,h:0},zoomed=false;const ROT=-2.4,PAD=8,BOT=32;
@@ -272,7 +272,7 @@ panel.addEventListener('click',e=>{if(e.target!==panel||performance.now()-opened
 
 // ---------- input: tap a word, hold to slow time, drag to spin
 let slow=0,slowT=0,spin=0,spinV=0,down=null,touched=false,pause=0;
-function wake(){const cv=$('cover');if(cv&&!cv.classList.contains('gone')){cv.classList.add('gone');WP.state.cover=false;setTimeout(()=>hint.classList.add('show'),600);}if(!touched&&WP.state.started){touched=true;setTimeout(()=>hint.classList.add('gone'),7000);}if(!WP.state.started){WP.state.started=true;WP.emit('start');}}
+function wake(){const cv=$('cover');if(cv&&!cv.classList.contains('gone')){cv.classList.add('gone');cv.inert=true;cv.setAttribute('aria-hidden','true');WP.state.cover=false;setTimeout(()=>hint.classList.add('show'),600);}if(!touched&&WP.state.started){touched=true;setTimeout(()=>hint.classList.add('gone'),7000);}if(!WP.state.started){WP.state.started=true;WP.emit('start');}}
 const v1=new THREE.Vector3(),v2=new THREE.Vector3(),v3=new THREE.Vector3();
 function pick(px,py){let best=null;const k0=H/(2*Math.tan(camera.fov*Math.PI/360));
 for(const w of live){if(w.big||w.s.material.opacity<.15)continue;v3.copy(w.s.position).applyMatrix4(camera.matrixWorldInverse);if(v3.z>-.5)continue;

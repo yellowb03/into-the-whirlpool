@@ -142,6 +142,8 @@
     }
     cover.classList.add('gone');
     cover.inert = true;
+    cover.setAttribute('aria-hidden', 'true');
+    wp.state.cover = false;
     if (!wp.state.started) {
       wp.state.started = true;
       wp.emit('start');
@@ -403,7 +405,9 @@
     wp.state.streak = run.streak;
     wp.api?.setIntensity(.18 + Math.min(run.streak, 10) * .082);
     if (!correct) wp.api?.glitch(220);
-    wp.emit('answer', { correct, streak: run.streak, verdict: card.verdict });
+    const pan = Math.max(-1, Math.min(1, motion.dx / (innerWidth / 2)));
+    wp.emit('fling', { x: pan });
+    wp.emit('answer', { correct, streak: run.streak, verdict: card.verdict, x: pan });
     if (correct) wp.emit('streak', { n: run.streak });
     track('card_answer', { id: card.id, correct });
     updateProgress();
@@ -578,6 +582,9 @@
   coverExplore.addEventListener('click', () => { wake(); explore(); });
   reopen.addEventListener('click', () => change('intro'));
 
+  document.addEventListener('pointerdown', event => {
+    if (event.target.closest('#wp-game button, .cv-actions button, #game-reopen')) wp.emit('ui-press', {});
+  });
   root.addEventListener('click', async event => {
     const control = event.target.closest('[data-game-action]');
     if (!control) return;
