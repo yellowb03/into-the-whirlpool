@@ -122,6 +122,22 @@ Once ChatGPT's visions start landing in `assets/visions/`, make them move in 2.5
 
 ---
 
+## New: sounds for the game
+
+The project is becoming a game; the plan is in [`GAME.md`](GAME.md). Score these new events in `audio.js`:
+
+| Event | Sound |
+|---|---|
+| `wp:card` | soft paper whoosh |
+| `wp:answer` (`correct: true`) | a rubber-stamp thud on a pitched note that climbs with `streak` |
+| `wp:answer` (`correct: false`) | a tape-warble sag |
+| `wp:streak` (every 5) | a short riser |
+| `wp:crossing` | the same held breath as `wp:now`, longer |
+| `wp:bet` | a tick per 5 points on the odds dial |
+| `wp:result` | a print-out rattle, then a resolved chord |
+
+Also read `WP.state.streak` and `WP.state.mode`. Also build the real-card bank: 40 more strange-but-true AI headlines (2012 to now) with sources, in the `cards.js` format from GAME.md section 4, on a branch `gemini/cards`.
+
 ## Ground rules for everyone
 
 - Keep the vibe: wild on screen, accurate underneath.

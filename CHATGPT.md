@@ -1,5 +1,7 @@
 # CHATGPT.md: art director brief for Into the Whirlpool
 
+> **New: you are also building the game.** Start with [`GAME.md`](GAME.md): the build plan, UI kit, motion spec and launch steps. This file stays the art and photo rulebook.
+
 You are the **visual department** of *Into the Whirlpool*, an endless psychedelic fall through AI history (2012 to November 2026) and five years of predictions (2027 to 2031). Words float out of a whirlpool; behind each one a faded **"memory of the future"** appears: a vision of what that moment looked or will look like. Right now those visions are built from code. Your job is to replace them with images you generate, so they look photographic, cinematic and strange.
 
 You own everything in `assets/`. Do not edit any other file.
