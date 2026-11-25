@@ -67,6 +67,7 @@ function useArchiveFallback(){
   panel.style.setProperty('--ac',colOf(item));
   panel.classList.add('open');
   panel.setAttribute('aria-hidden','false');
+  document.body.classList.add('wp-panel-open');
   archive.inert=true;
   WP.state.open=item;WP.state.pause=1;WP.emit('open',item);
   $('pclose').focus();
@@ -75,6 +76,7 @@ function useArchiveFallback(){
   if(!WP.state.open)return;
   panel.classList.remove('open');
   panel.setAttribute('aria-hidden','true');
+  document.body.classList.remove('wp-panel-open');
   archive.inert=false;
   WP.state.open=null;WP.state.pause=0;WP.emit('close');
  }
@@ -349,22 +351,22 @@ tl.addEventListener('wheel',e=>{e.preventDefault();if(WP.state.mode==='game')ret
 const panel=$('panel');let openIt=null,openA=0,vt=0;
 let openedAt=0;
 function openItem(it){if(!it)return;openedAt=performance.now();wake();hint.classList.add('gone');openIt=it;fillCase(it);
-panel.style.setProperty('--ac',colOf(it));panel.classList.add('open');panel.setAttribute('aria-hidden','false');
+panel.style.setProperty('--ac',colOf(it));panel.classList.add('open');panel.setAttribute('aria-hidden','false');document.body.classList.add('wp-panel-open');
 zoomed=false;panel.classList.remove('zoom');$('sheet').scrollTop=0;layoutPanel();requestAnimationFrame(layoutPanel);
 bindSlot(viz,it);vt=0;viz.target=1;WP.state.open=it;WP.emit('open',it);setTimeout(()=>{if(openIt===it)WP.emit('clip-bite',{x:(vizRect.x+vizRect.w/2)/W*2-1});},160);}
-function closePanel(){const wasOpen=openIt;WP.state.open=null;openIt=null;panel.classList.remove('open');panel.setAttribute('aria-hidden','true');viz.target=0;if(wasOpen)WP.emit('close');}
+function closePanel(){const wasOpen=openIt;WP.state.open=null;openIt=null;panel.classList.remove('open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('wp-panel-open');viz.target=0;if(wasOpen)WP.emit('close');}
 function step(d){if(!openIt||WP.state.mode==='game')return;const i=ITEMS.indexOf(openIt);const j=Math.max(0,Math.min(ITEMS.length-1,i+d));if(j!==i)openItem(ITEMS[j]);}
 [$('pclose'),$('pprev'),$('pnext')].forEach(b=>b.addEventListener('pointerdown',()=>WP.emit('ui-press',{})));$('pclose').addEventListener('click',closePanel);$('pprev').addEventListener('click',()=>step(-1));$('pnext').addEventListener('click',()=>step(1));
-let vizRect={x:0,y:0,w:0,h:0},zoomed=false;const ROT=-2.4,PAD=8,BOT=32;
+let vizRect={x:0,y:0,w:0,h:0},zoomed=false;const ROT=-2.4,PAD=8,BOT=30;
 function place(cx,cy,s,rot){const pf=$('print');pf.style.left=(cx-s/2-PAD)+'px';pf.style.top=(cy-s/2-PAD)+'px';pf.style.width=(s+PAD*2)+'px';pf.style.height=(s+PAD+BOT)+'px';
  pf.style.transformOrigin=(PAD+s/2)+'px '+(PAD+s/2)+'px';pf.style.transform='rotate('+rot+'deg)';vizRect={x:cx-s/2-PAD,y:cy-s/2-PAD,w:s+PAD*2,h:s+PAD+BOT};
  const u=viz.mat.uniforms;u.uSize.value.set(s/W,s/H);u.uOff.value.set(cx/W*2-1,1-cy/H*2);u.uRot.value=-rot*Math.PI/180;}
 function layoutPanel(){if(!openIt)return;const sh=$('sheet'),sd=$('sheetsh'),sp=$('pspace');
  if(zoomed){place(W/2,H*.47,Math.min(W*.9,H*.66),0);return;}
  sh.style.clipPath=sd.style.clipPath='none';sp.style.width=sp.style.height='0px';const r=sh.getBoundingClientRect(),narrow=W<760||H>W;
- const s=narrow?Math.min(W*.38,160):Math.min(280,W*.22),fw=s+PAD*2,fh=s+PAD+BOT,fl=r.right-fw-(narrow?8:20),ft=r.top-(narrow?14:22);
+ const s=narrow?Math.min(W*.33,132):Math.min(280,W*.22),fw=s+PAD*2,fh=s+PAD+BOT,fl=r.right-fw-(narrow?10:20),ft=r.top-(narrow?24:22);
  place(fl+PAD+s/2,ft+PAD+s/2,s,ROT);
- const hx=Math.max(0,fl-r.left-10),hy=ft+fh-r.top+12,cp='polygon(0 0,'+hx+'px 0,'+hx+'px '+hy+'px,100% '+hy+'px,100% 100%,0 100%)';
+ const hx=Math.max(0,fl-r.left-10),hy=Math.max(0,ft+fh-r.top+(narrow?18:12)),cp='polygon(0 0,'+hx+'px 0,'+hx+'px '+hy+'px,100% '+hy+'px,100% 100%,0 100%)';
  sh.style.clipPath=cp;sd.style.left=(r.left+(narrow?6:10))+'px';sd.style.top=(r.top+(narrow?6:10))+'px';sd.style.width=r.width+'px';sd.style.height=r.height+'px';sd.style.clipPath=cp;
  const cs=getComputedStyle(sh);sp.style.width=Math.max(0,r.width-hx-parseFloat(cs.paddingRight)+4)+'px';sp.style.height=Math.max(0,hy-parseFloat(cs.paddingTop))+'px';}
 panel.addEventListener('click',e=>{if(e.target!==panel||performance.now()-openedAt<450)return;const inViz=e.clientX>vizRect.x&&e.clientX<vizRect.x+vizRect.w&&e.clientY>vizRect.y&&e.clientY<vizRect.y+vizRect.h;

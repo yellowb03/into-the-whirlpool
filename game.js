@@ -699,7 +699,36 @@
     };
   })();
 
-  // DOM helpers
+  // DOM helpers + crisp riso-print inline SVG icon primitives (zero OS emoji clash in UI chrome)
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const ICON_PATHS = {
+    play: '<path fill="currentColor" stroke="none" d="M4 2.5L13.5 8 4 13.5V2.5z"/>',
+    trophy: '<path d="M4.5 2.5h7v4a3.5 3.5 0 0 1-7 0v-4z"/><path d="M4.5 4H2.5v1.5a2 2 0 0 0 2 2M11.5 4h2v1.5a2 2 0 0 1-2 2M8 10v3.5M5.5 13.5h5"/>',
+    bolt: '<path d="M9 1.5L3.5 9H8l-1 5.5L12.5 7H8l1-5.5z"/>',
+    dice: '<rect x="2.2" y="2.2" width="11.6" height="11.6"/><circle cx="5.6" cy="5.6" r=".95" fill="currentColor" stroke="none"/><circle cx="10.4" cy="10.4" r=".95" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r=".95" fill="currentColor" stroke="none"/>',
+    copy: '<rect x="5" y="5" width="8.5" height="8.5"/><path d="M3 11V3h8"/>',
+    share: '<path d="M8 10.5V2.5M4.5 5.5L8 2l3.5 3.5M3 10.5v3h10v-3"/>',
+    replay: '<path d="M3 8a5 5 0 1 0 1.4-3.5L3 6M3 2.5V6h3.5"/>',
+    star: '<path fill="currentColor" stroke="none" d="M8 1.5l1.95 4.1 4.55.6-3.3 3.15.8 4.5L8 11.7l-4 2.15.8-4.5-3.3-3.15 4.55-.6L8 1.5z"/>',
+    crown: '<path d="M2 12.5h12v-7l-3 2.5-3-4-3 4-3-2.5v7z"/>',
+    swords: '<path d="M3 13L13 3M9.5 3H13v3.5M3 3l10 10M6.5 3H3v3.5"/>',
+    arrowL: '<path d="M13 8H3M7 4L3 8l4 4"/>',
+    arrowR: '<path d="M3 8h10M9 4l4 4-4 4"/>',
+    bust: '<path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/>',
+  };
+
+  function ico(name, extraClass = '') {
+    const svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 16 16');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.9');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', ('ui-ico ' + extraClass).trim());
+    svg.innerHTML = ICON_PATHS[name] || '';
+    return svg;
+  }
+
   const node = (tag, className, text) => {
     const element = document.createElement(tag);
     if (className) element.className = className;
@@ -714,7 +743,7 @@
     return element;
   }
 
-  function animate(element, frames, duration = 240, easing = 'cubic-bezier(.16,1,.3,1)') {
+  function animate(element, frames, duration = 240, easing = 'cubic-bezier(0.23, 1, 0.32, 1)') {
     const effect = reduced.matches ? [{ opacity: 0.6 }, { opacity: 1 }] : frames;
     return element.animate(effect, { duration: reduced.matches ? 150 : duration, easing });
   }
@@ -889,7 +918,7 @@
     } else {
       parts.push(`#${challengeSeed.toUpperCase()}`);
     }
-    cvChallengeBanner.textContent = '⚔ ' + parts.join(' · ');
+    cvChallengeBanner.replaceChildren(ico('swords'), document.createTextNode(parts.join(' · ')));
     cvChallengeBanner.hidden = false;
   }
 
@@ -900,17 +929,28 @@
     document.body.dataset.fever = String(tier);
     fx.setFever(tier);
     if (hudMult) {
+      const prevTier = hudMult.dataset.tier;
       hudMult.dataset.tier = String(tier);
       const multStr = mult.toFixed(1) + 'x';
-      hudMult.textContent = tier === 3 ? '⚡ ' + multStr : tier >= 1 ? '🔥 ' + multStr : multStr;
+      hudMult.replaceChildren(
+        ...(tier >= 1 ? [ico('bolt', 'ui-ico-xs')] : []),
+        document.createTextNode(multStr),
+      );
+      if (!reduced.matches && String(tier) !== prevTier && tier >= 1) {
+        animate(hudMult, [
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.18)', offset: 0.4 },
+          { transform: 'scale(1)' },
+        ], 220);
+      }
     }
     if (hudScoreLabel) {
       hudScoreLabel.textContent = tier === 3
-        ? '⚡ GOD MODE · 5X MAX ⚡'
+        ? 'GOD MODE · 5X MAX'
         : tier === 2
-          ? '🔥 FEVER MODE'
+          ? 'FEVER MODE'
           : tier === 1
-            ? '🔥 ON FIRE'
+            ? 'ON FIRE'
             : 'SCORE';
     }
     const intensity = tier === 3 ? 1.0 : tier === 2 ? 0.84 : tier === 1 ? 0.58 : 0.18 + streak * 0.08;
@@ -1214,20 +1254,26 @@
       paper.append(node('div', 'jackpot-banner', '★ 2X JACKPOT ROUND · DOUBLE POINTS ★'));
     }
 
-    const ribbon = node('div', 'allin-ribbon', card.isJackpot ? '💰 4X MEGA ALL-IN' : '🎲 2X ALL-IN ARMED');
-    ribbon.hidden = true;
-    paper.append(ribbon);
-
     const meta = node('div', 'card-meta');
-    const dateEl = node('time', 'game-date', `CASE ${String(cardIndex + 1).padStart(2, '0')}/10 · ${dateLabel(card.date)}`);
+    const dateEl = node('time', 'game-date', `#${String(cardIndex + 1).padStart(2, '0')} · ${dateLabel(card.date)}`);
     dateEl.dateTime = card.date;
+    const metaRight = node('div', 'card-meta-tags');
+    const ribbon = node('span', 'allin-badge', card.isJackpot ? '4X MEGA' : '2X STAKES');
+    ribbon.hidden = true;
     const topicEl = node('span', 'card-topic', TOPIC_LABELS[card.topic] || 'AI NEWS');
-    meta.append(dateEl, topicEl);
+    metaRight.append(ribbon, topicEl);
+    meta.append(dateEl, metaRight);
 
     const title = node('h2', '', card.text);
+    const swipeCue = node('div', 'card-swipe-cue');
+    swipeCue.setAttribute('aria-hidden', 'true');
+    swipeCue.append(
+      node('span', 'cue-left', '← SWIPE MADE UP'),
+      node('span', 'cue-right', 'SWIPE REAL →'),
+    );
     const ghost = stamp('real', 'game-guess');
     ghost.setAttribute('aria-hidden', 'true');
-    paper.append(meta, title, ghost);
+    paper.append(meta, title, swipeCue, ghost);
 
     // Armed controls
     const controls = node('div', 'game-controls');
@@ -1236,25 +1282,29 @@
     const updateAllInLabel = armed => {
       allInBtn.setAttribute('aria-pressed', String(armed));
       allInBtn.classList.toggle('is-armed', armed);
+      allInBtn.classList.toggle('is-mega', armed && card.isJackpot);
       paper.classList.toggle('is-allin', armed);
       ribbon.hidden = !armed;
       allInBtn.replaceChildren();
+      const lead = node('span', 'btn-allin-lead');
       if (armed) {
-        const mainText = card.isJackpot ? '💰 4X MEGA ALL-IN ARMED!!' : '🔥 ALL-IN ARMED';
+        lead.append(ico(card.isJackpot ? 'star' : 'bolt'), document.createTextNode(card.isJackpot ? '4X MEGA ALL-IN ARMED' : '2X ALL-IN ARMED'));
         const subText = card.isJackpot ? '4X PAYOUT · -150 BUST' : '2X WIN · -150 BUST';
-        allInBtn.append(document.createTextNode(mainText + ' '), node('small', '', subText));
+        allInBtn.append(lead, node('small', '', subText));
       } else {
-        const subText = card.isJackpot ? 'STACK FOR 4X · RISK -150' : 'WIN 2X · BUST -150';
-        allInBtn.append(document.createTextNode('🎲 2X ALL-IN '), node('small', '', subText));
+        lead.append(ico('dice'), document.createTextNode('2X ALL-IN'));
+        const subText = card.isJackpot ? 'STACK 4X · RISK -150' : 'WIN 2X · BUST -150';
+        allInBtn.append(lead, node('small', '', subText));
       }
     };
     updateAllInLabel(false);
 
     const btnRow = node('div', 'game-buttons');
-    btnRow.append(
-      button('← MADE UP', 'made-up', 'game-fake'),
-      button('REAL →', 'real', 'game-real'),
-    );
+    const fakeBtn = button('', 'made-up', 'game-fake');
+    fakeBtn.append(ico('arrowL'), document.createTextNode('MADE UP'));
+    const realBtn = button('', 'real', 'game-real');
+    realBtn.append(document.createTextNode('REAL'), ico('arrowR'));
+    btnRow.append(fakeBtn, realBtn);
     const kbHint = node('p', 'kb-hint', 'Keys: ← / → swipe · W all-in · Space next');
     kbHint.setAttribute('aria-hidden', 'true');
     controls.append(allInBtn, btnRow, kbHint);
@@ -1273,10 +1323,10 @@
       coachTitle.id = 'game-coach-title';
       const steps = node('ol', 'game-coach-steps');
       for (const line of [
-        'Did this AI headline really happen? Swipe right or tap REAL →',
-        'Invented? Swipe left or tap ← MADE UP.',
-        'Answer fast for bonus points. Streaks multiply up to 5X.',
-        '★ Jackpot cards pay 2X. Arm 2X ALL-IN to double a pick, but a miss costs 150.',
+        'Really happened? Swipe right or tap REAL.',
+        'Totally invented? Swipe left or tap MADE UP.',
+        'Fast answers score bonus points. Streaks stack up to 5X.',
+        'Gold Jackpots pay 2X. Arm 2X ALL-IN to double stakes, or bust -150.',
       ]) steps.append(node('li', '', line));
       const coachBtn = button('GOT IT · DEAL ME IN', 'coach-dismiss', 'game-primary game-coach-btn');
       coach.append(coachTitle, steps, coachBtn);
@@ -1357,9 +1407,14 @@
       paper.style.opacity = '0';
       const entry = direction || (cardIndex % 2 ? -1 : 1);
       current.stopEntry = spring(value => {
-        paper.style.opacity = String(1 - Math.max(0, value));
-        paper.style.transform = `translateY(${45 * value}px) scale(${1 - 0.45 * value}) rotate(${6 * entry * value}deg)`;
-      });
+        if (value === 0) {
+          paper.style.opacity = '1';
+          paper.style.transform = '';
+          return;
+        }
+        paper.style.opacity = String(Math.min(1, Math.max(0, 1 - value * 0.85)));
+        paper.style.transform = `translate3d(0,${(28 * value).toFixed(1)}px,0) scale(${(1 - 0.08 * value).toFixed(4)}) rotate(${(3.5 * entry * value).toFixed(2)}deg)`;
+      }, { stiffness: 380, damping: 28 });
     }
   }
 
@@ -1404,15 +1459,26 @@
     let drag = null;
     let stopSpring = null;
 
-    const paint = (dx, dy) => {
-      const rotation = reduced.matches ? 0 : Math.max(-18, Math.min(18, dx * 0.06));
-      paper.style.transform = `translate(${dx}px,${dy}px) rotate(${rotation}deg)`;
+    const paint = (dx, dy, dragging = false) => {
+      if (!dragging && dx === 0 && dy === 0) {
+        paper.style.transform = '';
+        paper.classList.remove('is-dragging');
+        ghost.style.opacity = '0';
+        ghost.style.transform = '';
+        delete paper.dataset.swipe;
+        return;
+      }
+      const rotation = reduced.matches ? 0 : Math.max(-16, Math.min(16, dx * 0.055));
+      const lift = dragging && !reduced.matches ? 1.015 : 1;
+      paper.style.transform = `translate3d(${dx.toFixed(1)}px,${dy.toFixed(1)}px,0) rotate(${rotation.toFixed(2)}deg) scale(${lift})`;
+      paper.classList.toggle('is-dragging', dragging);
       const verdict = dx < 0 ? 'made-up' : 'real';
-      const threshold = Math.max(40, paper.offsetWidth * 0.26);
+      const threshold = Math.max(40, paper.offsetWidth * 0.25);
       const ratio = Math.min(1, Math.abs(dx) / threshold);
       ghost.textContent = verdictText[verdict];
       ghost.dataset.verdict = verdict;
-      ghost.style.opacity = String(Math.min(0.94, ratio));
+      ghost.style.opacity = String(Math.min(0.96, ratio));
+      ghost.style.transform = `translate(-50%, -50%) rotate(${dx < 0 ? 7 : -7}deg) scale(${(0.86 + 0.14 * ratio).toFixed(3)})`;
       if (Math.abs(dx) > 10) paper.dataset.swipe = dx < 0 ? 'left' : 'right';
       else delete paper.dataset.swipe;
     };
@@ -1444,37 +1510,38 @@
         drag = null;
         paper.style.willChange = '';
         try { if (paper.hasPointerCapture(id)) paper.releasePointerCapture(id); } catch {}
-        paint(0, 0);
+        paint(0, 0, false);
         return;
       }
-      const dy = rawDy * 0.25;
-      const crossed = Math.abs(dx) > 0.26 * paper.offsetWidth;
+      const dy = rawDy * 0.18;
+      const crossed = Math.abs(dx) > 0.25 * paper.offsetWidth;
       if (crossed && !drag.locked) {
         drag.locked = true;
         buzz(10);
       } else if (!crossed && drag.locked) {
         drag.locked = false;
       }
-      paint(dx, dy);
+      paint(dx, dy, true);
     });
 
     function finish(event, cancelled) {
       if (!event.isPrimary || !drag) return;
       const dx = event.clientX - drag.x;
-      const dy = (event.clientY - drag.y) * 0.25;
+      const dy = (event.clientY - drag.y) * 0.18;
       const now = performance.now();
       const recent = drag.samples.find(sample => now - sample.at < 110);
       const velocity = recent ? (event.clientX - recent.x) / Math.max(1, now - recent.at) : 0;
       const commit = drag.axis === 'x'
-        && (Math.abs(dx) > 0.26 * paper.offsetWidth || (Math.abs(dx) >= 12 && Math.abs(velocity) > 0.55));
+        && (Math.abs(dx) > 0.25 * paper.offsetWidth || (Math.abs(dx) >= 12 && Math.abs(velocity) > 0.52));
       drag = null;
+      paper.classList.remove('is-dragging');
       paper.style.willChange = '';
       if (!cancelled && commit) {
         answer(dx < 0 ? 'made-up' : 'real', { dx, dy, velocity });
       } else if (reduced.matches || cancelled) {
-        paint(0, 0);
+        paint(0, 0, false);
       } else {
-        stopSpring = spring(value => paint(dx * value, dy * value), { stiffness: 400, damping: 28 });
+        stopSpring = spring(value => paint(dx * value, dy * value, false), { stiffness: 420, damping: 30 });
       }
     }
 
@@ -1484,6 +1551,7 @@
     view.stopDrag = () => {
       stopSpring?.();
       drag = null;
+      paper.classList.remove('is-dragging');
       paper.style.willChange = '';
       delete paper.dataset.swipe;
     };
@@ -1493,22 +1561,21 @@
     if (evalRes.correct) {
       const bits = [`+${formatPts(evalRes.delta)} PTS`];
       const formula = [String(SCORE_CFG.BASE_PTS)];
-      if (evalRes.speedBonus > 0) formula.push(`+${evalRes.speedBonus}⚡`);
+      if (evalRes.speedBonus > 0) formula.push(`+${evalRes.speedBonus} FAST`);
       let line = formula.join(' ');
       if (evalRes.mult > 1) line += ` × ${evalRes.mult.toFixed(1)}x`;
-      if (card.isJackpot && isAllIn) line += ' × 4X MEGA!';
+      if (card.isJackpot && isAllIn) line += ' × 4X MEGA';
       else if (card.isJackpot) line += ' × 2X JACKPOT';
       else if (isAllIn) line += ' × 2X ALL-IN';
       bits.push(line);
       return bits.join(' · ');
     }
     if (evalRes.busted) {
-      const bustAmt = evalRes.delta < 0 ? '-' + formatPts(Math.abs(evalRes.delta)) : '-0';
-      return `💀 BUSTED ${bustAmt} PTS`
-        + (evalRes.streakBroken ? ` · ${prevStreak}X STREAK SHATTERED` : '');
+      const bustText = evalRes.delta < 0 ? `BUSTED -${formatPts(Math.abs(evalRes.delta))} PTS` : 'ALL-IN BUSTED · 0 PTS';
+      return bustText + (evalRes.streakBroken ? ` · ${prevStreak}X STREAK BROKEN` : '');
     }
     if (evalRes.streakBroken) {
-      return `💔 ${prevStreak}X STREAK SHATTERED · +0 PTS`;
+      return `${prevStreak}X STREAK BROKEN · +0 PTS`;
     }
     return '+0 PTS · STREAK RESET';
   }
@@ -1626,77 +1693,14 @@
         const mark = stamp(card.verdict);
         paper.append(mark);
 
-        // Card center coordinates for floating popups & Canvas FX
-        const rect = paper.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height * 0.42;
-
-        if (correct) {
-          const rollMs = isBigHit ? 640 : 380;
-          rollScore(hudScore, prevPoints, run.points, rollMs, true);
-          const popupLabel = isMega
-            ? `+${formatPts(evalRes.delta)} 4X MEGA!!`
-            : card.isJackpot || allIn
-              ? `+${formatPts(evalRes.delta)}!!`
-              : `+${formatPts(evalRes.delta)}!`;
-          spawnFloat(popupLabel, cx, cy, isBigHit ? 'is-jackpot' : '');
-
-          if (evalRes.speedTag) {
-            setTimeout(() => spawnFloat(`⚡ ${evalRes.speedTag} +${evalRes.speedBonus}`, cx, cy - 42, 'is-sub is-speed'), 90);
-          }
-          if (card.isJackpot) {
-            setTimeout(() => spawnFloat('💰 2X JACKPOT', cx, cy + 36, 'is-sub is-jackpot'), 130);
-          } else if (allIn) {
-            setTimeout(() => spawnFloat('🎲 ALL-IN CASHED!', cx, cy + 36, 'is-sub is-jackpot'), 130);
-          }
-
-          if (isMega) {
-            triggerShake('heavy');
-            fx.burstCoins(cx, cy, 32);
-            fx.burstConfetti(cx, cy, 46);
-            buzz([25, 30, 35, 30, 50]);
-          } else if (card.isJackpot || allIn) {
-            triggerShake('med');
-            fx.burstCoins(cx, cy, 22);
-            fx.burstConfetti(cx, cy, 32);
-            buzz([20, 25, 35]);
-          } else if (run.streak >= 3) {
-            triggerShake('micro');
-            fx.burstConfetti(cx, cy, 24);
-            buzz(18);
-          } else {
-            buzz(12);
-          }
-        } else {
-          paper.classList.add('is-miss', 'game-miss');
-          if (evalRes.busted) {
-            rollScore(hudScore, prevPoints, run.points, 520, true);
-            const bustAmt = evalRes.delta < 0 ? '-' + formatPts(Math.abs(evalRes.delta)) : '-0';
-            spawnFloat(`💀 BUSTED ${bustAmt}`, cx, cy, 'is-bust');
-            triggerShake('heavy');
-            fx.burstShards(cx, cy, 24);
-            buzz([40, 30, 60]);
-          } else if (evalRes.streakBroken) {
-            const multRect = hudMult?.getBoundingClientRect();
-            const sx = multRect ? multRect.left + multRect.width / 2 : cx;
-            const sy = multRect ? multRect.top + multRect.height / 2 : cy;
-            spawnFloat(`💔 ${prevStreak}X STREAK SHATTERED`, cx, cy, 'is-bust is-streak-break');
-            triggerShake('med');
-            fx.burstShards(sx, sy, 20);
-            buzz([35, 25, 45]);
-          } else {
-            triggerShake('micro');
-            buzz(25);
-          }
-        }
-
-        // Reveal tray
+        // Build and show reveal tray FIRST so card settles to its final revealed position
+        // before measuring coordinates for floating popups and particle bursts.
         const mathBar = node(
           'div',
           'reveal-math-bar' + (correct ? (isBigHit ? ' is-big' : ' is-hit') : ' is-miss'),
           buildMathBreakdown(evalRes, card, allIn, prevStreak),
         );
-        const summary = node('div');
+        const summary = node('div', 'reveal-summary');
         const verdictLead = correct
           ? (isMega ? 'MEGA HIT' : 'CORRECT')
           : (evalRes.busted ? 'BUSTED' : 'MISS');
@@ -1715,30 +1719,89 @@
           revealBtns.append(sourceLink);
         }
         const isLast = run.answers.length >= run.deck.length;
-        const nextBtn = button(isLast ? 'SEE FINAL SCORE →' : 'NEXT CARD →', 'next', 'game-primary');
+        const nextBtn = button('', 'next', 'game-primary');
+        nextBtn.append(document.createTextNode(isLast ? 'SEE FINAL SCORE' : 'NEXT CARD'), ico('arrowR'));
         revealBtns.append(nextBtn);
 
-        reveal.replaceChildren(mathBar, summary, revealBtns);
+        reveal.replaceChildren(summary, mathBar, revealBtns);
         reveal.classList.toggle('is-miss', !correct);
         reveal.classList.toggle('is-big', isBigHit);
         reveal.hidden = false;
         view.revealed = true;
         view.revealedAt = performance.now();
         focus(nextBtn);
+
+        // Upper-center of the finalized revealed card (stays well clear of bottom stamp & reveal tray)
+        const rect = paper.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = Math.max(96, rect.top + rect.height * 0.42);
+
+        if (correct) {
+          const rollMs = isBigHit ? 560 : 340;
+          rollScore(hudScore, prevPoints, run.points, rollMs, true);
+          const popupLabel = isMega
+            ? `+${formatPts(evalRes.delta)} · 4X MEGA`
+            : card.isJackpot || allIn
+              ? `+${formatPts(evalRes.delta)}!!`
+              : `+${formatPts(evalRes.delta)}`;
+          spawnFloat(popupLabel, cx, cy, isBigHit ? 'is-jackpot' : '');
+
+          if (evalRes.speedTag) {
+            setTimeout(() => spawnFloat(`★ ${evalRes.speedTag} +${evalRes.speedBonus}`, cx, Math.max(76, cy - 38), 'is-sub is-speed'), 80);
+          }
+          if (card.isJackpot) {
+            setTimeout(() => spawnFloat('★ 2X JACKPOT', cx, cy + 30, 'is-sub is-jackpot'), 120);
+          } else if (allIn) {
+            setTimeout(() => spawnFloat('2X ALL-IN CASHED', cx, cy + 30, 'is-sub is-jackpot'), 120);
+          }
+
+          if (isMega) {
+            triggerShake('heavy');
+            fx.burstCoins(cx, cy, 30);
+            fx.burstConfetti(cx, cy, 42);
+            buzz([25, 30, 35, 30, 50]);
+          } else if (card.isJackpot || allIn) {
+            triggerShake('med');
+            fx.burstCoins(cx, cy, 20);
+            fx.burstConfetti(cx, cy, 28);
+            buzz([20, 25, 35]);
+          } else if (run.streak >= 3) {
+            triggerShake('micro');
+            fx.burstConfetti(cx, cy, 22);
+            buzz(18);
+          } else {
+            buzz(12);
+          }
+        } else {
+          paper.classList.add('is-miss', 'game-miss');
+          if (evalRes.busted) {
+            if (evalRes.delta < 0) rollScore(hudScore, prevPoints, run.points, 480, true);
+            const bustLabel = evalRes.delta < 0 ? `BUSTED -${formatPts(Math.abs(evalRes.delta))}` : 'ALL-IN BUSTED';
+            spawnFloat(bustLabel, cx, cy, 'is-bust');
+            triggerShake('heavy');
+            fx.burstShards(cx, cy, 22);
+            buzz([40, 30, 60]);
+          } else if (evalRes.streakBroken) {
+            const multRect = hudMult?.getBoundingClientRect();
+            const sx = multRect ? multRect.left + multRect.width / 2 : cx;
+            const sy = multRect ? multRect.top + multRect.height / 2 : cy;
+            spawnFloat(`${prevStreak}X STREAK BROKEN`, cx, cy, 'is-bust is-streak-break');
+            triggerShake('med');
+            fx.burstShards(sx, sy, 18);
+            buzz([35, 25, 45]);
+          } else {
+            triggerShake('micro');
+            buzz(25);
+          }
+        }
+
         const scoreLine = `Score ${formatPts(run.points)}${run.streak >= 2 ? `, streak ${run.streak}` : ''}.`;
         announce(`${verdictLead}. It was ${verdictText[card.verdict]}. ${buildMathBreakdown(evalRes, card, allIn, prevStreak)}. ${scoreLine} ${card.note}`);
-
-        animate(mark, [
-          { transform: 'scale(2.3) rotate(-14deg)', opacity: 0.25 },
-          { transform: 'scale(0.95) rotate(-6deg)', opacity: 1, offset: 0.78 },
-          { transform: 'scale(1) rotate(-6deg)', opacity: 1 },
-        ], 160, 'cubic-bezier(.22,1.4,.36,1)');
-        animate(reveal, [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], 220);
       };
 
       if (isBigHit && !reduced.matches) {
         paper.classList.add('is-hitstop');
-        pendingHitstop = setTimeout(doSlam, 45);
+        pendingHitstop = setTimeout(doSlam, 42);
       } else {
         doSlam();
       }
@@ -1748,15 +1811,15 @@
       revealCard();
     } else {
       animate(paper, [
-        { opacity: 1, transform: `translate(${motion.dx}px,${motion.dy}px)` },
+        { opacity: 1, transform: `translate3d(${motion.dx}px,${motion.dy}px,0)` },
         {
           opacity: 0,
-          transform: `translateX(${direction * (innerWidth + Math.min(160, Math.abs(motion.velocity) * 45))}px) rotate(${direction * 23}deg)`,
+          transform: `translate3d(${direction * (innerWidth + Math.min(160, Math.abs(motion.velocity) * 45))}px,${motion.dy - 14}px,0) rotate(${direction * 19}deg)`,
         },
-      ], 210, 'cubic-bezier(.7,0,.84,0)').finished.then(revealCard, revealCard);
+      ], 190, 'cubic-bezier(0.23, 1, 0.32, 1)').finished.then(revealCard, revealCard);
       // If the page is not rendering (backgrounded, throttled), the animation never finishes:
       // reveal anyway so the run can never get stuck between answer and reveal.
-      setTimeout(revealCard, 420);
+      setTimeout(revealCard, 380);
     }
   }
 
@@ -1904,8 +1967,9 @@
     stats = readStats();
     const sheet = node('div', 'hof-sheet');
     const header = node('header', 'hof-header');
-    const title = node('h2', 'game-heading', '🏆 HALL OF FAME');
+    const title = node('h2', 'game-heading hof-title-row');
     title.id = 'hof-title';
+    title.append(ico('trophy', 'ui-ico-lg'), document.createTextNode('HALL OF FAME'));
     const closeBtn = node('button', 'hof-close', '✕');
     closeBtn.type = 'button';
     closeBtn.setAttribute('aria-label', 'Close Hall of Fame');
@@ -1966,19 +2030,25 @@
     ptsWrap.append(ptsEl, node('span', 'result-pts-unit', 'POINTS'));
 
     const badges = node('div', 'result-badges');
+    const makeBadge = (cls, iconName, label) => {
+      const span = node('span', 'result-badge ' + cls);
+      if (iconName) span.append(ico(iconName, 'ui-ico-xs'));
+      span.append(document.createTextNode(label));
+      return span;
+    };
     badges.append(
-      node('span', 'result-badge is-acc', `${result.score}/10`),
-      node('span', 'result-badge is-streak', `🔥 ${result.best}X STREAK`),
+      makeBadge('is-acc', null, `${result.score}/10 SPOTTED`),
+      makeBadge('is-streak', 'bolt', `${result.best}X STREAK`),
     );
     if (result.allInTotal > 0) {
-      badges.append(node('span', 'result-badge is-allin', `💰 ${result.allInWins}/${result.allInTotal} ALL-IN`));
+      badges.append(makeBadge('is-allin', 'dice', `${result.allInWins}/${result.allInTotal} ALL-IN`));
     } else if (result.jackpotsHit > 0) {
-      badges.append(node('span', 'result-badge is-jackpot', `⭐ ${result.jackpotsHit}/2 JACKPOTS`));
+      badges.append(makeBadge('is-jackpot', 'star', `${result.jackpotsHit}/2 JACKPOTS`));
     }
     if (hofRank === 1) {
-      badges.append(node('span', 'result-badge is-record', '👑 NEW #1 RECORD!'));
+      badges.append(makeBadge('is-record', 'crown', 'NEW #1 RECORD'));
     } else if (hofRank > 0) {
-      badges.append(node('span', 'result-badge is-record', `🏆 TOP 10 (#${hofRank})`));
+      badges.append(makeBadge('is-record', 'trophy', `TOP 10 · #${hofRank}`));
     }
     hero.append(ptsWrap, badges);
 
@@ -2001,16 +2071,16 @@
         const tied = diff === 0;
         chalEl.dataset.outcome = won ? 'win' : tied ? 'tie' : 'loss';
         chalEl.textContent = won
-          ? `🏆 YOU BEAT ${rival}'S ${formatPts(targetPoints)} PTS (+${formatPts(diff)})!`
+          ? `YOU BEAT ${rival}'S ${formatPts(targetPoints)} PTS (+${formatPts(diff)})`
           : tied
-            ? `🤝 DEAD TIE WITH ${rival} AT ${formatPts(targetPoints)} PTS!`
-            : `💀 ${rival} STILL HOLDS THIS DECK (${formatPts(targetPoints)} PTS · YOU NEED +${formatPts(-diff)})`;
+            ? `DEAD TIE WITH ${rival} AT ${formatPts(targetPoints)} PTS`
+            : `${rival} STILL HOLDS THIS DECK (${formatPts(targetPoints)} PTS · NEED +${formatPts(-diff)})`;
       } else {
         const won = result.score > targetAcc;
         chalEl.dataset.outcome = won ? 'win' : 'loss';
         chalEl.textContent = won
-          ? `🏆 YOU BEAT ${rival}'S ${targetAcc}/10 WITH ${result.score}/10!`
-          : `⚔ CHALLENGE TARGET: ${targetAcc}/10 (YOU GOT ${result.score}/10)`;
+          ? `YOU BEAT ${rival}'S ${targetAcc}/10 WITH ${result.score}/10`
+          : `CHALLENGE TARGET: ${targetAcc}/10 (YOU GOT ${result.score}/10)`;
       }
       pane.append(chalEl);
     }
@@ -2025,6 +2095,7 @@
     result.answers.forEach((entry, index) => {
       const { card, correct, isJackpot, isAllIn, busted, streak } = entry;
       const square = node('li');
+      square.style.setProperty('--tile-i', String(index));
       square.dataset.correct = String(correct);
       square.dataset.verdict = card.verdict;
       if (isJackpot) square.dataset.jackpot = 'true';
@@ -2062,26 +2133,35 @@
     if (highlightCard) {
       fooledBox = node('div', 'result-fooled');
       fooledBox.append(
-        node('div', 'result-fooled-kicker', result.fooled ? 'THE ONE THAT GOT ME 💀' : 'FLAWLESS 10/10 — WILDEST REAL ONE 🤯'),
+        node('div', 'result-fooled-kicker', result.fooled ? 'THE ONE THAT GOT ME' : 'FLAWLESS 10/10 — WILDEST REAL ONE'),
         node('p', 'result-fooled-text', highlightCard.text),
         stamp(highlightCard.verdict, 'result-fooled-stamp'),
       );
     }
 
-    // Primary Actions (Play Again + Copy Score + Share Poster)
+    // Primary Actions (Share row + Next Deck + Secondary utility row)
     const actions = node('div', 'result-actions');
-    const playAgainBtn = button('▶ NEXT DECK (R)', 'random', 'game-primary result-play-again');
+    const playAgainBtn = button('', 'random', 'game-primary result-play-again');
+    playAgainBtn.append(ico('play'), document.createTextNode('PLAY NEXT DECK'), node('span', 'kb-only', ' (R)'));
     playAgainBtn.setAttribute('aria-keyshortcuts', 'R');
-    const replayBtn = button('↻ REPLAY THIS DECK', 'replay-same', 'result-replay-btn');
-    replayBtn.title = 'Same 10 cards and jackpot slots. Try to beat ' + formatPts(result.points) + ' pts.';
+
     const shareRow = node('div', 'game-buttons result-share-row');
-    const copyBtn = button('📋 COPY SCORE', 'copy-score', 'result-copy-btn');
-    const shareBtn = button('📸 SHARE / SAVE CARD', 'share', 'result-share-btn');
+    const copyBtn = button('', 'copy-score', 'result-copy-btn');
+    copyBtn.append(ico('copy'), document.createTextNode('COPY SCORE'));
+    const shareBtn = button('', 'share', 'result-share-btn');
+    shareBtn.append(ico('share'), document.createTextNode('SHARE CARD'));
     shareBtn.disabled = true;
     shareRow.append(copyBtn, shareBtn);
-    // Share sits first so it lands above the fold on small phones; it's the growth loop.
-    actions.append(shareRow, playAgainBtn, replayBtn);
-    if (wp.api) actions.append(button('Explore Timeline', 'explore', 'result-explore-btn'));
+
+    const utilityRow = node('div', 'result-utility-row');
+    const replayBtn = button('', 'replay-same', 'result-replay-btn');
+    replayBtn.append(ico('replay'), document.createTextNode('REPLAY DECK'));
+    replayBtn.title = 'Same 10 cards and jackpot slots. Try to beat ' + formatPts(result.points) + ' pts.';
+    utilityRow.append(replayBtn);
+    if (wp.api) utilityRow.append(button('EXPLORE TIMELINE', 'explore', 'result-explore-btn'));
+    else utilityRow.classList.add('is-single');
+
+    actions.append(shareRow, playAgainBtn, utilityRow);
 
     const status = node('p', 'result-status', '');
     status.setAttribute('role', 'status');
@@ -2092,7 +2172,8 @@
     const previewImg = node('img');
     previewImg.alt = 'Shareable score poster preview — tap to share or save';
     previewImg.addEventListener('click', () => shareBtn.click());
-    previewWrap.append(previewImg);
+    const previewCap = node('p', 'result-poster-cap', 'TAP POSTER TO SHARE OR SAVE');
+    previewWrap.append(previewImg, previewCap);
 
     // Challenge Link Input
     const linkInput = node('input', 'game-challenge');
@@ -2128,7 +2209,9 @@
     handleBar.append(handleLabel, handleInput, handleSave);
 
     const hofSection = node('section', 'result-hof');
-    hofSection.append(node('h3', 'result-hof-title', '🏆 LOCAL HALL OF FAME'));
+    const hofTitle = node('h3', 'result-hof-title');
+    hofTitle.append(ico('trophy'), document.createTextNode('LOCAL HALL OF FAME'));
+    hofSection.append(hofTitle);
     const hofTableHost = node('div', 'result-hof-host');
     hofTableHost.append(buildHofTable(result.id));
     hofSection.append(handleBar, hofTableHost);
@@ -2166,22 +2249,22 @@
     pane.append(previewWrap, linkInput, hofSection, details);
 
     // Climax odometer roll + celebration FX
-    rollScore(ptsEl, 0, result.points, 850, true);
+    rollScore(ptsEl, 0, result.points, 760, true);
     if (isNewRecord || result.score >= 8) {
       setTimeout(() => {
         const rect = hero.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
-        fx.burstCoins(cx, cy, 24);
-        fx.burstConfetti(cx, cy, 38);
-      }, 220);
+        fx.burstCoins(cx, cy, 22);
+        fx.burstConfetti(cx, cy, 34);
+      }, 200);
     }
 
     regeneratePoster();
     animate(pane, [
-      { opacity: 0, transform: 'translateY(-36px) scale(.97)' },
+      { opacity: 0, transform: 'translate3d(0, 18px, 0) scale(0.985)' },
       { opacity: 1, transform: 'none' },
-    ], 420);
+    ], 280, 'cubic-bezier(0.23, 1, 0.32, 1)');
     focus(playAgainBtn);
     announce(`Run complete. ${formatPts(result.points)} points, ${result.score} of ${result.answers.length} correct, best streak ${result.best}. Rank: ${rank.title}.`
       + (hofRank === 1 ? ' New number one record.' : hofRank > 0 ? ` Hall of Fame position ${hofRank}.` : '')
@@ -2189,7 +2272,8 @@
   }
 
   // Reopen button (when in Explore mode)
-  const reopen = button('▶ Play Random Deck', 'reopen');
+  const reopen = button('', 'reopen');
+  reopen.append(ico('play'), document.createTextNode('Play Random Deck'));
   reopen.id = 'game-reopen';
   reopen.hidden = true;
   document.body.append(reopen);
@@ -2203,7 +2287,7 @@
   setupCoverChallenge();
 
   if (challengeSeed) {
-    coverPlay.textContent = '▶ Accept Challenge';
+    coverPlay.replaceChildren(ico('play', 'ui-ico-play'), document.createTextNode('Accept Challenge'));
     track('challenge_open', { seed: challengeSeed, pts: targetPoints, acc: targetAcc });
   }
 
@@ -2288,10 +2372,13 @@
         const copied = await WP_SHARE.copyText(result);
         if (status) status.textContent = copied.message;
         if (!copied.ok && link) link.hidden = false;
-        const original = control.textContent;
-        control.textContent = copied.ok ? 'COPIED ✓' : 'COPY LINK ↓';
+        control.classList.toggle('is-copied', copied.ok);
+        control.replaceChildren(ico('copy'), document.createTextNode(copied.ok ? 'COPIED ✓' : 'COPY LINK ↓'));
         setTimeout(() => {
-          if (document.contains(control)) control.textContent = original;
+          if (document.contains(control)) {
+            control.classList.remove('is-copied');
+            control.replaceChildren(ico('copy'), document.createTextNode('COPY SCORE'));
+          }
         }, 2200);
         break;
       }

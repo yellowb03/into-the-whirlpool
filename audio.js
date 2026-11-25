@@ -1591,14 +1591,13 @@
           : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>';
       }
       if (settingsSheet) {
-        settingsSheet.style.display = settingsOpen ? 'flex' : 'none';
+        settingsSheet.classList.toggle('is-open', settingsOpen);
+        settingsSheet.setAttribute('aria-hidden', settingsOpen ? 'false' : 'true');
         var btns = settingsSheet.querySelectorAll ? settingsSheet.querySelectorAll('button[data-wp-mode]') : [];
         for (var i = 0; i < btns.length; i++) {
           var m = btns[i].getAttribute('data-wp-mode');
           var active = m === soundMode;
           btns[i].setAttribute('aria-pressed', active ? 'true' : 'false');
-          btns[i].style.background = active ? 'rgba(255,255,255,0.20)' : 'transparent';
-          btns[i].style.fontWeight = active ? '600' : '400';
         }
       }
     } catch (_) {}
@@ -1685,21 +1684,21 @@
       settingsSheet.id = 'wp-audio-settings-sheet';
       settingsSheet.setAttribute('role', 'group');
       settingsSheet.setAttribute('aria-label', 'Sound mode');
+      settingsSheet.setAttribute('aria-hidden', 'true');
       settingsSheet.style.position = 'fixed';
       settingsSheet.style.right = '16px';
       settingsSheet.style.bottom = '136px';
-      settingsSheet.style.display = 'none';
+      settingsSheet.style.display = 'flex';
       settingsSheet.style.flexDirection = 'column';
       settingsSheet.style.gap = '4px';
       settingsSheet.style.padding = '8px';
-      settingsSheet.style.borderRadius = '12px';
-      settingsSheet.style.border = '1px solid rgba(255, 255, 255, 0.22)';
-      settingsSheet.style.background = 'rgba(10, 12, 18, 0.86)';
-      settingsSheet.style.color = '#f4f6fb';
-      settingsSheet.style.fontFamily = 'system-ui, -apple-system, sans-serif';
-      settingsSheet.style.fontSize = '13px';
       settingsSheet.style.zIndex = '10000';
-      settingsSheet.style.minWidth = '132px';
+      settingsSheet.style.minWidth = '144px';
+
+      var sheetTitle = document.createElement('div');
+      sheetTitle.className = 'wp-audio-sheet-title';
+      sheetTitle.textContent = 'SOUND MIX';
+      settingsSheet.appendChild(sheetTitle);
 
       SOUND_MODES.forEach(function (mode) {
         var optBtn = document.createElement('button');
@@ -1707,18 +1706,35 @@
         optBtn.setAttribute('data-wp-mode', mode);
         optBtn.textContent = SOUND_MODE_LABELS[mode];
         optBtn.style.border = 'none';
-        optBtn.style.borderRadius = '8px';
-        optBtn.style.padding = '6px 10px';
-        optBtn.style.color = '#f4f6fb';
         optBtn.style.textAlign = 'left';
         optBtn.style.cursor = 'pointer';
-        optBtn.style.background = 'transparent';
         optBtn.addEventListener('click', function (ev) {
           if (ev && ev.stopPropagation) ev.stopPropagation();
           playSample('ui', 'press');
           setSoundMode(mode);
+          settingsOpen = false;
+          if (settingsBtn) settingsBtn.setAttribute('aria-expanded', 'false');
+          renderControls();
         });
         settingsSheet.appendChild(optBtn);
+      });
+
+      document.addEventListener('pointerdown', function (ev) {
+        if (!settingsOpen) return;
+        var t = ev && ev.target;
+        if (t && (settingsSheet.contains(t) || (settingsBtn && settingsBtn.contains(t)))) return;
+        settingsOpen = false;
+        if (settingsBtn) settingsBtn.setAttribute('aria-expanded', 'false');
+        renderControls();
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (!settingsOpen || ev.key !== 'Escape') return;
+        settingsOpen = false;
+        if (settingsBtn) {
+          settingsBtn.setAttribute('aria-expanded', 'false');
+          try { settingsBtn.focus(); } catch (_) {}
+        }
+        renderControls();
       });
 
       document.body.appendChild(settingsSheet);
