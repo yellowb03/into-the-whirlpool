@@ -1,7 +1,7 @@
 /*
  * audio.js (v2) — Hybrid sample + generative Web Audio soundtrack for Into the Whirlpool
  *
- * Implements SOUND.md v2 on top of the GEMINI.md v1 synth engine:
+ * Sample layer on top of the v1 synth engine:
  *  - Manifest-driven dual-format loader (.webm Opus / .m4a AAC via canPlayType)
  *  - Staged lazy-loading: UI/core SFX -> cover/amb -> current era -> next era ahead
  *  - 5-bus mix: music (stems), synth (v1), amb, sfx, ui -> master EQ -> limiter -> out
@@ -46,7 +46,7 @@
     focusSwellGain: 0.15,
     spinWhooshMaxGain: 0.19,
     panelToneGain: 0.12,
-    panelDuckGain: 0.316,       // -10 dB when case file is open (SOUND.md sec 5)
+    panelDuckGain: 0.316,       // -10 dB when case file is open
     stampDuckGain: 0.56,        // -5 dB dip for 300ms on stamps/Crossing
 
     maxCutoffHz: 7800,
@@ -1467,7 +1467,7 @@
   }
 
   // =========================================================================
-  // 15. EVENT HANDLERS (GEMINI.md + SOUND.md / GAME.md events)
+  // 15. EVENT HANDLERS (timeline + game events)
   // =========================================================================
   function handleStart() {
     try {
@@ -1738,7 +1738,7 @@
     // iOS first-touch unlock listener
     window.addEventListener('touchstart', unlockIOSAudio, { passive: true, once: true });
 
-    // Core timeline events (GEMINI.md)
+    // Core timeline events
     window.addEventListener('wp:start', handleStart);
     window.addEventListener('wp:word', handleWord);
     window.addEventListener('wp:year', handleYear);
@@ -1749,7 +1749,7 @@
     window.addEventListener('wp:now', triggerNowCrossing);
     window.addEventListener('wp:restart', triggerRestartWhiteout);
 
-    // Game & tactile foley events (SOUND.md / GAME.md)
+    // Game & tactile foley events
     window.addEventListener('wp:stamp', function (ev) {
       var d = ev && ev.detail;
       triggerStamp(d && d.kind, d);

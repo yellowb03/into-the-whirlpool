@@ -7,11 +7,21 @@
 <meta name="description" content="Real AI news is completely unhinged. Swipe REAL or MADE UP across random 10-card decks, stack 5x streaks, go 2X ALL-IN, and challenge friends.">
 <meta name="theme-color" content="#ffe800">
 <link rel="canonical" href="https://am-i-crazy.vercel.app/">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/ui/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="Am I Crazy?">
+<meta name="application-name" content="Am I Crazy?">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://am-i-crazy.vercel.app/">
+<meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Am I Crazy?">
 <meta property="og:title" content="Am I Crazy? — The AI Headline Game">
 <meta property="og:description" content="Real AI news is completely unhinged. Swipe REAL or MADE UP, stack 5x streaks, go 2X ALL-IN, and beat your friends' high score.">
 <meta property="og:image" content="https://am-i-crazy.vercel.app/assets/ui/am-i-crazy-preview.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Am I Crazy? in black and hot pink against a yellow and cobalt risograph print">
@@ -20,6 +30,14 @@
 <meta name="twitter:title" content="Am I Crazy? — The AI Headline Game">
 <meta name="twitter:description" content="Real AI news is completely unhinged. Swipe REAL or MADE UP, stack 5x streaks, go 2X ALL-IN, and beat your friends' high score.">
 <meta name="twitter:image" content="https://am-i-crazy.vercel.app/assets/ui/am-i-crazy-preview.jpg">
+<meta name="twitter:image:alt" content="Am I Crazy? in black and hot pink against a yellow and cobalt risograph print">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"WebSite","@id":"https://am-i-crazy.vercel.app/#website","url":"https://am-i-crazy.vercel.app/","name":"Am I Crazy?","alternateName":"Am I Crazy? — The AI Headline Game","inLanguage":"en"},
+{"@type":"VideoGame","@id":"https://am-i-crazy.vercel.app/#game","name":"Am I Crazy?","url":"https://am-i-crazy.vercel.app/","description":"Real AI news is completely unhinged. Swipe REAL or MADE UP across random 10-card decks, stack 5x streaks, go 2X ALL-IN, and challenge friends.","image":"https://am-i-crazy.vercel.app/assets/ui/am-i-crazy-preview.jpg","genre":["Trivia","Quiz","Casual"],"gamePlatform":["Web browser"],"applicationCategory":"Game","operatingSystem":"Any","playMode":"SinglePlayer","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isPartOf":{"@id":"https://am-i-crazy.vercel.app/#website"}}
+]}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Big+Shoulders+Stencil+Display:wght@900&family=Courier+Prime:wght@700&family=IBM+Plex+Mono:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,600&family=Caveat:wght@600&family=JetBrains+Mono:wght@500&family=Manrope:wght@600&display=swap" rel="stylesheet">
@@ -64,7 +82,7 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .stamp.fc{color:var(--ink);border-color:var(--ink)}
 .sheet p.pwho{font:400 13px "IBM Plex Mono",monospace;color:#55505a;margin:-8px 0 6px}
 .sheet h2{font:900 clamp(34px,4.2vw,54px)/.92 "Big Shoulders Display",Impact,sans-serif;margin:14px 0 16px;text-wrap:balance}
-.sheet h3{font:600 11px "IBM Plex Mono",monospace;color:#6d6874;margin:16px 0 3px}
+.sheet h3{font:600 12px "IBM Plex Mono",monospace;letter-spacing:.06em;color:#5f5a66;margin:16px 0 3px}
 .sheet p{margin:0;font:400 18px/1.45 Newsreader,Georgia,serif;max-width:60ch}
 .podds[hidden],#psrcw[hidden]{display:none}
 .tally{display:inline-flex;gap:3px;vertical-align:middle;margin-right:8px}
@@ -78,11 +96,14 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .pclose{position:absolute;right:max(4vw,20px);top:calc(42px + env(safe-area-inset-top));color:#fff!important;background:#000!important;padding:0 10px!important;text-decoration:none!important;z-index:1}
 .panel.narrow .pclose{right:auto;left:12px}
 .hint{opacity:0}.hint.show{opacity:1}.hint.show.gone{opacity:0}
-#wp-audio-toggle{border-radius:0!important;background:#000!important;border:2px solid var(--yellow)!important;color:var(--yellow)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;right:max(4vw,16px)!important;bottom:calc(76px + env(safe-area-inset-bottom))!important;box-shadow:4px 4px 0 var(--pink)}
-#wp-audio-toggle[aria-pressed=true]{color:#777!important;border-color:#777!important;box-shadow:none}
-#wp-audio-toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* audio.js controls: one compact 44px square style everywhere; game.css repositions them per screen */
+:is(#wp-audio-toggle,#wp-audio-settings-toggle){width:44px!important;height:44px!important;border-radius:0!important;background:#000!important;border:2px solid var(--yellow)!important;color:var(--yellow)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;bottom:calc(76px + env(safe-area-inset-bottom))!important;box-shadow:3px 3px 0 var(--pink);transition:transform 120ms,box-shadow 120ms}
+:is(#wp-audio-toggle,#wp-audio-settings-toggle) svg{width:18px;height:18px}
+:is(#wp-audio-toggle,#wp-audio-settings-toggle):active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--pink)}
+#wp-audio-toggle{right:max(4vw,16px)!important}
+#wp-audio-toggle[aria-pressed=true]{color:#9a95a0!important;border-color:#9a95a0!important}
+:is(#wp-audio-toggle,#wp-audio-settings-toggle):focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 .panel.open~#wp-audio-toggle{display:none!important}
-#wp-audio-settings-toggle{border-radius:0!important;background:#000!important;border:2px solid var(--yellow)!important;color:var(--yellow)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:4px 4px 0 var(--pink)}
 #wp-audio-settings-sheet{border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important;border:2px solid #000!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:6px 6px 0 var(--pink)!important;font-family:"IBM Plex Mono",monospace!important}
 #wp-audio-settings-sheet button{border-radius:0!important;font-family:"IBM Plex Mono",monospace!important;color:var(--ink)!important;background:transparent!important;text-align:left!important;min-height:44px}
 #wp-audio-settings-sheet button[aria-pressed=true]{background:#000!important;color:var(--yellow)!important}
@@ -91,7 +112,7 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .err{position:fixed;inset:0;display:grid;place-items:center;color:#fff;padding:24px;text-align:center}
 @media(max-width:600px){.hl{font-size:12px}.sheet h2{font-size:34px}.sheet p{font-size:16px}.hint{font-size:11px;bottom:calc(70px + env(safe-area-inset-bottom))}}
 </style>
-<link rel="stylesheet" href="game.css?v=4">
+<link rel="stylesheet" href="game.css?v=5">
 </head>
 <body>
 <div id="stage" aria-label="An endless psychedelic whirlpool through AI history from 2012 to now, then five years of predictions. Tap a word to open it, hold to slow time, drag to spin."></div>
@@ -122,31 +143,38 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
       </div>
       <div class="cv-actions">
         <button type="button" id="game-launch">▶ Play Random Deck</button>
-        <button type="button" id="game-hof">🏆 Hall of Fame</button>
-        <button type="button" id="game-explore" hidden>Explore Timeline</button>
+        <div class="cv-secondary">
+          <button type="button" id="game-hof">🏆 Hall of Fame</button>
+          <button type="button" id="game-explore" hidden>Explore Timeline</button>
+        </div>
       </div>
     </div>
-    <div class="cv-foot"><span>Made by Briam with Claude, ChatGPT &amp; Gemini</span><span>Tainan, Taiwan</span></div>
   </div>
 </section>
 <div id="wp-game" hidden>
   <header class="game-bar">
-    <div class="hud-left">
+    <span class="hud-logo" role="img" aria-label="Am I Crazy?">
       <img src="assets/ui/am-i-crazy-mark.webp" alt="" width="144" height="96">
-      <div class="hud-card-wrap">
-        <span id="hud-count">01/10</span>
-        <div id="hud-pips" class="hud-pips" aria-hidden="true"></div>
-      </div>
+      <span class="hud-logo-word" aria-hidden="true">CRAZY?</span>
+    </span>
+    <div class="hud-card-wrap">
+      <span class="hud-label" aria-hidden="true">CARD</span>
+      <span id="hud-count">01/10</span>
     </div>
-    <div class="hud-score-wrap" aria-live="polite">
+    <div class="hud-score-wrap">
       <span class="hud-score-label" id="hud-score-label">SCORE</span>
       <strong id="hud-score">0</strong>
     </div>
-    <div class="hud-right">
+    <div class="hud-mult-wrap">
+      <span class="hud-label" aria-hidden="true">STREAK</span>
       <span id="hud-mult" class="hud-mult" data-tier="0">1.0x</span>
-      <button type="button" data-game-action="hof" class="hud-icon-btn" aria-label="Hall of Fame" title="Hall of Fame">🏆</button>
-      <button type="button" data-game-action="explore" id="game-leave" hidden>Exit</button>
     </div>
+    <div class="hud-tools">
+      <button type="button" data-game-action="hof" class="hud-icon-btn" aria-label="Hall of Fame" title="Hall of Fame">🏆</button>
+      <button type="button" data-game-action="explore" id="game-leave" class="hud-exit" hidden>Exit</button>
+      <span class="hud-audio-slot" aria-hidden="true"></span>
+    </div>
+    <div id="hud-pips" class="hud-pips" aria-hidden="true"></div>
   </header>
   <main id="game-screen" aria-label="Real or Made Up?"></main>
 </div>
@@ -173,22 +201,25 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
   <button id="pclose" class="pclose" aria-label="Close">close &#215;</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
-<script src="data.js"></script>
-<script src="cards.js"></script>
-<script src="headlines.js?v=4"></script>
-<script src="mem.js"></script>
-<script src="main.js?v=2"></script>
-<script src="share.js?v=4"></script>
-<script src="game.js?v=4"></script>
-<script src="audio.js"></script>
-<script src="audio-bridge.js?v=4"></script>
+<noscript><div style="position:fixed;inset:0;z-index:99;display:grid;place-items:center;padding:24px;background:#f5ecdc;color:#0a080f;font:600 16px/1.5 'IBM Plex Mono',ui-monospace,monospace;text-align:center"><p style="max-width:34ch;margin:0;padding:22px;border:3px solid #0a080f;box-shadow:6px 6px 0 #ff2a9d;background:#fffaf0">Am I Crazy? needs JavaScript to deal the cards. Turn it on and reload to play.</p></div></noscript>
+<!-- Scripts: classic + defer keeps execution order. three.js files are pinned with SRI.
+     Bump every ?v= below together (one number) whenever any local script changes. -->
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/environments/RoomEnvironment.js" integrity="sha384-UpJYDNQ/8wDmBlzh4lZ9VMbunag9yRAOGFiBWYVaf6/FCnrwc9qlto25EZVLhpph" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js" integrity="sha384-nhO9toQuMo5osCuA0l+YFpSqscZWxDu251Bnho2gD3kSPv1neEwHg0LyEmrA+mPj" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js" integrity="sha384-mY+ii969jnDCI2HjRHftH2NZVkIO5ZGUkcnGCg3oVJ3kVstWQXwerYWBg+nbUG4R" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js" integrity="sha384-GkidzTYmQg24v13sa3xhBBbvOLbVLO1QxfyKLdOWweQqNqS/iWwUst2T1fER2Xrg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js" integrity="sha384-2EpLreWSFuZsk4hcSplXLhlHd/wzvDNF907bTGIXSXM0SlhJNzy4YK0DhBFvkFEs" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js" integrity="sha384-I3lsvPeDJYFrEAzn/TA0yhc/SCYKwpyfyq8lKzHYKohu43H9f7xc/Q9ZWgSVUDl3" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js" integrity="sha384-aVQ2QnWkoxhOefDB0YZB64OPVzujvccydpcC7UqMDJUK0ChwA382zOHmrWHGDRRa" crossorigin="anonymous"></script>
+<script defer src="data.js?v=5"></script>
+<script defer src="cards.js?v=5"></script>
+<script defer src="headlines.js?v=5"></script>
+<script defer src="mem.js?v=5"></script>
+<script defer src="main.js?v=5"></script>
+<script defer src="share.js?v=5"></script>
+<script defer src="game.js?v=5"></script>
+<script defer src="audio.js?v=5"></script>
+<script defer src="audio-bridge.js?v=5"></script>
 </body>
 </html>

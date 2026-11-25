@@ -1,0 +1,27 @@
+# Allowlist: ship only what the browser needs. Everything at the repo root is
+# ignored unless re-included below, so new notes, briefs or scripts never go public
+# by accident. Add new runtime files/folders here.
+/*
+!index.html
+!404.html
+!*.js
+!*.css
+!sources.json
+!site.webmanifest
+!robots.txt
+!sitemap.xml
+!favicon.ico
+!apple-touch-icon.png
+!vercel.json
+!assets
+
+# Belt and braces: never ship internal folders even if a rule above changes
+tools
+docs
+.claude
+*.md
+
+# Inside assets/: source sheets and docs that the game never loads
+assets/**/*.md
+assets/characters/character-sheet.jpg
+assets/ui/_sheet.jpg

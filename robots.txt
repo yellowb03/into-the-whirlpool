@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://am-i-crazy.vercel.app/sitemap.xml

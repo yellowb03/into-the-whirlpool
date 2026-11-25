@@ -7,6 +7,20 @@
     'real-unproven': 'REAL, UNPROVEN',
   };
 
+  // Canvas fonts. Every face used on the poster is listed here so it can be
+  // loaded before drawing (the poster must never render in fallback fonts).
+  const DISPLAY = '"Big Shoulders Display", Impact, "Arial Narrow", sans-serif';
+  const MONO = '"IBM Plex Mono", ui-monospace, Menlo, monospace';
+  const FONT_FACES = [
+    '900 100px "Big Shoulders Display"',
+    '700 100px "Big Shoulders Display"',
+    '700 30px "IBM Plex Mono"',
+    '600 30px "IBM Plex Mono"',
+  ];
+  const FONT_SAMPLE = 'AMICRAZY?0123456789,.#+-/:· abcdefghijklmnopqrstuvwxyz';
+
+  // ---------- small helpers ----------
+
   function cleanHandle(raw) {
     return String(raw || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 12);
   }
@@ -15,9 +29,39 @@
     return Math.max(0, Math.round(Number(n) || 0)).toLocaleString('en-US');
   }
 
+  function withTimeout(promise, ms, fallback = null) {
+    return Promise.race([
+      Promise.resolve(promise).catch(() => fallback),
+      new Promise(resolve => setTimeout(() => resolve(fallback), ms)),
+    ]);
+  }
+
+  let fontsPromise = null;
+  function ensureFonts() {
+    if (!document.fonts?.load) return Promise.resolve(false);
+    if (!fontsPromise) {
+      const loads = FONT_FACES.map(face => document.fonts.load(face, FONT_SAMPLE).catch(() => []));
+      fontsPromise = withTimeout(Promise.all(loads).then(() => document.fonts.ready), 3500)
+        .then(() => FONT_FACES.every(face => {
+          try { return document.fonts.check(face, FONT_SAMPLE); } catch { return false; }
+        }))
+        .then(ok => {
+          if (!ok) fontsPromise = null; // allow a retry on the next poster
+          return ok;
+        });
+    }
+    return fontsPromise;
+  }
+
+  // Challenge link. Format is frozen for backwards compatibility:
+  // ?deck=<seed>&pts=<points>&acc=<0-10>[&by=<TAG>]
   function challengeURL(seed, points = 0, accuracy = 0, handle = '') {
-    const canonical = document.querySelector('link[rel="canonical"]')?.href;
-    const url = new URL(location.hostname === legacyHost && canonical ? canonical : location.href);
+    let base = location.href;
+    try {
+      const canonical = document.querySelector('link[rel="canonical"]')?.href;
+      if (location.hostname === legacyHost && canonical) base = canonical;
+    } catch {}
+    const url = new URL(base);
     url.search = '';
     url.hash = '';
     url.searchParams.set('deck', seed);
@@ -28,8 +72,49 @@
     return url.href;
   }
 
+  // Short, typeable host for the poster ("am-i-crazy.vercel.app").
+  function shortURL() {
+    const local = /^(localhost|127\.0\.0\.1|\[::1\]|.*\.localhost|.*\.test)$/i.test(location.hostname)
+      || location.hostname === legacyHost || !location.hostname;
+    if (local) {
+      try {
+        const canonical = document.querySelector('link[rel="canonical"]')?.href;
+        if (canonical) return new URL(canonical).host;
+      } catch {}
+      return 'am-i-crazy.vercel.app';
+    }
+    return location.host;
+  }
+
   function displayURL(href) {
     return String(href || '').replace(/^https?:\/\//, '');
+  }
+
+  // Opponent info when this run came from a challenge link.
+  function challengeInfo(result) {
+    if (!result?.isChallenge) return null;
+    try {
+      const params = new URLSearchParams(location.search);
+      const rawPts = params.get('pts');
+      const pts = /^\d{1,5}$/.test(rawPts || '') ? Number(rawPts) : null;
+      const by = cleanHandle(params.get('by')) || 'MY FRIEND';
+      if (pts === null) return null;
+      const diff = Math.round(Number(result.points) || 0) - pts;
+      return { by, pts, diff, won: diff > 0, tied: diff === 0 };
+    } catch {
+      return null;
+    }
+  }
+
+  function dailyLabel(result) {
+    const seed = String(result?.seed || '');
+    // Any "<prefix->YYYYMMDD" seed labels as a daily when the run kind is daily;
+    // legacy d2-YYYYMMDD seeds were date decks too.
+    const match = seed.match(/(?:^|-)(\d{4})(\d{2})(\d{2})$/);
+    if (result?.kind !== 'daily' && !(match && seed.startsWith('d2-'))) return '';
+    if (!match) return 'DAILY';
+    const date = new Date(Date.UTC(+match[1], +match[2] - 1, +match[3]));
+    return 'DAILY ' + date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' }).toUpperCase();
   }
 
   function tileEmoji(entry) {
@@ -43,58 +128,62 @@
     return entry.busted || entry.isAllIn ? '💥' : '🟥';
   }
 
-  function pickHighlightCard(result) {
-    if (result.fooled) return { card: result.fooled, gotCooked: true };
-    const realHit = (result.answers || []).find(a => a.card && a.card.verdict !== 'made-up');
-    return realHit ? { card: realHit.card, gotCooked: false } : null;
+  function emojiGrid(answers) {
+    const tiles = (answers || []).slice(0, 10).map(tileEmoji);
+    return [tiles.slice(0, 5).join(''), tiles.slice(5, 10).join('')].filter(Boolean).join('\n');
   }
 
-  function shareText(result) {
-    const {
-      answers = [],
-      seed = '',
-      points = 0,
-      score = 0,
-      best = 0,
-      rank = { title: 'CAUTIOUSLY SANE' },
-      handle = '',
-      allInWins = 0,
-      allInTotal = 0,
-      jackpotsHit = 0,
-    } = result;
-
-    const tiles = answers.map(tileEmoji).join('');
-    const url = challengeURL(seed, points, score, handle);
-    const lines = [
-      `AM I CRAZY? 🧠 ${formatPts(points)} PTS (${score}/10)`,
-      `Rank: ${rank.title}`,
-      tiles,
-    ];
-
-    const statBits = [`Streak: ${best}x`];
-    if (allInTotal > 0) statBits.push(`All-In: ${allInWins}/${allInTotal} 💰`);
-    else if (jackpotsHit > 0) statBits.push(`Jackpots: ${jackpotsHit}/2 ⭐`);
-    lines.push(statBits.join(' | '));
-
-    const highlight = pickHighlightCard(result);
-    if (highlight) {
-      const label = highlight.gotCooked ? 'Got cooked by' : 'Wildest real one I nailed';
-      lines.push(`${label}: "${highlight.card.text}" (${verdictText[highlight.card.verdict]}!)`);
+  // Spoiler-safe: we never print the headline itself (a friend is about to
+  // play this exact deck), only which card number fooled you.
+  function fooledCardNumber(result) {
+    const answers = result?.answers || [];
+    if (result?.fooled) {
+      const idx = answers.findIndex(a => a.card === result.fooled || a.card?.id === result.fooled.id);
+      if (idx >= 0) return idx + 1;
     }
-
-    lines.push('Beat my score on this exact deck 👇');
-    lines.push(url);
-    return lines.join('\n');
+    const firstMiss = answers.findIndex(a => !a.correct);
+    return firstMiss >= 0 ? firstMiss + 1 : 0;
   }
 
-  async function copyText(result) {
-    const text = shareText(result);
-    if (navigator.clipboard?.writeText) {
-      try {
+  function rankTitle(result) {
+    return String(result?.rank?.title || 'CAUTIOUSLY SANE').toUpperCase();
+  }
+
+  // ---------- share text ----------
+
+  function shareText(result = {}) {
+    const { answers = [], seed = '', points = 0, score = 0, handle = '' } = result;
+    const daily = dailyLabel(result);
+    const vs = challengeInfo(result);
+    const cardNo = fooledCardNumber(result);
+
+    const dailyTitle = daily ? ' ' + daily.toLowerCase().replace(/\b[a-z]/g, ch => ch.toUpperCase()) : '';
+    const head = `Am I Crazy?${dailyTitle} 🧠 ${score}/10 · ${formatPts(points)} pts`;
+
+    let hook;
+    if (vs?.won) hook = `Beat ${vs.by} by ${formatPts(vs.diff)} pts ⚔️`;
+    else if (vs?.tied) hook = `Dead tie with ${vs.by} 🤝`;
+    else if (vs) hook = `${vs.by} beat me by ${formatPts(-vs.diff)} pts 😤 avenge me`;
+    else if (score >= 10) hook = `"${rankTitle(result)}" · 10/10, reality can't fool me 😤`;
+    else if (cardNo) hook = `"${rankTitle(result)}" · card ${cardNo} fooled me 💀`;
+    else hook = `"${rankTitle(result)}"`;
+
+    return [
+      head,
+      emojiGrid(answers),
+      hook,
+      'Real AI headline or made up? Same 10 cards, beat me 👇',
+      challengeURL(seed, points, score, handle),
+    ].join('\n');
+  }
+
+  async function copyToClipboard(text) {
+    try {
+      if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(text);
-        return { ok: true, message: 'COPIED! PASTE IN CHAT ✓', text };
-      } catch {}
-    }
+        return true;
+      }
+    } catch {}
     try {
       const area = document.createElement('textarea');
       area.value = text;
@@ -102,62 +191,129 @@
       area.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
       document.body.append(area);
       area.select();
+      area.setSelectionRange(0, text.length);
       const ok = document.execCommand('copy');
       area.remove();
-      if (ok) return { ok: true, message: 'COPIED! PASTE IN CHAT ✓', text };
-    } catch {}
-    return { ok: false, message: 'Select the challenge link below to copy it.', text };
+      return Boolean(ok);
+    } catch {
+      return false;
+    }
   }
+
+  async function copyText(result) {
+    const text = shareText(result);
+    const ok = await copyToClipboard(text);
+    return ok
+      ? { ok: true, message: 'COPIED! PASTE IT IN THE GROUP CHAT ✓', text }
+      : { ok: false, message: 'Select the challenge link below to copy it.', text };
+  }
+
+  // ---------- poster ----------
 
   function loadImage(file) {
     if (!file) return Promise.resolve(null);
-    return new Promise(resolve => {
+    return withTimeout(new Promise(resolve => {
       const picture = new Image();
+      picture.decoding = 'async';
       picture.onload = () => resolve(picture);
       picture.onerror = () => resolve(null);
       picture.src = 'assets/ui/' + file;
-    });
-  }
-
-  function wrapLines(ctx, text, maxWidth, maxLines) {
-    const words = String(text || '').trim().split(/\s+/);
-    const lines = [];
-    let current = '';
-    for (const word of words) {
-      const candidate = current ? current + ' ' + word : word;
-      if (current && ctx.measureText(candidate).width > maxWidth) {
-        lines.push(current);
-        current = word;
-        if (lines.length === maxLines - 1) break;
-      } else {
-        current = candidate;
-      }
-    }
-    const usedCount = lines.join(' ').split(/\s+/).filter(Boolean).length;
-    const remaining = words.slice(usedCount).join(' ');
-    if (lines.length < maxLines && remaining) {
-      let last = remaining;
-      while (last.length > 3 && ctx.measureText(last).width > maxWidth) {
-        last = last.slice(0, -2).trimEnd() + '…';
-      }
-      lines.push(last);
-    } else if (lines.length < maxLines && current) {
-      lines.push(current);
-    }
-    return lines.slice(0, maxLines);
+    }), 4000, null);
   }
 
   function fitFont(ctx, text, maxWidth, weight, startPx, minPx, family) {
     let size = startPx;
-    while (size > minPx) {
-      ctx.font = `${weight} ${size}px ${family}`;
-      if (ctx.measureText(text).width <= maxWidth) break;
+    ctx.font = `${weight} ${size}px ${family}`;
+    while (size > minPx && ctx.measureText(text).width > maxWidth) {
       size -= 2;
+      ctx.font = `${weight} ${size}px ${family}`;
     }
     return size;
   }
 
-  async function makeImage(result, ui = {}) {
+  // Hard-offset "riso" block: shadow, fill, ink border.
+  function block(ctx, x, y, w, h, fill, shadow, border = '#0a080f', offset = 10, lineWidth = 5) {
+    if (shadow) {
+      ctx.fillStyle = shadow;
+      ctx.fillRect(x + offset, y + offset, w, h);
+    }
+    ctx.fillStyle = fill;
+    ctx.fillRect(x, y, w, h);
+    if (border) {
+      ctx.strokeStyle = border;
+      ctx.lineWidth = lineWidth;
+      ctx.strokeRect(x, y, w, h);
+    }
+  }
+
+  function drawCheck(ctx, cx, cy, s, color) {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = s * 0.16;
+    ctx.lineCap = 'square';
+    ctx.lineJoin = 'miter';
+    ctx.beginPath();
+    ctx.moveTo(cx - s * 0.32, cy + s * 0.02);
+    ctx.lineTo(cx - s * 0.08, cy + s * 0.26);
+    ctx.lineTo(cx + s * 0.34, cy - s * 0.24);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawCross(ctx, cx, cy, s, color) {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = s * 0.15;
+    ctx.lineCap = 'square';
+    ctx.beginPath();
+    ctx.moveTo(cx - s * 0.24, cy - s * 0.24);
+    ctx.lineTo(cx + s * 0.24, cy + s * 0.24);
+    ctx.moveTo(cx + s * 0.24, cy - s * 0.24);
+    ctx.lineTo(cx - s * 0.24, cy + s * 0.24);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawStar(ctx, cx, cy, r, color) {
+    ctx.save();
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    for (let i = 0; i < 10; i++) {
+      const radius = i % 2 ? r * 0.45 : r;
+      const angle = -Math.PI / 2 + i * Math.PI / 5;
+      ctx[i ? 'lineTo' : 'moveTo'](cx + Math.cos(angle) * radius, cy + Math.sin(angle) * radius);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function canvasToFile(canvas, filename) {
+    return new Promise(resolve => {
+      const fromDataURL = () => {
+        try {
+          const data = canvas.toDataURL('image/png');
+          const bytes = atob(data.split(',')[1]);
+          const arr = new Uint8Array(bytes.length);
+          for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+          resolve(new File([arr], filename, { type: 'image/png' }));
+        } catch {
+          resolve(null);
+        }
+      };
+      try {
+        if (!canvas.toBlob) return fromDataURL();
+        canvas.toBlob(blob => {
+          if (blob) resolve(new File([blob], filename, { type: 'image/png' }));
+          else fromDataURL();
+        }, 'image/png');
+      } catch {
+        fromDataURL();
+      }
+    });
+  }
+
+  async function makeImage(result = {}, ui = {}) {
     const {
       points = 0,
       score = 0,
@@ -168,6 +324,7 @@
       handle = '',
       rank = { title: 'CAUTIOUSLY SANE', sub: 'Halfway immune to AI slop.', tier: 'cyan' },
       allInWins = 0,
+      allInTotal = 0,
       jackpotsHit = 0,
     } = result;
 
@@ -181,316 +338,275 @@
     const PAPER = '#f5ecdc';
     const YELLOW = '#ffe800';
     const PINK = '#ff2a9d';
+    const BLUE = '#0078bf';
     const CYAN = '#00e5ff';
     const LIME = '#b8ff00';
     const RED = '#ff2e4c';
     const ORANGE = '#ff6b00';
     const GOLD = '#ffcc00';
-    const DISPLAY = '"Big Shoulders Display", Impact, "Arial Narrow", sans-serif';
-    const MONO = '"IBM Plex Mono", ui-monospace, monospace';
+    const W = 1080;
+    const CX = W / 2;
 
     const [art, wordmark] = await Promise.all([
-      loadImage(ui['share-bg-1']),
-      loadImage(ui.wordmark),
-      document.fonts?.load(`900 120px ${DISPLAY}`).catch(() => {}),
-      document.fonts?.load(`700 28px ${MONO}`).catch(() => {}),
+      loadImage(ui?.['share-bg-1']),
+      loadImage(ui?.wordmark),
+      ensureFonts(),
     ]);
 
-    // 0–1350: Outer Poster Frame
+    // Background: full-bleed riso whirlpool (reads as a bright swirl in a feed).
     ctx.fillStyle = INK;
-    ctx.fillRect(0, 0, 1080, 1350);
+    ctx.fillRect(0, 0, W, 1350);
     if (art) {
-      ctx.save();
-      ctx.globalAlpha = 0.35;
-      ctx.drawImage(art, 0, 0, 1080, 1350);
-      ctx.restore();
+      ctx.drawImage(art, 0, 0, W, 1350);
+      ctx.fillStyle = 'rgba(10,8,15,0.22)';
+      ctx.fillRect(0, 0, W, 1350);
     }
 
-    // Hard offset pink shadow + newsprint inner card
-    ctx.fillStyle = PINK;
-    ctx.fillRect(62, 62, 984, 1254);
-    ctx.fillStyle = PAPER;
-    ctx.fillRect(48, 48, 984, 1254);
-    ctx.strokeStyle = INK;
-    ctx.lineWidth = 6;
-    ctx.strokeRect(48, 48, 984, 1254);
+    // Paper card
+    block(ctx, 56, 56, 968, 1238, PAPER, PINK, INK, 14, 6);
 
-    // 72–210: Masthead
-    const shortSeed = seed ? '#' + seed.toUpperCase().slice(0, 10) : '#RANDOM';
-    const modeTag = (kind === 'challenge' ? 'CHALLENGE RUN' : 'RANDOM DECK') + ' · ' + shortSeed;
-    const tagHandle = cleanHandle(handle);
-
+    // ---- Masthead (y 80–200)
     if (wordmark) {
-      const h = 118;
-      const w = Math.min(420, h * (wordmark.naturalWidth / Math.max(1, wordmark.naturalHeight)));
-      ctx.drawImage(wordmark, 84, 76, w, h);
+      const h = 120;
+      const w = Math.min(300, h * (wordmark.naturalWidth / Math.max(1, wordmark.naturalHeight)));
+      ctx.drawImage(wordmark, 92, 82, w, h);
     } else {
-      ctx.font = `900 84px ${DISPLAY}`;
+      ctx.font = `900 76px ${DISPLAY}`;
       ctx.fillStyle = PINK;
-      ctx.fillText('AM I CRAZY?', 90, 162);
+      ctx.fillText('AM I CRAZY?', 98, 170);
       ctx.fillStyle = INK;
-      ctx.fillText('AM I CRAZY?', 84, 156);
+      ctx.fillText('AM I CRAZY?', 92, 164);
     }
 
-    // Right masthead pill + player tag
-    ctx.font = `700 22px ${MONO}`;
-    const pillW = Math.min(420, ctx.measureText(modeTag).width + 36);
-    const pillX = 996 - pillW;
-    ctx.fillStyle = INK;
-    ctx.fillRect(pillX, 86, pillW, 44);
-    ctx.fillStyle = YELLOW;
-    ctx.textAlign = 'center';
-    ctx.fillText(modeTag, pillX + pillW / 2, 116);
+    const daily = dailyLabel(result);
+    const vs = challengeInfo(result);
+    const tag = cleanHandle(handle);
+    const modeTag = daily
+      || (vs ? `CHALLENGE VS ${vs.by}` : kind === 'replay' ? 'REPLAY DECK' : 'RANDOM DECK');
 
     ctx.textAlign = 'right';
+    ctx.font = `900 46px ${DISPLAY}`;
+    const pill = 'REAL OR MADE UP?';
+    const pillW = ctx.measureText(pill).width + 40;
+    block(ctx, 988 - pillW, 92, pillW, 64, INK, null, null);
+    ctx.fillStyle = YELLOW;
+    ctx.fillText(pill, 968, 141);
+
     ctx.fillStyle = INK;
-    ctx.font = `700 24px ${MONO}`;
-    ctx.fillText(tagHandle && tagHandle !== 'PLAYER' ? `PLAYER: ${tagHandle}` : 'REAL OR MADE UP?', 996, 168);
+    fitFont(ctx, modeTag, 560, 700, 24, 16, MONO);
+    ctx.fillText(modeTag, 988, 190);
     ctx.textAlign = 'left';
 
-    // 225–425: Hero Points Block
+    // ---- Score slab (y 224–520)
+    block(ctx, 92, 224, 896, 296, INK, PINK, YELLOW, 12, 6);
+    const ptsStr = formatPts(points);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'alphabetic';
+    const ptsSize = fitFont(ctx, ptsStr, 640, 900, 236, 120, DISPLAY);
+    const ptsW = ctx.measureText(ptsStr).width;
+    ctx.font = `900 ${Math.round(ptsSize * 0.32)}px ${DISPLAY}`;
+    const unitW = ctx.measureText(' PTS').width;
+    const groupX = CX - (ptsW + unitW) / 2;
+    ctx.textAlign = 'left';
+    ctx.font = `900 ${ptsSize}px ${DISPLAY}`;
     ctx.fillStyle = PINK;
-    ctx.fillRect(92, 233, 912, 195);
-    ctx.fillStyle = INK;
-    ctx.fillRect(84, 225, 912, 195);
-    ctx.strokeStyle = YELLOW;
-    ctx.lineWidth = 5;
-    ctx.strokeRect(84, 225, 912, 195);
-
-    const ptsStr = `${formatPts(points)} PTS`;
-    fitFont(ctx, ptsStr, 540, 900, 132, 74, DISPLAY);
+    ctx.fillText(ptsStr, groupX + 6, 436 + 6);
     ctx.fillStyle = YELLOW;
-    ctx.fillText(ptsStr, 114, 366);
-
-    // Right stacked badges inside Hero slab
-    ctx.textAlign = 'right';
+    ctx.fillText(ptsStr, groupX, 436);
+    ctx.font = `900 ${Math.round(ptsSize * 0.32)}px ${DISPLAY}`;
     ctx.fillStyle = '#ffffff';
-    ctx.font = `900 54px ${DISPLAY}`;
-    ctx.fillText(`${score}/10 CORRECT`, 964, 294);
+    ctx.fillText(' PTS', groupX + ptsW, 436);
 
-    ctx.fillStyle = ORANGE;
-    ctx.font = `700 24px ${MONO}`;
-    ctx.fillText(`🔥 ${best}X MAX STREAK`, 964, 342);
-
-    ctx.fillStyle = LIME;
-    const thirdStat = allInWins > 0
-      ? `💰 ${allInWins} ALL-IN WIN${allInWins > 1 ? 'S' : ''}`
-      : jackpotsHit > 0
-        ? `⭐ ${jackpotsHit}/2 JACKPOTS`
-        : '⚡ ARCADE RUN';
-    ctx.fillText(thirdStat, 964, 386);
-    ctx.textAlign = 'left';
-
-    // 445–565: Rank Title Stamp
-    const isGoldRank = rank.tier === 'gold' || rank.tier === 'foil';
-    const bannerFill = isGoldRank ? GOLD : rank.tier === 'red' ? RED : rank.tier === 'lime' ? LIME : PINK;
-    const bannerInk = (isGoldRank || rank.tier === 'lime') ? INK : '#ffffff';
-
-    ctx.save();
-    ctx.translate(540, 488);
-    ctx.rotate(-1.5 * Math.PI / 180);
-    ctx.fillStyle = INK;
-    ctx.fillRect(-444, -38, 896, 84);
-    ctx.fillStyle = bannerFill;
-    ctx.fillRect(-452, -46, 896, 84);
-    ctx.strokeStyle = INK;
-    ctx.lineWidth = 4;
-    ctx.strokeRect(-452, -46, 896, 84);
-
-    const rankTitle = String(rank.title || 'CAUTIOUSLY SANE').toUpperCase();
-    fitFont(ctx, rankTitle, 840, 900, 62, 34, DISPLAY);
-    ctx.fillStyle = bannerInk;
-    ctx.textAlign = 'center';
-    ctx.fillText(rankTitle, -4, 17);
-    ctx.restore();
-
-    ctx.textAlign = 'center';
-    ctx.fillStyle = INK;
-    fitFont(ctx, rank.sub || '', 900, 600, 24, 17, MONO);
-    ctx.fillText(rank.sub || '', 540, 562);
-    ctx.textAlign = 'left';
-
-    // 590–685: 10-Tile Result Strip
-    const tileW = 78;
-    const tileGap = 14;
-    const startX = 87;
-    const tileY = 594;
-    answers.slice(0, 10).forEach((entry, index) => {
-      const x = startX + index * (tileW + tileGap);
-      const isMega = entry.correct && entry.isJackpot && entry.isAllIn;
-      const isJpHit = entry.correct && entry.isJackpot;
-      const isAllInHit = entry.correct && entry.isAllIn;
-      const isBust = !entry.correct && (entry.busted || entry.isAllIn);
-
-      if (isMega) {
-        ctx.fillStyle = GOLD;
-        ctx.fillRect(x, tileY, tileW, tileW);
-        ctx.strokeStyle = PINK;
-        ctx.lineWidth = 6;
-        ctx.strokeRect(x + 2, tileY + 2, tileW - 4, tileW - 4);
-      } else if (isJpHit) {
-        ctx.fillStyle = GOLD;
-        ctx.fillRect(x, tileY, tileW, tileW);
-        ctx.strokeStyle = INK;
-        ctx.lineWidth = 4;
-        ctx.strokeRect(x, tileY, tileW, tileW);
-      } else if (isAllInHit) {
-        ctx.fillStyle = INK;
-        ctx.fillRect(x, tileY, tileW, tileW);
-        ctx.strokeStyle = PINK;
-        ctx.lineWidth = 6;
-        ctx.strokeRect(x + 2, tileY + 2, tileW - 4, tileW - 4);
-      } else if (entry.correct) {
-        ctx.fillStyle = INK;
-        ctx.fillRect(x, tileY, tileW, tileW);
-        ctx.strokeStyle = (entry.streak || 0) >= 3 ? ORANGE : INK;
-        ctx.lineWidth = 4;
-        ctx.strokeRect(x, tileY, tileW, tileW);
-      } else if (isBust) {
-        ctx.fillStyle = RED;
-        ctx.fillRect(x, tileY, tileW, tileW);
-        ctx.strokeStyle = INK;
-        ctx.lineWidth = 4;
-        ctx.strokeRect(x, tileY, tileW, tileW);
-      } else {
-        ctx.fillStyle = PAPER;
-        ctx.fillRect(x, tileY, tileW, tileW);
-        ctx.strokeStyle = INK;
-        ctx.lineWidth = 4;
-        ctx.strokeRect(x, tileY, tileW, tileW);
-      }
-
-      ctx.textAlign = 'center';
-      if (isMega) {
-        ctx.fillStyle = INK;
-        ctx.font = `900 38px ${DISPLAY}`;
-        ctx.fillText('4X', x + tileW / 2, tileY + 52);
-      } else if (isJpHit) {
-        ctx.fillStyle = INK;
-        ctx.font = `900 38px ${DISPLAY}`;
-        ctx.fillText('2X', x + tileW / 2, tileY + 52);
-      } else if (isAllInHit) {
-        ctx.fillStyle = YELLOW;
-        ctx.font = `900 40px ${DISPLAY}`;
-        ctx.fillText('★', x + tileW / 2, tileY + 53);
-      } else if (entry.correct) {
-        ctx.fillStyle = LIME;
-        ctx.font = `900 42px ${DISPLAY}`;
-        ctx.fillText('✓', x + tileW / 2, tileY + 54);
-      } else {
-        ctx.fillStyle = isBust ? YELLOW : RED;
-        ctx.font = `900 40px ${DISPLAY}`;
-        ctx.fillText('✕', x + tileW / 2, tileY + 53);
-      }
-      ctx.textAlign = 'left';
+    // Stat chips
+    const chips = [
+      { text: `${score}/10 SPOTTED`, fill: '#ffffff', ink: INK },
+      { text: `${best}X STREAK`, fill: ORANGE, ink: INK },
+    ];
+    if (allInTotal > 0) chips.push({ text: `${allInWins}/${allInTotal} ALL-IN`, fill: LIME, ink: INK });
+    else if (jackpotsHit > 0) chips.push({ text: `${jackpotsHit}/2 JACKPOTS`, fill: GOLD, ink: INK });
+    ctx.font = `700 26px ${MONO}`;
+    const chipGap = 16;
+    const chipWs = chips.map(c => ctx.measureText(c.text).width + 32);
+    let chipX = CX - (chipWs.reduce((a, b) => a + b, 0) + chipGap * (chips.length - 1)) / 2;
+    chips.forEach((chip, i) => {
+      ctx.fillStyle = chip.fill;
+      ctx.fillRect(chipX, 460, chipWs[i], 40);
+      ctx.fillStyle = chip.ink;
+      ctx.fillText(chip.text, chipX + 16, 489);
+      chipX += chipWs[i] + chipGap;
     });
 
-    // 720–1065: "THE ONE THAT GOT ME" Callout
+    // ---- Rank stamp (y ~550–680)
+    const tierFill = {
+      foil: GOLD, gold: GOLD, lime: LIME, yellow: YELLOW, cyan: CYAN, pink: PINK, red: RED,
+    }[rank?.tier] || PINK;
+    const tierInk = tierFill === PINK || tierFill === RED ? '#ffffff' : INK;
+    const title = rankTitle(result);
     ctx.save();
-    ctx.strokeStyle = INK;
-    ctx.lineWidth = 3;
-    ctx.setLineDash([12, 8]);
-    ctx.beginPath();
-    ctx.moveTo(84, 706);
-    ctx.lineTo(996, 706);
-    ctx.stroke();
+    ctx.translate(CX, 610);
+    ctx.rotate(-2 * Math.PI / 180);
+    block(ctx, -440, -54, 880, 108, tierFill, INK, INK, 10, 5);
+    ctx.fillStyle = tierInk;
+    ctx.textAlign = 'center';
+    fitFont(ctx, title, 820, 900, 84, 40, DISPLAY);
+    ctx.fillText(title, 0, 29);
     ctx.restore();
 
-    const highlight = pickHighlightCard(result);
-    const kicker = highlight?.gotCooked
-      ? 'THE ONE THAT GOT ME 💀'
-      : 'FLAWLESS 10/10 — WILDEST REAL ONE 🤯';
-    ctx.fillStyle = INK;
-    ctx.font = `700 24px ${MONO}`;
-    const kickerW = ctx.measureText(kicker).width + 30;
-    ctx.fillRect(84, 728, kickerW, 42);
-    ctx.fillStyle = highlight?.gotCooked ? YELLOW : LIME;
-    ctx.fillText(kicker, 99, 757);
-
-    if (highlight?.card) {
+    if (rank?.sub) {
+      ctx.textAlign = 'center';
       ctx.fillStyle = INK;
-      ctx.font = `900 44px ${DISPLAY}`;
-      const lines = wrapLines(ctx, highlight.card.text, 912, 4);
-      let y = 824;
-      for (const line of lines) {
-        ctx.fillText(line, 84, y);
-        y += 49;
-      }
-
-      // Tilted double-bordered rubber verdict stamp
-      const v = highlight.card.verdict;
-      const stampStr = verdictText[v] || 'REAL';
-      const stampCol = v === 'made-up' ? '#c4002f' : v === 'real-unproven' ? '#a31368' : '#005a89';
-      const stampY = Math.min(1038, y + 18);
-      ctx.save();
-      ctx.translate(84, stampY);
-      ctx.rotate(-2.5 * Math.PI / 180);
-      ctx.font = `900 34px ${DISPLAY}`;
-      const sw = ctx.measureText(stampStr).width + 44;
-      ctx.fillStyle = PAPER;
-      ctx.fillRect(0, -36, sw, 52);
-      ctx.strokeStyle = stampCol;
-      ctx.lineWidth = 4;
-      ctx.strokeRect(0, -36, sw, 52);
-      ctx.lineWidth = 2;
-      ctx.strokeRect(5, -31, sw - 10, 42);
-      ctx.fillStyle = stampCol;
-      ctx.fillText(stampStr, 22, 2);
-      ctx.restore();
+      fitFont(ctx, rank.sub, 860, 600, 26, 18, MONO);
+      ctx.fillText(rank.sub, CX, 712);
     }
 
-    // 1100–1265: Challenge Footer Bar
-    ctx.fillStyle = INK;
-    ctx.fillRect(92, 1112, 912, 158);
-    ctx.fillStyle = YELLOW;
-    ctx.fillRect(84, 1104, 912, 158);
-    ctx.strokeStyle = INK;
-    ctx.lineWidth = 5;
-    ctx.strokeRect(84, 1104, 912, 158);
+    // ---- Result grid 2 x 5 (y 740–1018)
+    const tile = 128;
+    const gap = 18;
+    const gridX = CX - (5 * tile + 4 * gap) / 2;
+    const gridY = 740;
+    answers.slice(0, 10).forEach((entry, index) => {
+      const x = gridX + (index % 5) * (tile + gap);
+      const y = gridY + Math.floor(index / 5) * (tile + gap);
+      const c = tile / 2;
+      const mega = entry.correct && entry.isJackpot && entry.isAllIn;
+      const jp = entry.correct && entry.isJackpot;
+      const allIn = entry.correct && entry.isAllIn;
+      const bust = !entry.correct && (entry.busted || entry.isAllIn);
+      const fever = entry.correct && (entry.streak || 0) >= 3;
 
-    const cta = `CAN YOU BEAT ${formatPts(points)} PTS? PLAY THIS EXACT DECK →`;
-    fitFont(ctx, cta, 864, 900, 36, 24, DISPLAY);
-    ctx.fillStyle = INK;
-    ctx.fillText(cta, 108, 1158);
-
-    const url = displayURL(challengeURL(seed, points, score, handle));
-    ctx.font = `700 22px ${MONO}`;
-    const urlLines = url.length > 58 ? [url.slice(0, 58), url.slice(58, 116)] : [url];
-    urlLines.forEach((line, i) => {
-      ctx.fillText(line, 108, 1204 + i * 30);
+      if (entry.correct) {
+        const fill = mega || jp ? GOLD : allIn ? PINK : fever ? ORANGE : LIME;
+        block(ctx, x, y, tile, tile, fill, INK, INK, 7, 5);
+        if (mega || jp) {
+          ctx.fillStyle = INK;
+          ctx.textAlign = 'center';
+          ctx.font = `900 62px ${DISPLAY}`;
+          ctx.fillText(mega ? '4X' : '2X', x + c, y + c + 22);
+        } else if (allIn) {
+          drawStar(ctx, x + c, y + c + 2, tile * 0.32, YELLOW);
+        } else {
+          drawCheck(ctx, x + c, y + c, tile, INK);
+        }
+      } else {
+        block(ctx, x, y, tile, tile, bust ? RED : PAPER, INK, INK, 7, 5);
+        drawCross(ctx, x + c, y + c, tile, bust ? '#ffffff' : RED);
+      }
     });
+    ctx.textAlign = 'left';
 
-    return new Promise(resolve => canvas.toBlob(blob => {
-      resolve(blob ? new File([blob], `am-i-crazy-${seed || 'run'}.png`, { type: 'image/png' }) : null);
-    }, 'image/png'));
+    // ---- Hook line (y ~1072): spoiler-safe curiosity
+    const cardNo = fooledCardNumber(result);
+    let hook;
+    if (vs?.won) hook = `I BEAT ${vs.by} BY ${formatPts(vs.diff)} PTS`;
+    else if (vs?.tied) hook = `DEAD TIE WITH ${vs.by}`;
+    else if (vs) hook = `${vs.by} BEAT ME BY ${formatPts(-vs.diff)}. AVENGE ME?`;
+    else if (score >= 10) hook = 'FLAWLESS 10/10. REALITY CAN’T FOOL ME.';
+    else if (cardNo) hook = `CARD #${cardNo} FOOLED ME. WILL IT FOOL YOU?`;
+    else hook = 'REAL AI NEWS IS UNHINGED.';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = INK;
+    fitFont(ctx, hook, 880, 900, 50, 30, DISPLAY);
+    ctx.fillText(hook, CX, 1078);
+
+    // ---- CTA footer (y 1106–1240)
+    block(ctx, 92, 1104, 896, 136, YELLOW, PINK, INK, 12, 6);
+    const cta = tag && tag !== 'PLAYER' ? `CAN YOU BEAT ${tag}?` : 'CAN YOU BEAT ME?';
+    ctx.fillStyle = INK;
+    fitFont(ctx, cta, 840, 900, 78, 44, DISPLAY);
+    ctx.fillText(cta, CX, 1180);
+    ctx.font = `700 30px ${MONO}`;
+    const host = shortURL();
+    const hostLine = `▶ ${host.toUpperCase()}`;
+    fitFont(ctx, hostLine, 840, 700, 30, 18, MONO);
+    ctx.fillStyle = BLUE;
+    ctx.fillText(hostLine, CX, 1222);
+
+    // ---- Honesty footer
+    ctx.fillStyle = '#5b5560';
+    fitFont(ctx, 'Some headlines are real (and sourced). Some are made up. Same 10 cards for you.', 880, 600, 19, 14, MONO);
+    ctx.fillText('Some headlines are real (and sourced). Some are made up. Same 10 cards for you.', CX, 1272);
+    ctx.textAlign = 'left';
+
+    const safeSeed = String(seed || 'run').replace(/[^a-z0-9-]/gi, '').slice(0, 24) || 'run';
+    return canvasToFile(canvas, `am-i-crazy-${safeSeed}.png`);
   }
 
+  // ---------- share ----------
+
+  function saveFile(file) {
+    try {
+      const link = document.createElement('a');
+      if (!('download' in link)) return false;
+      const url = URL.createObjectURL(file);
+      link.href = url;
+      link.download = file.name;
+      link.rel = 'noopener';
+      document.body.append(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 30000);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function canShareFiles(file) {
+    try {
+      return Boolean(file && navigator.share && navigator.canShare?.({ files: [file] }));
+    } catch {
+      return false;
+    }
+  }
+
+  // NOTE: navigator.share must be called before any await so the click's
+  // user activation is still valid (iOS Safari is strict about this).
   async function share(result, file) {
     const text = shareText(result);
-    if (file && navigator.share && navigator.canShare?.({ files: [file] })) {
+
+    if (canShareFiles(file)) {
       try {
         await navigator.share({ title: name, text, files: [file] });
+        return 'Shared! Now wait for the trash talk.';
+      } catch (error) {
+        if (error?.name === 'AbortError') return '';
+        // fall through: some targets reject files; try text-only below
+      }
+    }
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: name, text });
         return 'Shared!';
       } catch (error) {
-        if (error.name === 'AbortError') return '';
+        if (error?.name === 'AbortError') return '';
       }
     }
-    if (file) {
-      const link = document.createElement('a');
-      if ('download' in link) {
-        const url = URL.createObjectURL(file);
-        link.href = url;
-        link.download = file.name;
-        document.body.append(link);
-        link.click();
-        link.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 30000);
-        return 'Poster PNG saved!';
-      }
-    }
-    const copied = await copyText(result);
-    return copied.message;
+
+    // Desktop / unsupported: copy the caption AND save the poster.
+    const copied = await copyToClipboard(text);
+    const saved = file ? saveFile(file) : false;
+    if (copied && saved) return 'Poster saved + caption copied. Post both!';
+    if (saved) return 'Poster PNG saved! Copy the challenge link below.';
+    if (copied) return 'COPIED! PASTE IT IN THE GROUP CHAT ✓';
+    return 'Select the challenge link below to copy it.';
   }
 
-  window.WP_SHARE = { verdictText, challengeURL, shareText, copyText, makeImage, share };
+  // Warm the canvas fonts early so the first poster is never in fallbacks.
+  try {
+    const warm = () => { ensureFonts().catch(() => {}); };
+    if (document.readyState === 'complete') warm();
+    else addEventListener('load', warm, { once: true });
+  } catch {}
+
+  window.WP_SHARE = {
+    verdictText,
+    challengeURL,
+    shortURL,
+    shareText,
+    copyText,
+    makeImage,
+    share,
+    ensureFonts,
+  };
 })();

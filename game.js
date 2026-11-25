@@ -109,40 +109,119 @@
     };
   }
 
+  // Every storage touch is guarded: the getter itself can throw (sandboxed iframes, blocked
+  // site data), values can be corrupt or hand-edited, and writes can hit the quota.
+  function storageGet(key) {
+    try { return window.localStorage.getItem(key); } catch { return null; }
+  }
+
+  function storageSet(key, value) {
+    try { window.localStorage.setItem(key, value); return true; } catch { return false; }
+  }
+
+  function parseJSON(raw) {
+    if (typeof raw !== 'string' || !raw) return null;
+    try { return JSON.parse(raw); } catch { return null; }
+  }
+
+  const isObject = value => Boolean(value) && typeof value === 'object' && !Array.isArray(value);
+  const count = (value, max = 1e9) => {
+    const n = Math.floor(Number(value));
+    return Number.isFinite(n) && n > 0 ? Math.min(max, n) : 0;
+  };
+  const cleanId = value => (typeof value === 'string' && /^[a-z0-9-]{1,80}$/.test(value) ? value : null);
+  const cleanText = (value, max) => (typeof value === 'string' ? value.replace(/[\u0000-\u001f\u007f]/g, '').slice(0, max) : '');
+
+  function cleanCareer(raw) {
+    const base = defaultStats().career;
+    if (!isObject(raw)) return base;
+    for (const key of Object.keys(base)) base[key] = count(raw[key]);
+    base.bestPoints = Math.min(999999, base.bestPoints);
+    base.bestAccuracy = Math.min(10, base.bestAccuracy);
+    base.longestStreak = Math.min(10, base.longestStreak);
+    base.cardsCorrect = Math.min(base.cardsCorrect, base.cardsPlayed);
+    return base;
+  }
+
+  function cleanCardTallies(raw) {
+    const out = {};
+    if (!isObject(raw)) return out;
+    for (const [id, tally] of Object.entries(raw).slice(0, 2000)) {
+      if (!cleanId(id) || !isObject(tally)) continue;
+      const shown = count(tally.shown);
+      if (!shown) continue;
+      out[id] = { shown, misses: Math.min(shown, count(tally.misses)) };
+    }
+    return out;
+  }
+
+  function cleanRecent(raw) {
+    return Array.isArray(raw) ? [...new Set(raw.map(cleanId).filter(Boolean))].slice(0, 35) : [];
+  }
+
+  function cleanHofEntry(raw) {
+    if (!isObject(raw)) return null;
+    const seed = typeof raw.seed === 'string' && validSeed.test(raw.seed) ? raw.seed : null;
+    if (!seed) return null;
+    return {
+      id: cleanText(raw.id, 40) || 'run-' + seed,
+      handle: cleanHandle(raw.handle),
+      points: count(raw.points, 999999),
+      accuracy: Math.min(10, count(raw.accuracy)),
+      maxStreak: Math.min(10, count(raw.maxStreak)),
+      rank: cleanText(raw.rank, 48),
+      date: /^\d{4}-\d{2}-\d{2}$/.test(raw.date || '') ? raw.date : '',
+      seed,
+      allInWins: Math.min(10, count(raw.allInWins)),
+    };
+  }
+
   function readStats() {
-    try {
-      const savedV2 = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (savedV2 && typeof savedV2 === 'object') {
-        const base = defaultStats();
-        return {
-          ...base,
-          ...savedV2,
-          handle: cleanHandle(savedV2.handle),
-          career: { ...base.career, ...(savedV2.career || {}) },
-          hallOfFame: Array.isArray(savedV2.hallOfFame) ? savedV2.hallOfFame.slice(0, 10) : [],
-          cards: savedV2.cards && typeof savedV2.cards === 'object' ? savedV2.cards : {},
-          recentCards: Array.isArray(savedV2.recentCards) ? savedV2.recentCards.slice(0, 35) : [],
-        };
-      }
-      const legacy = JSON.parse(localStorage.getItem(LEGACY_STORAGE_KEY));
-      if (legacy && typeof legacy === 'object') {
-        const base = defaultStats();
-        base.career.runs = Number(legacy.runs) || 0;
-        base.career.cardsPlayed = base.career.runs * 10;
-        base.career.cardsCorrect = Number(legacy.correct) || 0;
-        base.career.longestStreak = Number(legacy.best) || 0;
-        base.cards = legacy.cards && typeof legacy.cards === 'object' ? legacy.cards : {};
-        base.recentCards = Array.isArray(legacy.recentCards) ? legacy.recentCards.slice(0, 35) : [];
-        return base;
-      }
-    } catch {}
+    const savedV2 = parseJSON(storageGet(STORAGE_KEY));
+    if (isObject(savedV2)) {
+      return {
+        handle: cleanHandle(savedV2.handle),
+        career: cleanCareer(savedV2.career),
+        hallOfFame: (Array.isArray(savedV2.hallOfFame) ? savedV2.hallOfFame : [])
+          .map(cleanHofEntry).filter(Boolean)
+          .sort((a, b) => (b.points - a.points) || (b.accuracy - a.accuracy) || (b.maxStreak - a.maxStreak))
+          .slice(0, 10),
+        cards: cleanCardTallies(savedV2.cards),
+        recentCards: cleanRecent(savedV2.recentCards),
+      };
+    }
+    const legacy = parseJSON(storageGet(LEGACY_STORAGE_KEY));
+    if (isObject(legacy)) {
+      const base = defaultStats();
+      base.career.runs = count(legacy.runs, 1e6);
+      base.career.cardsPlayed = base.career.runs * 10;
+      base.career.cardsCorrect = Math.min(base.career.cardsPlayed, count(legacy.correct));
+      base.career.longestStreak = Math.min(10, count(legacy.best));
+      base.cards = cleanCardTallies(legacy.cards);
+      base.recentCards = cleanRecent(legacy.recentCards);
+      return base;
+    }
     return defaultStats();
   }
 
   function writeStats(nextStats) {
     stats = nextStats;
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(stats)); } catch {}
+    if (!storageSet(STORAGE_KEY, JSON.stringify(stats))) {
+      // Quota: drop the least useful data (per-card tallies) and try once more.
+      storageSet(STORAGE_KEY, JSON.stringify({ ...stats, cards: {} }));
+    }
     refreshCoverCareer();
+  }
+
+  // One-time flags (first-run coach) live under their own key so the stats schema stays stable.
+  const FLAGS_KEY = 'wp-game-flags-v1';
+  function readFlag(name) {
+    const flags = parseJSON(storageGet(FLAGS_KEY));
+    return isObject(flags) && flags[name] === true;
+  }
+  function writeFlag(name) {
+    const flags = parseJSON(storageGet(FLAGS_KEY));
+    storageSet(FLAGS_KEY, JSON.stringify({ ...(isObject(flags) ? flags : {}), [name]: true }));
   }
 
   let stats = readStats();
@@ -312,13 +391,22 @@
     return legacyV2.length === 10 ? attachJackpots(legacyV2, seededRandom('jp-' + seed)) : [];
   }
 
+  function safeDraw(pools, seed) {
+    try {
+      const deck = drawDeck(pools, seed);
+      return Array.isArray(deck) && deck.length === 10 && new Set(deck.map(card => card.id)).size === 10 ? deck : [];
+    } catch {
+      return [];
+    }
+  }
+
   function freshRandomSeed(pools) {
     const recent = new Set([...readStats().recentCards, ...(run?.deck.map(card => card.id) || [])]);
     let bestSeed = randomSeed();
     let leastOverlap = Infinity;
     for (let attempt = 0; attempt < 24; attempt++) {
       const candidate = randomSeed();
-      const deck = drawDeck(pools, candidate);
+      const deck = safeDraw(pools, candidate);
       if (deck.length !== 10) continue;
       const overlap = deck.filter(card => recent.has(card.id)).length;
       if (overlap === 0) return candidate;
@@ -653,9 +741,68 @@
   }
 
   function focus(target) {
-    if (!target) return;
+    if (!target || !document.contains(target)) return;
     if (!target.matches('button, a, input')) target.tabIndex = -1;
-    target.focus({ preventScroll: true });
+    try { target.focus({ preventScroll: true }); } catch {}
+  }
+
+  // Short, guarded haptics. Silent when reduced motion is requested or the API is missing.
+  // Only after a real touch: Chrome logs a console error for vibrate() before the first tap,
+  // and desktop/keyboard players have nothing to vibrate anyway.
+  let touchSeen = false;
+  addEventListener('pointerdown', event => {
+    if (event.pointerType === 'touch' || event.pointerType === 'pen') touchSeen = true;
+  }, { capture: true, passive: true });
+  function buzz(pattern) {
+    if (!touchSeen || reduced.matches || typeof navigator.vibrate !== 'function') return;
+    if (navigator.userActivation && !navigator.userActivation.hasBeenActive) return;
+    try { navigator.vibrate(pattern); } catch {}
+  }
+
+  // One persistent, visually hidden live region: inserting fresh role=status nodes is not
+  // reliably announced, updating an existing region is.
+  const liveRegion = document.createElement('div');
+  liveRegion.className = 'game-sr-only';
+  liveRegion.setAttribute('aria-live', 'polite');
+  liveRegion.setAttribute('aria-atomic', 'true');
+  liveRegion.style.cssText = 'position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0';
+  document.body.append(liveRegion);
+  // The HUD score rolls frame by frame; a live region there would spam screen readers.
+  // Score changes are announced once per answer through liveRegion instead.
+  hudScore?.closest('[aria-live]')?.setAttribute('aria-live', 'off');
+  let announceTimer = 0;
+  function announce(text) {
+    clearTimeout(announceTimer);
+    liveRegion.textContent = '';
+    announceTimer = setTimeout(() => { liveRegion.textContent = text; }, 60);
+  }
+
+  // Answer clock that can be paused (hidden tab, Hall of Fame open, first-run coach).
+  function makeClock() {
+    let start = performance.now();
+    let pausedAt = null;
+    const reasons = new Set();
+    return {
+      elapsed() {
+        return Math.max(0, ((pausedAt ?? performance.now()) - start) / 1000);
+      },
+      pause(reason) {
+        reasons.add(reason);
+        if (pausedAt === null) pausedAt = performance.now();
+      },
+      resume(reason) {
+        reasons.delete(reason);
+        if (!reasons.size && pausedAt !== null) {
+          start += performance.now() - pausedAt;
+          pausedAt = null;
+        }
+      },
+      restart() {
+        start = performance.now();
+        if (pausedAt !== null) pausedAt = start;
+      },
+      get paused() { return pausedAt !== null; },
+    };
   }
 
   // Odometer score roller
@@ -827,18 +974,42 @@
   }
 
   function enterGame() {
+    pushGameHistory();
     wake();
     wp.api?.setMode('game');
     wp.state.mode = 'game';
     document.body.classList.add('wp-game-active', 'wp-game-open');
     root.hidden = false;
     reopen.hidden = true;
-    leave.hidden = !wp.api;
+    leave.hidden = false;
   }
 
   function explore() {
     if (!wp.api) return;
     change('explore');
+  }
+
+  // Exit: no confirm dialog. Abandons the deck in progress (nothing is recorded) and puts the
+  // cover back exactly as it was on load. Also what the browser Back button does in-game.
+  function exitToCover({ fromHistory = false } = {}) {
+    ++prep; // cancel a startRun that is still waiting on the deck
+    closeHof({ restoreFocus: false });
+    if (wp.state.open) wp.api?.closePanel();
+    if (state !== 'cover') change('cover'); // runs the old state's cleanup first
+    run = null;
+    current = null;
+    result = null;
+    if (!fromHistory && history.state?.wpGame) {
+      skipNextPop = true;
+      try { history.back(); } catch { skipNextPop = false; }
+    }
+  }
+
+  // History: one entry for "in the game" so Back returns to the cover instead of leaving the site.
+  let skipNextPop = false;
+  function pushGameHistory() {
+    if (history.state?.wpGame) return;
+    try { history.pushState({ wpGame: true }, '', location.href); } catch {}
   }
 
   function section(className) {
@@ -859,6 +1030,7 @@
   let result = null;
   let hofReturnFocus = null;
   let pendingHitstop = 0;
+  let coachSeen = readFlag('coach');
 
   const noop = () => {};
 
@@ -870,6 +1042,8 @@
     if (odometerRaf) {
       cancelAnimationFrame(odometerRaf);
       odometerRaf = 0;
+      // Never leave the HUD frozen on a mid-roll number (fast Next after a big hit).
+      if (run && hudScore) hudScore.textContent = formatPts(run.points);
     }
   }
 
@@ -882,7 +1056,25 @@
   }
 
   const states = {
-    cover: { enter: noop, exit: noop },
+    cover: {
+      enter() {
+        resetFever();
+        fx.clear();
+        if (wp.api) wp.api.setMode('explore');
+        wp.state.mode = 'explore';
+        root.hidden = true;
+        root.inert = false;
+        document.body.classList.remove('wp-game-open', 'wp-game-active');
+        reopen.hidden = true;
+        cover.classList.remove('gone');
+        cover.inert = false;
+        cover.removeAttribute('aria-hidden');
+        wp.state.cover = true;
+        refreshCoverCareer();
+        focus(coverPlay);
+      },
+      exit: noop,
+    },
     play: {
       enter: () => showCard(0),
       exit: () => {
@@ -926,13 +1118,21 @@
     const pools = await ready;
     if (stamp !== prep) return;
 
-    const seed = explicitSeed && validSeed.test(explicitSeed)
+    let seed = explicitSeed && validSeed.test(explicitSeed)
       ? explicitSeed
       : kind === 'challenge' && challengeSeed
         ? challengeSeed
         : freshRandomSeed(pools);
 
-    const deck = drawDeck(pools, seed);
+    let deck = safeDraw(pools, seed);
+    if (deck.length !== 10 && !seed.startsWith('r3-')) {
+      // A shared/legacy seed that no longer assembles (bank or sources changed): never strand
+      // the player on an error, deal a fresh random deck instead.
+      seed = freshRandomSeed(pools);
+      deck = safeDraw(pools, seed);
+      kind = 'random';
+      explicitSeed = null;
+    }
     if (deck.length !== 10) {
       const pane = section('game-paper');
       pane.append(
@@ -956,7 +1156,8 @@
       allInBusts: 0,
       allInTotal: 0,
       jackpotsHit: 0,
-      isChallenge: kind === 'challenge' && Boolean(challengeSeed) && seed === challengeSeed,
+      // Replaying the challenge deck (↻ on results) keeps the head-to-head comparison.
+      isChallenge: (kind === 'challenge' || kind === 'replay') && Boolean(challengeSeed) && seed === challengeSeed,
     };
 
     wp.state.score = 0;
@@ -1001,6 +1202,8 @@
     const pane = section('game-play');
 
     const paper = node('article', 'game-paper game-card' + (card.isJackpot ? ' is-jackpot' : ''));
+    const textLen = String(card.text || '').length;
+    paper.dataset.len = textLen < 90 ? 'short' : textLen > 130 ? 'long' : 'mid';
     const fuseWrap = node('div', 'speed-fuse');
     const fuseFill = node('i', 'speed-fuse-fill');
     fuseFill.dataset.tier = 'fast';
@@ -1060,9 +1263,31 @@
     const reveal = node('section', 'game-reveal');
     reveal.hidden = true;
 
-    pane.append(paper, controls, reveal);
+    // First-run coach: shown once on card 1 of the very first run, skippable, pauses the fuse.
+    const showCoach = cardIndex === 0 && !coachSeen;
+    let coach = null;
+    if (showCoach) {
+      coach = node('aside', 'game-coach');
+      coach.setAttribute('aria-labelledby', 'game-coach-title');
+      const coachTitle = node('p', 'game-coach-title', 'HOW TO PLAY');
+      coachTitle.id = 'game-coach-title';
+      const steps = node('ol', 'game-coach-steps');
+      for (const line of [
+        'Did this AI headline really happen? Swipe right or tap REAL →',
+        'Invented? Swipe left or tap ← MADE UP.',
+        'Answer fast for bonus points. Streaks multiply up to 5X.',
+        '★ Jackpot cards pay 2X. Arm 2X ALL-IN to double a pick, but a miss costs 150.',
+      ]) steps.append(node('li', '', line));
+      const coachBtn = button('GOT IT · DEAL ME IN', 'coach-dismiss', 'game-primary game-coach-btn');
+      coach.append(coachTitle, steps, coachBtn);
+    }
 
-    const startedAt = performance.now();
+    pane.append(...(coach ? [coach] : []), paper, controls, reveal);
+
+    const clock = makeClock();
+    if (document.hidden) clock.pause('hidden');
+    if (!hofModal.hidden) clock.pause('hof');
+    if (showCoach) clock.pause('coach');
     current = {
       card,
       pane,
@@ -1074,7 +1299,9 @@
       ghost,
       title,
       fuseFill,
-      startedAt,
+      clock,
+      coach,
+      shownAt: performance.now(),
       allIn: false,
       answered: false,
       revealed: false,
@@ -1085,14 +1312,16 @@
     wp.emit('card', { ...card, position: cardIndex + 1, act: 1, isJackpot: card.isJackpot });
     if (card.isJackpot) {
       wp.emit('jackpot-arrive', { position: cardIndex + 1 });
-      navigator.vibrate?.([15, 25, 15]);
+      buzz([15, 25, 15]);
     }
+    // The headline itself is read when focus lands on it; the live region adds the position.
+    announce(`Card ${cardIndex + 1} of ${run.deck.length}${card.isJackpot ? ', 2X jackpot round' : ''}. Real or made up?`);
 
-    // Start 7-second visual speed fuse (pure upside, non-punishing)
+    // Start 7-second visual speed fuse (pure upside, non-punishing; paused while hidden)
     let fuseRaf = 0;
-    const tickFuse = now => {
+    const tickFuse = () => {
       if (!current || current.answered || current.card !== card) return;
-      const elapsed = (now - startedAt) / 1000;
+      const elapsed = clock.elapsed();
       const frac = Math.max(0, 1 - elapsed / SCORE_CFG.SPEED_QUICK_SEC);
       fuseFill.style.transform = `scaleX(${frac.toFixed(4)})`;
       if (elapsed <= SCORE_CFG.SPEED_FAST_SEC) {
@@ -1113,7 +1342,14 @@
     };
 
     bindSwipe(current);
-    focus(title);
+    // Touch: let the browser own vertical panning (it fires pointercancel when a scroll wins),
+    // keep horizontal drags for the swipe. Inline so it works without a stylesheet change.
+    paper.style.touchAction = 'pan-y';
+    if (coach) {
+      focus(coach.querySelector('button'));
+    } else {
+      focus(title);
+    }
 
     if (reduced.matches) {
       animate(paper, [{ opacity: 0 }, { opacity: 1 }]);
@@ -1127,12 +1363,33 @@
     }
   }
 
+  function dismissCoach({ focusCard = true } = {}) {
+    coachSeen = true;
+    writeFlag('coach');
+    const view = current;
+    if (!view?.coach) return;
+    view.coach.remove();
+    view.coach = null;
+    // The fuse starts fresh once the player has actually read the rules.
+    if (!view.answered) view.clock.restart();
+    view.clock.resume('coach');
+    if (focusCard && !view.answered) focus(view.title);
+  }
+
+  // Taps that land within this window after a card or reveal appears are treated as the
+  // tail of a double-tap on the previous control and ignored (keyboard is never throttled).
+  const TAP_GUARD_MS = 320;
+  const isPointerClick = event => Boolean(event && event.detail > 0);
+
   function toggleAllIn() {
     if (state !== 'play' || !current || current.answered || wp.state.open || !hofModal.hidden) return;
     current.allIn = !current.allIn;
     current.updateAllInLabel(current.allIn);
     wp.emit('allin-toggle', { armed: current.allIn, isJackpot: current.card.isJackpot });
-    navigator.vibrate?.(current.allIn ? [12, 20, 12] : 8);
+    buzz(current.allIn ? [12, 20, 12] : 8);
+    announce(current.allIn
+      ? (current.card.isJackpot ? 'All-in armed. 4X payout, minus 150 if wrong.' : 'All-in armed. 2X payout, minus 150 if wrong.')
+      : 'All-in off.');
     if (!reduced.matches) {
       animate(current.allInBtn, [
         { transform: 'scale(1)' },
@@ -1165,10 +1422,10 @@
       view.stopEntry?.();
       stopSpring?.();
       paper.style.opacity = '1';
-      paper.setPointerCapture(event.pointerId);
+      try { paper.setPointerCapture(event.pointerId); } catch {}
       paper.style.willChange = 'transform';
       const at = performance.now();
-      drag = { x: event.clientX, y: event.clientY, locked: false, samples: [{ x: event.clientX, at }] };
+      drag = { x: event.clientX, y: event.clientY, id: event.pointerId, axis: null, locked: false, samples: [{ x: event.clientX, at }] };
     });
 
     paper.addEventListener('pointermove', event => {
@@ -1177,11 +1434,24 @@
       drag.samples.push({ x: event.clientX, at });
       drag.samples = drag.samples.filter(sample => at - sample.at < 110);
       const dx = event.clientX - drag.x;
-      const dy = (event.clientY - drag.y) * 0.25;
+      const rawDy = event.clientY - drag.y;
+      // Decide the gesture axis once. A mostly vertical drag is a scroll attempt, never a vote.
+      if (!drag.axis && Math.hypot(dx, rawDy) > 10) {
+        drag.axis = Math.abs(rawDy) > Math.abs(dx) * 1.2 ? 'y' : 'x';
+      }
+      if (drag.axis === 'y') {
+        const id = drag.id;
+        drag = null;
+        paper.style.willChange = '';
+        try { if (paper.hasPointerCapture(id)) paper.releasePointerCapture(id); } catch {}
+        paint(0, 0);
+        return;
+      }
+      const dy = rawDy * 0.25;
       const crossed = Math.abs(dx) > 0.26 * paper.offsetWidth;
       if (crossed && !drag.locked) {
         drag.locked = true;
-        navigator.vibrate?.(10);
+        buzz(10);
       } else if (!crossed && drag.locked) {
         drag.locked = false;
       }
@@ -1195,7 +1465,8 @@
       const now = performance.now();
       const recent = drag.samples.find(sample => now - sample.at < 110);
       const velocity = recent ? (event.clientX - recent.x) / Math.max(1, now - recent.at) : 0;
-      const commit = Math.abs(dx) > 0.26 * paper.offsetWidth || (Math.abs(dx) >= 12 && Math.abs(velocity) > 0.55);
+      const commit = drag.axis === 'x'
+        && (Math.abs(dx) > 0.26 * paper.offsetWidth || (Math.abs(dx) >= 12 && Math.abs(velocity) > 0.55));
       drag = null;
       paper.style.willChange = '';
       if (!cancelled && commit) {
@@ -1242,16 +1513,19 @@
     return '+0 PTS · STREAK RESET';
   }
 
-  function answer(guess, motion = { dx: 0, dy: 0, velocity: 0 }) {
+  function answer(guess, motion = { dx: 0, dy: 0, velocity: 0 }, event = null) {
     if (state !== 'play' || !current || current.answered || wp.state.open || !hofModal.hidden) return;
+    if (guess !== 'real' && guess !== 'made-up') return;
+    if (isPointerClick(event) && performance.now() - current.shownAt < TAP_GUARD_MS) return;
     const view = current;
+    if (view.coach) dismissCoach({ focusCard: false });
     const { card, paper, controls, reveal, ghost, allIn } = view;
     view.answered = true;
     view.stopEntry?.();
     view.stopDrag?.();
     view.stopFuse?.();
 
-    const elapsedSec = (performance.now() - view.startedAt) / 1000;
+    const elapsedSec = view.clock.elapsed();
     const correct = guess === (card.verdict === 'made-up' ? 'made-up' : 'real');
     const prevPoints = run.points;
     const prevStreak = run.streak;
@@ -1304,8 +1578,10 @@
     const isBigHit = correct && (card.isJackpot || allIn || run.streak >= 3);
     const isMega = correct && card.isJackpot && allIn;
 
+    let revealStarted = false;
     const revealCard = () => {
-      if (state !== 'play' || current !== view) return;
+      if (revealStarted || state !== 'play' || current !== view) return;
+      revealStarted = true;
 
       paper.style.opacity = '1';
       paper.style.transform = '';
@@ -1378,16 +1654,18 @@
             triggerShake('heavy');
             fx.burstCoins(cx, cy, 32);
             fx.burstConfetti(cx, cy, 46);
-            navigator.vibrate?.([25, 30, 35, 30, 50]);
+            buzz([25, 30, 35, 30, 50]);
           } else if (card.isJackpot || allIn) {
             triggerShake('med');
             fx.burstCoins(cx, cy, 22);
             fx.burstConfetti(cx, cy, 32);
-            navigator.vibrate?.([20, 25, 35]);
+            buzz([20, 25, 35]);
           } else if (run.streak >= 3) {
             triggerShake('micro');
             fx.burstConfetti(cx, cy, 24);
-            navigator.vibrate?.(18);
+            buzz(18);
+          } else {
+            buzz(12);
           }
         } else {
           paper.classList.add('is-miss', 'game-miss');
@@ -1397,7 +1675,7 @@
             spawnFloat(`💀 BUSTED ${bustAmt}`, cx, cy, 'is-bust');
             triggerShake('heavy');
             fx.burstShards(cx, cy, 24);
-            navigator.vibrate?.([40, 30, 60]);
+            buzz([40, 30, 60]);
           } else if (evalRes.streakBroken) {
             const multRect = hudMult?.getBoundingClientRect();
             const sx = multRect ? multRect.left + multRect.width / 2 : cx;
@@ -1405,10 +1683,10 @@
             spawnFloat(`💔 ${prevStreak}X STREAK SHATTERED`, cx, cy, 'is-bust is-streak-break');
             triggerShake('med');
             fx.burstShards(sx, sy, 20);
-            navigator.vibrate?.([35, 25, 45]);
+            buzz([35, 25, 45]);
           } else {
             triggerShake('micro');
-            navigator.vibrate?.(25);
+            buzz(25);
           }
         }
 
@@ -1419,7 +1697,6 @@
           buildMathBreakdown(evalRes, card, allIn, prevStreak),
         );
         const summary = node('div');
-        summary.setAttribute('role', 'status');
         const verdictLead = correct
           ? (isMega ? 'MEGA HIT' : 'CORRECT')
           : (evalRes.busted ? 'BUSTED' : 'MISS');
@@ -1446,7 +1723,10 @@
         reveal.classList.toggle('is-big', isBigHit);
         reveal.hidden = false;
         view.revealed = true;
+        view.revealedAt = performance.now();
         focus(nextBtn);
+        const scoreLine = `Score ${formatPts(run.points)}${run.streak >= 2 ? `, streak ${run.streak}` : ''}.`;
+        announce(`${verdictLead}. It was ${verdictText[card.verdict]}. ${buildMathBreakdown(evalRes, card, allIn, prevStreak)}. ${scoreLine} ${card.note}`);
 
         animate(mark, [
           { transform: 'scale(2.3) rotate(-14deg)', opacity: 0.25 },
@@ -1473,12 +1753,16 @@
           opacity: 0,
           transform: `translateX(${direction * (innerWidth + Math.min(160, Math.abs(motion.velocity) * 45))}px) rotate(${direction * 23}deg)`,
         },
-      ], 210, 'cubic-bezier(.7,0,.84,0)').finished.then(revealCard);
+      ], 210, 'cubic-bezier(.7,0,.84,0)').finished.then(revealCard, revealCard);
+      // If the page is not rendering (backgrounded, throttled), the animation never finishes:
+      // reveal anyway so the run can never get stuck between answer and reveal.
+      setTimeout(revealCard, 420);
     }
   }
 
-  function nextCard() {
+  function nextCard(event = null) {
     if (state !== 'play' || !current?.revealed || wp.state.open || !hofModal.hidden) return;
+    if (isPointerClick(event) && performance.now() - (current.revealedAt || 0) < TAP_GUARD_MS) return;
     const direction = run.answers.at(-1).guess === 'real' ? -1 : 1;
     if (run.answers.length < run.deck.length) showCard(direction);
     else change('result');
@@ -1625,21 +1909,24 @@
     const closeBtn = node('button', 'hof-close', '✕');
     closeBtn.type = 'button';
     closeBtn.setAttribute('aria-label', 'Close Hall of Fame');
-    closeBtn.addEventListener('click', closeHof);
+    closeBtn.addEventListener('click', () => closeHof());
     header.append(title, closeBtn);
 
     const hint = node('p', 'hof-sub', 'Top 10 runs on this device. Tap ↻ on any run to replay that exact 10-card deck.');
     sheet.append(header, buildCareerStrip(), buildHofTable(result?.id || null), hint);
     hofModal.replaceChildren(sheet);
     hofModal.hidden = false;
+    // The answer clock does not run while the player is reading the leaderboard.
+    if (state === 'play' && current && !current.answered) current.clock.pause('hof');
     focus(closeBtn);
   }
 
-  function closeHof() {
+  function closeHof({ restoreFocus = true } = {}) {
     if (hofModal.hidden) return;
     hofModal.hidden = true;
     hofModal.replaceChildren();
-    if (hofReturnFocus && document.contains(hofReturnFocus)) focus(hofReturnFocus);
+    if (current?.clock) current.clock.resume('hof');
+    if (restoreFocus && hofReturnFocus && document.contains(hofReturnFocus)) focus(hofReturnFocus);
     hofReturnFocus = null;
   }
 
@@ -1771,25 +2058,29 @@
 
     // "THE ONE THAT GOT ME" Callout
     const highlightCard = result.fooled || result.answers.find(a => a.card.verdict !== 'made-up')?.card || null;
+    let fooledBox = null;
     if (highlightCard) {
-      const fooledBox = node('div', 'result-fooled');
+      fooledBox = node('div', 'result-fooled');
       fooledBox.append(
         node('div', 'result-fooled-kicker', result.fooled ? 'THE ONE THAT GOT ME 💀' : 'FLAWLESS 10/10 — WILDEST REAL ONE 🤯'),
         node('p', 'result-fooled-text', highlightCard.text),
         stamp(highlightCard.verdict, 'result-fooled-stamp'),
       );
-      pane.append(fooledBox);
     }
 
     // Primary Actions (Play Again + Copy Score + Share Poster)
     const actions = node('div', 'result-actions');
-    const playAgainBtn = button('▶ PLAY NEW RANDOM DECK', 'random', 'game-primary result-play-again');
+    const playAgainBtn = button('▶ NEXT DECK (R)', 'random', 'game-primary result-play-again');
+    playAgainBtn.setAttribute('aria-keyshortcuts', 'R');
+    const replayBtn = button('↻ REPLAY THIS DECK', 'replay-same', 'result-replay-btn');
+    replayBtn.title = 'Same 10 cards and jackpot slots. Try to beat ' + formatPts(result.points) + ' pts.';
     const shareRow = node('div', 'game-buttons result-share-row');
     const copyBtn = button('📋 COPY SCORE', 'copy-score', 'result-copy-btn');
     const shareBtn = button('📸 SHARE / SAVE CARD', 'share', 'result-share-btn');
     shareBtn.disabled = true;
     shareRow.append(copyBtn, shareBtn);
-    actions.append(playAgainBtn, shareRow);
+    // Share sits first so it lands above the fold on small phones; it's the growth loop.
+    actions.append(shareRow, playAgainBtn, replayBtn);
     if (wp.api) actions.append(button('Explore Timeline', 'explore', 'result-explore-btn'));
 
     const status = node('p', 'result-status', '');
@@ -1823,6 +2114,14 @@
       value: stats.handle,
       placeholder: 'PLAYER',
       autocomplete: 'nickname',
+    });
+    handleInput.setAttribute('pattern', '[A-Za-z0-9_\\-]{1,12}');
+    handleInput.setAttribute('autocapitalize', 'characters');
+    handleInput.spellcheck = false;
+    // Same rule as cleanHandle (A-Z, 0-9, _ and -, 12 max), applied as you type.
+    handleInput.addEventListener('input', () => {
+      const cleaned = handleInput.value.toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 12);
+      if (cleaned !== handleInput.value) handleInput.value = cleaned;
     });
     const handleSave = node('button', 'result-handle-save', 'SAVE');
     handleSave.type = 'submit';
@@ -1862,9 +2161,9 @@
       regeneratePoster();
     });
 
-    const credits = node('p', 'game-credits', 'Briam · concept & direction. Claude, ChatGPT & Gemini · engine, decks, UI & audio.');
-
-    pane.append(actions, status, previewWrap, linkInput, hofSection, details, credits);
+    pane.append(actions, status);
+    if (fooledBox) pane.append(fooledBox);
+    pane.append(previewWrap, linkInput, hofSection, details);
 
     // Climax odometer roll + celebration FX
     rollScore(ptsEl, 0, result.points, 850, true);
@@ -1884,6 +2183,9 @@
       { opacity: 1, transform: 'none' },
     ], 420);
     focus(playAgainBtn);
+    announce(`Run complete. ${formatPts(result.points)} points, ${result.score} of ${result.answers.length} correct, best streak ${result.best}. Rank: ${rank.title}.`
+      + (hofRank === 1 ? ' New number one record.' : hofRank > 0 ? ` Hall of Fame position ${hofRank}.` : '')
+      + ' Press R for the next deck.');
   }
 
   // Reopen button (when in Explore mode)
@@ -1909,7 +2211,7 @@
   coverHof?.addEventListener('click', () => openHof(coverHof));
   coverExplore.addEventListener('click', () => { wake(); explore(); });
   reopen.addEventListener('click', () => {
-    if (run && run.answers.length < run.deck.length) {
+    if (run && state === 'explore' && run.answers.length < run.deck.length) {
       enterGame();
       if (hudScore) hudScore.textContent = formatPts(run.points);
       applyFever(run.streak);
@@ -1946,7 +2248,15 @@
     const { gameAction } = control.dataset;
     switch (gameAction) {
       case 'explore':
-        explore();
+        // The HUD Exit button goes back to the cover; the results-screen button explores.
+        if (control === leave) exitToCover();
+        else explore();
+        break;
+      case 'coach-dismiss':
+        dismissCoach();
+        break;
+      case 'replay-same':
+        if (result && validSeed.test(result.seed)) startRun('replay', result.seed);
         break;
       case 'hof':
         openHof(control);
@@ -1960,16 +2270,18 @@
         break;
       case 'made-up':
       case 'real':
-        answer(gameAction);
+        answer(gameAction, undefined, event);
         break;
       case 'next':
-        nextCard();
+        nextCard(event);
         break;
       case 'case':
+        if (!current?.card) break;
         resumeTarget = control;
         wp.api?.openItem(caseItem(current.card));
         break;
       case 'copy-score': {
+        if (!result) break;
         track('copy_score', { points: result.points, score: result.score });
         const status = screen.querySelector('.result-status');
         const link = screen.querySelector('.game-challenge');
@@ -1984,6 +2296,7 @@
         break;
       }
       case 'share': {
+        if (!result) break;
         track('share_click', { points: result.points, score: result.score, kind: result.kind });
         const link = screen.querySelector('.game-challenge');
         const status = screen.querySelector('.result-status');
@@ -2003,23 +2316,48 @@
   });
 
   // Keyboard controls
+  const isTypingTarget = el => Boolean(el) && (
+    el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT' || el.isContentEditable
+  );
+  // Enter/Space on a focused control should press that control, not trigger a game shortcut.
+  const isActivatable = el => Boolean(el) && el !== document.body && el.matches?.('button, a[href], summary, [role="button"]');
+  let shiftAlone = false;
+
   addEventListener('keydown', event => {
-    if (event.repeat || event.defaultPrevented) return;
+    if (event.key !== 'Shift') shiftAlone = false;
+    if (event.repeat || event.defaultPrevented || event.isComposing) return;
     if (!hofModal.hidden) {
       if (event.key === 'Escape') {
         event.preventDefault();
         closeHof();
+      } else if (event.key === 'Tab') {
+        // Keep focus inside the dialog.
+        const items = [...hofModal.querySelectorAll('button, a[href], input')].filter(el => !el.disabled);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!hofModal.contains(document.activeElement)) {
+          event.preventDefault();
+          focus(first);
+        } else if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          focus(last);
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          focus(first);
+        }
       }
       return;
     }
     if (wp.state.open) return;
+    // Browser/OS shortcuts (Ctrl+R, Cmd+A, Alt+arrows for history...) are never game input.
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
 
-    const tag = document.activeElement?.tagName;
-    const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || document.activeElement?.isContentEditable;
-    if (isTyping) return;
+    const active = document.activeElement;
+    if (isTypingTarget(active)) return;
 
     if (state === 'cover') {
-      if ((event.key === 'Enter' || event.key === ' ') && document.activeElement === document.body) {
+      if ((event.key === 'Enter' || event.key === ' ') && (active === document.body || !active)) {
         event.preventDefault();
         startRun(challengeSeed ? 'challenge' : 'random');
       }
@@ -2027,6 +2365,11 @@
     }
 
     if (state === 'play' && current) {
+      if (current.coach && (event.key === 'Escape' || ((event.key === 'Enter' || event.key === ' ') && !isActivatable(active)))) {
+        event.preventDefault();
+        dismissCoach();
+        return;
+      }
       if (!current.answered) {
         if (event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'A') {
           event.preventDefault();
@@ -2034,12 +2377,18 @@
         } else if (event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') {
           event.preventDefault();
           answer('real');
-        } else if (event.key === 'w' || event.key === 'W' || event.key === 'Shift' || event.key === '2') {
+        } else if (event.key === 'w' || event.key === 'W' || event.key === '2') {
           event.preventDefault();
           toggleAllIn();
+        } else if (event.key === 'Shift') {
+          // Shift toggles ALL-IN only when pressed and released on its own, so Shift+Tab
+          // (and Shift+arrow) never arm a wager by accident.
+          shiftAlone = true;
         }
       } else if (current.revealed) {
         if (event.key === ' ' || event.key === 'Enter') {
+          const nextBtn = current.reveal.querySelector('[data-game-action="next"]');
+          if (isActivatable(active) && active !== nextBtn) return;
           event.preventDefault();
           nextCard();
         }
@@ -2053,6 +2402,58 @@
         startRun('random');
       }
     }
+  });
+
+  addEventListener('keyup', event => {
+    if (event.key !== 'Shift' || !shiftAlone) return;
+    shiftAlone = false;
+    if (state !== 'play' || !current || current.answered || current.coach) return;
+    if (!hofModal.hidden || wp.state.open || isTypingTarget(document.activeElement)) return;
+    toggleAllIn();
+  });
+  addEventListener('blur', () => { shiftAlone = false; });
+
+  // Hidden tab: freeze the speed fuse so switching apps never costs the speed bonus.
+  document.addEventListener('visibilitychange', () => {
+    if (!current?.clock) return;
+    if (document.hidden) current.clock.pause('hidden');
+    else current.clock.resume('hidden');
+  });
+
+  // Back button: close an open dialog first, otherwise leave the game for the cover.
+  addEventListener('popstate', () => {
+    if (skipNextPop) {
+      skipNextPop = false;
+      return;
+    }
+    if (state === 'cover') return;
+    if (!hofModal.hidden || wp.state.open) {
+      closeHof();
+      if (wp.state.open) wp.api?.closePanel();
+      pushGameHistory();
+      return;
+    }
+    exitToCover({ fromHistory: true });
+  });
+
+  // Resize / orientation change mid-drag: drop the drag and settle the card instead of
+  // leaving it stranded at a stale offset.
+  // Only width changes count: mobile URL-bar show/hide fires height-only resizes.
+  let resizeTimer = 0;
+  let lastWidth = innerWidth;
+  addEventListener('resize', () => {
+    if (innerWidth === lastWidth) return;
+    lastWidth = innerWidth;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (state !== 'play' || !current || current.answered) return;
+      current.stopDrag?.();
+      current.stopEntry?.();
+      current.paper.style.opacity = '1';
+      current.paper.style.transform = '';
+      const ghost = current.ghost;
+      if (ghost) ghost.style.opacity = '0';
+    }, 120);
   });
 
   addEventListener('wp:open', () => {

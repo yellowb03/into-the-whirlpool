@@ -1,6 +1,6 @@
 # Audio Credits & Provenance (`assets/audio/`)
 
-All Core 20 audio files in this initial `gemini/sound-v2` drop were synthesized programmatically at 48 kHz using original DSP code (Python `numpy`/`scipy` + `ffmpeg` Opus/AAC dual encoding) with zero third-party samples or copyrighted material. All files are original works created for *Into the Whirlpool* and licensed for project use (CC0 / original project assets).
+All Core 20 audio files in this set were synthesized programmatically at 48 kHz using original DSP code (Python `numpy`/`scipy` + `ffmpeg` Opus/AAC dual encoding) with zero third-party samples or copyrighted material. All files are original works created for *Am I Crazy?* and licensed for project use (CC0 / original project assets).
 
 | Asset | Variations | Format | Loudness / Peak | Origin |
 | --- | --- | --- | --- | --- |
@@ -26,4 +26,4 @@ All Core 20 audio files in this initial `gemini/sound-v2` drop were synthesized 
 | `ui/press-1..4` | 4 | `.webm`, `.m4a` | −12 dBFS peak | Original fingertip cardboard tap synthesis |
 | `ui/switch-1..2` | 2 | `.webm`, `.m4a` | −12 dBFS peak | Original vintage toggle switch double-click synthesis |
 
-*Note: Physical foley files (`stamp-*`, `folder-*`, `clip-bite`, `paper-fling`, `card-rise`) can be swapped 1-for-1 with Briam's condenser-mic recordings in future drops without changing `audio.js` or `manifest.json`.*
+*Note: Physical foley files (`stamp-*`, `folder-*`, `clip-bite`, `paper-fling`, `card-rise`) can be swapped 1-for-1 with recorded foley in future updates without changing `audio.js` or `manifest.json`.*
