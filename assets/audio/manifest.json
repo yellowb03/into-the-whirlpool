@@ -21,7 +21,19 @@
       "stems": ["bed"]
     }
   },
-  "stingers": ["cover-loop", "crossing"],
+  "sceneLoops": {
+    "cover": {
+      "file": "gambit-title-v1",
+      "start": 38.967,
+      "end": 64.917
+    },
+    "game": {
+      "file": "quarter-deck-v1",
+      "start": 0.060,
+      "end": 31.005
+    }
+  },
+  "stingers": ["crossing"],
   "sfx": {
     "stamp-real": 4,
     "stamp-made-up": 4,

@@ -85,9 +85,9 @@ function useArchiveFallback(){
   if(WP.state.mode==='explore'&&ITEMS[index])openItem(ITEMS[index]);
  }
  function start(){
-  if(WP.state.started)return;
   cover.classList.add('gone');cover.inert=true;cover.setAttribute('aria-hidden','true');
-  WP.state.cover=false;WP.state.started=true;WP.emit('start');
+  WP.state.cover=false;
+  if(!WP.state.started){WP.state.started=true;WP.emit('start');}
  }
  WP.api={start,openItem,closePanel,travel,setMode(mode){
   start();closePanel();WP.state.mode=mode;
