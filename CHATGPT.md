@@ -122,6 +122,8 @@ The engine only loads what is listed in `assets/manifest.json`. After each batch
 
 Generated from `data.js` by `node tools/asset-list.js`. If the data changes, regenerate this list. The slugs are the contract.
 
+**Updated after batch 1:** the timeline now includes the real Jul–Nov 2026 events (Jacobian, Navier–Stokes, Riemann, VP ≠ VNP), measured progress, and other people's forecasts ("Their forecast" rows; charts are drawn in code, so skip any row whose vision type is `trend`). Several of my 2027–2031 predictions changed. Batch 1's six files are unaffected.
+
 ### Milestones, 2012 to now
 
 | # | File slug | Date | Title | What happened / what to show |
@@ -140,64 +142,91 @@ Generated from `data.js` by `node tools/asset-list.js`. If the data changes, reg
 | 12 | `2020-11-alphafold-cracks-folding` | 2020-11 | AlphaFold cracks folding | At the CASP14 contest, AlphaFold 2 predicts protein shapes with near-experimental accuracy, answering a 50-year-old grand challenge. |
 | 13 | `2021-01-dall-e-paints-sentences` | 2021-01 | DALL·E paints sentences | OpenAI’s model draws images from text, famously an armchair shaped like an avocado. |
 | 14 | `2021-06-copilot-writes-code` | 2021-06 | Copilot writes code | GitHub Copilot, built on OpenAI Codex, autocompletes whole functions inside the code editor. |
-| 15 | `2022-07-200-million-proteins-mapped` | 2022-07 | 200 million proteins mapped | DeepMind and EMBL release predicted structures for nearly every protein known to science. |
-| 16 | `2022-08-stable-diffusion-goes-open` | 2022-08 | Stable Diffusion goes open | A capable image generator is released with open weights. Anyone with a gaming GPU can run it. |
-| 17 | `2022-11-chatgpt-launches` | 2022-11 | ChatGPT launches | OpenAI releases a chat interface as a research preview. It reportedly reaches 100 million users in about two months. |
-| 18 | `2023-02-llama-escapes` | 2023-02 | LLaMA escapes | Meta shares LLaMA with researchers; the weights leak within a week and an open-model explosion follows. |
-| 19 | `2023-03-gpt-4-passes-the-bar` | 2023-03 | GPT-4 passes the bar | GPT-4 scores around the top 10% on a simulated bar exam and can read images. Anthropic releases Claude the same week. |
-| 20 | `2023-11-openai-s-five-day-coup` | 2023-11 | OpenAI’s five-day coup | OpenAI’s board removes CEO Sam Altman. Nearly all staff threaten to quit; within five days he returns with a new board. |
-| 21 | `2024-02-sora-dreams-in-video` | 2024-02 | Sora dreams in video | OpenAI shows minute-long, photorealistic videos generated from text prompts. |
-| 22 | `2024-07-silver-at-the-olympiad` | 2024-07 | silver at the Olympiad | DeepMind’s AlphaProof and AlphaGeometry 2 solve four of six International Mathematical Olympiad problems, silver-medal level. |
-| 23 | `2024-09-models-learn-to-think` | 2024-09 | models learn to think | OpenAI’s o1 reasons in a hidden chain of thought before answering and jumps ahead on maths and coding tests. |
-| 24 | `2024-10-nobel-prizes-go-to-ai` | 2024-10 | Nobel Prizes go to AI | Physics goes to Hopfield and Hinton for neural networks; chemistry to Baker, Hassabis and Jumper for protein design and AlphaFold. |
-| 25 | `2025-01-deepseek-shocks-the-market` | 2025-01 | DeepSeek shocks the market | A Chinese lab’s open R1 reasoning model rivals top US models at a fraction of the reported cost. Nvidia loses roughly $590B of value in a day. |
-| 26 | `2025-01-stargate-500-billion` | 2025-01 | Stargate: $500 billion | OpenAI, SoftBank and Oracle announce plans to invest up to $500B in US AI data centres. |
-| 27 | `2025-05-alphaevolve-beats-a-1969-record` | 2025-05 | AlphaEvolve beats a 1969 record | DeepMind’s evolutionary coding agent multiplies 4×4 complex matrices with 48 multiplications, improving on Strassen’s 1969 method. |
-| 28 | `2025-07-gold-at-the-olympiad` | 2025-07 | gold at the Olympiad | Experimental models from OpenAI and Google DeepMind reach gold-medal scores at the IMO, writing proofs in plain language. |
-| 29 | `2025-08-gpt-5-arrives` | 2025-08 | GPT-5 arrives | OpenAI ships GPT-5, combining quick answers and deep reasoning in one system. |
-| 30 | `2026-01-erdos-problems-start-falling` | 2026-01 | Erdős problems start falling | Over a few weeks around the new year, about a dozen open Erdős problems are marked solved with AI credited in the process, some with Lean-checked proofs. |
-| 31 | `2026-05-a-1946-conjecture-breaks` | 2026-05 | a 1946 conjecture breaks | An internal OpenAI model finds a counterexample to Erdős’s 1946 unit distance conjecture, borrowing ideas from a distant branch of maths. Humans improve it within weeks. |
-| 32 | `2026-06-an-ai-designed-vaccine-meets-humans` | 2026-06 | an AI-designed vaccine meets humans | A Cambridge coronavirus vaccine whose key antigen was designed by computer is found safe in its first trial, with 39 volunteers. |
-| 33 | `2026-06-mythos-class-models` | 2026-06 | Mythos-class models | Anthropic releases Claude Fable 5 and Mythos 5 on June 9. Access is suspended on June 12 to comply with US export controls and restored on July 1. |
-| 34 | `2026-07-an-ai-drug-enters-phase-iii` | 2026-07 | an AI drug enters Phase III | Insilico begins a Phase III trial of rentosertib for lung fibrosis. Both its target and its molecule were found with AI. |
-| 35 | `2026-09-claude-finds-a-crispr-like-system` | 2026-09 | Claude finds a CRISPR-like system | Anthropic’s new biology lab reports that Claude, given only high-level direction, identified ART: an enzyme system tied to CRISPR-like DNA repeats. Its function is still unknown. |
-| 36 | `2026-10-openai-reports-new-discoveries` | 2026-10 | OpenAI reports new discoveries | OpenAI says its models produced new results in mathematics, computer science and physics, and invites outside scientists to verify them. |
-| 37 | `2026-11-you-are-here` | 2026-11 | you are here | November 2026. Everything before this point happened. Everything after it is a guess. |
+| 15 | `2021-08-what-2026-looks-like` | 2021-08 | What 2026 Looks Like | Daniel Kokotajlo, then a forecasting researcher, posts a year-by-year guess at the next five years of AI. By 2026 it reads as uncannily close. |
+| 16 | `2022-07-200-million-proteins-mapped` | 2022-07 | 200 million proteins mapped | DeepMind and EMBL release predicted structures for nearly every protein known to science. |
+| 17 | `2022-08-stable-diffusion-goes-open` | 2022-08 | Stable Diffusion goes open | A capable image generator is released with open weights. Anyone with a gaming GPU can run it. |
+| 18 | `2022-11-chatgpt-launches` | 2022-11 | ChatGPT launches | OpenAI releases a chat interface as a research preview. It reportedly reaches 100 million users in about two months. |
+| 19 | `2023-02-llama-escapes` | 2023-02 | LLaMA escapes | Meta shares LLaMA with researchers; the weights leak within a week and an open-model explosion follows. |
+| 20 | `2023-03-gpt-4-passes-the-bar` | 2023-03 | GPT-4 passes the bar | GPT-4 scores around the top 10% on a simulated bar exam and can read images. Anthropic releases Claude the same week. |
+| 21 | `2023-11-openai-s-five-day-coup` | 2023-11 | OpenAI’s five-day coup | OpenAI’s board removes CEO Sam Altman. Nearly all staff threaten to quit; within five days he returns with a new board. |
+| 22 | `2024-02-sora-dreams-in-video` | 2024-02 | Sora dreams in video | OpenAI shows minute-long, photorealistic videos generated from text prompts. |
+| 23 | `2024-07-silver-at-the-olympiad` | 2024-07 | silver at the Olympiad | DeepMind’s AlphaProof and AlphaGeometry 2 solve four of six International Mathematical Olympiad problems, silver-medal level. |
+| 24 | `2024-09-models-learn-to-think` | 2024-09 | models learn to think | OpenAI’s o1 reasons in a hidden chain of thought before answering and jumps ahead on maths and coding tests. |
+| 25 | `2024-10-a-country-of-geniuses-in-a-datacenter` | 2024-10 | a country of geniuses in a datacenter | Anthropic CEO Dario Amodei publishes Machines of Loving Grace, imagining millions of AI copies, each smarter than a Nobel laureate, compressing a century of science into a decade. |
+| 26 | `2024-10-nobel-prizes-go-to-ai` | 2024-10 | Nobel Prizes go to AI | Physics goes to Hopfield and Hinton for neural networks; chemistry to Baker, Hassabis and Jumper for protein design and AlphaFold. |
+| 27 | `2025-01-deepseek-shocks-the-market` | 2025-01 | DeepSeek shocks the market | A Chinese lab’s open R1 reasoning model rivals top US models at a fraction of the reported cost. Nvidia loses roughly $590B of value in a day. |
+| 28 | `2025-01-stargate-500-billion` | 2025-01 | Stargate: $500 billion | OpenAI, SoftBank and Oracle announce plans to invest up to $500B in US AI data centres. |
+| 29 | `2025-03-the-doubling-clock` | 2025-03 | the doubling clock | METR measures how long a task (in human time) AI agents can finish half the time, and finds it has doubled roughly every seven months since 2019. |
+| 30 | `2025-04-ai-2027-is-published` | 2025-04 | AI 2027 is published | Kokotajlo, Scott Alexander and others publish AI 2027, a month-by-month scenario: superhuman AI coders by March 2027, superintelligence about a year later. |
+| 31 | `2025-05-alphaevolve-beats-a-1969-record` | 2025-05 | AlphaEvolve beats a 1969 record | DeepMind’s evolutionary coding agent multiplies 4×4 complex matrices with 48 multiplications, improving on Strassen’s 1969 method. |
+| 32 | `2025-07-gold-at-the-olympiad` | 2025-07 | gold at the Olympiad | Experimental models from OpenAI and Google DeepMind reach gold-medal scores at the IMO, writing proofs in plain language. |
+| 33 | `2025-08-gpt-5-arrives` | 2025-08 | GPT-5 arrives | OpenAI ships GPT-5, combining quick answers and deep reasoning in one system. |
+| 34 | `2026-01-erdos-problems-start-falling` | 2026-01 | Erdős problems start falling | Over a few weeks around the new year, about a dozen open Erdős problems are marked solved with AI credited in the process, some with Lean-checked proofs. |
+| 35 | `2026-01-ai-2027-authors-blink` | 2026-01 | AI 2027 authors blink | In a December 2025 revision, the AI Futures Project pushes its timelines back: fully automated coding moves from 2027 toward the early 2030s. |
+| 36 | `2026-05-a-1946-conjecture-breaks` | 2026-05 | a 1946 conjecture breaks | An internal OpenAI model finds a counterexample to Erdős’s 1946 unit distance conjecture, borrowing ideas from a distant branch of maths. Humans improve it within weeks. |
+| 37 | `2026-06-an-ai-designed-vaccine-meets-humans` | 2026-06 | an AI-designed vaccine meets humans | A Cambridge coronavirus vaccine whose key antigen was designed by computer is found safe in its first trial, with 39 volunteers. |
+| 38 | `2026-06-mythos-class-models` | 2026-06 | Mythos-class models | Anthropic releases Claude Fable 5 and Mythos 5 on June 9. Access is suspended on June 12 to comply with US export controls and restored on July 1. |
+| 39 | `2026-07-an-ai-drug-enters-phase-iii` | 2026-07 | an AI drug enters Phase III | Insilico begins a Phase III trial of rentosertib for lung fibrosis. Both its target and its molecule were found with AI. |
+| 40 | `2026-07-the-jacobian-conjecture-breaks` | 2026-07 | the Jacobian conjecture breaks | Claude Fable 5 finds a counterexample to the Jacobian conjecture for three or more variables: an explicit polynomial map that should be invertible and isn’t. |
+| 41 | `2026-09-claude-finds-a-crispr-like-system` | 2026-09 | Claude finds a CRISPR-like system | Anthropic’s new biology lab reports that Claude, given only high-level direction, identified ART: an enzyme system tied to CRISPR-like DNA repeats. Its function is still unknown. |
+| 42 | `2026-09-navier-stokes-breaks` | 2026-09 | Navier–Stokes breaks | OpenAI says roughly ten thousand agents, running for 88 hours, proved that 3D Navier–Stokes with a smooth external force can blow up in finite time, with a Lean proof. Mathematicians Buckmaster and Alpöge say their own ideas leaked into it. |
+| 43 | `2026-10-722-papers-in-one-drop` | 2026-10 | 722 papers in one drop | OpenAI releases 722 manuscripts claiming solutions, proofs or counterexamples for hundreds of open problems, including partial results on Riemann, Birch–Swinnerton-Dyer and Hodge. |
+| 44 | `2026-10-the-quasi-riemann-hypothesis` | 2026-10 | the quasi-Riemann hypothesis | Human experts unpack an OpenAI proof of the quasi-Riemann hypothesis, a weaker cousin of Riemann, and find it built on techniques they had developed years earlier. |
+| 45 | `2026-11-ai-is-now-speeding-up-ai` | 2026-11 | AI is now speeding up AI | After eleven weeks inside Anthropic, METR estimates the lab is improving its models about twice as fast as in 2024–25, and that AI tools likely explain most of the speed-up. |
+| 46 | `2026-11-ai-2027-back-on-schedule` | 2026-11 | AI 2027, back on schedule | All six AI 2027 authors now forecast a superhuman AI researcher at some point in 2027, unless there is a deliberate slowdown. Kokotajlo puts 50% on May 2027. |
+| 47 | `2026-11-doubling-every-3-6-months` | 2026-11 | doubling every 3.6 months | METR’s latest update: the length of tasks AI agents can finish is now doubling about every 3.6 months. A naive line hits 200-hour tasks, the top of its scale, by July 2027. |
+| 48 | `2026-11-a-quantum-speedup-limit-proved` | 2026-11 | a quantum speedup limit, proved | An AI lab produces a proof of the Aaronson–Ambainis conjecture, a decades-old limit on when quantum computers can beat classical ones. |
+| 49 | `2026-11-the-riemann-hypothesis` | 2026-11 | the Riemann hypothesis? | Anthropic mathematician Levent Alpöge announces a proof of the Riemann hypothesis built with Claude: about 17.4 million lines of Lean that pass machine checking. The same day, Stanford’s Ravi Vakil posts a rival human-written proof. |
+| 50 | `2026-11-vp-vnp` | 2026-11 | VP ≠ VNP | Anthropic posts a 70-page paper credited to Claude alone, with a Lean proof, claiming Valiant’s 1979 conjecture: VP differs from VNP over every field. OpenAI posts its own proof five hours later. No human has checked either yet. |
+| 51 | `2026-11-you-are-here` | 2026-11 | you are here | Late November 2026. Navier–Stokes, Riemann and VP vs VNP all claimed within three months. Everything before this point happened. Everything after it is a guess. |
 
 ### Predictions, 2027 to 2031
 
 | # | File slug | Date | Title | What happened / what to show |
 |---|---|---|---|---|
-| 1 | `2027-01-ai-proves-not-just-disproves` | 2027-01 | AI proves, not just disproves | Counterexamples are search; proofs are understanding. An AI produces a complete, Lean-verified proof of a well-known open conjecture. |
+| 1 | `2027-01-someone-reads-the-riemann-proof` | 2027-01 | someone reads the Riemann proof | Mathematicians, with AI help, distil the 17-million-line proof into an argument a human can follow, and it holds. |
 | 2 | `2027-03-proof-checked-by-machine` | 2027-03 | proof checked by machine | Major journals start requiring or strongly encouraging formal proof certificates for AI-assisted results. |
 | 3 | `2027-05-cas9-gets-smarter-cousins` | 2027-05 | Cas9 gets smarter cousins | AI-mined systems like ART get characterised, and at least one turns out to be programmable and heads to animal studies. |
-| 4 | `2027-07-enzymes-from-microbial-dark-matter` | 2027-07 | enzymes from microbial dark matter | Agents trawl DNA from microbes nobody has ever grown and propose hundreds of enzyme families; labs confirm dozens. |
-| 5 | `2027-09-rubin-sees-something-weird` | 2027-09 | Rubin sees something weird | An AI combing the Vera Rubin Observatory’s nightly data flood flags a transient no model explains. Half the internet says aliens; it is probably a new way for stars to die. |
-| 6 | `2027-11-ai-named-coauthor` | 2027-11 | AI, named coauthor | A major journal accepts an AI system as a named contributor, and a fight over credit and accountability follows. |
-| 7 | `2028-01-first-ai-designed-drug-approved` | 2028-01 | first AI-designed drug approved | A drug whose target and molecule were both found by AI is approved somewhere, most likely for fibrosis or a rare disease. |
-| 8 | `2028-03-the-lab-that-never-sleeps` | 2028-03 | the lab that never sleeps | A closed-loop robot lab finds a new antibiotic class end to end: hypothesis, synthesis, testing. Humans mostly sign the paper. |
-| 9 | `2028-05-a-new-class-of-antibiotics` | 2028-05 | a new class of antibiotics | The first genuinely new antibiotic class in decades, designed against drug-resistant bacteria. |
-| 10 | `2028-07-ai-holds-the-plasma` | 2028-07 | AI holds the plasma | Learned controllers keep a tokamak’s plasma stable for record stretches. |
-| 11 | `2028-09-fusion-on-learned-control` | 2028-09 | fusion on learned control | A private fusion company puts AI control at the core of a major reactor milestone. |
-| 12 | `2028-11-hypotheses-outpace-the-labs` | 2028-11 | hypotheses outpace the labs | AI generates far more credible hypotheses than labs can test, and funding shifts towards automated validation. |
-| 13 | `2029-01-superconductor-at-150-k` | 2029-01 | superconductor at 150 K | An AI-predicted material superconducts above 150 K at ambient pressure. Not room temperature, but close enough to rattle everyone. |
-| 14 | `2029-03-it-actually-replicates` | 2029-03 | it actually replicates | Three independent labs reproduce it within months, unlike the 2023 LK-99 frenzy. |
-| 15 | `2029-05-the-proof-nobody-understands` | 2029-05 | the proof nobody understands | A major theorem is accepted on the strength of a Lean proof that no human can follow. |
-| 16 | `2029-07-verified-unexplained` | 2029-07 | verified, unexplained | Journals add a category for results that are machine-verified but lack human insight. |
-| 17 | `2029-09-inner-speech-decoded` | 2029-09 | inner speech, decoded | Brain implants plus AI decode silent inner speech at conversational speed for paralysed patients. |
-| 18 | `2029-11-mind-privacy-goes-to-court` | 2029-11 | mind privacy goes to court | The first major court case over neural data recorded by an implant or headset. |
-| 19 | `2030-01-navier-stokes-blows-up` | 2030-01 | Navier–Stokes blows up | AI finds a blow-up solution to the Navier–Stokes equations, one of the Millennium Prize problems. |
-| 20 | `2030-03-a-millennium-prize-claimed` | 2030-03 | a Millennium Prize, claimed | The Clay Institute receives a computer-assisted solution and begins a long verification. |
-| 21 | `2030-05-a-virtual-human-cell` | 2030-05 | a virtual human cell | Simulated human cells predict drug responses well enough that some trials skip steps of animal testing. |
-| 22 | `2030-07-biology-becomes-debugging` | 2030-07 | biology becomes debugging | Gene therapies get designed like software patches: find the faulty line, write the fix, test it in simulation. |
-| 23 | `2030-09-enzymes-eat-the-plastic` | 2030-09 | enzymes eat the plastic | AI-designed enzymes digest mixed plastic waste at industrial scale. |
-| 24 | `2030-11-trash-back-into-monomers` | 2030-11 | trash back into monomers | The first plant that turns plastic trash back into raw monomers makes a profit. |
-| 25 | `2031-01-a-crack-in-the-standard-model` | 2031-01 | a crack in the Standard Model | An AI reanalysis across collider and cosmology data finds a solid anomaly pointing to new particles. |
-| 26 | `2031-03-a-dark-sector-whispers` | 2031-03 | a dark sector whispers | AI finds a consistent signal of hidden particles across several experiments. |
-| 27 | `2031-05-cancer-vaccine-in-48-hours` | 2031-05 | cancer vaccine in 48 hours | Sequence the tumour, let an AI design a personalised mRNA vaccine, ship the dose in two days. Standard care in a few countries. |
-| 28 | `2031-07-science-outruns-understanding` | 2031-07 | science outruns understanding | In some fields, most new results come from machines. |
-| 29 | `2031-09-the-machines-already-know` | 2031-09 | the machines already know | Researchers increasingly learn science by questioning models that already encode the result. |
-| 30 | `2031-11-who-is-discovering-whom` | 2031-11 | who is discovering whom? | Not a prediction. A question. |
+| 4 | `2027-06-who-gets-the-million-dollars` | 2027-06 | who gets the million dollars? | The Clay Institute rules on the AI-era Millennium claims. Expect money for a human team and an asterisk for the machines. |
+| 5 | `2027-07-enzymes-from-microbial-dark-matter` | 2027-07 | enzymes from microbial dark matter | Agents trawl DNA from microbes nobody has ever grown and propose hundreds of enzyme families; labs confirm dozens. |
+| 6 | `2027-09-rubin-sees-something-weird` | 2027-09 | Rubin sees something weird | An AI combing the Vera Rubin Observatory’s nightly data flood flags a transient no model explains. Half the internet says aliens; it is probably a new way for stars to die. |
+| 7 | `2027-11-ai-named-coauthor` | 2027-11 | AI, named coauthor | A major journal accepts an AI system as a named contributor, and a fight over credit and accountability follows. |
+| 8 | `2028-01-first-ai-designed-drug-approved` | 2028-01 | first AI-designed drug approved | A drug whose target and molecule were both found by AI is approved somewhere, most likely for fibrosis or a rare disease. |
+| 9 | `2028-02-verified-unexplained` | 2028-02 | verified, unexplained | After Riemann, journals formally add a category for results that are machine-verified but not yet understood by any human. |
+| 10 | `2028-03-the-lab-that-never-sleeps` | 2028-03 | the lab that never sleeps | A closed-loop robot lab finds a new antibiotic class end to end: hypothesis, synthesis, testing. Humans mostly sign the paper. |
+| 11 | `2028-05-a-new-class-of-antibiotics` | 2028-05 | a new class of antibiotics | The first genuinely new antibiotic class in decades, designed against drug-resistant bacteria. |
+| 12 | `2028-07-ai-holds-the-plasma` | 2028-07 | AI holds the plasma | Learned controllers keep a tokamak’s plasma stable for record stretches. |
+| 13 | `2028-09-fusion-on-learned-control` | 2028-09 | fusion on learned control | A private fusion company puts AI control at the core of a major reactor milestone. |
+| 14 | `2028-11-hypotheses-outpace-the-labs` | 2028-11 | hypotheses outpace the labs | AI generates far more credible hypotheses than labs can test, and funding shifts towards automated validation. |
+| 15 | `2029-01-superconductor-at-150-k` | 2029-01 | superconductor at 150 K | An AI-predicted material superconducts above 150 K at ambient pressure. Not room temperature, but close enough to rattle everyone. |
+| 16 | `2029-03-it-actually-replicates` | 2029-03 | it actually replicates | Three independent labs reproduce it within months, unlike the 2023 LK-99 frenzy. |
+| 17 | `2029-05-the-phd-gets-rewritten` | 2029-05 | the PhD gets rewritten | Top maths departments drop “prove a new theorem” as the core of a PhD, and replace it with understanding, explaining and extending machine results. |
+| 18 | `2029-09-inner-speech-decoded` | 2029-09 | inner speech, decoded | Brain implants plus AI decode silent inner speech at conversational speed for paralysed patients. |
+| 19 | `2029-11-mind-privacy-goes-to-court` | 2029-11 | mind privacy goes to court | The first major court case over neural data recorded by an implant or headset. |
+| 20 | `2030-01-p-np` | 2030-01 | P ≠ NP | Building on VP ≠ VNP, an AI-assisted proof separates P from NP, the most famous open problem in computer science. |
+| 21 | `2030-03-the-last-millennium-problems` | 2030-03 | the last Millennium problems | Hodge and Birch–Swinnerton-Dyer fall too, leaving only P vs NP and Yang–Mills standing. |
+| 22 | `2030-05-a-virtual-human-cell` | 2030-05 | a virtual human cell | Simulated human cells predict drug responses well enough that some trials skip steps of animal testing. |
+| 23 | `2030-07-biology-becomes-debugging` | 2030-07 | biology becomes debugging | Gene therapies get designed like software patches: find the faulty line, write the fix, test it in simulation. |
+| 24 | `2030-09-enzymes-eat-the-plastic` | 2030-09 | enzymes eat the plastic | AI-designed enzymes digest mixed plastic waste at industrial scale. |
+| 25 | `2030-11-trash-back-into-monomers` | 2030-11 | trash back into monomers | The first plant that turns plastic trash back into raw monomers makes a profit. |
+| 26 | `2031-01-a-crack-in-the-standard-model` | 2031-01 | a crack in the Standard Model | An AI reanalysis across collider and cosmology data finds a solid anomaly pointing to new particles. |
+| 27 | `2031-03-a-dark-sector-whispers` | 2031-03 | a dark sector whispers | AI finds a consistent signal of hidden particles across several experiments. |
+| 28 | `2031-05-cancer-vaccine-in-48-hours` | 2031-05 | cancer vaccine in 48 hours | Sequence the tumour, let an AI design a personalised mRNA vaccine, ship the dose in two days. Standard care in a few countries. |
+| 29 | `2031-07-science-outruns-understanding` | 2031-07 | science outruns understanding | In some fields, most new results come from machines. |
+| 30 | `2031-09-the-machines-already-know` | 2031-09 | the machines already know | Researchers increasingly learn science by questioning models that already encode the result. |
+| 31 | `2031-11-who-is-discovering-whom` | 2031-11 | who is discovering whom? | Not a prediction. A question. |
+
+### Other people's forecasts
+
+| # | File slug | Date | Title | What happened / what to show |
+|---|---|---|---|---|
+| 1 | `2027-03-ai-2027-the-superhuman-coder` | 2027-03 | AI 2027: the superhuman coder | The original AI 2027 scenario’s date for an AI that codes like a lab’s best engineer, only faster and cheaper, with thousands of copies. |
+| 2 | `2027-05-a-superhuman-ai-researcher` | 2027-05 | a superhuman AI researcher | Kokotajlo’s median for an AI that does the whole research job, not just the coding, better than humans. |
+| 3 | `2027-07-200-hour-tasks` | 2027-07 | 200-hour tasks | Where METR’s trend line reaches agents finishing month-long human projects half the time, if nothing bends it. |
+| 4 | `2027-12-nobel-level-ai-everywhere` | 2027-12 | Nobel-level AI, everywhere | Amodei’s long-standing claim: models that match Nobel laureates across many fields by 2026–2027. He repeated it at Davos in 2026. |
+| 5 | `2028-06-superintelligence-per-ai-2027` | 2028-06 | superintelligence, per AI 2027 | In the scenario, about a year after superhuman coders, AI becomes vastly smarter than humans at nearly everything. |
+| 6 | `2029-02-25-chance-of-agi` | 2029-02 | 25% chance of AGI | The forecasting community on Metaculus puts a one-in-four chance on general AI by 2029, and even odds by 2033. |
+| 7 | `2031-12-beyond-the-edge` | 2031-12 | beyond the edge | Past this point: Metaculus gives even odds of AGI by 2033. Amodei puts 90% on a country of geniuses within ten years. Hassabis says AI could end all disease within a decade. The AI researchers’ survey median for machines beating us at everything: 2047. |
 
 ### Real headlines
 
@@ -219,8 +248,15 @@ Generated from `data.js` by `node tools/asset-list.js`. If the data changes, reg
 | 14 | `2024-05-google-s-ai-suggests-adding-glue-to-keep-cheese-` | 2024-05 | Google’s AI suggests adding glue to keep cheese on pizza | AI Overviews served up an old Reddit joke as cooking advice. |
 | 15 | `2024-11-ai-granny-daisy-wastes-phone-scammers-time` | 2024-11 | AI granny “Daisy” wastes phone scammers’ time | UK carrier O2 built an AI grandmother who keeps scammers rambling on the phone for up to 40 minutes. |
 | 16 | `2025-03-our-gpus-are-melting-ghibli-style-images-swamp-c` | 2025-03 | “Our GPUs are melting”: Ghibli-style images swamp ChatGPT | GPT-4o image generation went viral and OpenAI had to rate-limit it. |
-| 17 | `2025-06-claude-runs-an-office-snack-shop-stockpiles-tung` | 2025-06 | Claude runs an office snack shop, stockpiles tungsten cubes, loses money | In Anthropic’s Project Vend, Claude ran a small store. It handed out discounts, bought metal cubes, and briefly insisted it was a person in a blazer. |
-| 18 | `2025-10-exec-says-gpt-5-solved-10-erdos-problems-it-had-` | 2025-10 | Exec says GPT-5 solved 10 Erdős problems; it had found existing answers | The solutions were already in the literature. The post came down after mathematicians objected. |
+| 17 | `2025-04-deepmind-s-hassabis-ai-could-end-all-disease-wit` | 2025-04 | DeepMind’s Hassabis: AI could end all disease within a decade | In a 60 Minutes interview, he said AI could cut drug design from years to months, and perhaps one day cure every disease. |
+| 18 | `2025-06-claude-runs-an-office-snack-shop-stockpiles-tung` | 2025-06 | Claude runs an office snack shop, stockpiles tungsten cubes, loses money | In Anthropic’s Project Vend, Claude ran a small store. It handed out discounts, bought metal cubes, and briefly insisted it was a person in a blazer. |
+| 19 | `2025-10-exec-says-gpt-5-solved-10-erdos-problems-it-had-` | 2025-10 | Exec says GPT-5 solved 10 Erdős problems; it had found existing answers | The solutions were already in the literature. The post came down after mathematicians objected. |
+| 20 | `2026-02-amodei-90-odds-of-a-country-of-geniuses-within-t` | 2026-02 | Amodei: 90% odds of a “country of geniuses” within ten years | He told Dwarkesh Patel he expects end-to-end coding to be fully automated in one to two years. |
+| 21 | `2026-02-forecasters-now-give-agi-even-odds-by-2033` | 2026-02 | Forecasters now give AGI even odds by 2033 | The Metaculus community’s median, down from 2055 in early 2022. |
+| 22 | `2026-09-25-fields-medalists-ai-and-mathematics-are-sever` | 2026-09 | 25 Fields Medalists: AI and mathematics are “severely misaligned” | A declaration published on Terence Tao’s blog warns that labs racing to claim famous problems are damaging understanding, credit and the field itself. Thousands of researchers endorse it within days. |
+| 23 | `2026-09-mathematician-says-his-navier-stokes-ideas-reach` | 2026-09 | Mathematician says his Navier–Stokes ideas reached OpenAI before its announcement | Tristan Buckmaster posted about 12 hours before OpenAI’s Navier–Stokes claim, saying work with Levent Alpöge had reached OpenAI days earlier. |
+| 24 | `2026-11-amodei-cancer-and-alzheimer-s-will-be-relics-of-` | 2026-11 | Amodei: cancer and Alzheimer’s will be “relics of the past” within a decade | He listed cancer, Alzheimer’s, heart disease and mental illness. Some medical researchers called claims like this premature. |
+| 25 | `2026-11-openai-posts-its-own-vp-vnp-proof-five-hours-aft` | 2026-11 | OpenAI posts its own VP ≠ VNP proof five hours after Anthropic’s | OpenAI says its result was obtained on November 6, but it reached GitHub only after Anthropic published. |
 
 ### Made-up future headlines
 

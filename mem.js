@@ -219,7 +219,7 @@ board:v=>mk2D((x,S)=>{const bgc=document.createElement('canvas');bgc.width=bgc.h
 b.fillStyle='#1c2924';b.fillRect(0,0,S,S);
 for(let i=0;i<90;i++){const X=rr()*S,Y=rr()*S,R=20+rr()*120,g=b.createRadialGradient(X,Y,0,X,Y,R);g.addColorStop(0,`rgba(220,230,220,${.02+rr()*.05})`);g.addColorStop(1,'rgba(220,230,220,0)');b.fillStyle=g;b.fillRect(X-R,Y-R,R*2,R*2);}
 for(let i=0;i<14;i++){b.strokeStyle=`rgba(220,230,220,${.03+rr()*.04})`;b.lineWidth=20+rr()*40;b.beginPath();const y=rr()*S;b.moveTo(-20,y);b.bezierCurveTo(S*.3,y+(rr()-.5)*80,S*.7,y+(rr()-.5)*80,S+20,y+(rr()-.5)*60);b.stroke();}
-const LINES=v==='imo'?['IMO · Problem 6','Let n ≥ 2 and a₁ < a₂ < … < aₙ be','positive integers with  ∑ 1/aᵢ = 1 …','Proof (model, plain language)','∎  7 / 7 points']:v==='unit'?['Unit distances (Erdős, 1946)','u(n) ≤ n^{1+o(1)} ?','model: explicit construction','more unit distances than believed','✗  conjecture false']:v==='prize'?['∂u/∂t + (u·∇)u = −∇p + νΔu','∇·u = 0','‖u(·,t)‖ → ∞  as  t → T*','blow-up in finite time','$1,000,000']:v==='unexp'?['Lemma 4117 of 9320','⊢ ∀ G,  χ(G) ≤ Φ(G) + 7','by machine search, depth 81','... but why does it work?','✓ verified']:['Conjecture (1948)','∀ n ≥ 2  ∃ x, y, z ∈ ℕ :','4/n = 1/x + 1/y + 1/z','Proof.  (found by machine)','∎'];
+const LINES=v==='rh'?['ζ(s) = Σ n⁻ˢ','ζ(s) = 0  ⇒  Re(s) = ½','17,400,000 lines of Lean','✓ kernel check passed','… now, what does it say?']:v==='vp'?['Valiant, 1979:  VP ≟ VNP','perm needs m^{c(log m)^⅓} gates','author: Claude','every field','VP ≠ VNP']:v==='jac'?['F : ℂ³ → ℂ³,  det J(F) = 1','⇒  F invertible ?  (Keller, 1939)','explicit map, found by model','F(a) = F(b),  a ≠ b','✗  false for n ≥ 3']:v==='aa'?['Aaronson–Ambainis','quantum query algorithm Q','∃ classical C, queries poly(Q)','on most inputs','✓ proved']:v==='pnp'?['P ≟ NP','VP ≠ VNP  (2026)','⇒  ?','SAT ∉ P','P ≠ NP']:v==='imo'?['IMO · Problem 6','Let n ≥ 2 and a₁ < a₂ < … < aₙ be','positive integers with  ∑ 1/aᵢ = 1 …','Proof (model, plain language)','∎  7 / 7 points']:v==='unit'?['Unit distances (Erdős, 1946)','u(n) ≤ n^{1+o(1)} ?','model: explicit construction','more unit distances than believed','✗  conjecture false']:v==='prize'?['∂u/∂t + (u·∇)u = −∇p + νΔu','∇·u = 0','‖u(·,t)‖ → ∞  as  t → T*','blow-up in finite time','$1,000,000']:v==='unexp'?['Lemma 4117 of 9320','⊢ ∀ G,  χ(G) ≤ Φ(G) + 7','by machine search, depth 81','... but why does it work?','✓ verified']:['Conjecture (1948)','∀ n ≥ 2  ∃ x, y, z ∈ ℕ :','4/n = 1/x + 1/y + 1/z','Proof.  (found by machine)','∎'];
 const fs=S*.068;let tip={x:S/2,y:S/2},ghost=false;
 return t=>{if(!ghost){b.font=`${S*.05}px Caveat, cursive`;b.fillStyle='rgba(230,235,225,.07)';['∫ f dμ','e^{iπ}+1=0','lim sup','∑ aₙ','p ≡ 1 (mod 4)','σ(n) > 2n','Γ(s)','∇²φ = 0'].forEach((s,i)=>b.fillText(s,rr()*S*.75,S*.08+i*S*.12));ghost=true;}
  x.drawImage(bgc,0,0);x.font=`600 ${fs}px Caveat, cursive`;const p=(t*.32+1.6)%(LINES.length+2.5);
@@ -431,6 +431,38 @@ const bt=new THREE.CanvasTexture(bc);const face=phys('#d9a843',{metalness:1,roug
 const g=new THREE.Group();sc.add(g);const md=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.5,.14,128),[rim,face,face]);md.rotation.x=Math.PI/2;g.add(md);
 const vel=new THREE.Mesh(new THREE.PlaneGeometry(20,20),phys('#3a0a12',{roughness:1,clearcoat:0}));vel.position.z=-1.2;sc.add(vel);
 return t=>{g.rotation.y=Math.sin(t*.4)*.6;g.rotation.x=Math.sin(t*.27)*.15;cam.position.set(0,.2,5.2);cam.lookAt(0,0,0);};},.7),
+// ---- charts for the measured trends and the forecasts
+trend:v=>mk2D((x,S)=>{const F=s=>`500 ${S*s}px "IBM Plex Mono", monospace`;const P={l:S*.13,r:S*.94,t:S*.2,b:S*.82};
+function frame(title,foot){x.fillStyle='#0b0b10';x.fillRect(0,0,S,S);x.fillStyle='#fff';x.font=F(.034);x.textAlign='left';x.fillText(title,S*.06,S*.1);x.fillStyle='#6b6b78';x.font=F(.024);x.fillText(foot,S*.06,S*.95);}
+function grid(xs,ys){x.strokeStyle='#26262f';x.lineWidth=1;x.font=F(.022);x.fillStyle='#8a8a96';
+ xs.forEach(([v,lab])=>{const X=v;x.beginPath();x.moveTo(X,P.t);x.lineTo(X,P.b);x.stroke();x.textAlign='center';x.fillText(lab,X,P.b+S*.035);});
+ ys.forEach(([v,lab])=>{x.beginPath();x.moveTo(P.l,v);x.lineTo(P.r,v);x.stroke();x.textAlign='right';x.fillText(lab,P.l-S*.012,v+S*.008);});}
+if(v==='metr'){const X=y=>P.l+(y-2019)/(2028-2019)*(P.r-P.l),Y=m=>P.b-(Math.log10(m)+2)/(Math.log10(20000)+2)*(P.b-P.t);
+ const pts=[[2019.1,.04],[2020.4,.15],[2022.2,.5],[2023.2,5],[2024.8,28],[2025.15,60],[2025.6,137],[2026.1,720],[2026.3,1080],[2026.85,2400]];
+ return t=>{frame('how long a task AI can finish, half the time','approximate, after METR time-horizon data');
+  grid([2019,2021,2023,2025,2027].map(y=>[X(y),String(y)]),[[Y(1),'1 min'],[Y(60),'1 hr'],[Y(480),'1 day'],[Y(2400),'1 wk'],[Y(12000),'200 h']]);
+  const n=Math.min(pts.length,Math.floor((t*1.6)%(pts.length+6))+1);x.strokeStyle='#ffe800';x.lineWidth=2.5;x.beginPath();pts.slice(0,n).forEach((p,i)=>i?x.lineTo(X(p[0]),Y(p[1])):x.moveTo(X(p[0]),Y(p[1])));x.stroke();
+  pts.slice(0,n).forEach(p=>{x.fillStyle='#ffe800';x.fillRect(X(p[0])-4,Y(p[1])-4,8,8);});
+  if(n===pts.length){x.setLineDash([6,6]);x.strokeStyle='#ff48b0';x.beginPath();x.moveTo(X(2026.85),Y(2400));x.lineTo(X(2027.55),Y(12000));x.stroke();x.setLineDash([]);
+   x.fillStyle='#ff48b0';x.font=F(.026);x.textAlign='right';x.fillText('Jul 2027?',X(2027.55),Y(12000)-S*.02);}};}
+if(v==='accel'){const X=y=>P.l+(y-2024)/(2027.2-2024)*(P.r-P.l),Y=q=>P.b-q*(P.b-P.t);
+ return t=>{frame('capability gains, before and after AI helps','schematic of METR’s Nov 2026 estimate: ×1.9 (1.5–2.8)');
+  grid([2024,2025,2026,2027].map(y=>[X(y),String(y)]),[]);const k=Math.min(1,(t%9)/6);
+  const y0=.08,s1=.22,ox=2025.8,oy=y0+s1*(ox-2024.2);x.lineWidth=2.5;x.strokeStyle='#8a8a96';x.beginPath();x.moveTo(X(2024.2),Y(y0));x.lineTo(X(ox),Y(oy));x.stroke();
+  x.setLineDash([5,6]);x.beginPath();x.moveTo(X(ox),Y(oy));x.lineTo(X(2027),Y(oy+s1*1.2));x.stroke();x.setLineDash([]);
+  const ex=ox+1.0*k;x.strokeStyle='#ff48b0';x.lineWidth=3;x.beginPath();x.moveTo(X(ox),Y(oy));x.lineTo(X(ex),Y(oy+s1*1.9*(ex-ox)));x.stroke();
+  x.font=F(.03);x.textAlign='left';x.fillStyle='#ff48b0';x.fillText('×1.9',X(ex)+8,Y(oy+s1*1.9*(ex-ox)));x.fillStyle='#8a8a96';x.fillText('old pace',X(2026.6),Y(oy+s1*.9)+S*.04);
+  x.fillStyle='#fff';x.font=F(.024);x.fillText('~80% of the speed-up: AI itself',P.l,P.t-S*.02);};}
+if(v==='scenario'){const X=y=>P.l+(y-2025)/(2033-2025)*(P.r-P.l);const rows=[['Apr 2025',[[2027.2,'coder'],[2028.4,'ASI']],'#8a8a96',.34],['Dec 2025',[[2030.5,'coder'],[2031.8,'beyond']],'#0078bf',.5],['Nov 2026',[[2027.4,'AI researcher']],'#ff48b0',.66]];
+ return t=>{frame('when the AI 2027 authors expect it','milestones by forecast date, simplified');grid([2025,2027,2029,2031,2033].map(y=>[X(y),String(y)]),[]);
+  const now=X(2026.9);x.strokeStyle='#ffe800';x.setLineDash([3,4]);x.beginPath();x.moveTo(now,P.t);x.lineTo(now,P.b);x.stroke();x.setLineDash([]);x.fillStyle='#ffe800';x.font=F(.022);x.textAlign='center';x.fillText('now',now,P.t-S*.01);
+  rows.forEach(([lab,ms,c,yy],i)=>{const Y=P.t+yy*(P.b-P.t)*.95,on=(t*.7)%rows.length>=i;x.globalAlpha=on?1:.25;x.fillStyle=c;x.font=F(.026);x.textAlign='left';x.fillText(lab,S*.06,Y+S*.008);
+   ms.forEach(([y,txt])=>{x.fillRect(X(y)-6,Y-6,12,12);x.font=F(.022);x.textAlign='center';x.fillText(txt,X(y),Y-S*.025);});x.globalAlpha=1;});};}
+const X=y=>P.l+(y-2026)/(2050-2026)*(P.r-P.l),Y=q=>P.b-q*(P.b-P.t);
+const curves=[['labs (Amodei)',2029.5,.38,'#ff48b0'],['Metaculus',2033,.22,'#ffe800'],['AI researchers',2047,.12,'#0078bf']];
+return t=>{frame('chance AI beats us at everything','rough curves through published medians');grid([2026,2030,2035,2040,2045,2050].map(y=>[X(y),String(y)]),[[Y(.5),'50%'],[Y(1),'100%']]);
+ const k=Math.min(1,(t%10)/6);curves.forEach(([lab,mid,s,c])=>{x.strokeStyle=c;x.lineWidth=2.5;x.beginPath();for(let i=0;i<=80*k;i++){const y=2026+i/80*24,q=1/(1+Math.exp(-s*(y-mid)));i?x.lineTo(X(y),Y(q)):x.moveTo(X(y),Y(q));}x.stroke();
+  x.fillStyle=c;x.font=F(.024);x.textAlign='left';x.fillText(lab,X(Math.min(2049,mid+1)),Y(.5)-S*.02-curves.indexOf(curves.find(q=>q[0]===lab))*S*.035);});};}),
 // ---- a market chart falling off a cliff
 stock:()=>mk2D((x,S)=>{const r=mulberry(12),P=[];let p=118;for(let i=0;i<150;i++){if(i===104)p*=.83;p+=(r()-.46)*1.6+(i<104?.12:0);P.push(p);}
 const mn=Math.min(...P)-4,mx=Math.max(...P)+4;
