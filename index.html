@@ -52,6 +52,17 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .panel button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 .pclose{position:absolute;right:max(4vw,20px);top:calc(42px + env(safe-area-inset-top));color:#fff!important;background:#000!important;padding:0 10px!important;text-decoration:none!important;z-index:1}
 .panel.narrow .pclose{right:12px}
+.cover{position:fixed;inset:0;z-index:6;display:grid;grid-template-rows:auto 1fr auto auto auto;gap:14px;padding:max(28px,env(safe-area-inset-top)) max(6vw,20px) max(24px,env(safe-area-inset-bottom));background:var(--yellow);color:#000;cursor:pointer;transition:transform .9s cubic-bezier(.7,0,.2,1),opacity .9s}
+.cover.gone{transform:translateY(-104%) rotate(-3deg);opacity:0;pointer-events:none}
+.cv-top,.cv-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:600 12px "IBM Plex Mono",monospace;border-top:2px solid #000;padding-top:8px}
+.cv-foot{border-top:0;border-bottom:2px solid #000;padding:0 0 8px;font-weight:400}
+.cv-title{align-self:center;margin:0;font:900 clamp(76px,16vw,240px)/.8 "Big Shoulders Display",Impact,sans-serif;text-shadow:clamp(4px,.7vw,9px) clamp(4px,.7vw,9px) 0 var(--pink)}
+.cv-title span{display:block}.cv-title span:last-child{margin-left:.35em}
+.cv-dek{margin:0;max-width:46ch;font:400 clamp(17px,1.6vw,21px)/1.4 Newsreader,Georgia,serif}
+.cv-go{margin:0;font:600 14px "IBM Plex Mono",monospace;text-decoration:underline;text-underline-offset:4px;animation:blink 1.6s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.hint{opacity:0}.hint.show{opacity:1}.hint.show.gone{opacity:0}
+@media(prefers-reduced-motion:reduce){.cover{transition:opacity .3s}.cover.gone{transform:none}.cv-go{animation:none}}
 .err{position:fixed;inset:0;display:grid;place-items:center;color:#fff;padding:24px;text-align:center}
 @media(max-width:600px){.hl{font-size:12px}.sheet h2{font-size:34px}.sheet p{font-size:16px}.hint{font-size:11px;bottom:calc(70px + env(safe-area-inset-bottom))}}
 </style>
@@ -60,6 +71,13 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <div id="stage" aria-label="An endless psychedelic whirlpool through AI history from 2012 to now, then five years of predictions. Tap a word to open it, hold to slow time, drag to spin."></div>
 <div class="ticker" role="marquee" aria-label="News ticker"><span class="tag">NEWS</span><div class="lane" id="lane"></div></div>
 <canvas id="tl" aria-label="Timeline. Tap a dot to open that moment."></canvas>
+<section class="cover" id="cover" role="button" tabindex="0" aria-label="Start: tap to fall in">
+  <div class="cv-top"><span>ISSUE 01</span><span>NOV 2026</span><span>FREE / TAKE ONE</span></div>
+  <h1 class="cv-title"><span>Into the</span><span>Whirlpool</span></h1>
+  <p class="cv-dek">A field guide to the machines: what actually happened from 2012 to now, and thirty guesses about the next five years. Some of it is real. Some of it is made up. The case files tell you which.</p>
+  <p class="cv-go">tap anywhere to fall in</p>
+  <div class="cv-foot"><span>made by Briam with Claude, ChatGPT &amp; Gemini</span><span>Tainan, Taiwan</span></div>
+</section>
 <div class="hint" id="hint">tap a word = open it / hold = slow time / drag = spin</div>
 <div class="panel" id="panel" aria-hidden="true" role="dialog" aria-labelledby="ptitle">
   <figure class="print" id="print"><figcaption id="pcap"></figcaption></figure>

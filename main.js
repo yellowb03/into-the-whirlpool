@@ -183,9 +183,19 @@ const s=new THREE.Sprite(m);const hh=innerWidth<innerHeight?3:5;s.scale.set(hh*t
 live.push({s,a:0,r:0,z:-85,wob:0,k:1.35,big:true,sw:1});}
 
 // ---------- bloom
-let composer=null,bloom=null;
+let composer=null,bloom=null,riso=null;
 if(THREE.EffectComposer&&THREE.UnrealBloomPass){composer=new THREE.EffectComposer(renderer);composer.addPass(new THREE.RenderPass(scene,camera));
-bloom=new THREE.UnrealBloomPass(new THREE.Vector2(256,256),.7,.65,.28);composer.addPass(bloom);}
+bloom=new THREE.UnrealBloomPass(new THREE.Vector2(256,256),.7,.65,.28);composer.addPass(bloom);
+ if(THREE.ShaderPass){riso=new THREE.ShaderPass({uniforms:{tDiffuse:{value:null},uRes:{value:new THREE.Vector2(1,1)},uTime:{value:0},uAmt:{value:.6},uSc:{value:4*PR}},
+ vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+ fragmentShader:`uniform sampler2D tDiffuse;uniform vec2 uRes;uniform float uTime,uAmt,uSc;varying vec2 vUv;
+ float hs(vec2 p,float a,float v){vec2 r=mat2(cos(a),-sin(a),sin(a),cos(a))*p/uSc;vec2 c=fract(r)-.5;float rad=sqrt(clamp(v,0.,1.))*.64;return smoothstep(rad+.08,rad-.08,length(c));}
+ float hh(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
+ void main(){vec2 px=vUv*uRes;vec3 a=texture2D(tDiffuse,vUv+vec2(2.,-1.5)/uRes).rgb,b=texture2D(tDiffuse,vUv).rgb,c=texture2D(tDiffuse,vUv+vec2(-1.5,2.)/uRes).rgb;
+ float ip=hs(px,.26,a.r*1.15),iy=hs(px,1.31,b.g*1.1),ib=hs(px,.79,c.b*1.25);
+ vec3 ink=vec3(1.,.28,.69)*ip*.9+vec3(1.,.91,0.)*iy*.75+vec3(0.,.47,.75)*ib*1.3;
+ vec3 col=mix(b,ink,uAmt);col+=(hh(floor(px)+fract(uTime*7.)*97.)-.5)*.07;
+ gl_FragColor=vec4(col,1.);}`});composer.addPass(riso);}}
 
 // ---------- news ticker
 const lane=$('lane');const tick=[],tq=[];let hp=0;
@@ -232,7 +242,7 @@ panel.addEventListener('click',e=>{if(e.target!==panel)return;const inViz=e.clie
 
 // ---------- input: tap a word, hold to slow time, drag to spin
 let slow=0,slowT=0,spin=0,spinV=0,down=null,touched=false,pause=0;
-function wake(){if(!touched){touched=true;hint.classList.add('gone');}if(!WP.state.started){WP.state.started=true;WP.emit('start');}}
+function wake(){const cv=$('cover');if(cv&&!cv.classList.contains('gone')){cv.classList.add('gone');setTimeout(()=>hint.classList.add('show'),600);}if(!touched&&WP.state.started){touched=true;setTimeout(()=>hint.classList.add('gone'),7000);}if(!WP.state.started){WP.state.started=true;WP.emit('start');}}
 const v1=new THREE.Vector3(),v2=new THREE.Vector3(),v3=new THREE.Vector3();
 function pick(px,py){let best=null;const k0=H/(2*Math.tan(camera.fov*Math.PI/360));
 for(const w of live){if(w.big||w.s.material.opacity<.15)continue;v3.copy(w.s.position).applyMatrix4(camera.matrixWorldInverse);if(v3.z>-.5)continue;
@@ -246,11 +256,11 @@ stage.addEventListener('pointercancel',()=>{down=null;slowT=0;});stage.addEventL
 addEventListener('keydown',e=>{if(e.key==='Escape')closePanel();else if(openIt&&e.key==='ArrowLeft')step(-1);else if(openIt&&e.key==='ArrowRight')step(1);
  else if(e.key===' '&&!openIt){e.preventDefault();wake();slowT=1;}});
 addEventListener('keyup',e=>{if(e.key===' ')slowT=0;});
-setTimeout(()=>hint.classList.add('gone'),9000);
+$('cover').addEventListener('click',e=>{e.stopPropagation();wake();});addEventListener('keydown',e=>{if(!WP.state.started&&(e.key==='Enter'||e.key===' '))wake();});
 
 let W=1,H=1;
 function resize(){W=innerWidth;H=innerHeight;renderer.setSize(W,H,false);camera.aspect=W/H;camera.updateProjectionMatrix();
-U.uRes.value.set(W*PR,H*PR);if(composer){composer.setSize(W,H);bloom.resolution.set(W/2,H/2);}
+U.uRes.value.set(W*PR,H*PR);if(composer){composer.setSize(W,H);bloom.resolution.set(W/2,H/2);}if(riso)riso.uniforms.uRes.value.set(W*PR,H*PR);
 TW=W;TH=W<600?58:64;tl.style.height=TH+'px';ppy=W<600?110:190;
 const narrow=W<760||H>W;let side,cx,cy;if(narrow){side=Math.min(W*.8,H*.32);cx=W/2;cy=104+side/2;panel.style.setProperty('--pt',(cy+side/2+58)+'px');}
 else{side=Math.min(W*.42,H-230);cx=W*.27;cy=96+(H-96-TH-40)/2;}
@@ -267,7 +277,7 @@ const dt=Math.min((now-last)/1000,.05);last=now;
 slow+=(slowT-slow)*Math.min(1,dt*(slowT?4:2));pause+=((openIt?1:0)-pause)*Math.min(1,dt*4);
 const date=dateAt(ct/SPAWN-LAG);lastDate=date;
 const prog=Math.max(0,Math.min(1,date<NOW?.45*(date-2012)/(NOW-2012):.45+.55*(date-NOW)/(2032-NOW)));
-const sf=(1-.88*slow)*(1-pause)*(reduce?.5:1);
+const sf=(1-.88*slow)*(1-pause)*(reduce?.5:1)*(WP.state.started?1:.12);
 time+=dt*sf*(1+prog*.8);ct+=dt*sf;
 while(k<FLOAT.length&&ct>=next){const it=FLOAT[k];if(it.y!==lastYear){spawnYear(it);lastYear=it.y;}spawnWord(it);k++;next+=SPAWN;}
 while(hp<HEAD.length&&HEAD[hp].num<=date)tq.push(HEAD[hp++]);
@@ -276,6 +286,7 @@ if(ct>=CYCLE){ct=0;k=0;next=1.2;flash=1;hp=0;lastYear=0;crossed=false;WP.emit('r
 flash=Math.max(0,flash-dt*.6);
 const fall=(7+prog*11)*sf;sw=2.5+prog*2.5;
 U.uTime.value=time;U.uProg.value=prog;U.uDist.value+=fall*dt;U.uSway.value=sw;U.uFlash.value=flash*flash*1.3;
+if(riso){riso.uniforms.uTime.value=time;riso.uniforms.uAmt.value=(.62+prog*.15)*(1-slow*.45);}
 if(bloom)bloom.strength=((mobile?.4:.5)+prog*.6)*(1-slow*.35)+flash*.8;
 spinV*=Math.pow(.04,dt);spin+=spinV*dt*10;
 roll=spin+time*(reduce?0:.05)*(1+prog*2)+Math.sin(time*.21)*.15;
