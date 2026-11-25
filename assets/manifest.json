@@ -44,12 +44,17 @@
     "card-front": "card-front.webp",
     "card-back": "card-back.webp",
     "share-bg-1": "share-bg-1.webp",
-    "og-image": "og-image.jpg",
+    "og-image": "am-i-crazy-preview.jpg",
     "_sheet": "_sheet.jpg",
     "ending-archivist": "ending-archivist.webp",
     "ending-child": "ending-child.webp",
     "ending-clockmaker": "ending-clockmaker.jpg",
     "ending-swimmer": "ending-swimmer.jpg",
-    "ending-witness": "ending-witness.jpg"
+    "ending-witness": "ending-witness.jpg",
+    "wordmark": "am-i-crazy-wordmark.webp",
+    "header": "am-i-crazy-header.webp",
+    "header-mobile": "am-i-crazy-header-mobile.webp",
+    "mark": "am-i-crazy-mark.webp",
+    "icon": "am-i-crazy-icon.png"
   }
 }

@@ -1,4 +1,6 @@
 (() => {
+  const name = 'Am I Crazy?';
+  const legacyHost = 'into-the-whirlpool.vercel.app';
   const verdictText = {
     real: 'REAL',
     'made-up': 'MADE UP',
@@ -6,7 +8,8 @@
   };
 
   function challengeURL(seed, score) {
-    const url = new URL(location.href);
+    const canonical = document.querySelector('link[rel="canonical"]')?.href;
+    const url = new URL(location.hostname === legacyHost && canonical ? canonical : location.href);
     url.search = '';
     url.hash = '';
     url.searchParams.set('deck', seed);
@@ -19,16 +22,17 @@
     const squares = answers.map(({ correct }) => correct ? '■' : '□').join('');
     const key = answers.map(({ card }, index) => (index + 1) + ' ' + verdictText[card.verdict]).join(' · ');
     const forecast = result.forecast ? '\n' + result.forecast.type + ' · My AGI year: ' + result.forecast.agiYear : '';
-    return 'Into the Whirlpool #' + (kind === 'daily' ? 'D ' : 'P ') + score + '/10 ' + squares
+    return name + ' #' + (kind === 'daily' ? 'D ' : 'P ') + score + '/10 ' + squares
       + forecast + '\n' + challengeURL(seed, score) + '\nAnswer key: ' + key;
   }
 
-  function image(url) {
+  function image(file) {
+    if (!file) return null;
     return new Promise(resolve => {
       const picture = new Image();
       picture.onload = () => resolve(picture);
       picture.onerror = () => resolve(null);
-      picture.src = url;
+      picture.src = 'assets/ui/' + file;
     });
   }
 
@@ -48,24 +52,25 @@
     return y + lineHeight;
   }
 
-  async function makeImage(result, background) {
+  async function makeImage(result, ui) {
     const { score, answers, fooled, best, seed, kind } = result;
     const canvas = document.createElement('canvas');
     canvas.width = 1080;
     canvas.height = 1350;
     const ctx = canvas.getContext('2d');
     if (!ctx) return null;
-    const paper = '#efeae0';
+    const paper = '#f3e8d7';
     const ink = '#0d0b10';
-    const pink = '#ff48b0';
+    const pink = '#ff329b';
     const blue = '#00639b';
     const red = '#aa1731';
     const display = '900 76px "Big Shoulders Display", Impact, sans-serif';
     const mono = '600 28px "IBM Plex Mono", monospace';
     ctx.fillStyle = paper;
     ctx.fillRect(0, 0, 1080, 1350);
-    const [art] = await Promise.all([
-      background ? image(background) : null,
+    const [art, wordmark] = await Promise.all([
+      image(ui['share-bg-1']),
+      image(ui.wordmark),
       document.fonts?.load(display).catch(() => {}),
     ]);
     if (art) ctx.drawImage(art, 0, 0, 1080, 1350);
@@ -74,13 +79,25 @@
     ctx.strokeStyle = ink;
     ctx.lineWidth = 5;
     ctx.strokeRect(56, 52, 968, 1246);
-    ctx.font = display;
-    ctx.fillStyle = pink;
-    ctx.fillText('Into the Whirlpool', 105, 151);
-    ctx.fillStyle = ink;
-    ctx.fillText('Into the Whirlpool', 99, 145);
-    ctx.font = mono;
-    ctx.fillText('REAL OR MADE UP?  /  ' + (kind === 'daily' ? 'DAILY' : kind.toUpperCase()), 99, 197);
+    const gameMode = kind === 'daily' ? 'DAILY' : kind.toUpperCase();
+    if (wordmark) {
+      const height = 138;
+      ctx.drawImage(wordmark, 99, 77, height * wordmark.naturalWidth / wordmark.naturalHeight, height);
+      ctx.fillStyle = pink;
+      ctx.fillRect(328, 91, 5, 110);
+      ctx.fillStyle = ink;
+      ctx.font = mono;
+      ctx.fillText('REAL OR MADE UP?', 363, 139);
+      ctx.fillText(gameMode, 363, 179);
+    } else {
+      ctx.font = display;
+      ctx.fillStyle = pink;
+      ctx.fillText(name, 105, 151);
+      ctx.fillStyle = ink;
+      ctx.fillText(name, 99, 145);
+      ctx.font = mono;
+      ctx.fillText('REAL OR MADE UP?  /  ' + gameMode, 99, 197);
+    }
     ctx.font = '900 156px "Big Shoulders Display", Impact, sans-serif';
     ctx.fillText(score + '/10', 99, 365);
     ctx.font = mono;
@@ -137,7 +154,7 @@
       ctx.fillText(url.slice(offset, offset + 58), 99, 1206 + offset / 58 * 26);
     }
     return new Promise(resolve => canvas.toBlob(blob => {
-      resolve(blob ? new File([blob], 'into-the-whirlpool-' + seed + '.png', { type: 'image/png' }) : null);
+      resolve(blob ? new File([blob], 'am-i-crazy-' + seed + '.png', { type: 'image/png' }) : null);
     }, 'image/png'));
   }
 
@@ -145,7 +162,7 @@
     const text = shareText(result);
     if (file && navigator.share && navigator.canShare?.({ files: [file] })) {
       try {
-        await navigator.share({ title: 'Into the Whirlpool', text, files: [file] });
+        await navigator.share({ title: name, text, files: [file] });
         return 'Shared.';
       } catch (error) {
         if (error.name === 'AbortError') return '';

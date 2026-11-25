@@ -1,4 +1,4 @@
-# GAME.md: turning Into the Whirlpool into a game
+# GAME.md: Am I Crazy? game design
 
 **For ChatGPT.** You are now building the game as well as the art. Read this whole file, then `CHATGPT.md` (art rules), `README.md` (file map) and `GEMINI.md` (sound contract). Work in phases, one branch and one pull request per phase (`chatgpt/game-phase-1`, and so on). Never push straight to `main`.
 
@@ -136,7 +136,7 @@ Goal: a complete, shareable 10-card run, live on its own URL.
 - Draw a 1080 × 1350 canvas with the share-card background asset: score, grid, "the one that fooled me", the wordmark and the URL.
 - Every made-up card that appears is stamped MADE UP.
 - Use `navigator.share({ files })` where supported. Otherwise, try a download (a blob link), then fall back to copying the text grid to the clipboard.
-- Text version: `Into the Whirlpool #D 7/10 ■■□■■■□■■■` plus the link.
+- Text version: `Am I Crazy? #D 7/10 ■■□■■■□■■■` plus the link.
 
 **Step 8. Challenge links.** `?deck=<seed>&vs=<score>`. Opening one plays that exact deck and shows "Beat 7/10" on the intro.
 
@@ -236,7 +236,7 @@ Use real scanned texture, with no gradients or glows. Export PNGs with real alph
 
 | File | Size (2×) | Description |
 |---|---|---|
-| `wordmark.png` | 1600×520 | "Into the Whirlpool" in condensed poster type, black with a pink misregistered layer, slight ink spread |
+| `wordmark.png` | 1600×520 | "Am I Crazy?" in condensed black display type with a handwritten pink m printed over the A and I |
 | `card-front.png` | 900×1200, 9-slice-friendly margins of 60 px | heavy uncoated card stock, faint fibres, a subtle corner crease |
 | `card-back.png` | 900×1200 | riso pattern: concentric whirlpool halftone in pink and blue |
 | `stamp-real.png`, `stamp-made-up.png`, `stamp-unproven.png`, `stamp-forecast.png`, `stamp-on-record.png` | 900×360 each | rubber stamps with uneven ink, worn edges, double border. Colours: real = blue, made up = red, unproven = pink, forecast = black, on record = red |
@@ -265,7 +265,7 @@ The claude.ai artifact page is a sandbox: it blocks downloads and the phone shar
 
 1. **Vercel (recommended):** Briam imports `yellowb03/into-the-whirlpool` at vercel.com/new as a static site, with no build step. Every merge to `main` then deploys automatically, and each pull request gets its own preview URL to test on a phone.
 2. Add `vercel.json` with long cache headers for `assets/` and short ones for `*.js`.
-3. Add Open Graph and Twitter meta tags (`og-image.jpg`, title "Into the Whirlpool: Real or Made Up?", a one-line description).
+3. Add Open Graph and Twitter meta tags (`og-image.jpg`, title "Am I Crazy? — The AI Headline Game", a one-line description).
 4. Turn on Vercel Web Analytics. Track `run_start`, `card_answer` (card id, correct), `run_end` (score), `share_click` and `challenge_open`.
 5. **Timing:** the Riemann and VP ≠ VNP stories are this week's news. Ship Phase 1 fast; the hook fades in days.
 6. **Launch:**
