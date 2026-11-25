@@ -1,6 +1,7 @@
 // node tools/asset-list.js  ->  prints the vision checklist (slug, date, title, subject) as Markdown.
 // Slugs here must match main.js: date + '-' + slugify(title).
-const fs=require('fs'),vm=require('vm');const ctx={window:{}};vm.runInNewContext(fs.readFileSync(__dirname+'/../data.js','utf8'),ctx);
+const fs=require('fs'),vm=require('vm');const ctx={window:{}};
+for(const file of ['data.js','cards.js','headlines.js'])vm.runInNewContext(fs.readFileSync(__dirname+'/../'+file,'utf8'),ctx);
 const slugify=s=>s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,48);
 const K={h:'real milestone',p:'prediction',s:'their forecast',n:'real headline',f:'made-up headline'};
 const items=ctx.window.WP_DATA.map(it=>Object.assign({slug:it.d+'-'+slugify(it.t)},it)).sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0);

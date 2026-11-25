@@ -123,7 +123,7 @@ Goal: a complete, shareable 10-card run, live on its own URL.
 3. Wrong answer: `glitch(220)` plus a 6 px screen shake.
 4. A one-line explanation slides up under the card.
 5. Below it, a "case file →" link opens the existing case file through `openItem`.
-6. Auto-advance after 2.2 s, or on a tap.
+6. Keep the reveal open until the player presses Next. Opening and closing the case file returns to the same reveal.
 
 **Step 5. Run structure.** 10 cards per run, in date order. The whirlpool travels between their dates, so the player feels time moving.
 - Picking the 10: 4 real, 4 made up and 2 real-unproven, drawn from the 40 with a seeded PRNG.

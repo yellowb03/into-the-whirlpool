@@ -95,7 +95,7 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .err{position:fixed;inset:0;display:grid;place-items:center;color:#fff;padding:24px;text-align:center}
 @media(max-width:600px){.hl{font-size:12px}.sheet h2{font-size:34px}.sheet p{font-size:16px}.hint{font-size:11px;bottom:calc(70px + env(safe-area-inset-bottom))}}
 </style>
-<link rel="stylesheet" href="game.css">
+<link rel="stylesheet" href="game.css?v=2">
 </head>
 <body>
 <div id="stage" aria-label="An endless psychedelic whirlpool through AI history from 2012 to now, then five years of predictions. Tap a word to open it, hold to slow time, drag to spin."></div>
@@ -104,7 +104,7 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <section class="cover" id="cover" aria-labelledby="cover-title">
   <div class="cv-top"><span>THE AI HISTORY GAME</span><span>2012–2026</span></div>
   <h1 class="cv-title" id="cover-title"><span>Into the</span><span>Whirlpool</span></h1>
-  <p class="cv-dek">Ten headlines from the age of AI. Can you tell what really happened?</p>
+  <p class="cv-dek">The real AI news has already gotten weird. We made up a few headlines to see if you can still tell the difference.</p>
   <div class="cv-actions">
     <button type="button" id="game-launch">Play Real or Made Up? <span aria-hidden="true">→</span></button>
     <button type="button" id="game-explore" hidden>Explore the timeline</button>
@@ -148,11 +148,12 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
 <script src="data.js"></script>
-<script src="mem.js"></script>
-<script src="main.js"></script>
 <script src="cards.js"></script>
+<script src="headlines.js"></script>
+<script src="mem.js"></script>
+<script src="main.js?v=2"></script>
 <script src="share.js"></script>
-<script src="game.js"></script>
+<script src="game.js?v=2"></script>
 <script src="audio.js"></script>
 <script src="audio-bridge.js"></script>
 </body>
