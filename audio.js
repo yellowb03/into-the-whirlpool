@@ -843,6 +843,8 @@
           var src = ctx.createBufferSource();
           src.buffer = buf;
           src.loop = true;
+          src.loopStart = 0;
+          src.loopEnd = Math.min(buf.duration, barLen * (((manifest && manifest.music && manifest.music[eraName]) || {}).bars || 8));
           var g = ctx.createGain();
           g.gain.setValueAtTime(0.0001, now);
           src.connect(g);
