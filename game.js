@@ -8,6 +8,27 @@
   const leave = document.querySelector('#game-leave');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const archive = new Map(wp.items.map(item => [item.slug, item]));
+  const anchors = [
+    {
+      slug: '2027-05-a-superhuman-ai-researcher',
+      claim: 'By June 2027, an AI can do the entire AI research job better than the best human researchers.',
+      label: 'AI Futures Project · Daniel Kokotajlo, Nov 2026',
+      url: 'https://blog.aifutures.org/p/q35-timelines-update-looks-like-the',
+    },
+    {
+      slug: '2029-02-25-chance-of-agi',
+      claim: 'By the end of 2029, a general AI system has been built, tested, and publicly announced.',
+      label: 'Metaculus · Feb 2026 archive estimate',
+      url: 'https://www.metaculus.com/questions/5121/date-of-weakly-general-ai/',
+    },
+  ];
+  const endings = {
+    witness: ['The Witness', 'You give almost everything a chance, and leave room to be surprised.'],
+    swimmer: ['The Swimmer', 'You’re betting the future arrives before the rest of us are ready.'],
+    archivist: ['The Archivist', 'You expect the world to make the machines show their work.'],
+    child: ['The Child of 2031', 'You see a future made of sudden leaps and stubborn limits.'],
+    clockmaker: ['The Clockmaker', 'Your odds stay close to the forecasts already on the record.'],
+  };
   const monthFormat = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric', timeZone: 'UTC' });
   const storageKey = 'wp-game-v1';
   const params = new URLSearchParams(location.search);
@@ -22,17 +43,13 @@
     window.va?.('event', { name: event, data: detail });
   }
 
-  // Vercel serves the first-party analytics script only when analytics is enabled.
-  if (location.hostname.endsWith('.vercel.app')) {
+  // Set this after Web Analytics is enabled for the deployment.
+  if (document.querySelector('meta[name="wp-web-analytics"][content="enabled"]')) {
     window.va ||= function () { (window.vaq ||= []).push(arguments); };
     const analytics = document.createElement('script');
     analytics.defer = true;
     analytics.src = '/_vercel/insights/script.js';
-    // Preview projects with analytics disabled still play normally.
-    fetch(analytics.src, { method: 'HEAD' }).then(response => {
-      if (response.ok) document.head.append(analytics);
-      else delete window.va;
-    }).catch(() => { delete window.va; });
+    document.head.append(analytics);
   }
 
   const ready = wp.sources.then(sources => WP_CARDS.filter(card => {
@@ -167,6 +184,7 @@
 
   function section(className) {
     const pane = node('section', 'game-page ' + className);
+    screen.classList.remove('game-show-ending');
     screen.replaceChildren(pane);
     screen.scrollTop = 0;
     return pane;
@@ -176,12 +194,14 @@
   let run, current, revealTimer, autoAdvance = true, resumeTarget;
   let introKind = challengeSeed ? 'challenge' : 'daily';
   let prep = 0;
-  let shareFile, result;
+  let shareFile, result, crossingTimer, typeTimer;
   const noop = () => {};
   const states = {
     cover: { enter: noop, exit: noop, update: noop },
     intro: { enter: renderIntro, exit: () => { prep++; }, update: noop },
     act1: { enter: showCard, exit() { clearReveal(); current?.stopEntry?.(); current?.stopDrag?.(); }, update: noop },
+    crossing: { enter: showCrossing, exit: leaveCrossing, update: noop },
+    act3: { enter: showBet, exit: noop, update: noop },
     result: { enter: showResults, exit: () => { shareFile = null; }, update: noop },
     explore: {
       enter() {
@@ -221,6 +241,7 @@
     const challenge = introKind === 'challenge' && targetScore !== null;
     pane.append(node('div', 'game-kicker', challenge ? 'Beat ' + targetScore + '/10' : 'The Record'), heading);
     pane.append(node('p', '', 'Swipe left for made up and right for real. You can also use the buttons or arrow keys.'));
+    pane.append(node('p', '', 'After the record, put odds on six predictions and see what kind of forecaster you are.'));
     pane.append(node('p', '', 'If someone really announced a claim that’s still under review, choose real. The reveal will say “Real, unproven.”'));
     const status = node('p', '', '');
     status.setAttribute('role', 'status');
@@ -244,7 +265,7 @@
       return;
     }
     enterGame();
-    run = { seed, kind, deck, answers: [], best: 0, score: 0, streak: 0 };
+    run = { seed, kind, deck, answers: [], bets: [], best: 0, score: 0, streak: 0 };
     wp.state.score = wp.state.streak = 0;
     wp.api?.setIntensity(null);
     track('run_start', { kind, seed });
@@ -438,7 +459,7 @@
         source.rel = 'noopener noreferrer';
         controls.append(source);
       }
-      const next = button(run.answers.length === 10 ? 'See results →' : 'Next →', 'next', 'game-primary');
+      const next = button(run.answers.length === 10 ? 'The Crossing →' : 'Next →', 'next', 'game-primary');
       controls.append(next);
       reveal.append(controls);
       reveal.hidden = false;
@@ -471,7 +492,155 @@
     clearReveal();
     const direction = run.answers.at(-1).guess === 'real' ? -1 : 1;
     if (run.answers.length < run.deck.length) showCard(direction);
-    else change('result');
+    else change('crossing');
+  }
+
+  function getForecasts(seed) {
+    const random = seededRandom('forecast-v1-' + seed);
+    const predictions = wp.items.filter(item => item.k === 'p' && Number.isFinite(item.o));
+    const topics = [
+      ['2027-06-who-gets-the-million-dollars', '2027-01-someone-reads-the-riemann-proof'],
+      ['2028-07-ai-holds-the-plasma', '2028-09-fusion-on-learned-control', '2028-11-hypotheses-outpace-the-labs'],
+      ['2029-01-superconductor-at-150-k', '2029-05-the-phd-gets-rewritten', '2029-11-mind-privacy-goes-to-court'],
+      ['2030-09-enzymes-eat-the-plastic', '2031-01-a-crack-in-the-standard-model', '2031-07-science-outruns-understanding'],
+    ];
+    const local = topics.map(group => {
+      const eligible = predictions.filter(item => group.includes(item.slug));
+      const item = eligible[Math.floor(random() * eligible.length)];
+      return { slug: item.slug, claim: item.x, label: 'Claude · archive forecast' };
+    });
+    return [...anchors, ...local].map(forecast => ({ ...forecast, item: archive.get(forecast.slug) }))
+      .sort((a, b) => a.item.num - b.item.num);
+  }
+
+  function showCrossing() {
+    const pane = section('game-crossing');
+    progress.textContent = 'November 2026';
+    wp.api?.setPaused(true);
+    wp.api?.travel(dateNumber('2026-11'), true);
+    document.body.classList.add('wp-crossing');
+    wp.emit('crossing');
+    run.forecasts = getForecasts(run.seed);
+    const heading = node('h2', 'game-heading', 'Everything from here is a guess.');
+    heading.classList.add('game-crossing-text');
+    const crack = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    crack.setAttribute('viewBox', '0 0 440 85');
+    crack.setAttribute('aria-hidden', 'true');
+    const path = document.createElementNS(crack.namespaceURI, 'path');
+    path.setAttribute('d', 'M0 42 L52 40 87 47 119 23 143 56 171 33 195 44 226 14 250 60 279 46 312 49 336 32 371 39 399 28 440 42');
+    crack.append(path);
+    const next = button('Your turn →', 'continue', 'game-primary');
+    pane.append(crack, heading, next);
+    focus(heading);
+    if (!reduced.matches) {
+      path.animate([{ transform: 'scaleX(0)', opacity: 0 }, { transform: 'scaleX(1)', opacity: 1 }], { duration: 750, easing: 'ease-out' });
+      const sentence = heading.textContent;
+      const line = node('span');
+      line.setAttribute('aria-hidden', 'true');
+      heading.setAttribute('aria-label', sentence);
+      heading.replaceChildren(line);
+      let length = 0;
+      typeTimer = setInterval(() => {
+        line.textContent = sentence.slice(0, ++length);
+        if (length === sentence.length) clearInterval(typeTimer);
+      }, 58);
+      crossingTimer = setTimeout(continueBet, 3500);
+    }
+  }
+
+  function leaveCrossing() {
+    clearTimeout(crossingTimer);
+    clearInterval(typeTimer);
+    document.body.classList.remove('wp-crossing');
+    wp.api?.setPaused(false);
+  }
+
+  function continueBet() {
+    if (state === 'crossing') change('act3');
+  }
+
+  function showBet() {
+    const index = run.bets.length;
+    const model = run.forecasts[index];
+    const { item } = model;
+    const pane = section('game-bet game-paper');
+    progress.textContent = 'Bet ' + (index + 1) + '/6';
+    wp.api?.setIntensity(null);
+    wp.api?.travel(item.num, true, item);
+    wp.emit('card', { slug: item.slug, position: index + 1, act: 3 });
+
+    const heading = node('h2', 'game-heading', model.claim);
+    const caption = node('div', 'game-kicker', 'The Bet · ' + item.y);
+    const odds = node('output', 'game-odds', '50%');
+    odds.setAttribute('for', 'game-odds-dial');
+    const dial = node('input', 'game-dial');
+    Object.assign(dial, { id: 'game-odds-dial', type: 'range', min: '0', max: '100', step: '5', value: '50' });
+    dial.setAttribute('aria-label', 'Your odds');
+    dial.setAttribute('aria-valuetext', '50 percent');
+    const scale = node('div', 'game-odds-scale');
+    for (const value of [0, 25, 50, 75, 100]) scale.append(node('span', '', value + '%'));
+    const ruler = node('div', 'game-ruler');
+    ruler.append(dial);
+    const controls = node('div', 'game-buttons');
+    const lock = button('Lock in odds', 'lock-bet', 'game-primary');
+    controls.append(lock);
+    const comparison = node('div', 'game-comparison');
+    comparison.hidden = true;
+    pane.append(caption, heading, odds, ruler, scale, comparison, controls);
+
+    const update = () => {
+      odds.textContent = dial.value + '%';
+      dial.setAttribute('aria-valuetext', dial.value + ' percent');
+      animate(odds, [{ opacity: .4, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], 120);
+      navigator.vibrate?.(8);
+      wp.emit('odds-tick', { odds: Number(dial.value) });
+    };
+    dial.addEventListener('input', update);
+    lockBet = () => {
+      if (lock.disabled) return;
+      const value = Number(dial.value);
+      const bet = { slug: item.slug, odds: value, benchmark: item.o, time: new Date().toISOString() };
+      run.bets.push(bet);
+      wp.emit('bet', { slug: bet.slug, odds: value });
+      dial.disabled = true;
+      lock.disabled = true;
+      const marker = node('i', 'game-odds-mark');
+      marker.setAttribute('aria-hidden', 'true');
+      marker.style.setProperty('--fraction', item.o / 100);
+      const published = node(model.url ? 'a' : 'p', 'game-benchmark', model.label + ' · ' + item.o + '%');
+      if (model.url) Object.assign(published, { href: model.url, target: '_blank', rel: 'noopener noreferrer' });
+      ruler.append(marker);
+      comparison.append(published);
+      comparison.hidden = false;
+      const next = button(index === 5 ? 'See your ending →' : 'Next bet →', 'next-bet', 'game-primary');
+      controls.replaceChildren(next);
+      animate(marker, [{ opacity: 0, transform: 'translate(-50%,-12px)' }, { opacity: 1, transform: 'translateX(-50%)' }]);
+      focus(next);
+    };
+    focus(heading);
+    animate(pane, [{ opacity: 0, transform: 'translateY(22px)' }, { opacity: 1, transform: 'none' }], 330);
+  }
+
+  let lockBet = noop;
+  function nextBet() {
+    if (state !== 'act3') return;
+    if (run.bets.length === run.forecasts.length) change('result');
+    else showBet();
+  }
+
+  function forecastResult() {
+    const mean = run.bets.reduce((sum, bet) => sum + bet.odds, 0) / run.bets.length;
+    const rms = Math.sqrt(run.bets.reduce((sum, bet) => sum + (bet.odds - mean) ** 2, 0) / run.bets.length);
+    const difference = run.bets.reduce((sum, bet) => sum + Math.abs(bet.benchmark - bet.odds), 0) / run.bets.length;
+    let id = 'witness';
+    if (rms >= 26) id = 'child';
+    else if (mean >= 70) id = 'swimmer';
+    else if (mean <= 30) id = 'archivist';
+    else if (difference <= 10) id = 'clockmaker';
+    const [type, sentence] = endings[id];
+    const [research, agi] = anchors.map(anchor => run.bets.find(bet => bet.slug === anchor.slug).odds);
+    const agiYear = Math.round(2040 - 13 * (.35 * research + .65 * agi) / 100);
+    return { id, type, sentence, agiYear };
   }
 
   function recordRun() {
@@ -491,6 +660,7 @@
       tally.shown++;
       tally.misses += Number(!correct);
     }
+    previous.forecasts = [...(previous.forecasts || []), { seed: run.seed, bets: run.bets }].slice(-30);
     stats = previous;
     try { localStorage.setItem(storageKey, JSON.stringify(stats)); } catch {}
     return fooled;
@@ -499,8 +669,9 @@
   function showResults() {
     clearReveal();
     progress.textContent = 'Run complete';
-    result = { ...run, fooled: recordRun() };
-    wp.emit('result', { type: null, agiYear: null, score: run.score });
+    const forecast = forecastResult();
+    result = { ...run, forecast, fooled: recordRun() };
+    wp.emit('result', { type: forecast.type, agiYear: forecast.agiYear, score: run.score });
     track('run_end', { score: run.score, kind: run.kind });
 
     const pane = section('game-result game-paper');
@@ -526,7 +697,22 @@
     });
     details.append(answers);
 
+    const ending = node('div', 'game-ending');
+    const backdrop = node('div', 'game-ending-art');
+    const endingText = node('div', 'game-ending-text');
+    const endingHeading = node('h2', 'game-heading', forecast.type);
+    const year = node('p', 'game-agi-year', 'My AGI year: ' + forecast.agiYear);
+    endingText.append(endingHeading, year, node('p', '', forecast.sentence), node('p', 'game-ending-question', 'Who is discovering whom?'),
+      button('See my record ↓', 'record', 'game-primary'));
+    ending.append(backdrop, endingText);
+    screen.classList.add('game-show-ending');
+    screen.prepend(ending);
     pane.append(heading, score, best, grid);
+    art.then(ui => {
+      const file = ui['ending-' + forecast.id];
+      if (file) backdrop.style.backgroundImage = 'url("assets/ui/' + file + '")';
+    });
+    if (!reduced.matches) animate(backdrop, [{ opacity: .7, transform: 'scale(1.055)' }, { opacity: 1, transform: 'scale(1)' }], 3500);
     if (result.fooled) {
       const upset = node('p', '', 'The one that fooled you most');
       const label = stamp(result.fooled.verdict);
@@ -564,7 +750,7 @@
       { opacity: 1, transform: 'translateY(4px)', offset: .8 },
       { opacity: 1, transform: 'none' },
     ], 900);
-    focus(heading);
+    focus(endingHeading);
   }
 
   const reopen = button('Play the game', 'intro');
@@ -597,6 +783,15 @@
       case 'made-up':
       case 'real': answer(gameAction); break;
       case 'next': nextCard(); break;
+      case 'continue': continueBet(); break;
+      case 'lock-bet': lockBet(); break;
+      case 'next-bet': nextBet(); break;
+      case 'record': {
+        const record = screen.querySelector('.game-result');
+        record.scrollIntoView({ behavior: reduced.matches ? 'instant' : 'smooth', block: 'start' });
+        focus(record.querySelector('h2'));
+        break;
+      }
       case 'case':
         clearReveal();
         resumeTarget = control;

@@ -23,11 +23,97 @@ const WSP=p=>2.9+p*1.6;
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $=id=>document.getElementById(id);const hint=$('hint');
 
-if(!window.THREE){document.body.insertAdjacentHTML('beforeend','<div class="err">The 3D engine could not load. Check your connection and reload.</div>');}
-else{
+function fillCase(it){
+const spec=it.k==='p'||it.k==='f'||it.k==='s';$('pwho').textContent=it.who?'said by '+it.who:'';$('pwho').hidden=!it.who;$('poddsl').textContent=it.k==='s'?'Their odds':'My odds';$('pxl').textContent=it.k==='s'?'The forecast':it.k==='p'?'My guess':'What happened';
+$('pfile').textContent='FILE '+it.d+' / '+KIND[it.k].toUpperCase();const st=$('pstamp');st.textContent=it.k==='f'?'MADE UP':it.verdict==='real-unproven'?'REAL, UNPROVEN':it.k==='s'?'FORECAST':spec?'SPECULATION':'ON RECORD';st.className='stamp'+(it.verdict==='real-unproven'?' unproven':it.k==='s'?' fc':spec&&it.k!=='f'?' spec':'');
+$('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';
+$('pcap').textContent=it.k==='f'?'Fiction':spec?it.y+'?':MON[it.m-1]+' '+it.y;
+$('panel').querySelector('.pnav').hidden=WP.state.mode==='game';
+const sl=$('psrc');sl.textContent='';const src=SOURCES[it.slug];$('psrcw').hidden=!(src&&src.length);(src||[]).slice(0,4).forEach(s=>{const li=document.createElement('li'),a=document.createElement('a');a.href=s.url;a.target='_blank';a.rel='noopener';a.textContent=(s.publisher?s.publisher+': ':'')+s.title;li.appendChild(a);sl.appendChild(li);});
+const od=$('podds');if((it.k==='p'||it.k==='s')&&it.o){od.hidden=false;$('poddsv').textContent=it.o+'%';const ta=$('ptally');ta.textContent='';for(let i=0;i<10;i++){const q=document.createElement('i');if(i<Math.round(it.o/10))q.className='on';ta.appendChild(q);}}else od.hidden=true;
+}
+
+function useArchiveFallback(){
+ document.body.classList.add('wp-no-renderer');
+ const panel=$('panel'), cover=$('cover');
+ const archive=document.createElement('section');
+ archive.id='wp-archive-fallback';
+ archive.hidden=true;
+ archive.innerHTML='<h2>Explore the timeline</h2><label>Year <select aria-label="Year"></select></label><ul></ul>';
+ document.body.insertBefore(archive,panel);
+ const select=archive.querySelector('select'), list=archive.querySelector('ul');
+ for(const year of new Set(ITEMS.map(item=>item.y)))select.add(new Option(year,year));
+ function renderYear(){
+  const items=ITEMS.filter(item=>item.y===Number(select.value));
+  list.replaceChildren(...items.map(item=>{
+   const row=document.createElement('li'),button=document.createElement('button');
+   button.type='button';
+   button.textContent=(item.k==='f'?'MADE UP · ':item.k==='p'||item.k==='s'?'FORECAST · ':'')+item.t;
+   button.addEventListener('click',()=>openItem(item));
+   row.append(button);return row;
+  }));
+ }
+ const dateLabel=document.createElement('output');
+ dateLabel.id='wp-archive-date';
+ dateLabel.setAttribute('aria-label','Timeline date');
+ document.body.insertBefore(dateLabel,panel);
+ function travel(date){
+  WP.state.date=date;
+  const y=Math.floor(date),m=Math.min(11,Math.floor((date-y)*12));
+  dateLabel.textContent=MON[m]+' '+y;
+ }
+ function openItem(item){
+  fillCase(item);
+  panel.style.setProperty('--ac',colOf(item));
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+  archive.inert=true;
+  WP.state.open=item;WP.state.pause=1;WP.emit('open',item);
+  $('pclose').focus();
+ }
+ function closePanel(){
+  if(!WP.state.open)return;
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
+  archive.inert=false;
+  WP.state.open=null;WP.state.pause=0;WP.emit('close');
+ }
+ function step(direction){
+  const index=ITEMS.indexOf(WP.state.open)+direction;
+  if(WP.state.mode==='explore'&&ITEMS[index])openItem(ITEMS[index]);
+ }
+ function start(){
+  if(WP.state.started)return;
+  cover.classList.add('gone');cover.inert=true;cover.setAttribute('aria-hidden','true');
+  WP.state.cover=false;WP.state.started=true;WP.emit('start');
+ }
+ WP.api={start,openItem,closePanel,travel,setMode(mode){
+  start();closePanel();WP.state.mode=mode;
+  archive.hidden=mode==='game';
+  document.body.classList.toggle('wp-game-active',mode==='game');
+  if(mode==='explore'){
+   const latest=WP.state.date>=2012?Math.min(2031,Math.floor(WP.state.date)):2012;
+   select.value=String(latest);renderYear();
+  }
+ },setPaused(on){WP.state.pause=on?1:0;},setIntensity(){},glitch(){}};
+ select.addEventListener('change',()=>{travel(Number(select.value)+.04);renderYear();});
+ $('pclose').addEventListener('click',closePanel);
+ $('pprev').addEventListener('click',()=>step(-1));
+ $('pnext').addEventListener('click',()=>step(1));
+ addEventListener('keydown',event=>{if(event.key==='Escape')closePanel();});
+ travel(2012+.04);
+}
+if(!window.THREE){
+ useArchiveFallback();
+}else{
 try{
-const stage=$('stage');
-const renderer=new THREE.WebGLRenderer({antialias:false,powerPreference:'high-performance'});
+const stage=$('stage'),canvas=document.createElement('canvas');
+const options={antialias:false,powerPreference:'high-performance',alpha:false,stencil:true};
+const context=canvas.getContext('webgl2',options)||canvas.getContext('webgl',options);
+if(!context){
+ useArchiveFallback();
+}else{
+const renderer=new THREE.WebGLRenderer({canvas,context,...options});
 const PR=Math.min(devicePixelRatio||1,1.5);
 renderer.setPixelRatio(PR);renderer.setClearColor(0x05020c,1);
 stage.appendChild(renderer.domElement);
@@ -242,13 +328,7 @@ tl.addEventListener('wheel',e=>{e.preventDefault();if(WP.state.mode==='game')ret
 // ---------- detail panel
 const panel=$('panel');let openIt=null,openA=0,vt=0;
 let openedAt=0;
-function openItem(it){if(!it)return;openedAt=performance.now();wake();hint.classList.add('gone');openIt=it;const spec=it.k==='p'||it.k==='f'||it.k==='s';$('pwho').textContent=it.who?'said by '+it.who:'';$('pwho').hidden=!it.who;$('poddsl').textContent=it.k==='s'?'Their odds':'My odds';$('pxl').textContent=it.k==='s'?'The forecast':it.k==='p'?'My guess':'What happened';
-$('pfile').textContent='FILE '+it.d+' / '+KIND[it.k].toUpperCase();const st=$('pstamp');st.textContent=it.k==='f'?'MADE UP':it.verdict==='real-unproven'?'REAL, UNPROVEN':it.k==='s'?'FORECAST':spec?'SPECULATION':'ON RECORD';st.className='stamp'+(it.verdict==='real-unproven'?' unproven':it.k==='s'?' fc':spec&&it.k!=='f'?' spec':'');
-$('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';
-$('pcap').textContent=it.k==='f'?'Fiction':spec?it.y+'?':MON[it.m-1]+' '+it.y;
-panel.querySelector('.pnav').hidden=WP.state.mode==='game';
-const sl=$('psrc');sl.textContent='';const src=SOURCES[it.slug];$('psrcw').hidden=!(src&&src.length);(src||[]).slice(0,4).forEach(s=>{const li=document.createElement('li'),a=document.createElement('a');a.href=s.url;a.target='_blank';a.rel='noopener';a.textContent=(s.publisher?s.publisher+': ':'')+s.title;li.appendChild(a);sl.appendChild(li);});
-const od=$('podds');if((it.k==='p'||it.k==='s')&&it.o){od.hidden=false;$('poddsv').textContent=it.o+'%';const ta=$('ptally');ta.textContent='';for(let i=0;i<10;i++){const q=document.createElement('i');if(i<Math.round(it.o/10))q.className='on';ta.appendChild(q);}}else od.hidden=true;
+function openItem(it){if(!it)return;openedAt=performance.now();wake();hint.classList.add('gone');openIt=it;fillCase(it);
 panel.style.setProperty('--ac',colOf(it));panel.classList.add('open');panel.setAttribute('aria-hidden','false');
 zoomed=false;panel.classList.remove('zoom');$('sheet').scrollTop=0;layoutPanel();requestAnimationFrame(layoutPanel);
 bindSlot(viz,it);vt=0;viz.target=1;WP.state.open=it;WP.emit('open',it);setTimeout(()=>{if(openIt===it)WP.emit('clip-bite',{x:(vizRect.x+vizRect.w/2)/W*2-1});},160);}
@@ -312,7 +392,7 @@ const clamp01=x=>Math.max(0,Math.min(1,x));
 function travel(date, settle, focus){
  if(WP.state.mode==='explore'){seekExplore(date,settle);return;}
  const oldYear=Math.floor(gameDate), newYear=Math.floor(date);
- glide=reduce?null:{from:gameDate,to:date,start:performance.now()};
+ glide=reduce||gamePause?null:{from:gameDate,to:date,start:performance.now()};
  if(!glide)gameDate=date;
  if(oldYear!==newYear&&!reduce&&focus)spawnYear(focus);
  if(focus)showMem({item:focus});
@@ -408,9 +488,10 @@ if(MANIFEST.textures.tunnel)tload.load('assets/textures/'+MANIFEST.textures.tunn
 const mfp=fetch('assets/manifest.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(useManifest);
 const go=()=>mfp.then(()=>requestAnimationFrame(frame));
 if(document.fonts&&document.fonts.load){Promise.race([Promise.all([document.fonts.load('900 72px "Big Shoulders Display"'),document.fonts.load('400 13px "IBM Plex Mono"'),document.fonts.load('700 40px "Courier Prime"'),document.fonts.load('italic 600 40px Newsreader'),document.fonts.load('900 40px "Big Shoulders Stencil Display"'),document.fonts.load('700 40px "IBM Plex Mono"'),document.fonts.load('600 40px Caveat'),document.fonts.load('500 20px "JetBrains Mono"'),document.fonts.load('600 16px Manrope')]),new Promise(r=>setTimeout(r,2500))]).then(go,go);}else go();
+ }
  }catch(error){
   console.warn('Whirlpool renderer unavailable',error);
-  document.body.classList.add('wp-no-renderer');
+  useArchiveFallback();
  }
 }
 }

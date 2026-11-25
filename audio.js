@@ -1371,6 +1371,17 @@
     if (!ctx || !started || isHidden) return;
     try {
       var now = ctx.currentTime;
+      if (!wpState.cover && coverLoopHandle) {
+        var cover = coverLoopHandle;
+        coverLoopHandle = null;
+        cover.gain.gain.cancelScheduledValues(now);
+        cover.gain.gain.setTargetAtTime(0.0001, now, 0.12);
+        cover.src.onended = function () {
+          cover.src.disconnect();
+          cover.gain.disconnect();
+        };
+        cover.src.stop(now + 0.6);
+      }
       var eraIdx = getEraIndex(wpState.date);
       var era = ERAS[eraIdx];
 
@@ -1594,6 +1605,10 @@
   }
 
   function setMuted(val) {
+    if (!val && soundMode === 'off') {
+      setSoundMode('full');
+      return;
+    }
     isMuted = !!val;
     writeStorage(STORAGE_MUTE_KEY, isMuted ? '1' : '0');
     applyBusModes();
@@ -1645,7 +1660,7 @@
         if (ev && ev.stopPropagation) ev.stopPropagation();
         if (!started) handleStart();
         playSample('ui', 'switch');
-        setMuted(!isMuted);
+        setMuted(!(isMuted || soundMode === 'off'));
       });
       document.body.appendChild(muteBtn);
 

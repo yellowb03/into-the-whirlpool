@@ -8,4 +8,11 @@
     fire(d.correct?'correct':'wrong',d);});
   window.addEventListener('wp:fling',function(e){fire('paper-fling',e.detail);});
   window.addEventListener('wp:crossing',function(){fire('now');});
+  window.addEventListener('wp:odds-tick',function(e){
+    window.WP_AUDIO?.play('ui/switch',{rate:.85+e.detail.odds*.004,gain:.55});
+  });
+  window.addEventListener('wp:result',function(){
+    window.WP_AUDIO?.play('sfx/paper-fling',{rate:.72,gain:.65});
+    window.WP_AUDIO?.play('sfx/thump-low',{rate:1.1,gain:.4});
+  });
 }catch(_){}})();

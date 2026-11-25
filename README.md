@@ -4,7 +4,7 @@ An endless psychedelic fall through AI history, from AlexNet in 2012 to November
 
 ## Real or Made Up?
 
-Play ten cards from AI history, then share your score or challenge a friend to the same deck. Swipe left for made up and right for real. Buttons and arrow keys work too. “Real, unproven” means the announcement happened and the underlying claim was still under review at press time. Case files link to the original sources.
+Play ten cards from AI history, then share your score or challenge a friend to the same deck. Swipe left for made up and right for real. Buttons and arrow keys work too. “Real, unproven” means the announcement happened and the underlying claim was still under review at press time. Case files link to the original sources. The Crossing leads into six future predictions. Each comparison uses the recorded odds for that specific prediction. The ending adds your forecaster type and an AGI year estimated from your two AI-timeline bets.
 
 The daily deck changes at midnight UTC. Practice draws use a random seed. Both can be replayed with their challenge link. Run history and per-card miss rates are stored on the current device. The first missed card breaks ties when prior statistics are unavailable.
 
@@ -31,7 +31,7 @@ python3 -m http.server 8000
 
 ## Preview deployment
 
-Import the repository in Vercel with the Other preset and no build step. The game uses the repository root as the static directory. Pull-request branches can deploy as previews. For the game funnel, enable Web Analytics on a plan that supports custom events.
+Import the repository in Vercel with the Other preset and no build step. The game uses the repository root as the static directory. Pull-request branches can deploy as previews. For the game funnel, enable Web Analytics on a plan that supports custom events and add `<meta name="wp-web-analytics" content="enabled">` to `index.html`.
 
 ## Files
 
