@@ -1,7 +1,45 @@
 {
-  "visions": {},
-  "textures": {},
-  "characters": [],
+  "visions": {
+    "2012-09-alexnet-sees": {
+      "file": "2012-09-alexnet-sees.jpg"
+    },
+    "2013-01-words-become-vectors": {
+      "file": "2013-01-words-become-vectors.jpg"
+    },
+    "2014-06-two-networks-start-dreaming": {
+      "file": "2014-06-two-networks-start-dreaming.jpg"
+    },
+    "2014-09-attention-is-invented": {
+      "file": "2014-09-attention-is-invented.jpg"
+    },
+    "2015-12-openai-is-founded": {
+      "file": "2015-12-openai-is-founded.jpg"
+    },
+    "2016-03-alphago-plays-move-37": {
+      "file": "2016-03-alphago-plays-move-37.jpg"
+    }
+  },
+  "textures": {
+    "tunnel": "tunnel.jpg"
+  },
+  "characters": [
+    {
+      "file": "the-witness.png",
+      "size": 2.8
+    },
+    {
+      "file": "the-archivist.png",
+      "size": 2.3
+    },
+    {
+      "file": "the-swimmer.png",
+      "size": 2.7
+    },
+    {
+      "file": "the-child-of-2031.png",
+      "size": 2.1
+    }
+  ],
   "ui": {
     "card-front": "card-front.webp",
     "card-back": "card-back.webp",

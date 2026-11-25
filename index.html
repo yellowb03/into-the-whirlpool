@@ -86,6 +86,12 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 #wp-audio-toggle[aria-pressed=true]{color:#777!important;border-color:#777!important;box-shadow:none}
 #wp-audio-toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .panel.open~#wp-audio-toggle{display:none!important}
+#wp-audio-settings-toggle{border-radius:0!important;background:#000!important;border:2px solid var(--yellow)!important;color:var(--yellow)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:4px 4px 0 var(--pink)}
+#wp-audio-settings-sheet{border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important;border:2px solid #000!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:6px 6px 0 var(--pink)!important;font-family:"IBM Plex Mono",monospace!important}
+#wp-audio-settings-sheet button{border-radius:0!important;font-family:"IBM Plex Mono",monospace!important;color:var(--ink)!important;background:transparent!important;text-align:left!important;min-height:44px}
+#wp-audio-settings-sheet button[aria-pressed=true]{background:#000!important;color:var(--yellow)!important}
+#wp-audio-settings-sheet button:focus-visible{outline:2px solid var(--pink);outline-offset:-2px}
+.panel.open~#wp-audio-settings-toggle,.panel.open~#wp-audio-settings-sheet{display:none!important}
 .err{position:fixed;inset:0;display:grid;place-items:center;color:#fff;padding:24px;text-align:center}
 @media(max-width:600px){.hl{font-size:12px}.sheet h2{font-size:34px}.sheet p{font-size:16px}.hint{font-size:11px;bottom:calc(70px + env(safe-area-inset-bottom))}}
 </style>
@@ -148,5 +154,6 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <script src="share.js"></script>
 <script src="game.js"></script>
 <script src="audio.js"></script>
+<script src="audio-bridge.js"></script>
 </body>
 </html>
