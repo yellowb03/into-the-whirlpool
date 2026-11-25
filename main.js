@@ -161,19 +161,26 @@ const viz=mkSlot(1,12);viz.mat.uniforms.uClar.value=1;
 function split(str){if(str.length<15)return [str];const m=str.length/2;let best=-1;
 for(let i=0;i<str.length;i++)if(str[i]===' '&&(best<0||Math.abs(i-m)<Math.abs(best-m)))best=i;
 return best<0?[str]:[str.slice(0,best),str.slice(best+1)];}
-function textTex(str,col,size,wrap,outline){const c=document.createElement('canvas'),x=c.getContext('2d');
-const lines=wrap?split(str):[str];const font=`900 ${size}px "Big Shoulders Display", Impact, sans-serif`;x.font=font;
-const off=size*.06,w=Math.ceil(Math.max(...lines.map(l=>x.measureText(l).width))+size*.6+off),lh=size*.98,h=Math.ceil(lh*lines.length+size*.5+off);
+// each era sets its words differently: typewriter, preprint serif, poster, broadcast caption, stencil, then wireframe future
+const ERA=it=>!it?'poster':it.y<2017?'type':it.y<2020?'paper':it.y<2023?'poster':it.y<2025?'caption':it.y<2027?'stencil':'future';
+const EF={type:'700 SIZEpx "Courier Prime", "Courier New", monospace',paper:'italic 600 SIZEpx Newsreader, Georgia, serif',poster:'900 SIZEpx "Big Shoulders Display", Impact, sans-serif',
+caption:'700 SIZEpx "IBM Plex Mono", monospace',stencil:'900 SIZEpx "Big Shoulders Stencil Display", "Big Shoulders Display", Impact, sans-serif',future:'900 SIZEpx "Big Shoulders Display", Impact, sans-serif'};
+function textTex(str,col,size,wrap,outline,era){era=era||'poster';const c=document.createElement('canvas'),x=c.getContext('2d');
+const sz=era==='type'||era==='caption'?size*.62:era==='paper'?size*.78:size;const lines=wrap?split(str):[str];const font=EF[era].replace('SIZE',Math.round(sz));x.font=font;
+const off=sz*.06,pad=era==='caption'?sz*.5:sz*.3,w=Math.ceil(Math.max(...lines.map(l=>x.measureText(l).width))+pad*2+off),lh=sz*(era==='poster'||era==='stencil'||era==='future'?.98:1.25),h=Math.ceil(lh*lines.length+sz*.5+off);
 c.width=w;c.height=h;x.font=font;x.textAlign='center';x.textBaseline='middle';
 const draw=(dx,dy,fn)=>lines.forEach((l,i)=>fn.call(x,l,w/2+dx,h/2+(i-(lines.length-1)/2)*lh+dy));
 if(outline){x.lineWidth=size*.035;x.strokeStyle=col;draw(off,off,x.strokeText);x.strokeStyle='#fff';draw(0,0,x.strokeText);}
-else{x.shadowColor='rgba(0,0,0,.75)';x.shadowBlur=size*.4;x.fillStyle='rgba(0,0,0,.6)';draw(0,0,x.fillText);x.shadowBlur=0;
- x.globalCompositeOperation='source-over';x.fillStyle=col;draw(off,off,x.fillText);x.fillStyle='#fff';draw(0,0,x.fillText);}
+else if(era==='caption'){x.fillStyle='#000';x.fillRect(0,0,w-off,h-off);x.fillStyle=col;x.fillRect(0,0,sz*.18,h-off);x.fillStyle='#fff';draw(sz*.05,0,x.fillText);}
+else if(era==='future'){x.shadowColor='rgba(0,0,0,.7)';x.shadowBlur=sz*.35;x.fillStyle='rgba(0,0,0,.55)';draw(0,0,x.fillText);x.shadowBlur=0;x.fillStyle=col;draw(off*1.4,off*1.4,x.fillText);x.lineWidth=sz*.04;x.strokeStyle='#fff';draw(0,0,x.strokeText);}
+else{x.shadowColor='rgba(0,0,0,.75)';x.shadowBlur=sz*.4;x.fillStyle='rgba(0,0,0,.6)';draw(0,0,x.fillText);x.shadowBlur=0;
+ if(era==='type'){x.fillStyle='#fff';draw(0,0,x.fillText);x.globalAlpha=.35;draw(.8,.6,x.fillText);x.globalAlpha=1;x.fillStyle=col;x.fillRect(pad*.6,h-off-sz*.28,w-pad*1.2,sz*.08);}
+ else{x.fillStyle=col;draw(off,off,x.fillText);x.fillStyle='#fff';draw(0,0,x.fillText);}}
 const t=new THREE.CanvasTexture(c);t.minFilter=THREE.LinearFilter;t.generateMipmaps=false;return {t,asp:w/h};}
 const live=[];let roll=0;
-function spawnWord(it){const portrait=innerWidth<innerHeight;const tx=textTex(it.t,colOf(it),72,portrait);
+function spawnWord(it){const portrait=innerWidth<innerHeight;const tx=textTex(it.t,colOf(it),72,portrait,false,ERA(it));
 const m=new THREE.SpriteMaterial({map:tx.t,depthWrite:false,depthTest:false,transparent:true,opacity:0});
-const s=new THREE.Sprite(m);s.renderOrder=5;const hh=portrait?(tx.asp>5?.5:.74):.9;s.scale.set(hh*tx.asp,hh,1);ov.add(s);
+const s=new THREE.Sprite(m);s.renderOrder=5;const e=ERA(it),k0=e==='type'||e==='caption'?.72:e==='paper'?.82:1;const hh=(portrait?(tx.asp>5?.5:.74):.9)*k0*(e==='caption'&&!portrait?1.1:1);s.scale.set(hh*tx.asp,hh,1);ov.add(s);
 const a=portrait?(Math.random()<.5?1.5708:-1.5708)+(Math.random()-.5)*1.1:Math.random()*TAU;
 getMem(it);WP.emit('word',it);
 live.push({s,a,r:portrait?.7+Math.random()*1.1:1.1+Math.random()*1.6,z:-60,wob:Math.random()*6,k:1,big:false,sw:portrait?.35:1,item:it});}
@@ -226,7 +233,7 @@ ITEMS.forEach(it=>{const dx=Math.abs(TW/2+(it.num-lastDate)*ppy-x);if(dx<bd){bd=
 
 // ---------- detail panel
 const panel=$('panel');let openIt=null,openA=0,vt=0;
-function openItem(it){wake();openIt=it;const spec=it.k==='p'||it.k==='f';
+function openItem(it){wake();hint.classList.add('gone');openIt=it;const spec=it.k==='p'||it.k==='f';
 $('pfile').textContent='FILE '+it.d+' / '+KIND[it.k].toUpperCase();const st=$('pstamp');st.textContent=spec?'SPECULATION':'ON RECORD';st.className='stamp'+(spec?' spec':'');
 $('ptitle').textContent=it.t;$('px').textContent=it.x||'';$('pi').textContent=it.i||'';
 $('pcap').textContent=(it.k==='n'||it.k==='f'?'fig. front page, ':'fig. ')+(spec?'a guess at ':'a reconstruction of ')+(it.k==='p'||it.k==='f'?String(it.y):MON[it.m-1]+' '+it.y);
@@ -332,6 +339,6 @@ if(MANIFEST.textures.tunnel)tload.load('assets/textures/'+MANIFEST.textures.tunn
 (MANIFEST.characters||[]).forEach(c=>{const o=Object.assign({asp:1},c);tload.load('assets/characters/'+c.file,t=>{o.tex=t;o.asp=t.image.width/t.image.height;});chars.push(o);});}
 const mfp=fetch('assets/manifest.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(useManifest);
 const go=()=>mfp.then(()=>requestAnimationFrame(frame));
-if(document.fonts&&document.fonts.load){Promise.race([Promise.all([document.fonts.load('900 72px "Big Shoulders Display"'),document.fonts.load('400 13px "IBM Plex Mono"'),document.fonts.load('600 40px Caveat'),document.fonts.load('500 20px "JetBrains Mono"'),document.fonts.load('600 16px Manrope')]),new Promise(r=>setTimeout(r,2500))]).then(go,go);}else go();
+if(document.fonts&&document.fonts.load){Promise.race([Promise.all([document.fonts.load('900 72px "Big Shoulders Display"'),document.fonts.load('400 13px "IBM Plex Mono"'),document.fonts.load('700 40px "Courier Prime"'),document.fonts.load('italic 600 40px Newsreader'),document.fonts.load('900 40px "Big Shoulders Stencil Display"'),document.fonts.load('700 40px "IBM Plex Mono"'),document.fonts.load('600 40px Caveat'),document.fonts.load('500 20px "JetBrains Mono"'),document.fonts.load('600 16px Manrope')]),new Promise(r=>setTimeout(r,2500))]).then(go,go);}else go();
 }
 }
