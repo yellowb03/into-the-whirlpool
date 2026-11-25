@@ -3,7 +3,7 @@
  *
  * Sample layer on top of the v1 synth engine:
  *  - Manifest-driven dual-format loader (.webm Opus / .m4a AAC via canPlayType)
- *  - Staged lazy-loading: UI/core SFX -> cover/amb -> current era -> next era ahead
+ *  - Scene music loads alongside UI/core SFX, with adaptive stems loaded by era
  *  - 5-bus mix: music (stems), synth (v1), amb, sfx, ui -> master EQ -> limiter -> out
  *  - Stamps & Crossing duck music by ~5 dB for 300 ms while keeping foley crystal clear
  *  - Bar-synced stem crossfades (2 bars) & era crossfades (1 bar)
@@ -25,6 +25,8 @@
     synthBusGain: 0.56,         // V1 synth runs underneath & boosts automatically if stems missing
     synthFallbackGain: 0.86,    // V1 synth level when sample stems aren't loaded
     ambBusGain: 0.65,
+    sceneAmbGain: 0.15,
+    gameReadingGain: 0.72,
     sfxBusGain: 0.92,
     uiBusGain: 0.85,
 
@@ -168,7 +170,8 @@
   var musicClockT0 = 0;
   var activeEraStems = Object.create(null); // eraName -> { stemName: { src, gain, target } }
   var activeStemEraName = null;
-  var coverLoopHandle = null;
+  var sceneLoop = null;
+  var gameReading = false;
   var vortexAmbHandle = null;
 
   // Scheduler & Engine State
@@ -187,6 +190,7 @@
     spinV: 0.0,
     streak: 0,
     mode: 'play',
+    act: 'cover',
     cover: false,
     focus: null,
     open: null,
@@ -576,30 +580,28 @@
   // =========================================================================
   // 8. MANIFEST LOADER & LAZY-LOADING PIPELINE
   // =========================================================================
-  function loadBuffer(relPath) {
+  function loadBuffer(relPath, tryBothFormats) {
     if (!ctx) return Promise.resolve(null);
     if (bufferCache[relPath]) return Promise.resolve(bufferCache[relPath]);
     if (loadingKeys[relPath]) return loadingKeys[relPath];
     if (typeof fetch !== 'function') return Promise.resolve(null);
 
-    var url = AUDIO_BASE + relPath + preferredExt;
-    var p = fetch(url)
-      .then(function (res) {
-        if (!res || !res.ok) return null;
-        return res.arrayBuffer();
-      })
-      .then(function (arr) {
-        if (!arr || !ctx) return null;
-        return ctx.decodeAudioData(arr);
+    function fetchAndDecode(ext) {
+      return fetch(AUDIO_BASE + relPath + ext)
+        .then(function (res) { return res && res.ok ? res.arrayBuffer() : null; })
+        .then(function (arr) { return arr && ctx ? ctx.decodeAudioData(arr) : null; })
+        .catch(function () { return null; });
+    }
+
+    var p = fetchAndDecode(preferredExt)
+      .then(function (buf) {
+        if (buf || !tryBothFormats) return buf;
+        return fetchAndDecode(preferredExt === '.webm' ? '.m4a' : '.webm');
       })
       .then(function (buf) {
         if (buf) bufferCache[relPath] = buf;
         delete loadingKeys[relPath];
         return buf || null;
-      })
-      .catch(function () {
-        delete loadingKeys[relPath];
-        return null;
       });
 
     loadingKeys[relPath] = p;
@@ -636,7 +638,11 @@
         if (!data) return;
         manifest = data;
 
-        // Stage 1: UI and core SFX first
+        // Start scene music and core effects in parallel.
+        Object.keys(manifest.sceneLoops || {}).forEach(function (scene) {
+          loadBuffer('music/' + manifest.sceneLoops[scene].file, true);
+        });
+
         var stage1 = [];
         if (manifest.ui) {
           Object.keys(manifest.ui).forEach(function (k) {
@@ -650,7 +656,7 @@
         }
 
         return Promise.all(stage1).then(function () {
-          // Stage 2: cover-loop, crossing, and amb/vortex
+          // Stage 2: crossing and amb/vortex
           var stage2 = [];
           if (Array.isArray(manifest.stingers)) {
             manifest.stingers.forEach(function (s) { stage2.push(loadBuffer('music/' + s)); });
@@ -661,14 +667,6 @@
           return Promise.all(stage2);
         }).then(function () {
           startAmbientLoopsIfReady();
-          // Stage 3: current era music
-          var eraName = ERAS[currentEraIdx].name;
-          activeStemEraName = eraName;
-          return loadEraStems(eraName);
-        }).then(function () {
-          // Stage 4: next era in the background
-          var nextIdx = (currentEraIdx + 1) % ERAS.length;
-          return loadEraStems(ERAS[nextIdx].name);
         });
       })
       .catch(function () {});
@@ -811,7 +809,7 @@
   }
 
   function syncEraStemsToClock(eraName, isEraSwitch) {
-    if (!ctx || !manifest || !manifest.music || !manifest.music[eraName]) return;
+    if (!ctx || sceneLoop || !manifest || !manifest.music || !manifest.music[eraName]) return;
     var meta = manifest.music[eraName];
     var stems = meta.stems || [];
     var barLen = getBarLengthSec(eraName);
@@ -899,20 +897,48 @@
         vortexAmbHandle = { src: vs, gain: vg };
       } catch (_) {}
     }
-    // Cover loop if cover state is active
-    if (wpState.cover && !coverLoopHandle && bufferCache['music/cover-loop']) {
-      try {
-        var cs = ctx.createBufferSource();
-        cs.buffer = bufferCache['music/cover-loop'];
-        cs.loop = true;
-        var cg = ctx.createGain();
-        cg.gain.setValueAtTime(0.0001, now);
-        cg.gain.setTargetAtTime(0.9, now + 0.05, 0.6);
-        cs.connect(cg);
-        cg.connect(musicStemsBus);
-        cs.start(now);
-        coverLoopHandle = { src: cs, gain: cg };
-      } catch (_) {}
+  }
+
+  function syncSceneLoop(now) {
+    var name = wpState.cover ? 'cover' : wpState.mode === 'game' ? 'game' : null;
+    if (sceneLoop && sceneLoop.name !== name) {
+      var old = sceneLoop;
+      sceneLoop = null;
+      old.gain.gain.setTargetAtTime(0, now, 0.07);
+      old.src.onended = function () {
+        old.src.disconnect();
+        old.gain.disconnect();
+      };
+      old.src.stop(now + 0.4);
+    }
+
+    var loop = manifest && manifest.sceneLoops && manifest.sceneLoops[name];
+    if (!loop) return;
+    if (!sceneLoop) {
+      var buffer = bufferCache['music/' + loop.file];
+      if (!buffer || loop.start < 0 || loop.end <= loop.start || loop.end > buffer.duration) return;
+      var source = ctx.createBufferSource();
+      var gain = ctx.createGain();
+      source.buffer = buffer;
+      source.loop = true;
+      source.loopStart = loop.start;
+      source.loopEnd = loop.end;
+      gain.gain.setValueAtTime(0, now);
+      source.connect(gain);
+      gain.connect(musicStemsBus);
+      // Start at the beginning once, then use the edited loop region.
+      source.start(now);
+      sceneLoop = { name: name, src: source, gain: gain, level: 0 };
+
+      Object.keys(activeEraStems).forEach(function (era) { stopEraStems(era, 0.18); });
+      activeStemEraName = null;
+    }
+
+    var reading = name === 'game' && (gameReading || wpState.act === 'result');
+    var level = reading ? MIX.gameReadingGain : 1;
+    if (sceneLoop.level !== level) {
+      sceneLoop.level = level;
+      sceneLoop.gain.gain.setTargetAtTime(level, now, 0.10);
     }
   }
 
@@ -1311,7 +1337,7 @@
   }
 
   function runScheduler() {
-    if (!ctx || !started || isHidden) return;
+    if (!ctx || !started || isHidden || sceneLoop) return;
     try {
       var now = ctx.currentTime;
       if (nextStepTime < now - 0.25) nextStepTime = now + 0.04;
@@ -1361,6 +1387,7 @@
     if (typeof st.spinV === 'number' && isFinite(st.spinV)) wpState.spinV = clamp(st.spinV, -5, 5);
     if (typeof st.streak === 'number' && isFinite(st.streak)) wpState.streak = Math.max(0, st.streak | 0);
     if (typeof st.mode === 'string') wpState.mode = st.mode;
+    if (typeof st.act === 'string') wpState.act = st.act;
     wpState.cover = !!st.cover;
     wpState.focus = st.focus || null;
     wpState.open = st.open || null;
@@ -1371,31 +1398,25 @@
     if (!ctx || !started || isHidden) return;
     try {
       var now = ctx.currentTime;
-      if (!wpState.cover && coverLoopHandle) {
-        var cover = coverLoopHandle;
-        coverLoopHandle = null;
-        cover.gain.gain.cancelScheduledValues(now);
-        cover.gain.gain.setTargetAtTime(0.0001, now, 0.12);
-        cover.src.onended = function () {
-          cover.src.disconnect();
-          cover.gain.disconnect();
-        };
-        cover.src.stop(now + 0.6);
-      }
+      syncSceneLoop(now);
       var eraIdx = getEraIndex(wpState.date);
       var era = ERAS[eraIdx];
 
       if (eraIdx !== currentEraIdx) {
         currentEraIdx = eraIdx;
         try { droneOsc1.type = era.droneWave; } catch (_) {}
+      }
+      if (sceneLoop) {
+        synthBus.gain.setTargetAtTime(0.0001, now, 0.10);
+      } else if (manifest && activeStemEraName !== era.name) {
         activeStemEraName = era.name;
         loadEraStems(era.name).then(function () {
-          syncEraStemsToClock(era.name, true);
+          if (activeStemEraName === era.name) syncEraStemsToClock(era.name, true);
         });
         // Lazy-load one era ahead
         var nextIdx = (eraIdx + 1) % ERAS.length;
         loadEraStems(ERAS[nextIdx].name);
-      } else if (activeStemEraName === era.name) {
+      } else {
         syncEraStemsToClock(era.name, false);
       }
 
@@ -1412,14 +1433,16 @@
 
       // Slow-time + pause (900 Hz dreamy filter)
       var eraBright = eraIdx === 3 ? lerp(era.filterBase, MIX.maxCutoffHz, madness) : era.filterBase;
+      if (sceneLoop) eraBright = MIX.maxCutoffHz;
       var slowCut = lerp(eraBright, MIX.slowMinCutoffHz, wpState.slow);
       var finalCut = lerp(slowCut, MIX.panelCutoffHz, wpState.pause);
       musicFilter.frequency.setTargetAtTime(clamp(finalCut, 280, MIX.maxCutoffHz), now, 0.06);
 
       var wet = MIX.reverbWetBase + wpState.slow * MIX.reverbWetSlowBoost + madness * MIX.reverbWetFutureBoost;
-      reverbSend.gain.setTargetAtTime(clamp(wet, 0.1, 0.92), now, 0.1);
+      reverbSend.gain.setTargetAtTime(sceneLoop ? 0.06 : clamp(wet, 0.1, 0.92), now, 0.1);
+      ambBus.gain.setTargetAtTime(sceneLoop ? MIX.sceneAmbGain : MIX.ambBusGain, now, 0.15);
 
-      var driveAmt = era.drive + madness * 0.25;
+      var driveAmt = sceneLoop ? 0 : era.drive + madness * 0.25;
       driveWet.gain.setTargetAtTime(clamp(driveAmt * 0.45, 0.0001, 0.42), now, 0.2);
       driveDry.gain.setTargetAtTime(1.0 - clamp(driveAmt * 0.22, 0, 0.25), now, 0.2);
 
@@ -1428,7 +1451,7 @@
       var modeMusicMult = (soundMode === 'full') ? 1.0 : 0.0001;
       musicGroupGain.gain.setTargetAtTime(pauseGain * modeMusicMult, now, 0.08);
 
-      if (wpState.pause > 0.02 && soundMode === 'full') {
+      if (!sceneLoop && wpState.pause > 0.02 && soundMode === 'full') {
         var isPredOpen = wpState.open && (wpState.open.k === 'p' || wpState.open.k === 'f');
         var pRoot = era.rootMidi + 12;
         panelOsc1.frequency.setTargetAtTime(midiToHz(pRoot), now, 0.12);
@@ -1441,7 +1464,7 @@
       // Drag spin pan + whoosh
       var spinAbs = Math.abs(wpState.spinV);
       var panVal = clamp(wpState.spinV / 3.0, -0.6, 0.6);
-      musicPanner.pan.setTargetAtTime(panVal * 0.55, now, 0.05);
+      musicPanner.pan.setTargetAtTime(sceneLoop ? 0 : panVal * 0.55, now, 0.05);
       spinPanner.pan.setTargetAtTime(panVal, now, 0.04);
       if (spinAbs > 0.08) {
         var spinNorm = clamp((spinAbs - 0.08) / 2.92, 0, 1);
@@ -1485,7 +1508,7 @@
   }
 
   function handleWord(ev) {
-    if (!ctx || !started || isHidden) return;
+    if (!ctx || !started || isHidden || sceneLoop) return;
     try {
       var now = ctx.currentTime;
       if (now - lastWordTime < MIX.wordMinGapSec) return;
@@ -1511,12 +1534,12 @@
   }
 
   function handleFocus(ev) {
-    if (!ctx || !started || isHidden) return;
+    if (!ctx || !started || isHidden || sceneLoop) return;
     playFocusSwell(ev && ev.detail);
   }
 
   function handleHeadline(ev) {
-    if (!ctx || !started || isHidden) return;
+    if (!ctx || !started || isHidden || sceneLoop) return;
     var now = ctx.currentTime;
     if (now - lastHeadlineTime < MIX.headlineMinGapSec) return;
     lastHeadlineTime = now;
@@ -1753,6 +1776,9 @@
 
     // iOS first-touch unlock listener
     window.addEventListener('touchstart', unlockIOSAudio, { passive: true, once: true });
+    window.addEventListener('click', function () {
+      if (!started && window.WP && window.WP.state.cover) handleStart();
+    }, { once: true });
 
     // Core timeline events
     window.addEventListener('wp:start', handleStart);
@@ -1766,6 +1792,8 @@
     window.addEventListener('wp:restart', triggerRestartWhiteout);
 
     // Game & tactile foley events
+    window.addEventListener('wp:card', function () { gameReading = false; });
+    window.addEventListener('wp:answer', function () { gameReading = true; });
     window.addEventListener('wp:stamp', function (ev) {
       var d = ev && ev.detail;
       triggerStamp(d && d.kind, d);

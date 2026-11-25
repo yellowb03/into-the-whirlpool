@@ -1,9 +1,11 @@
 # Audio Credits & Provenance (`assets/audio/`)
 
-All Core 20 audio files in this set were synthesized programmatically at 48 kHz using original DSP code (Python `numpy`/`scipy` + `ffmpeg` Opus/AAC dual encoding) with zero third-party samples or copyrighted material. All files are original works created for *Am I Crazy?* and licensed for project use (CC0 / original project assets).
+The Core 20 audio files were synthesized programmatically at 48 kHz using original DSP code (Python `numpy`/`scipy` + `ffmpeg` Opus/AAC dual encoding) with zero third-party samples or copyrighted material. These project assets are CC0. Briam generated and supplied the two arcade cues below using Gemini. They were edited for looping, balanced for the game mix and encoded at 48 kHz.
 
 | Asset | Variations | Format | Loudness / Peak | Origin |
 | --- | --- | --- | --- | --- |
+| `music/gambit-title-v1` | Title screen, intro plays once, 25.950 s loop | `.webm`, `.m4a` | −20 LUFS over the loop | Briam’s *Gambit at the Midnight Gate* (Gemini) |
+| `music/quarter-deck-v1` | Headline deck, 30.945 s loop | `.webm`, `.m4a` | −22 LUFS over the loop | Briam’s *Quarter in the Slot* (Gemini) |
 | `music/lab-bed` | 1 (8 bars @ 72 BPM, D Dorian) | `.webm` (128k Opus), `.m4a` (128k AAC) | ~−20 LUFS | Original DSP synthesis (analog pad + tape warmth) |
 | `music/attention-bed` | 1 (8 bars @ 104 BPM, F Lydian) | `.webm`, `.m4a` | ~−20 LUFS | Original DSP synthesis (FM Rhodes chords + stereo reverb) |
 | `music/boom-bed` | 1 (8 bars @ 122 BPM, G Mixolydian) | `.webm`, `.m4a` | ~−20 LUFS | Original DSP synthesis (detuned saw pad + beat sidechain) |

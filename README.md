@@ -104,4 +104,4 @@ The script loads from the same origin (`/_vercel/insights/script.js`), so the CS
 | `docs/internal/` | Working design notes (not deployed) |
 | `tools/asset-list.js` | Prints the vision image checklist (not deployed) |
 
-Audio is original, synthesized for this project; see `assets/audio/CREDITS.md`.
+The title and headline deck use Briam’s arcade music cues. Explore mode and game effects use the original synthesized score and sound effects. See `assets/audio/CREDITS.md`.
