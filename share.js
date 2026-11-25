@@ -18,8 +18,9 @@
     const { answers, seed, score, kind } = result;
     const squares = answers.map(({ correct }) => correct ? '■' : '□').join('');
     const key = answers.map(({ card }, index) => (index + 1) + ' ' + verdictText[card.verdict]).join(' · ');
+    const forecast = result.forecast ? '\n' + result.forecast.type + ' · My AGI year: ' + result.forecast.agiYear : '';
     return 'Into the Whirlpool #' + (kind === 'daily' ? 'D ' : 'P ') + score + '/10 ' + squares
-      + '\n' + challengeURL(seed, score) + '\nAnswer key: ' + key;
+      + forecast + '\n' + challengeURL(seed, score) + '\nAnswer key: ' + key;
   }
 
   function image(url) {
@@ -95,13 +96,22 @@
       ctx.strokeRect(x, 400, 60, 60);
     });
 
+    const forecastOffset = result.forecast ? 83 : 0;
+    if (result.forecast) {
+      ctx.fillStyle = ink;
+      ctx.font = '900 48px "Big Shoulders Display", sans-serif';
+      ctx.fillText(result.forecast.type, 99, 530);
+      ctx.font = mono;
+      ctx.fillText('My AGI year: ' + result.forecast.agiYear, 590, 530);
+    }
+
     ctx.fillStyle = ink;
     ctx.font = '700 25px "IBM Plex Mono", monospace';
-    ctx.fillText(fooled ? 'THE ONE THAT FOOLED ME' : 'NOTHING GOT PAST ME', 99, 531);
-    let y = 586;
+    ctx.fillText(fooled ? 'THE ONE THAT FOOLED ME' : 'NOTHING GOT PAST ME', 99, 531 + forecastOffset);
+    let y = 586 + forecastOffset;
     if (fooled) {
-      ctx.font = '900 46px "Big Shoulders Display", Impact, sans-serif';
-      y = wrap(ctx, fooled.text, 99, y, 880, 51);
+      ctx.font = '900 ' + (result.forecast ? 34 : 46) + 'px "Big Shoulders Display", Impact, sans-serif';
+      y = wrap(ctx, fooled.text, 99, y, 880, result.forecast ? 39 : 51);
       ctx.font = mono;
       ctx.fillStyle = fooled.verdict === 'made-up' ? red : fooled.verdict === 'real-unproven' ? '#a31368' : blue;
       const stamp = verdictText[fooled.verdict];
@@ -113,11 +123,11 @@
 
     ctx.fillStyle = ink;
     ctx.font = mono;
-    ctx.fillText('ANSWER KEY', 99, 844);
+    ctx.fillText('ANSWER KEY', 99, 869);
     answers.forEach(({ card }, index) => {
       ctx.fillStyle = card.verdict === 'made-up' ? red : card.verdict === 'real-unproven' ? '#a31368' : blue;
       const number = String(index + 1).padStart(2, '0');
-      ctx.fillText(number + '  ' + verdictText[card.verdict], 99 + (index >= 5 ? 465 : 0), 892 + (index % 5) * 48);
+      ctx.fillText(number + '  ' + verdictText[card.verdict], 99 + (index >= 5 ? 465 : 0), 912 + (index % 5) * 45);
     });
     ctx.font = '700 24px "IBM Plex Mono", monospace';
     ctx.fillStyle = ink;
