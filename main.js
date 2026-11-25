@@ -12,7 +12,7 @@ const slugify=s=>s.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,''
 ITEMS.forEach(it=>it.slug=it.d+'-'+slugify(it.t));
 const BYID={};ITEMS.forEach(it=>BYID[it.id]=it);
 // public hooks for add-ons (audio.js etc.): read WP.state each frame, listen for wp:* events
-const WP=window.WP={items:ITEMS,state:{date:0,prog:0,slow:0,pause:0,spinV:0,focus:null,open:null,started:false,mode:'explore',streak:0,score:0,act:'cover'},emit(n,d){dispatchEvent(new CustomEvent('wp:'+n,{detail:d}));}};
+const WP=window.WP={items:ITEMS,state:{date:0,prog:0,slow:0,pause:0,spinV:0,focus:null,open:null,started:false,cover:true,mode:'explore',streak:0,score:0,act:'cover'},emit(n,d){dispatchEvent(new CustomEvent('wp:'+n,{detail:d}));}};
 let MANIFEST={visions:{},textures:{},characters:[]},SOURCES={};
 WP.sources=fetch('sources.json').then(r=>r.ok?r.json():{}).catch(()=>({})).then(j=>(SOURCES=j||{}));
 ITEMS.forEach(it=>{if(it.k==='n'||it.k==='f')it.v=['news',it.id];else if(it.v[0]==='news')it.v=['news',it.id];});
@@ -251,10 +251,10 @@ const sl=$('psrc');sl.textContent='';const src=SOURCES[it.slug];$('psrcw').hidde
 const od=$('podds');if((it.k==='p'||it.k==='s')&&it.o){od.hidden=false;$('poddsv').textContent=it.o+'%';const ta=$('ptally');ta.textContent='';for(let i=0;i<10;i++){const q=document.createElement('i');if(i<Math.round(it.o/10))q.className='on';ta.appendChild(q);}}else od.hidden=true;
 panel.style.setProperty('--ac',colOf(it));panel.classList.add('open');panel.setAttribute('aria-hidden','false');
 zoomed=false;panel.classList.remove('zoom');$('sheet').scrollTop=0;layoutPanel();requestAnimationFrame(layoutPanel);
-bindSlot(viz,it);vt=0;viz.target=1;WP.state.open=it;WP.emit('open',it);}
+bindSlot(viz,it);vt=0;viz.target=1;WP.state.open=it;WP.emit('open',it);setTimeout(()=>{if(openIt===it)WP.emit('clip-bite',{x:(vizRect.x+vizRect.w/2)/W*2-1});},160);}
 function closePanel(){const wasOpen=openIt;WP.state.open=null;openIt=null;panel.classList.remove('open');panel.setAttribute('aria-hidden','true');viz.target=0;if(wasOpen)WP.emit('close');}
 function step(d){if(!openIt||WP.state.mode==='game')return;const i=ITEMS.indexOf(openIt);const j=Math.max(0,Math.min(ITEMS.length-1,i+d));if(j!==i)openItem(ITEMS[j]);}
-$('pclose').addEventListener('click',closePanel);$('pprev').addEventListener('click',()=>step(-1));$('pnext').addEventListener('click',()=>step(1));
+[$('pclose'),$('pprev'),$('pnext')].forEach(b=>b.addEventListener('pointerdown',()=>WP.emit('ui-press',{})));$('pclose').addEventListener('click',closePanel);$('pprev').addEventListener('click',()=>step(-1));$('pnext').addEventListener('click',()=>step(1));
 let vizRect={x:0,y:0,w:0,h:0},zoomed=false;const ROT=-2.4,PAD=8,BOT=32;
 function place(cx,cy,s,rot){const pf=$('print');pf.style.left=(cx-s/2-PAD)+'px';pf.style.top=(cy-s/2-PAD)+'px';pf.style.width=(s+PAD*2)+'px';pf.style.height=(s+PAD+BOT)+'px';
  pf.style.transformOrigin=(PAD+s/2)+'px '+(PAD+s/2)+'px';pf.style.transform='rotate('+rot+'deg)';vizRect={x:cx-s/2-PAD,y:cy-s/2-PAD,w:s+PAD*2,h:s+PAD+BOT};
@@ -272,7 +272,7 @@ panel.addEventListener('click',e=>{if(e.target!==panel||performance.now()-opened
 
 // ---------- input: tap a word, hold to slow time, drag to spin
 let slow=0,slowT=0,spin=0,spinV=0,down=null,touched=false,pause=0;
-function wake(){const cv=$('cover');if(cv&&!cv.classList.contains('gone')){cv.classList.add('gone');cv.inert=true;setTimeout(()=>hint.classList.add('show'),600);}if(!touched&&WP.state.started){touched=true;setTimeout(()=>hint.classList.add('gone'),7000);}if(!WP.state.started){WP.state.started=true;WP.emit('start');}}
+function wake(){const cv=$('cover');if(cv&&!cv.classList.contains('gone')){cv.classList.add('gone');cv.inert=true;cv.setAttribute('aria-hidden','true');WP.state.cover=false;setTimeout(()=>hint.classList.add('show'),600);}if(!touched&&WP.state.started){touched=true;setTimeout(()=>hint.classList.add('gone'),7000);}if(!WP.state.started){WP.state.started=true;WP.emit('start');}}
 const v1=new THREE.Vector3(),v2=new THREE.Vector3(),v3=new THREE.Vector3();
 function pick(px,py){let best=null;const k0=H/(2*Math.tan(camera.fov*Math.PI/360));
 for(const w of live){if(w.big||w.s.material.opacity<.15)continue;v3.copy(w.s.position).applyMatrix4(camera.matrixWorldInverse);if(v3.z>-.5)continue;

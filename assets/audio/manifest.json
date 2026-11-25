@@ -1,0 +1,44 @@
+{
+  "music": {
+    "lab": {
+      "bpm": 72,
+      "bars": 8,
+      "stems": ["bed"]
+    },
+    "attention": {
+      "bpm": 104,
+      "bars": 8,
+      "stems": ["bed"]
+    },
+    "boom": {
+      "bpm": 122,
+      "bars": 8,
+      "stems": ["bed"]
+    },
+    "future": {
+      "bpm": 132,
+      "bars": 8,
+      "stems": ["bed"]
+    }
+  },
+  "stingers": ["cover-loop", "crossing"],
+  "sfx": {
+    "stamp-real": 4,
+    "stamp-made-up": 4,
+    "stamp-unproven": 3,
+    "correct": 5,
+    "wrong": 4,
+    "card-rise": 4,
+    "paper-fling": 5,
+    "clip-bite": 3,
+    "folder-open": 3,
+    "folder-close": 3,
+    "ink-splat": 3,
+    "thump-low": 3
+  },
+  "ui": {
+    "press": 4,
+    "switch": 2
+  },
+  "amb": ["vortex"]
+}
