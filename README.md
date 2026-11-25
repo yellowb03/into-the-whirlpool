@@ -1,6 +1,8 @@
-# Into the Whirlpool
+# Am I Crazy?
 
 An endless psychedelic fall through AI history, from AlexNet in 2012 to November 2026, then on into five years of predictions about AI-driven science (2027 to 2031). Milestones float out of a whirlpool, each with a faded "memory of the future" behind it. A news ticker runs real and made-up headlines, and a timeline at the bottom marks the months going past.
+
+[Play Am I Crazy?](https://am-i-crazy.vercel.app/)
 
 ## Real or Made Up?
 

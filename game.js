@@ -60,7 +60,7 @@
     });
     return { original: sourced(WP_CARDS), feed: sourced(WP_FEED_CARDS) };
   });
-  const art = fetch('assets/manifest.json').then(response => response.ok ? response.json() : {})
+  const art = fetch('assets/manifest.json?v=3').then(response => response.ok ? response.json() : {})
     .then(manifest => {
       const assets = manifest.ui || {};
       for (const [name, key] of [['paper', 'card-front'], ['poster', 'card-back']]) {
@@ -756,7 +756,7 @@
     const credits = node('p', 'game-credits', 'Briam · concept and direction. Claude · timeline engine. ChatGPT · game, cards and UI. Gemini · soundtrack.');
     pane.append(actions, link, status, credits);
     const snapshot = result;
-    art.then(ui => WP_SHARE.makeImage(snapshot, ui['share-bg-1'] && 'assets/ui/' + ui['share-bg-1']))
+    art.then(ui => WP_SHARE.makeImage(snapshot, ui))
       .then(file => { if (result === snapshot && state === 'result') shareFile = file; })
       .catch(() => {})
       .finally(() => { shareButton.disabled = false; });
