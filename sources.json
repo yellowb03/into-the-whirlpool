@@ -1,1 +1,129 @@
-{}
+{
+  "2016-03-alphago-plays-move-37": [
+    {
+      "title": "AlphaGo",
+      "publisher": "Google DeepMind",
+      "url": "https://deepmind.google/research/breakthroughs/alphago/"
+    }
+  ],
+  "2016-03-microsoft-s-teen-chatbot-tay-turns-offensive-wit": [
+    {
+      "title": "Learning from Tay’s introduction",
+      "publisher": "Microsoft",
+      "url": "https://blogs.microsoft.com/blog/2016/03/25/learning-tays-introduction/"
+    }
+  ],
+  "2022-06-google-engineer-says-chatbot-lamda-is-sentient-g": [
+    {
+      "title": "The Google engineer who thinks the company’s AI has come to life",
+      "publisher": "The Washington Post",
+      "url": "https://www.washingtonpost.com/technology/2022/06/11/google-ai-lamda-blake-lemoine/"
+    }
+  ],
+  "2022-09-ai-generated-image-wins-first-prize-at-the-color": [
+    {
+      "title": "Art made with artificial intelligence wins at state fair",
+      "publisher": "Smithsonian Magazine",
+      "url": "https://www.smithsonianmag.com/smart-news/artificial-intelligence-art-wins-colorado-state-fair-180980703/"
+    }
+  ],
+  "2023-02-bing-s-chatbot-tells-a-new-york-times-columnist-": [
+    {
+      "title": "Kevin Roose’s conversation with Bing’s chatbot",
+      "publisher": "The New York Times",
+      "url": "https://www.nytimes.com/2023/02/16/technology/bing-chatbot-transcript.html"
+    }
+  ],
+  "2023-03-that-photo-of-the-pope-in-a-white-puffer-jacket-": [
+    {
+      "title": "AI images of Pope Francis in street fashion",
+      "publisher": "AFP Fact Check",
+      "url": "https://factcheck.afp.com/doc.afp.com.33C66F3"
+    }
+  ],
+  "2023-04-ai-drake-song-goes-viral-then-gets-pulled": [
+    {
+      "title": "AI song featuring fake Drake and Weeknd vocals pulled",
+      "publisher": "The Guardian",
+      "url": "https://www.theguardian.com/music/2023/apr/18/ai-song-featuring-fake-drake-and-weeknd-vocals-pulled-from-streaming-services"
+    }
+  ],
+  "2023-05-godfather-of-ai-geoffrey-hinton-quits-google-to-": [
+    {
+      "title": "Google AI pioneer says he quit to speak freely",
+      "publisher": "Reuters",
+      "url": "https://www.investing.com/news/stock-market-news/google-ai-pioneer-says-he-quit-to-speak-freely-about-technologys-dangers-3069804"
+    }
+  ],
+  "2023-06-lawyers-fined-for-citing-fake-court-cases-invent": [
+    {
+      "title": "Mata v. Avianca, opinion and order on sanctions",
+      "publisher": "U.S. District Court, S.D.N.Y.",
+      "url": "https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1%3A2022cv01461/575368/54/"
+    }
+  ],
+  "2023-12-car-dealer-s-chatbot-agrees-to-sell-a-chevy-taho": [
+    {
+      "title": "Driver persuades chatbot to sell car for USD 1",
+      "publisher": "AIAAIC",
+      "url": "https://www.aiaaic.org/aiaaic-repository/ai-algorithmic-and-automation-incidents/driver-persuades-chatbot-to-sell-car-for-usd-1"
+    }
+  ],
+  "2024-02-air-canada-ordered-to-honour-a-refund-policy-its": [
+    {
+      "title": "Moffatt v. Air Canada, 2024 BCCRT 149",
+      "publisher": "Civil Resolution Tribunal",
+      "url": "https://www.thesedonaconference.org/sites/default/files/meeting_paper/Moffet%20v%20AirCanada.pdf"
+    }
+  ],
+  "2024-05-google-s-ai-suggests-adding-glue-to-keep-cheese-": [
+    {
+      "title": "What happened with AI Overviews and next steps",
+      "publisher": "Google",
+      "url": "https://blog.google/products-and-platforms/products/search/ai-overviews-update-may-2024/"
+    }
+  ],
+  "2025-06-claude-runs-an-office-snack-shop-stockpiles-tung": [
+    {
+      "title": "Project Vend: Can Claude run a small shop?",
+      "publisher": "Anthropic",
+      "url": "https://www.anthropic.com/research/project-vend-1"
+    }
+  ],
+  "2026-11-the-riemann-hypothesis": [
+    {
+      "title": "Rival claimed proofs of the Riemann hypothesis",
+      "publisher": "Nature",
+      "url": "https://www.nature.com/articles/d41586-026-03812-7"
+    },
+    {
+      "title": "Mathematician announces an AI-assisted Riemann proof",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/4fe8b69a891f160f9e7f0c85af8c55c8"
+    }
+  ],
+  "2026-11-vp-vnp": [
+    {
+      "title": "VP ≠ VNP manuscript and Lean formalization",
+      "publisher": "Anthropic",
+      "url": "https://github.com/anthropics/formal-math/blob/main/vp-vnp/README.md"
+    },
+    {
+      "title": "November 23 mathematics manuscript and release history",
+      "publisher": "OpenAI",
+      "url": "https://github.com/openai/math/blob/main/history.md"
+    }
+  ],
+  "2026-11-openai-posts-its-own-vp-vnp-proof-five-hours-aft": [
+    {
+      "title": "VP ≠ VNP manuscript and Lean formalization",
+      "publisher": "Anthropic",
+      "url": "https://github.com/anthropics/formal-math/blob/main/vp-vnp/README.md"
+    },
+    {
+      "title": "November 23 mathematics manuscript and release history",
+      "publisher": "OpenAI",
+      "url": "https://github.com/openai/math/blob/main/history.md"
+    }
+  ]
+}

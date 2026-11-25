@@ -1,0 +1,196 @@
+:root {
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-in: cubic-bezier(.7, 0, .84, 0);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --t-micro: 120ms;
+  --t-ui: 240ms;
+  --display: "Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+[hidden] { display: none !important; }
+.cover {
+  cursor: auto;
+  overflow: auto;
+  transform-origin: 50% 100%;
+  background: var(--yellow);
+  transition: transform 700ms var(--ease-in), opacity 700ms var(--ease-in);
+}
+.cover.gone { transform: perspective(1200px) translateY(-105%) rotateX(12deg); }
+.cv-title { font-size: clamp(65px, 16vw, 200px); }
+.cv-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.cv-actions button, #wp-game button, .game-link {
+  min-height: 44px;
+  padding: 8px 12px;
+  font: 700 13px/1.3 var(--mono);
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform var(--t-micro);
+}
+.cv-actions button:active, #wp-game button:active { transform: scale(.96); }
+#game-launch { color: var(--paper); background: var(--ink); box-shadow: 4px 4px 0 var(--pink); }
+.cv-actions button:focus-visible, #wp-game :focus-visible, #game-reopen:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 3px;
+}
+body.wp-game-active .ticker, body.wp-game-active #hint { visibility: hidden; }
+body.wp-game-active #tl { cursor: default; pointer-events: none; }
+#wp-game {
+  position: fixed;
+  inset: env(safe-area-inset-top) 0 calc(58px + env(safe-area-inset-bottom));
+  z-index: 3;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.game-bar {
+  background: var(--ink);
+  border-bottom: 2px solid var(--yellow);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 3px 12px 3px 16px;
+}
+.game-bar strong { font: 900 22px/1 var(--display); }
+#game-progress { font: 600 11px var(--mono); color: var(--yellow); text-align: right; margin-left: auto; }
+#wp-game .game-bar button { border-color: #68636e; background: transparent; color: var(--paper); }
+body.wp-game-open :is(#wp-audio-toggle, #wp-audio-settings-toggle) { top: calc(56px + env(safe-area-inset-top)); bottom: auto !important; }
+body.wp-game-open #wp-audio-settings-sheet { top: calc(108px + env(safe-area-inset-top)); bottom: auto !important; }
+#game-reopen {
+  position: fixed;
+  top: calc(43px + env(safe-area-inset-top));
+  left: 12px;
+  z-index: 3;
+  min-height: 44px;
+  padding: 8px 12px;
+  font: 700 13px var(--mono);
+  border: 2px solid var(--yellow);
+  background: var(--ink);
+  color: var(--yellow);
+  cursor: pointer;
+}
+.panel.open ~ #game-reopen { visibility: hidden; }
+#game-screen {
+  overflow: auto;
+  overflow-x: clip;
+  overscroll-behavior-y: contain;
+  display: grid;
+  justify-items: center;
+  padding: 48px 0 18px;
+  scrollbar-color: var(--pink) var(--ink);
+  background: rgb(5 2 12 / 27%);
+}
+.game-page {
+  align-self: center;
+  width: min(86vw, 420px);
+  margin: 0 auto;
+  font: 600 13px/1.42 var(--mono);
+  color: var(--ink);
+}
+.game-paper {
+  background: var(--paper) var(--game-paper, none) center / cover;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--pink), 9px 9px 0 var(--ink);
+  padding: clamp(16px, 5vw, 27px);
+}
+.game-heading, .game-card h2 { margin: 0; font: 900 clamp(36px, 10vw, 54px)/.99 var(--display); }
+.game-card h2 { font-size: clamp(34px, 9.75vw, 44px); text-wrap: pretty; }
+.game-kicker { margin: 0 0 12px; font-size: 11px; text-transform: uppercase; letter-spacing: .09em; }
+.game-page p { margin: 0 0 12px; }
+.game-page .game-heading { margin-bottom: 12px; }
+.game-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; }
+#wp-game button.game-primary, #wp-game .game-real { background: var(--yellow); }
+#wp-game .game-fake { background: var(--pink); }
+#wp-game .game-primary { box-shadow: 3px 3px 0 var(--ink); }
+.game-card {
+  position: relative;
+  display: grid;
+  align-content: space-between;
+  gap: 18px;
+  min-height: clamp(236px, 37vh, 340px);
+  min-height: clamp(236px, 37svh, 340px);
+  padding-bottom: 58px;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+.game-card[data-revealed] { cursor: default; touch-action: pan-y; user-select: text; }
+.game-date { font-size: 12px; letter-spacing: .11em; text-transform: uppercase; }
+.game-stamp {
+  padding: 6px 9px;
+  background: var(--paper);
+  border: 3px double currentColor;
+  font: 900 23px/1 var(--display);
+  letter-spacing: .07em;
+  color: #005a89;
+  white-space: nowrap;
+  display: inline-block;
+}
+.game-card .game-stamp { position: absolute; bottom: 12px; right: 14px; transform: rotate(-6deg); }
+.game-stamp[data-verdict="made-up"] { color: #a8142d; }
+.game-stamp[data-verdict="real-unproven"] { color: #a31368; }
+.game-guess { opacity: 0; pointer-events: none; }
+.game-reveal { margin-top: 13px; background: var(--ink); color: var(--paper); padding: 12px; border-top: 2px solid var(--pink); }
+.game-reveal p { margin-bottom: 8px; }
+.game-reveal .game-answer { color: var(--yellow); text-transform: uppercase; font-size: 11px; }
+#wp-game .game-text-button, .game-link {
+  background: transparent;
+  border-color: #68636e;
+  color: var(--paper);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-reveal-buttons { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+.game-sources { display: flex; flex-wrap: wrap; gap: 6px; }
+.game-sources a { color: inherit; min-height: 44px; display: inline-flex; align-items: center; padding: 4px 2px; }
+.game-settings { display: flex; align-items: center; font-size: 11px; width: fit-content; min-height: 44px; gap: 6px; }
+.game-settings input { width: 18px; height: 18px; accent-color: #a31368; }
+.game-page > .game-settings { color: #fff; background: var(--ink); padding: 0 10px; margin-top: 8px; }
+.game-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; list-style: none; padding: 0; margin: 12px 0; }
+.game-grid li { aspect-ratio: 1; border: 2px solid var(--ink); }
+.game-grid li[data-correct="true"] { background: var(--ink); }
+.game-grid li[data-verdict="real-unproven"] { border: 3px solid #ba136e; }
+.game-score { font: 900 clamp(62px, 18vw, 92px)/.9 var(--display); }
+.game-result details { margin: 13px 0 6px; }
+.game-result summary { display: list-item; min-height: 44px; padding: 12px 0; cursor: pointer; }
+.game-result ol:not(.game-grid) { padding-left: 25px; }
+.game-result .game-answers li { margin-bottom: 8px; }
+.game-result .game-answers b { color: #a8142d; }
+.game-result .game-answers b[data-verdict="real"] { color: #005a89; }
+.game-result .game-answers b[data-verdict="real-unproven"] { color: #a31368; }
+.game-challenge { width: 100%; min-height: 44px; color: var(--ink); background: var(--paper); font: inherit; margin-top: 8px; }
+.game-credits { font-size: 10px; border-top: 1px solid #7c7770; padding-top: 8px; }
+.game-confetti { position: absolute; z-index: 1; pointer-events: none; width: 8px; height: 13px; left: 50%; top: 55%; }
+.wp-no-renderer #stage { background: #280b27 var(--game-poster, none) center / cover; }
+@media (min-width: 600px) {
+  #wp-game { bottom: calc(64px + env(safe-area-inset-bottom)); }
+  #game-screen { padding-top: 22px; }
+}
+@media (min-width: 700px) {
+  .cover {
+    background: var(--yellow) var(--game-poster, none) right center / auto 100% no-repeat;
+  }
+  .cover .cv-title { max-width: 68vw; }
+  .cover .cv-top, .cover .cv-foot { background: var(--yellow); width: fit-content; padding-inline: 10px; }
+  .cover .cv-dek { background: var(--yellow); width: fit-content; padding: 2px 8px; }
+}
+@media (max-height: 670px) {
+  #game-screen { padding-top: 12px; }
+  .game-card { min-height: 216px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover { transition: opacity 200ms; }
+  .cover.gone, #wp-game button:active, .cv-actions button:active { transform: none; }
+}
+.game-card.game-miss { outline: 3px solid var(--red); outline-offset: 3px; }
+.stamp.unproven { color: #a31368; border-color: #a31368; }
+#wp-game button:disabled { opacity: .6; cursor: wait; }
+@media (max-width: 699px) {
+  .cover { background: var(--yellow) var(--game-poster, none) right 30% / 52vw auto no-repeat; }
+  .cover .cv-title { width: fit-content; background-color: var(--yellow); }
+}

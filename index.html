@@ -3,7 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Into the Whirlpool</title>
+<title>Into the Whirlpool: Real or Made Up?</title>
+<meta name="description" content="Ten strange stories from AI history. Swipe to decide which really happened, then challenge a friend.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Into the Whirlpool: Real or Made Up?">
+<meta property="og:description" content="Ten strange stories from AI history. Can you tell what really happened?">
+<meta property="og:image" content="/assets/ui/og-image.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23ffe800%27/%3E%3Cpath d=%27M26 7a12 12 0 1 0 0 18c4-6-4-14-11-11s0 11 4 5%27 fill=%27none%27 stroke=%27%230d0b10%27 stroke-width=%273%27/%3E%3C/svg%3E">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Into the Whirlpool: Real or Made Up?">
+<meta name="twitter:description" content="Ten strange stories from AI history. Can you tell what really happened?">
+<meta name="twitter:image" content="/assets/ui/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Big+Shoulders+Stencil+Display:wght@900&family=Courier+Prime:wght@700&family=IBM+Plex+Mono:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,600&family=Caveat:wght@600&family=JetBrains+Mono:wght@500&family=Manrope:wght@600&display=swap" rel="stylesheet">
@@ -85,18 +95,30 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 .err{position:fixed;inset:0;display:grid;place-items:center;color:#fff;padding:24px;text-align:center}
 @media(max-width:600px){.hl{font-size:12px}.sheet h2{font-size:34px}.sheet p{font-size:16px}.hint{font-size:11px;bottom:calc(70px + env(safe-area-inset-bottom))}}
 </style>
+<link rel="stylesheet" href="game.css">
 </head>
 <body>
 <div id="stage" aria-label="An endless psychedelic whirlpool through AI history from 2012 to now, then five years of predictions. Tap a word to open it, hold to slow time, drag to spin."></div>
 <div class="ticker" role="marquee" aria-label="News ticker"><span class="tag">NEWS</span><div class="lane" id="lane"></div></div>
 <canvas id="tl" aria-label="Timeline. Tap a dot to open that moment."></canvas>
-<section class="cover" id="cover" role="button" tabindex="0" aria-label="Start: tap to fall in">
-  <div class="cv-top"><span>ISSUE 01</span><span>NOV 2026</span><span>FREE / TAKE ONE</span></div>
-  <h1 class="cv-title"><span>Into the</span><span>Whirlpool</span></h1>
-  <p class="cv-dek">A field guide to the machines: what actually happened from 2012 to now, and thirty guesses about the next five years. Some of it is real. Some of it is made up. The case files tell you which.</p>
-  <p class="cv-go">tap anywhere to fall in</p>
-  <div class="cv-foot"><span>made by Briam with Claude, ChatGPT &amp; Gemini</span><span>Tainan, Taiwan</span></div>
+<section class="cover" id="cover" aria-labelledby="cover-title">
+  <div class="cv-top"><span>THE AI HISTORY GAME</span><span>2012–2026</span></div>
+  <h1 class="cv-title" id="cover-title"><span>Into the</span><span>Whirlpool</span></h1>
+  <p class="cv-dek">Ten headlines from the age of AI. Can you tell what really happened?</p>
+  <div class="cv-actions">
+    <button type="button" id="game-launch">Play Real or Made Up? <span aria-hidden="true">→</span></button>
+    <button type="button" id="game-explore" hidden>Explore the timeline</button>
+  </div>
+  <div class="cv-foot"><span>Made by Briam with Claude, ChatGPT &amp; Gemini</span><span>Tainan, Taiwan</span></div>
 </section>
+<div id="wp-game" hidden>
+  <div class="game-bar">
+    <strong>Into the Whirlpool</strong>
+    <span id="game-progress"></span>
+    <button type="button" data-game-action="explore" id="game-leave" hidden>Explore</button>
+  </div>
+  <main id="game-screen" aria-label="Real or Made Up?"></main>
+</div>
 <div class="hint" id="hint">tap a word = open it / hold = slow time / drag = spin / drag the ruler = time travel</div>
 <div class="panel" id="panel" aria-hidden="true" role="dialog" aria-labelledby="ptitle">
   <figure class="print" id="print"><figcaption id="pcap"></figcaption></figure>
@@ -128,6 +150,9 @@ html,body{margin:0;height:100%;background:#05020c;overflow:hidden;color:#fff;fon
 <script src="data.js"></script>
 <script src="mem.js"></script>
 <script src="main.js"></script>
+<script src="cards.js"></script>
+<script src="share.js"></script>
+<script src="game.js"></script>
 <script src="audio.js"></script>
 <script src="audio-bridge.js"></script>
 </body>
