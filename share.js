@@ -173,7 +173,7 @@
       head,
       emojiGrid(answers),
       hook,
-      'Real AI news or completely made up? Same 10 cards, try to beat this 👇',
+      'Real headline or completely made up? Same 10 cards, try to beat this 👇',
       challengeURL(seed, points, score, handle),
     ].join('\n');
   }
@@ -323,7 +323,7 @@
       seed = '',
       kind = 'random',
       handle = '',
-      rank = { title: 'CAUTIOUSLY SANE', sub: 'Halfway immune to AI slop.', tier: 'cyan' },
+      rank = { title: 'CAUTIOUSLY SANE', sub: 'Halfway immune to fake news.', tier: 'cyan' },
       allInWins = 0,
       allInTotal = 0,
       jackpotsHit = 0,
@@ -504,7 +504,7 @@
     else if (score >= 10) hook = '10/10 FLAWLESS. ZERO HALLUCINATIONS.';
     else if (score === 0) hook = '0/10. STATISTICALLY IMPRESSIVE DISASTER.';
     else if (cardNo) hook = `CARD #${cardNo} COOKED ME. GOOD LUCK.`;
-    else hook = 'REAL AI NEWS IS A FEVER DREAM.';
+    else hook = 'REAL NEWS IS A FEVER DREAM.';
     ctx.textAlign = 'center';
     ctx.fillStyle = INK;
     fitFont(ctx, hook, 880, 900, 50, 30, DISPLAY);

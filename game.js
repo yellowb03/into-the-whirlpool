@@ -43,7 +43,7 @@
 
   // Query parameters & challenge parsing
   const params = new URLSearchParams(location.search);
-  const validSeed = /^(?:(?:d2-)?\d{8}|p[12]-[0-9a-f]{8}|r[34]-[0-9a-f]{8})$/;
+  const validSeed = /^(?:(?:d2-)?\d{8}|p[12]-[0-9a-f]{8}|r[34]-[0-9a-f]{8}|x1s?-[a-z]{2}(?:-(?:na|sa|eu|as|af|oc))?-[0-9a-f]{8})$/;
   const rawDeck = params.get('deck') || '';
   const challengeSeed = validSeed.test(rawDeck) ? rawDeck : null;
   const rawPts = params.get('pts');
@@ -70,13 +70,20 @@
   }
 
   // Load cards & UI manifest
-  const ready = wp.sources.then(sources => {
+  const EMPTY_LIBRARY = { decks: [], cards: [] };
+  const ready = Promise.all([wp.sources, window.WP_LIBRARY || Promise.resolve(EMPTY_LIBRARY)]).then(([sources, library]) => {
     const sourced = cards => (cards || []).flatMap(card => {
       if (card.verdict === 'made-up') return [card];
       const refs = (sources[card.slug] || card.sources || []).filter(source => /^https:\/\//.test(source.url || ''));
       return archive.has(card.slug) && refs.length > 0 ? [{ ...card, sources: refs }] : [];
     });
-    return { original: sourced(window.WP_CARDS), feed: sourced(window.WP_FEED_CARDS) };
+    const lib = library || EMPTY_LIBRARY;
+    return {
+      original: sourced(window.WP_CARDS),
+      feed: sourced(window.WP_FEED_CARDS),
+      library: lib.cards || [],
+      decks: lib.decks || [],
+    };
   });
 
   const art = fetch('assets/manifest.json?v=4').then(response => response.ok ? response.json() : {})
@@ -484,9 +491,116 @@
     return { title, sub, tier: bucket.tier };
   }
 
+  // Deck picker selection: which deck the next random run draws from.
+  // code: a deck prefix ('fm', 'an', …), 'mx' (everything), 'wt' (World Tour, with region),
+  // or 'ai' (the original AI bank, which keeps its r4- seeds).
+  const PICK_KEY = 'aic-pick-v1';
+  const CONTINENTS = { na: 'North America', sa: 'South America', eu: 'Europe', as: 'Asia', af: 'Africa', oc: 'Oceania' };
+  const DECK_SHORT = {
+    'florida-man': 'FLORIDA MAN', annals: 'THE ANNALS', animals: 'ANIMALS', criminals: 'MASTERMINDS',
+    laws: 'BUREAUCRACY', science: 'WEIRD SCIENCE', sports: 'SPORTS', love: 'LOVE & CHAOS',
+    food: 'FOOD FIGHTS', 'this-week': 'THIS WEEK', ai: 'AI GONE WILD',
+  };
+  function readPick() {
+    const raw = parseJSON(storageGet(PICK_KEY));
+    const code = typeof raw?.code === 'string' && /^[a-z]{2}$/.test(raw.code) ? raw.code : 'mx';
+    const region = CONTINENTS[raw?.region] ? raw.region : '';
+    return { code, region: code === 'wt' ? region || 'eu' : '', spicy: raw?.spicy === true };
+  }
+  let pick = readPick();
+  function savePick(next) {
+    pick = { ...pick, ...next };
+    if (pick.code !== 'wt') pick.region = '';
+    storageSet(PICK_KEY, JSON.stringify(pick));
+  }
+
   // PRNG & Deck Generator
   function randomSeed() {
-    return 'r4-' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16).padStart(8, '0');
+    const hex = crypto.getRandomValues(new Uint32Array(1))[0].toString(16).padStart(8, '0');
+    if (pick.code === 'ai') return 'r4-' + hex;
+    return `x1${pick.spicy ? 's' : ''}-${pick.code}${pick.region ? '-' + pick.region : ''}-${hex}`;
+  }
+
+  function parseLibrarySeed(seed) {
+    const m = /^x1(s?)-([a-z]{2})(?:-([a-z]{2}))?-([0-9a-f]{8})$/.exec(seed || '');
+    return m ? { spicy: m[1] === 's', code: m[2], region: m[3] || '' } : null;
+  }
+
+  // Every card a library seed may draw from. Pure function of the seed's settings and the bank.
+  function libraryPool(pools, sel) {
+    const byPrefix = new Map(pools.decks.map(deck => [deck.prefix, deck.id]));
+    let cards = pools.library;
+    if (sel.code === 'wt') cards = cards.filter(card => card.continent === sel.region);
+    else if (sel.code !== 'mx') {
+      const deckId = byPrefix.get(sel.code);
+      cards = deckId ? cards.filter(card => card.deck === deckId) : [];
+    }
+    return sel.spicy ? cards : cards.filter(card => !card.spicy);
+  }
+
+  function poolPlayable(cards) {
+    let real = 0;
+    for (const card of cards) if (card.verdict !== 'made-up') real++;
+    return real >= 3 && cards.length - real >= 3 && cards.length >= 10;
+  }
+
+  // Library decks use rendezvous hashing: each card gets a seed-specific rank and the lowest
+  // ranks win. Adding cards to the bank only changes a shared deck if a new card outranks one
+  // of its ten, so challenge links stay stable while three desks keep growing the library.
+  function drawLibraryDeck(pools, seed) {
+    const sel = parseLibrarySeed(seed);
+    if (!sel) return [];
+    const cards = libraryPool(pools, sel);
+    if (!poolPlayable(cards)) return [];
+    const random = seededRandom(seed);
+    const roll = random();
+    const realTarget = roll < 0.38 ? 6 : roll < 0.78 ? 5 : 4;
+    const ranked = list => list
+      .map(card => [seededRandom(seed + '|' + card.id)(), card])
+      .sort((a, b) => a[0] - b[0])
+      .map(pair => pair[1]);
+    const real = ranked(cards.filter(card => card.verdict !== 'made-up'));
+    const fake = ranked(cards.filter(card => card.verdict === 'made-up'));
+    let realCount = Math.min(realTarget, real.length);
+    let fakeCount = 10 - realCount;
+    if (fakeCount > fake.length) { fakeCount = fake.length; realCount = 10 - fakeCount; }
+    if (realCount > real.length) return [];
+    const spread = sel.code === 'mx' || sel.code === 'wt';
+    const take = (list, n) => {
+      const out = [];
+      const perDeck = {};
+      for (const card of list) {
+        if (out.length >= n) break;
+        if (spread && (perDeck[card.deck] || 0) >= 2) continue; // mixed decks: at most 2 real + 2 fake per deck
+        perDeck[card.deck] = (perDeck[card.deck] || 0) + 1;
+        out.push(card);
+      }
+      for (const card of list) {
+        if (out.length >= n) break;
+        if (!out.includes(card)) out.push(card);
+      }
+      return out;
+    };
+    const selected = [...take(real, realCount), ...take(fake, fakeCount)];
+    return selected.length === 10 ? attachJackpots(shuffle(selected, random), random) : [];
+  }
+
+  // Deck choices for the cover picker, with how many cards each can currently deal from.
+  function deckChoices(pools, spicy) {
+    const choices = [];
+    const add = (code, name, tagline, region = '') => {
+      const cards = libraryPool(pools, { code, region, spicy });
+      if (poolPlayable(cards)) choices.push({ code, region, name, tagline, count: cards.length });
+    };
+    add('mx', 'Shuffle Everything', 'Every deck, every century, one pile.');
+    for (const deck of pools.decks) {
+      if (deck.id === 'ai') continue;
+      add(deck.prefix, deck.name, deck.tagline);
+    }
+    for (const [region, name] of Object.entries(CONTINENTS)) add('wt', 'World Tour: ' + name, 'Only headlines from ' + name + '.', region);
+    const ai = pools.decks.find(deck => deck.id === 'ai');
+    if (pools.feed.length >= 10) choices.push({ code: 'ai', region: '', name: ai?.name || 'AI Gone Wild', tagline: ai?.tagline || '', count: pools.feed.length });
+    return choices;
   }
 
   function seededRandom(text) {
@@ -521,6 +635,7 @@
   }
 
   function drawDeck(pools, seed) {
+    if (seed.startsWith('x1')) return drawLibraryDeck(pools, seed);
     const random = seededRandom(seed);
     const chronological = (a, b) => a.date.localeCompare(b.date, 'en');
 
@@ -1169,7 +1284,7 @@
     if (stats.career.runs > 0) {
       cvCareerPill.textContent = `BEST: ${formatPts(stats.career.bestPoints)} PTS · ${stats.career.runs} RUN${stats.career.runs === 1 ? '' : 'S'}`;
     } else {
-      cvCareerPill.textContent = 'RANDOM 10-CARD DECKS';
+      cvCareerPill.textContent = '10-CARD DECKS';
     }
   }
 
@@ -1213,7 +1328,7 @@
     }
     if (hudScoreLabel) {
       hudScoreLabel.textContent = tier === 3
-        ? 'FEEL THE AGI'
+        ? 'UNHINGED'
         : tier === 2
           ? 'COOKING'
           : tier === 1
@@ -1488,7 +1603,49 @@
     return monthFormat.format(new Date(value + '-15T12:00:00Z')).toUpperCase();
   }
 
+  const countryNames = (() => {
+    try { return new Intl.DisplayNames(['en'], { type: 'region' }); } catch { return null; }
+  })();
+  const countryName = code => { try { return (code && countryNames?.of(code)) || code || ''; } catch { return code || ''; } };
+
+  // Where a library card happened, for the reveal: "Loxahatchee, Florida, United States · 11 OCT 2015".
+  function whereWhen(card) {
+    const bits = [card.place, card.region && card.region !== card.place ? card.region : '', countryName(card.country)].filter(Boolean);
+    return [...new Set(bits)].join(', ') + (card.dateText ? ' · ' + card.dateText : '');
+  }
+
+  // The vortex only knows 2012-2031. Map any card year onto it so older stories sit in the
+  // cooler, earlier colours and this week's news glows hottest.
+  function vortexDate(card) {
+    if (!card.library) return dateNumber(card.date);
+    const y = card.year;
+    if (y < 1900) return 2012;
+    if (y < 2000) return 2012 + (y - 1900) / 100 * 6;
+    return Math.min(2026.9, 2018 + (y - 2000) / 26 * 8.9);
+  }
+
   function caseItem(card) {
+    if (card.library) {
+      const real = card.verdict !== 'made-up';
+      const extra = [];
+      if (card.hoax) extra.push('The headline really ran, but the story was a hoax: the paper made it up.');
+      if (card.original) extra.push('The original headline: “' + card.original + '”');
+      if (real) extra.push(whereWhen(card));
+      return {
+        d: card.date,
+        y: card.year,
+        m: Number(card.date.slice(5, 7)) || 6,
+        k: real ? 'n' : 'f',
+        verdict: real ? 'real' : 'made-up',
+        t: card.text,
+        x: real ? card.note : 'A fictional headline written for this game.',
+        i: real ? extra.join(' ') : card.note,
+        cap: real ? card.dateText : 'Fiction',
+        slug: card.id,
+        sources: real ? card.sources : [],
+        v: ['paper', 'storm'],
+      };
+    }
     const it = archive.get(card.slug);
     if (it) return { ...it, verdict: card.verdict, t: card.text, x: card.note, i: card.verdict === 'real-unproven' ? '' : it.i };
     return {
@@ -1528,12 +1685,18 @@
     }
 
     const meta = node('div', 'card-meta');
-    const dateEl = node('time', 'game-date', `#${String(cardIndex + 1).padStart(2, '0')} · ${dateLabel(card.date)}`);
+    // Library cards hide the date until the reveal: it's a tell, and it's the Where & When bonus.
+    const dateEl = node('time', 'game-date', card.library
+      ? `#${String(cardIndex + 1).padStart(2, '0')} · ???`
+      : `#${String(cardIndex + 1).padStart(2, '0')} · ${dateLabel(card.date)}`);
     dateEl.dateTime = card.date;
     const metaRight = node('div', 'card-meta-tags');
     const ribbon = node('span', 'allin-badge', card.isJackpot ? '4X MEGA' : '2X STAKES');
     ribbon.hidden = true;
-    const topicEl = node('span', 'card-topic', TOPIC_LABELS[card.topic] || 'AI NEWS');
+    const topicEl = node('span', 'card-topic', card.library
+      ? DECK_SHORT[card.deck] || 'HEADLINES'
+      : TOPIC_LABELS[card.topic] || 'AI NEWS');
+    if (card.library) paper.dataset.style = card.style || '';
     metaRight.append(ribbon, topicEl);
     meta.append(dateEl, metaRight);
 
@@ -1631,7 +1794,7 @@
     };
 
     renderHudPips();
-    wp.api?.travel(dateNumber(card.date), true, archive.get(card.slug));
+    wp.api?.travel(vortexDate(card), true, archive.get(card.slug));
     wp.emit('card', { ...card, position: cardIndex + 1, act: 1, isJackpot: card.isJackpot });
     if (card.isJackpot) {
       wp.emit('jackpot-arrive', { position: cardIndex + 1 });
@@ -1986,7 +2149,12 @@
           : (evalRes.busted ? 'ALL-IN BUST' : pickLead(missLeads));
         const outcome = node('p', 'game-answer' + (correct ? '' : ' is-miss'), `${verdictLead} · ${verdictText[card.verdict]}`);
         const noteEl = node('p', 'reveal-note', card.note);
-        summary.append(outcome, noteEl);
+        summary.append(outcome);
+        if (card.library && card.verdict !== 'made-up') {
+          if (card.hoax) summary.append(node('p', 'reveal-hoax', 'REAL HEADLINE · FAKE STORY'));
+          summary.append(node('p', 'reveal-where', whereWhen(card)));
+        }
+        summary.append(noteEl);
 
         const revealBtns = node('div', 'game-reveal-buttons');
         if (wp.api) {
@@ -2469,8 +2637,7 @@
     replayBtn.append(ico('replay'), document.createTextNode('REPLAY DECK'));
     replayBtn.title = 'Same 10 cards and jackpot slots. Try to beat ' + formatPts(result.points) + ' pts.';
     utilityRow.append(replayBtn);
-    if (wp.api) utilityRow.append(button('EXPLORE TIMELINE', 'explore', 'result-explore-btn'));
-    else utilityRow.classList.add('is-single');
+    utilityRow.classList.add('is-single');
 
     actions.append(shareRow, playAgainBtn, utilityRow);
 
@@ -2584,7 +2751,7 @@
 
   // Reopen button (when in Explore mode)
   const reopen = button('', 'reopen');
-  reopen.append(ico('play'), document.createTextNode('Play Random Deck'));
+  reopen.append(ico('play'), document.createTextNode('Play Again'));
   reopen.id = 'game-reopen';
   reopen.hidden = true;
   document.body.append(reopen);
@@ -2593,9 +2760,93 @@
   const coverHof = document.querySelector('#game-hof');
   const coverExplore = document.querySelector('#game-explore');
 
-  coverExplore.hidden = !wp.api;
+  // The timeline and free-roam explore mode moved to their own project (Into the Whirlpool).
+  coverExplore.hidden = true;
   refreshCoverCareer();
   setupCoverChallenge();
+
+  // Deck picker: built once the library has loaded. Hidden on challenge links (the seed picks the deck).
+  const coverActions = coverPlay.closest('.cv-actions');
+  const picker = node('div', 'cv-picker');
+  picker.hidden = true;
+  coverActions?.prepend(picker);
+
+  function playLabel() {
+    if (challengeSeed) return 'Accept Challenge';
+    if (pick.code === 'mx') return 'Shuffle Everything';
+    return 'Play ' + (DECK_SHORT_BY_CODE[pick.code] || 'Deck');
+  }
+  const DECK_SHORT_BY_CODE = { wt: 'World Tour', ai: 'AI Gone Wild' };
+
+  function renderPicker(pools) {
+    if (challengeSeed) return;
+    for (const deck of pools.decks) DECK_SHORT_BY_CODE[deck.prefix] = deck.name;
+    let choices = deckChoices(pools, pick.spicy);
+    if (!choices.length) return; // nothing playable: the Play button keeps dealing AI decks
+    // Keep the saved choice only if it can still deal a deck.
+    const valid = choices.some(c => c.code === pick.code && (c.code !== 'wt' || c.region === pick.region));
+    if (!valid) {
+      const wtRegion = choices.find(c => c.code === 'wt' && pick.code === 'wt');
+      savePick(wtRegion ? { region: wtRegion.region } : { code: choices[0].code, region: choices[0].region });
+    }
+    choices = deckChoices(pools, pick.spicy);
+
+    const title = node('p', 'cv-picker-title', 'PICK A DECK');
+    const row = node('div', 'cv-deck-row');
+    row.setAttribute('role', 'radiogroup');
+    row.setAttribute('aria-label', 'Choose a deck');
+    const tag = node('p', 'cv-deck-tag');
+    const regions = node('div', 'cv-region-row');
+    regions.setAttribute('role', 'radiogroup');
+    regions.setAttribute('aria-label', 'World Tour region');
+
+    const wt = choices.filter(c => c.code === 'wt');
+    const top = choices.filter(c => c.code !== 'wt');
+    if (wt.length) top.splice(Math.min(top.length, top.findIndex(c => c.code === 'ai') < 0 ? top.length : top.findIndex(c => c.code === 'ai')), 0,
+      { code: 'wt', region: '', name: 'World Tour', tagline: 'Pick a continent. Only its headlines.', count: wt.reduce((n, c) => n + c.count, 0) });
+
+    const chip = (choice, selected, onPick) => {
+      const el = node('button', 'cv-deck-chip');
+      el.type = 'button';
+      el.setAttribute('role', 'radio');
+      el.setAttribute('aria-checked', String(selected));
+      el.dataset.code = choice.code;
+      el.append(node('span', 'cv-deck-name', choice.name), node('small', 'cv-deck-count', choice.count + ' cards'));
+      el.addEventListener('click', onPick);
+      return el;
+    };
+    const draw = () => {
+      row.replaceChildren(...top.map(choice => chip(choice, choice.code === pick.code, () => {
+        savePick(choice.code === 'wt' ? { code: 'wt', region: wt.some(c => c.region === pick.region) ? pick.region : wt[0].region } : { code: choice.code });
+        draw();
+      })));
+      regions.hidden = pick.code !== 'wt';
+      regions.replaceChildren(...wt.map(choice => chip({ ...choice, name: choice.name.replace('World Tour: ', '') }, choice.region === pick.region, () => {
+        savePick({ code: 'wt', region: choice.region });
+        draw();
+      })));
+      const active = top.find(c => c.code === pick.code);
+      tag.textContent = pick.code === 'wt' ? (wt.find(c => c.region === pick.region)?.tagline || '') : active?.tagline || '';
+      coverPlay.replaceChildren(ico('play', 'ui-ico-play'), document.createTextNode(playLabel()));
+      row.querySelector('[aria-checked="true"]')?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+    };
+
+    const spicyWrap = node('label', 'cv-spicy');
+    const spicyBox = document.createElement('input');
+    spicyBox.type = 'checkbox';
+    spicyBox.checked = pick.spicy;
+    spicyWrap.append(spicyBox, node('span', '', '18+ cards'), node('small', '', 'drugs, nudity, crude humour'));
+    spicyBox.addEventListener('change', () => {
+      savePick({ spicy: spicyBox.checked });
+      picker.replaceChildren();
+      renderPicker(pools);
+    });
+
+    picker.replaceChildren(title, row, regions, tag, spicyWrap);
+    picker.hidden = false;
+    draw();
+  }
+  ready.then(renderPicker);
 
   if (challengeSeed) {
     coverPlay.replaceChildren(ico('play', 'ui-ico-play'), document.createTextNode('Accept Challenge'));
