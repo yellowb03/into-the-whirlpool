@@ -1,0 +1,1325 @@
+[
+  {
+    "id": "fd-quebec-maple-syrup-heist",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Thieves quietly siphon three thousand tons of maple syrup from a Canadian strategic reserve over months and refill the steel barrels with plain water.",
+    "reveal": "Real. Between 2011 and 2012, thieves drained 3,000 tons of syrup worth C$18.7 million from a Quebec federation warehouse in Saint-Louis-de-Blandford, masking the missing weight with water until a routine 2012 inventory check exposed hollow barrels.",
+    "date": "2012-08",
+    "country": "CA",
+    "region": "Quebec",
+    "place": "Saint-Louis-de-Blandford",
+    "topics": [
+      "food",
+      "crime",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Reputed ringleader in $18.7M maple syrup heist found guilty",
+        "publisher": "CBC News",
+        "url": "https://www.cbc.ca/news/canada/montreal/maple-syrup-heist-quebec-canada-guilty-1.3848431",
+        "date": "2016-11-12"
+      },
+      {
+        "title": "Great Canadian Maple Syrup Heist",
+        "publisher": "The Canadian Encyclopedia",
+        "url": "https://thecanadianencyclopedia.ca/en/article/great-canadian-maple-syrup-heist"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-london-artisan-cheddar-scam",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Fraudsters posing as a major French supermarket distributor trick a British cheesemonger into handing over twenty-two metric tons of clothbound artisan cheddar on credit.",
+    "reveal": "Real. In October 2024, London's Neal's Yard Dairy lost 950 wheels—about 22 tonnes worth over £300,000—of Hafod, Westcombe, and Pitchfork cheddar to a bogus wholesale buyer, though the shop still paid its small dairy suppliers in full.",
+    "date": "2024-10",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "food",
+      "crime",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Up to 22 tonnes of cheddar 'stolen from cheesemongers' in elaborate scam",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/uk/crime/neals-yard-dairy-cheese-wheels-stolen-scam-b2635854.html",
+        "date": "2024-10-25"
+      },
+      {
+        "title": "The great British cheese heist: Who stole $390,000 of cheddar?",
+        "publisher": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2024/10/31/the-great-british-cheese-heist-who-stole-390000-of-cheddar",
+        "date": "2024-10-31"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-poland-tree-croissant-panic",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Residents of a Polish apartment block keep their windows shut for two days over a headless brown creature in a lilac tree before inspectors identify a stale croissant.",
+    "reveal": "Real. In April 2021, Kraków animal-welfare officers rushed to rescue what a frantic caller thought was a giant iguana perched outside her window, only to find a flaky pastry likely tossed out to feed birds.",
+    "date": "2021-04-14",
+    "country": "PL",
+    "region": "Lesser Poland",
+    "place": "Kraków",
+    "topics": [
+      "food",
+      "animals"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Mystery tree 'creature' reported to animal services actually a croissant",
+        "publisher": "Notes From Poland",
+        "url": "https://notesfrompoland.com/2021/04/15/mystery-creature-reported-to-animal-services-actually-a-croissant/",
+        "date": "2021-04-15"
+      },
+      {
+        "title": "'Unusual animal' in tree that scared residents into closing windows for days is a croissant",
+        "publisher": "Mothership",
+        "url": "https://mothership.sg/2021/04/croissant-in-poland/",
+        "date": "2021-04-16"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-taiwan-salmon-name-chaos",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "More than three hundred Taiwanese citizens legally change their government identity cards to include the word salmon so their tables can eat free sushi for two days.",
+    "reveal": "Real. During Taiwan's March 2021 \"Salmon Chaos,\" diners queued at household registration offices for a Sushiro promotion granting free meals to anyone named \"Gui Yu\"—leaving a few stuck when they realized they had hit their lifetime name-change limit.",
+    "date": "2021-03-17",
+    "country": "TW",
+    "place": "Taipei",
+    "topics": [
+      "food",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Dozens change name to 'salmon'",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/taiwan/archives/2021/03/18/2003754047",
+        "date": "2021-03-18"
+      },
+      {
+        "title": "Taiwanese people stuck with the name Salmon after sushi promotion",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2022/may/27/taiwanese-people-stuck-with-the-name-salmon-after-sushi-promotion",
+        "date": "2022-05-27"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-ireland-sweet-sandwich-rolls",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Ireland's supreme court rules that a global sandwich chain's baked rolls contain five times too much sugar to qualify as tax-exempt staple bread.",
+    "reveal": "Real. In October 2020, Ireland's Supreme Court rejected a Subway franchisee's VAT-refund appeal because Irish tax law caps staple bread sugar at 2% of flour weight, whereas Subway's sandwich rolls contained 10%.",
+    "date": "2020-09-29",
+    "country": "IE",
+    "place": "Dublin",
+    "topics": [
+      "food",
+      "law",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Irish court rules Subway can't call its bread bread due to high sugar content",
+        "publisher": "CBC News",
+        "url": "https://www.cbc.ca/news/business/ireland-subway-bread-1.5746371",
+        "date": "2020-10-01"
+      },
+      {
+        "title": "Subway bread isn't bread, Ireland's Supreme Court says",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/subway-bread-ireland-supreme-court/",
+        "date": "2020-10-01"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-portugal-red-wine-flood",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Two ruptured distillery tanks send more than two million liters of red wine surging down the hillside streets of a quiet Portuguese village.",
+    "reveal": "Real. In September 2023, two vats at Levira Distillery burst in São Lourenço do Bairro, unleashing roughly 2.2 million liters of red wine that firefighters diverted into fields before it could contaminate the Certima River.",
+    "date": "2023-09-10",
+    "country": "PT",
+    "region": "Aveiro",
+    "place": "São Lourenço do Bairro",
+    "topics": [
+      "food",
+      "drink"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "VIDEO: Portugal Town Flooded by Nearly 3 Million Bottles Worth of Red Wine",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/video-red-wine-floods-portugal-town-2023-9",
+        "date": "2023-09-12"
+      },
+      {
+        "title": "River of red wine floods Portuguese town",
+        "publisher": "Decanter",
+        "url": "https://www.decanter.com/wine-news/river-of-red-wine-floods-portuguese-town-510909/",
+        "date": "2023-09-12"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-denmark-spicy-ramen-recall",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Danish food safety regulators pull three extra-hot South Korean instant noodle flavors from supermarket shelves over warnings that their chili extract risks acute poisoning.",
+    "reveal": "Real. In June 2024, Denmark's Veterinary and Food Administration recalled three Samyang Buldak ramen varieties for high capsaicin levels, triggering global mockery before regulators recalculated the spice content and lifted the ban on two flavors a month later.",
+    "date": "2024-06-11",
+    "country": "DK",
+    "place": "Copenhagen",
+    "topics": [
+      "food",
+      "health",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Denmark recalls some Korean ramen noodles deemed too spicy",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/denmark-recall-korean-ramen-noodles-made-by-samyang-too-spicy/",
+        "date": "2024-06-12"
+      },
+      {
+        "title": "Danish gov't lifts recall on Buldak Ramen after heat recalculation",
+        "publisher": "Korea JoongAng Daily",
+        "url": "https://www.koreajoongangdaily.com/business/danish-govt-lifts-recall-on-buldak-ramen-after-heat-recalculation/12393540",
+        "date": "2024-07-16"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-spain-salad-distraction-wine-heist",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Hotel guests distract a night receptionist by ordering a two-in-the-morning salad while stealing forty-five rare bottles of wine worth over a million euros from the cellar.",
+    "reveal": "Real. In October 2021, a couple dining at two-Michelin-starred Atrio in Cáceres, Spain, used a late-night room-service salad order to slip into the cellar with a stolen master key and pack 45 vintage bottles—including an 1806 Château d'Yquem—into backpacks.",
+    "date": "2021-10-27",
+    "country": "ES",
+    "region": "Extremadura",
+    "place": "Cáceres",
+    "topics": [
+      "food",
+      "drink",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Couple sentenced in Spain after 1.6 million euro wine heist at Michelin-starred restaurant",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/couple-wine-heist-spain-atrio-michelin-star-caceres/",
+        "date": "2023-03-06"
+      },
+      {
+        "title": "Couple Booked 14-Course Michelin Meal As Set-up for $1.7M Wine Heist",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/wine-heist-couple-spain-book-14-course-million-dollar-caceres-2023-3",
+        "date": "2023-03-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-australia-onions-under-sausage",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A major Australian hardware chain orders charity barbecue volunteers to place grilled onions underneath the sausage instead of on top so shoppers will not slip.",
+    "reveal": "Real. In November 2018, Bunnings Warehouse updated its nationwide sausage-sizzle guidelines after loose fried onions fell onto concrete walkways, sparking fierce national debate and even a jokey protest from Australia's prime minister.",
+    "date": "2018-11-13",
+    "country": "AU",
+    "place": "Melbourne",
+    "topics": [
+      "food",
+      "health"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Bunnings hits snag with 'ridiculous' sausage sizzle safety rule",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/australia-news/2018/nov/13/bunnings-hits-snag-with-ridiculous-sausage-sizzle-safety-rule",
+        "date": "2018-11-13"
+      },
+      {
+        "title": "The Dangers of School Sausage Sizzles: Peeling the Risk Onion",
+        "publisher": "School Governance",
+        "url": "https://www.schoolgovernance.net.au/news/2018/11/22/the-dangers-of-school-sausage-sizzles-peeling-the-risk-onion",
+        "date": "2018-11-22"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-nz-yeast-spread-shortage",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "After an earthquake damages New Zealand's sole factory for a beloved savory yeast spread, the maker urges citizens to spread it thinner while black-market jars soar online.",
+    "reveal": "Real. During 2012's \"Marmageddon\" shortage after quake damage closed Sanitarium's Christchurch plant, leftover Marmite jars fetched hundreds of dollars on Trade Me and Prime Minister John Key joked about rationing his own office stash.",
+    "date": "2012-03-19",
+    "country": "NZ",
+    "region": "Canterbury",
+    "place": "Christchurch",
+    "topics": [
+      "food",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "New Zealand faces 'Marmageddon' over yeast spread shortage",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/2012/03/19/world/asia/new-zealand-marmageddon",
+        "date": "2012-03-19"
+      },
+      {
+        "title": "Marmite shortage in New Zealand prompts panic buying",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2012/mar/19/marmite-shortage-new-zealand-spread",
+        "date": "2012-03-19"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-norway-christmas-butter-smugglers",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A pre-Christmas butter shortage leaves Norwegian supermarket coolers bare, drives single packs to thirty times normal prices online, and prompts customs stops for cross-border butter smugglers.",
+    "reveal": "Real. Heavy summer rain and a high-fat diet boom triggered Norway's 2011 \"Smørkrisen\" butter crisis, slashing import tariffs while border agents caught Swedish drivers trying to smuggle hundreds of kilograms of butter across into Norway.",
+    "date": "2011-12",
+    "country": "NO",
+    "place": "Oslo",
+    "topics": [
+      "food",
+      "holiday",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Norway faces Christmas butter shortage",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/2011/12/13/world/europe/norway-butter-shortage",
+        "date": "2011-12-13"
+      },
+      {
+        "title": "Norwegian butter crisis threatens Christmas baking",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2011/dec/14/norwegian-butter-crisis-shortage-christmas",
+        "date": "2011-12-14"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-switzerland-chocolate-mountain-law",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A triangular chocolate bar is legally forced to remove a famous Alpine peak from its yellow box after moving part of its production line to Slovakia.",
+    "reveal": "Real. In March 2023, Mondelez replaced the Matterhorn on Toblerone packaging with a generic mountain and changed \"of Switzerland\" to \"established in Switzerland\" to comply with strict 2017 Swissness origin laws.",
+    "date": "2023-03-05",
+    "country": "CH",
+    "region": "Bern",
+    "place": "Bern",
+    "topics": [
+      "food",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Toblerone to ditch Matterhorn logo because of 'Swissness' rules",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/toblerone-to-ditch-matterhorn-logo-over-swissness-law/",
+        "date": "2023-03-06"
+      },
+      {
+        "title": "Toblerone is no longer Swiss enough to feature the Matterhorn on its packaging",
+        "publisher": "WGLT",
+        "url": "https://www.wglt.org/2023-03-06/toblerone-is-no-longer-swiss-enough-to-feature-the-matterhorn-on-its-packaging",
+        "date": "2023-03-06"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-belgium-underground-beer-pipe",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A medieval Belgian city approves a three-kilometer underground beer pipeline beneath its historic cobblestone streets to keep heavy tanker trucks out of the town center.",
+    "reveal": "Real. Opened in 2016 and partly crowdfunded by fans offered lifetime daily beer, Bruges brewery De Halve Maan's buried polyethylene pipeline pumps up to 4,000 liters of beer an hour from the old brewery to its bottling plant.",
+    "date": "2016-09",
+    "country": "BE",
+    "region": "West Flanders",
+    "place": "Bruges",
+    "topics": [
+      "food",
+      "drink",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "De Halve Maan Belgian Brewery Pipeline",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/de-halve-maan-belgian-brewery-pipeline-2014-9",
+        "date": "2014-09-20"
+      },
+      {
+        "title": "Brouwerij 'De Halve Maan' (Brewery)",
+        "publisher": "Visit Bruges",
+        "url": "https://www.visitbruges.be/en/things-to-do/culture-and-heritage/brouwerij-de-halve-maan-brewery"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-italy-cheese-vault-bank",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A regional Italian bank accepts giant aging wheels of hard cheese as loan collateral and employs dedicated specialists to brush and inspect them inside climate-controlled vaults.",
+    "reveal": "Real. Since 1953, Credito Emiliano (Credem) in northern Italy has lent cash to dairy farmers against hundreds of thousands of aging Parmigiano-Reggiano wheels stored in high-security, temperature-controlled warehouses worth hundreds of millions of euros.",
+    "date": "1953",
+    "country": "IT",
+    "region": "Emilia-Romagna",
+    "place": "Reggio Emilia",
+    "topics": [
+      "food",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "A Bank That Takes Parmesan as Collateral: The Cheese Stands a Loan",
+        "publisher": "Harvard Business School Working Knowledge",
+        "url": "https://www.library.hbs.edu/working-knowledge/a-bank-that-takes-parmesan-as-collateral-the-cheese-stands-a-loan",
+        "date": "2015-07-01"
+      },
+      {
+        "title": "Climate change is threatening Italy's cheese banks that hold Parmigiano wheels as loan collateral",
+        "publisher": "Fortune",
+        "url": "https://fortune.com/2026/08/10/italy-5-billion-cheese-economy-heat-wave-climate-change/",
+        "date": "2026-08-10"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-uk-jaffa-cake-tribunal",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A British snack maker bakes a giant foot-wide version of its orange-jelly treat for a tax tribunal to prove stale cakes turn hard while stale biscuits turn soft.",
+    "reveal": "Real. In a 1991 UK VAT tribunal, McVitie's proved Jaffa Cakes are legally cakes—which carry zero VAT—rather than chocolate-covered biscuits by demonstrating sponge-cake batter, a giant courtroom sample, and how they harden when stale.",
+    "date": "1991",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "food",
+      "law",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "The VAT treatment of Jaffa Cakes explained",
+        "publisher": "Association of Taxation Technicians",
+        "url": "https://www.att.org.uk/technical/news/vat-treatment-jaffa-cakes-explained"
+      },
+      {
+        "title": "Crumbs! Biscuit museum's Jaffa Cake display reignites old debate",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/business/2025/jul/03/crumbs-biscuit-museums-jaffa-cake-display-reignites-old-debate",
+        "date": "2025-07-03"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-china-buffet-bans-livestreamer",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A Chinese all-you-can-eat seafood barbecue buffet blacklists a food livestreamer after he eats over three kilograms of prawns and twenty bottles of soy milk in one sitting.",
+    "reveal": "Real. In November 2021, a Changsha buffet owner banned a regular mukbang livestreamer—and all livestreamers afterward—saying every visit cost the restaurant hundreds of yuan after he also devoured 1.5 kilograms of pork trotters on an earlier trip.",
+    "date": "2021-11",
+    "country": "CN",
+    "region": "Hunan",
+    "place": "Changsha",
+    "topics": [
+      "food",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Restaurant bans man from all-you-can-eat BBQ for overeating",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/asia/china-restaurant-food-live-streamer-bbq-b1960772.html",
+        "date": "2021-11-20"
+      },
+      {
+        "title": "'I can eat a lot, is that wrong?' Mukbang livestreamer banned from China BBQ buffet",
+        "publisher": "AsiaOne",
+        "url": "https://www.asiaone.com/china/i-can-eat-lot-wrong-mukbang-livestreamer-banned-china-bbq-buffet",
+        "date": "2021-11-18"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-india-missing-biscuit-ruling",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "An Indian consumer court orders a major food conglomerate to pay one hundred thousand rupees after a shopper buys a biscuit pack containing fifteen cookies instead of sixteen.",
+    "reveal": "Real. In September 2023, a Thiruvallur consumer commission near Chennai fined ITC Ltd ₹100,000 plus costs after a customer proved his Sunfeast Marie Light packet advertised 16 biscuits on the wrapper but held only 15.",
+    "date": "2023-09",
+    "country": "IN",
+    "region": "Tamil Nadu",
+    "place": "Thiruvallur",
+    "topics": [
+      "food",
+      "law",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Chennai: ITC forks out Rs 1 lakh for packing one biscuit less in a pack, says report",
+        "publisher": "Business Today",
+        "url": "https://www.businesstoday.in/latest/corporate/story/chennai-itc-forks-out-rs-1-lakh-for-packing-one-biscuit-less-in-a-pack-says-report-397138-2023-09-06",
+        "date": "2023-09-06"
+      },
+      {
+        "title": "₹1 lakh for one biscuit: ITC fined for packing one biscuit less in wrapper",
+        "publisher": "Mint",
+        "url": "https://www.livemint.com/news/india/rs-1-lakh-for-one-biscuit-how-packing-one-biscuit-less-in-wrapper-cost-rs-1-lakh-to-itc-sunfeast-marie-consumer-forum-11693968590449.html",
+        "date": "2023-09-06"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-japan-sushi-belt-licking",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Viral videos of pranksters licking communal soy-sauce bottles and clean teacups force major Japanese conveyor-belt sushi chains to stop rotating dishes and install overhead cameras.",
+    "reveal": "Real. In early 2023, a wave of \"sushi terrorism\" clips wiped millions off Sushiro's market value, prompting Japanese chains to switch to made-to-order express lanes and add AI cameras to detect tampering.",
+    "date": "2023-02",
+    "country": "JP",
+    "region": "Gifu",
+    "place": "Gifu",
+    "topics": [
+      "food",
+      "bodily",
+      "internet"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Sushi Chain Sues Teenager for $480,000 Over Soy Sauce Licking Video",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/sushi-chain-sues-teenager-soy-sauce-licking-video-japan-2023-6",
+        "date": "2023-06-09"
+      },
+      {
+        "title": "'Sushi terrorism' sees Japan's conveyor-belt restaurants grind to a halt",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2023/mar/07/sushi-terrorism-sees-japans-conveyor-belt-restaurants-grind-to-a-halt",
+        "date": "2023-03-07"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-china-brewery-malt-tank",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "One of China's oldest breweries seals off four hundred metric tons of raw malt after leaked warehouse footage shows a delivery worker climbing into a container to urinate.",
+    "reveal": "Real. In October 2023, viral video from Tsingtao Brewery No. 3 in Shandong led police to detain a third-party logistics loader, while Tsingtao sealed the entire malt batch and promised enclosed trucks and AI monitoring.",
+    "date": "2023-10-19",
+    "country": "CN",
+    "region": "Shandong",
+    "place": "Pingdu",
+    "topics": [
+      "food",
+      "drink",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Tsingtao apologizes in wake of urine scandal",
+        "publisher": "China Daily",
+        "url": "https://www.chinadaily.com.cn/a/202311/03/WS65445ebfa31090682a5ec435.html",
+        "date": "2023-11-03"
+      },
+      {
+        "title": "Tsingtao beer loses its fizz in South Korea after video of worker appearing to urinate into tank",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2023/oct/25/tsingtao-beer-loses-its-fizz-in-south-korea-after-video-of-worker-appearing-to-urinate-into-tank",
+        "date": "2023-10-25"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-france-nude-cloakroom-bistro",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A French fine-dining restaurant requires guests to lock all their clothes and phones in a front cloakroom before eating gourmet meals served by fully dressed waiters.",
+    "reveal": "Real. Paris's first nudist restaurant, O'Naturel, opened in November 2017 with strict cloakroom lockers, slippers for bare diners, and fully clothed staff per French labor law, before closing 15 months later due to low turnout.",
+    "date": "2017-11",
+    "country": "FR",
+    "region": "Île-de-France",
+    "place": "Paris",
+    "topics": [
+      "food",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Paris' first nudist restaurant closing after getting cold shoulder from diners",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/paris-first-nudist-restaurant-closing-after-getting-cold-shoulder-from-diners/",
+        "date": "2019-01-09"
+      },
+      {
+        "title": "Paris Nudist Restaurant Closes Because... It Couldn't Put 'Butts In Seats'",
+        "publisher": "NDTV",
+        "url": "https://www.ndtv.com/world-news/cant-eat-wearing-just-napkin-why-onaturel-nudist-paris-restaurant-is-shutting-1976035",
+        "date": "2019-01-11"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-spain-pineapple-cocaine-bust",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Police raiding a Spanish wholesale fruit market uncover sixty-seven kilograms of cocaine stuffed into hollowed-out fresh pineapples coated with yellow wax to resemble real pulp.",
+    "reveal": "Real. In August 2018, Spanish police intercepted 67 kilograms of cocaine shipped from Costa Rica through Portugal's Setúbal port to Madrid and Barcelona inside hollowed pineapples sealed with yellow wax to mask the scent from sniffer dogs.",
+    "date": "2018-08",
+    "country": "ES",
+    "region": "Madrid",
+    "place": "Madrid",
+    "topics": [
+      "food",
+      "crime"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "European Police Confiscate Huge Amount of Cocaine Hidden Inside Pineapples",
+        "publisher": "CBS News New York",
+        "url": "https://www.cbsnews.com/newyork/news/spanish-police-confiscate-pineapples-cocaine/",
+        "date": "2018-08-27"
+      },
+      {
+        "title": "Authorities Find Nearly 150 Pounds of Cocaine Hidden Inside Hollow Pineapples",
+        "publisher": "Newsweek",
+        "url": "https://www.newsweek.com/cocaine-pineapples-drug-trafficking-spain-policia-national-portugal-1091769",
+        "date": "2018-08-27"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-germany-banana-box-cocaine",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Grocery clerks unpacking morning produce deliveries at discount supermarkets in Germany discover one hundred forty kilograms of Colombian cocaine tucked inside regular banana crates.",
+    "reveal": "Real. In January 2014, workers at five Berlin-area Aldi stores found 140 kg of cocaine shipped from Colombia via Hamburg due to a trafficker mix-up—and an even larger 386-kg banana-crate delivery hit 14 Berlin Aldi stores in 2015.",
+    "date": "2014-01-07",
+    "country": "DE",
+    "region": "Berlin",
+    "place": "Berlin",
+    "topics": [
+      "food",
+      "crime"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Berlin supermarkets receive banana boxes stuffed with cocaine",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/berlin-supermarkets-delivered-banana-boxes-stuffed-with-cocaine/",
+        "date": "2014-01-07"
+      },
+      {
+        "title": "Berlin supermarkets discover boxes of cocaine",
+        "publisher": "Al Jazeera",
+        "url": "https://www.aljazeera.com/news/2014/1/8/berlin-supermarkets-discover-boxes-of-cocaine",
+        "date": "2014-01-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-pennsylvania-organic-egg-heist",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Thieves walk off with one hundred thousand organic eggs worth forty thousand dollars from the rear of a parked distribution trailer in Pennsylvania during a nationwide shortage.",
+    "reveal": "Real. On February 1, 2025, Pennsylvania State Police launched an investigation after roughly 100,000 eggs vanished from a Pete & Gerry's Organics trailer in Greencastle as bird flu sent US egg prices soaring.",
+    "date": "2025-02-01",
+    "country": "US",
+    "region": "Pennsylvania",
+    "place": "Greencastle",
+    "topics": [
+      "food",
+      "crime",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "100,000 organic eggs worth $40,000 from Pennsylvania farm stolen from back of truck",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/stolen-eggs-pennsylvania-pete-and-gerry-farm/",
+        "date": "2025-02-05"
+      },
+      {
+        "title": "Thieves stole 100,000 organic eggs off a trailer in Pennsylvania. Police are scrambling",
+        "publisher": "CBC News",
+        "url": "https://www.cbc.ca/news/world/egg-heist-pennsylvania-1.7452031",
+        "date": "2025-02-05"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-us-endless-shrimp-bankruptcy",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A national American seafood chain blames its permanent twenty-dollar all-you-can-eat shrimp deal for an eleven-million-dollar quarterly loss ahead of filing for bankruptcy protection.",
+    "reveal": "Real. Red Lobster made \"Ultimate Endless Shrimp\" an everyday $20 menu item in 2023, triggering an $11 million Q3 loss and $12.5 million Q4 loss alongside crushing lease debts before its May 2024 Chapter 11 bankruptcy.",
+    "date": "2024-05",
+    "country": "US",
+    "region": "Florida",
+    "place": "Orlando",
+    "topics": [
+      "food",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "The real story behind Red Lobster's $20 Ultimate Endless Shrimp fiasco",
+        "publisher": "Fortune",
+        "url": "https://fortune.com/2026/10/01/red-lobster-endless-shrimp-bankruptcy-thai-union-private-equity-lawsuit/",
+        "date": "2026-10-01"
+      },
+      {
+        "title": "Red Lobster Bankruptcy: Wall Street Wrecked the Chain, Not Endless Shrimp",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/red-lobster-endless-shrimp-bankruptcy-private-equity-debt-real-estate-2024-5",
+        "date": "2024-05-20"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-brazil-no-picanha-burger",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Consumer regulators in Brazil suspend sales of a fast-food chain's premium steakhouse burger after discovering the patties contain ordinary ground beef and only a flavored sauce.",
+    "reveal": "Real. In April 2022, Brasília's Procon-DF banned McDonald's \"McPicanha\" line for misleading advertising after it emerged the burgers held zero actual picanha beef—just standard patties with picanha-flavored sauce—forcing McDonald's to pull the menu nationwide.",
+    "date": "2022-04-28",
+    "country": "BR",
+    "region": "Federal District",
+    "place": "Brasília",
+    "topics": [
+      "food",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Ministry of Justice notifies McDonald's in Brazil over McPicanha without picanha",
+        "publisher": "Folha de S.Paulo",
+        "url": "https://www1.folha.uol.com.br/internacional/en/business/2022/04/mcpicanha-without-picanha-ministry-of-justice-notifies-mcdonalds-in-brazil.shtml",
+        "date": "2022-04-29"
+      },
+      {
+        "title": "Procon-DF diz que McPicanha não tem picanha e proíbe venda do sanduíche em Brasília",
+        "publisher": "G1 Globo",
+        "url": "https://g1.globo.com/df/distrito-federal/noticia/2022/04/28/procon-df-proibe-mcdonalds-de-vender-mcpicanha-em-brasilia.ghtml",
+        "date": "2022-04-28"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-mexico-warehouse-cake-limits",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Membership warehouse stores across Mexico impose strict daily cake purchase limits per cardholder after entrepreneurial resellers line up before opening to clear entire bakery shelves.",
+    "reveal": "Real. In 2023, viral videos of resellers flipping Costco Mexico chocolate cakes and chocoflans by the slice prompted stores to cap bakery purchases at two to five cakes per membership so regular shoppers could buy birthday desserts.",
+    "date": "2023-08",
+    "country": "MX",
+    "place": "Mexico City",
+    "topics": [
+      "food",
+      "money",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Costco resellers increase prices due to dessert purchase restrictions",
+        "publisher": "SanDiegoRed",
+        "url": "https://www.sandiegored.com/en/news/245660/Costco-resellers-increase-prices-due-to-dessert-purchase-restrictions/",
+        "date": "2023-08-29"
+      },
+      {
+        "title": "Why It Can Be Nearly Impossible To Buy A Cake At Costco In Mexico",
+        "publisher": "The Daily Meal",
+        "url": "https://www.thedailymeal.com/1497665/mexican-costco-cake-resellers-problem/",
+        "date": "2024-01-23"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-thailand-fifty-year-soup-pot",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A third-generation Thai noodle shop serves beef soup ladled from the same simmering cauldron of perpetual broth that has been kept going for nearly fifty years.",
+    "reveal": "Real. Wattana Panich on Bangkok's Ekkamai Road strains and saves its leftover spiced beef broth every night to start the next morning's giant cauldron, continuing the same base stock since the 1970s.",
+    "date": "2022-08",
+    "country": "TH",
+    "place": "Bangkok",
+    "topics": [
+      "food",
+      "family"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Review: Wattana Panich's 50-Year-Old Soup in Bangkok",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/oldest-soup-in-world-wattana-panich-bangkok-food-thailand-2022-8",
+        "date": "2022-08-27"
+      },
+      {
+        "title": "Neua Tune (45-Year Soup) at Wattana Panich",
+        "publisher": "Atlas Obscura",
+        "url": "https://www.atlasobscura.com/places/neua-tune-45-year-soup-wattana-panich"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-singapore-chewing-gum-ban",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Singapore bans the import, manufacture, and sale of chewing gum nationwide after vandals repeatedly jam automatic subway train door sensors with chewed wads during rush hour.",
+    "reveal": "Real. Enacted in January 1992 after gum wedged into MRT door sensors halted trains and forced evacuations, Singapore's ban remains largely intact apart from a 2004 carve-out for therapeutic dental and nicotine gum from pharmacists.",
+    "date": "1992-01-03",
+    "country": "SG",
+    "place": "Singapore",
+    "topics": [
+      "food",
+      "law",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Ban on chewing gum",
+        "publisher": "National Library Board Singapore",
+        "url": "https://www.nlb.gov.sg/main/article-detail?cmsuuid=8d4408cb-eb2d-4604-921e-7fa55f51baf3"
+      },
+      {
+        "title": "Chewing Gum: More Than a Nuisance, a Tool of Infrastructural Sabotage?",
+        "publisher": "National University of Singapore",
+        "url": "https://fass.nus.edu.sg/srn/2019/01/03/chewing-gum-more-than-a-nuisance-a-tool-of-infrastructural-sabotage/",
+        "date": "2019-01-03"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-paraguay-250-meter-skewer",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Dozens of volunteer grillers line three downtown blocks in Paraguay to cook a continuous two-hundred-fifty-meter beef skewer and claim a world barbecue record.",
+    "reveal": "Real. On July 29, 2023, sixty-plus cooks on Calle Estrella in downtown Asunción grilled a 250-meter continuous \"asadito\" skewer, certified by Guinness World Records to beat Turkey's previous 233.67-meter mark.",
+    "date": "2023-07-29",
+    "country": "PY",
+    "place": "Asunción",
+    "topics": [
+      "food",
+      "holiday"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "'El asadito más largo del mundo' es paraguayo",
+        "publisher": "ABC Color",
+        "url": "https://www.abc.com.py/nacionales/2023/07/30/el-asadito-mas-largo-del-mundo-es-paraguayo/",
+        "date": "2023-07-30"
+      },
+      {
+        "title": "Paraguay logra récord Guinness con asadito de 250 metros de largo",
+        "publisher": "Agencia EFE",
+        "url": "https://efe.com/otras-noticias-america/2023-07-30/paraguay-logra-record-guinness-con-asadito-de-250-metros-de-largo/",
+        "date": "2023-07-30"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-nigeria-93-hour-cookathon",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A Nigerian chef cooks more than one hundred pots of local dishes across ninety-three straight hours, drawing so many online viewers that the record-keeping website briefly crashes.",
+    "reveal": "Real. In May 2023, chef Hilda Baci cooked in Lekki, Lagos, for a Guinness-verified 93 hours and 11 minutes—despite a small rest-break deduction—driving such huge global traffic that Guinness World Records' site temporarily crashed.",
+    "date": "2023-05-15",
+    "country": "NG",
+    "region": "Lagos",
+    "place": "Lagos",
+    "topics": [
+      "food",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Hilda Baci awarded record for world's longest cooking marathon",
+        "publisher": "Guinness World Records",
+        "url": "https://www.guinnessworldrecords.com/news/2023/6/hilda-baci-awarded-record-for-worlds-longest-cooking-marathon-752162",
+        "date": "2023-06-13"
+      },
+      {
+        "title": "A Nigerian chef cooked for more than 93 hours — breaking a Guinness World Record",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/nigerian-chef-hilda-baci-cooked-for-more-than-93-hours-breaking-a-guinness-world-record/",
+        "date": "2023-06-13"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-belgium-nude-baking-guild",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A regional Belgian bakers guild suspends its brief summer trial of clothing-optional overnight bread-proofing shifts after municipal hygiene inspectors arrive unannounced at four in the morning.",
+    "reveal": "Made up. Bakeries get brutally hot during European heatwaves, and health codes require aprons and hairnets, but no Belgian guild ever piloted an au-naturel sourdough shift.",
+    "date": "2022-07",
+    "country": "BE",
+    "topics": [
+      "food",
+      "bodily",
+      "work"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-italy-truffle-laxative-feud",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Organizers of an autumn northern Italian truffle auction disqualify two rival foraging brothers after lab tests reveal tasteless herbal laxatives stirred into each other's tasting risottos.",
+    "reveal": "Made up. Piedmont truffle rivalries can get fiercely protective over secret woodland spots, yet nobody has been caught sabotaging an official risotto tasting with laxatives.",
+    "date": "2019-11",
+    "country": "IT",
+    "region": "Piedmont",
+    "topics": [
+      "food",
+      "bodily",
+      "family"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-portugal-cannabis-gazpacho-jars",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A coastal Portuguese tourist association recalls four thousand souvenir jars of chilled tomato soup base after a bottler accidentally substitutes confiscated cannabis-infused olive oil.",
+    "reveal": "Made up. Police-seized contraband is locked in court evidence lockers rather than sent to regional souvenir food bottlers, no matter how relaxing the gazpacho label sounds.",
+    "date": "2021-08",
+    "country": "PT",
+    "topics": [
+      "food",
+      "crime",
+      "health"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-germany-schnitzel-diameter-police",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A German regional tourism board withdraws its voluntary flat-rate fine for restaurants whose breaded veal cutlets fail to hang at least two centimeters past the dinner plate rim.",
+    "reveal": "Made up. Diners care deeply about a wide, crisp schnitzel, but no German tourism board ever measured plate overhang with a ruler or issued fines.",
+    "date": "2018-05",
+    "country": "DE",
+    "topics": [
+      "food",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-spain-empanada-fold-lawsuit",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Two provincial councils in Spain sign a formal trade truce after a dispute over whether seventeen or nineteen crimped pastry folds define an authentic meat pie.",
+    "reveal": "Made up. Spanish regions argue passionately over pastry fillings and crimping traditions, though the debate stays in kitchens rather than official trade truces.",
+    "date": "2020-09",
+    "country": "ES",
+    "topics": [
+      "food",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-denmark-salty-licorice-airport",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Danish airport security installs a dedicated tasting tray at departure checkpoints after automated luggage scanners repeatedly flag dense blocks of salty black licorice as modeling clay.",
+    "reveal": "Made up. Dense foods like marzipan and cheese do occasionally trigger secondary airport bag checks, yet Danish checkpoints never added a licorice tasting tray.",
+    "date": "2023-03",
+    "country": "DK",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-korea-kimchi-fridge-blackout",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A South Korean apartment complex bans residents from running more than two dedicated kimchi refrigerators per unit after simultaneous fermentation cycles trip the basement breaker three nights running.",
+    "reveal": "Made up. Dedicated kimchi fridges are genuinely standard appliances in South Korean homes, but they draw modest power and have never triggered a basement-breaker cap.",
+    "date": "2021-11",
+    "country": "KR",
+    "topics": [
+      "food",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-mexico-ceviche-clock-strike",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Coastal fishermen in Mexico stage a one-hour dockside boycott after a visiting hotel group announces plans to serve lime-cured raw fish past five in the afternoon.",
+    "reveal": "Made up. Traditional cevicherías really do favor lunchtime service when the morning catch is freshest, yet fishermen never held a dockside strike over dinner menus.",
+    "date": "2019-02",
+    "country": "MX",
+    "topics": [
+      "food",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-india-chai-pour-height-rule",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "An Indian hospitality academy revises its final exam rubric after trainees pulling spiced milk tea from above shoulder height repeatedly splash the proctors' laminated clipboards.",
+    "reveal": "Made up. High-arc pouring is a cherished skill for frothing street tea, but no national academy changed exam rules over soaked clipboards.",
+    "date": "2022-06",
+    "country": "IN",
+    "topics": [
+      "food",
+      "drink",
+      "school"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-thailand-noodle-steam-sensors",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A municipal transit office in Thailand adjusts platform smoke alarms above a new underground station after morning beef-noodle broth stalls trigger four false fire evacuations in one week.",
+    "reveal": "Made up. Simmering noodle pots put out plenty of fragrant steam on city sidewalks, yet they have never repeatedly tripped subway fire alarms below ground.",
+    "date": "2024-04",
+    "country": "TH",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-italy-cheese-brine-pipeline",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A northern Italian municipality rejects a dairy cooperative's proposal to pump leftover salty cheese brine through unused irrigation pipes to melt winter frost off mountain roads.",
+    "reveal": "Made up. Cheese brine has actually been tested as road de-icer in places like Wisconsin, but no Italian town ever voted down a brine irrigation pipeline.",
+    "date": "2020-01",
+    "country": "IT",
+    "topics": [
+      "food",
+      "weather",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-mexico-avocado-vault-audit",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "An insurance auditor in Mexico discovers that a cold-storage warehouse insured for forty tons of export avocados had quietly replaced the back pallets with painted river stones.",
+    "reveal": "Made up. High-value avocado theft is a real headache for orchards, yet nobody staged an elaborate painted-stone decoy warehouse for an insurance audit.",
+    "date": "2023-09",
+    "country": "MX",
+    "topics": [
+      "food",
+      "crime",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-norway-fermented-fish-bus",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Norwegian tour operator adds a sealed steel trunk to the luggage bay of its coastal coaches after a souvenir jar of fermented fish shatters over passengers' wool sweaters.",
+    "reveal": "Made up. Traditional fermented Nordic fish really is famously pungent and sold in sealed tubs, but Norwegian tour buses have not built dedicated steel fish trunks.",
+    "date": "2017-08",
+    "country": "NO",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-singapore-durian-hotel-drones",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A luxury hotel group in Singapore installs rooftop acoustic nets after guests banned from bringing pungent thorny fruit indoors begin ordering late-night balcony deliveries by quadcopter.",
+    "reveal": "Made up. Hotels across Singapore strictly ban durians indoors with hefty cleaning fines, yet guests have not launched a wave of drone-delivered balcony durian raids.",
+    "date": "2023-06",
+    "country": "SG",
+    "topics": [
+      "food",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-south-africa-biltong-vending",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A commuter rail agency in South Africa unplugs twelve cured-beef vending machines after overnight cleaning crews realize passengers are shaking the cabinets loose for extra spice packets.",
+    "reveal": "Made up. Biltong is sold almost everywhere in South Africa, including specialty kiosks, though no commuter rail line ever pulled vending machines over shaken spice packets.",
+    "date": "2019-10",
+    "country": "ZA",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-germany-beer-foam-gauges",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A German consumer watchdog recalls three thousand brass beer-foam rulers sent to pubs after discovering a printing error marked the legal head line four millimeters too low.",
+    "reveal": "Made up. German pubs treat beer pouring and etched glass fill-lines as serious business, yet no government watchdog ever distributed misprinted brass foam rulers.",
+    "date": "2022-04",
+    "country": "DE",
+    "topics": [
+      "food",
+      "drink",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-scotland-haggis-customs-dogs",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Customs officers at a Scottish ferry terminal retire an overeager food-sniffing spaniel early after it ignores undeclared sausages in favor of sitting beside every traveler carrying butter shortbread.",
+    "reveal": "Made up. Agricultural detector dogs are trained on strict scent libraries and rarely get distracted by sweet baked goods—this shortbread-obsessed spaniel is pure fiction.",
+    "date": "2021-05",
+    "country": "GB",
+    "region": "Scotland",
+    "topics": [
+      "food",
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-france-croissant-humidity-court",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A French commercial court dismisses a wedding caterer's weather lawsuit after an unexpected sea fog softens eight hundred trays of butter pastries two hours before the reception.",
+    "reveal": "Made up. Humidity really is the sworn enemy of crisp laminated dough, but no French caterer actually tried suing over a sudden coastal sea fog.",
+    "date": "2020-07",
+    "country": "FR",
+    "topics": [
+      "food",
+      "weather",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-netherlands-stroopwafel-toll",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Dutch canal bridge operator pauses a charity waffle bake sale beside the control booth after drifting caramel steam coats the counterweight cables in sticky syrup.",
+    "reveal": "Made up. Fresh stroopwafels smell wonderful near Dutch street markets, yet caramel steam cannot coat heavy steel bridge cables in syrup.",
+    "date": "2018-09",
+    "country": "NL",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-us-sourdough-starter-probate",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Vermont probate judge orders a ninety-year-old family sourdough starter split evenly into four numbered mason jars after estranged siblings spend eleven months contesting who inherits the crock.",
+    "reveal": "Made up. Heirloom sourdough starters are easy to divide with flour and water, which is precisely why no Vermont probate court ever spent eleven months splitting one.",
+    "date": "2023-11",
+    "country": "US",
+    "region": "Vermont",
+    "topics": [
+      "food",
+      "law",
+      "family"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  }
+]
