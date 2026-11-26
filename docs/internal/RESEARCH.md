@@ -138,7 +138,10 @@ The game only works if real and fake cards are **indistinguishable by style**. P
 4. **Same length.** Real and fake headlines should have the same length distribution. Don't let fakes be shorter or neater.
 5. **Attribution symmetry.** If real crime cards say "police said", fakes say it too.
 6. **Fakes must be exactly as absurd as reality, not more.** The best fakes are stories that *feel* like they must have happened. Test each one on yourself: if it's obviously a joke, sharpen it; if it's boring, make it weirder. Don't go full surrealism (no talking animals, no impossible physics), unless it's the Annals deck, where 1800s papers really did print sea serpents.
-7. **Write real cards from the facts, not the original headline.** Read the article, then write a fresh headline in your own words. Never paste a modern headline, and never copy more than a few words from any article into a reveal. The exception is `headline_original` for pre-1929 clippings.
+7. **Country symmetry.** Players notice fast when the obscure countries are always the fakes. In each deck, set at most 20% of your fakes in countries that have no real card in that deck. Put most fakes where real cards also happen (the UK, Japan, Germany, Brazil…), and when you want a fake in Mongolia, find a real Mongolian story too. The validator warns about this (`tell:` lines).
+8. **Spicy symmetry.** Spicy cards should split real/fake like the rest of the deck. If most of your spicy cards are fakes, the 18+ toggle turns into a cheat sheet. And remember: alcohol alone (a drunk moose, a whisky flask) is not spicy.
+9. **Weird beats notable.** A card has to be funny, odd or unbelievable, not just a historical first. "The first electric streetlight" is trivia; "a railway let a baboon work the signal levers" is a card.
+10. **Write real cards from the facts, not the original headline.** Read the article, then write a fresh headline in your own words. Never paste a modern headline, and never copy more than a few words from any article into a reveal. The exception is `headline_original` for pre-1929 clippings.
 
 ### Example: making a real card
 
@@ -226,7 +229,7 @@ Use reputable outlets: wire services (AP, Reuters, AFP, UPI), national broadcast
    - the validator's summary block,
    - **Leads for other desks:** good stories you found for decks that aren't yours.
 4. One batch per PR, 50 cards. Only touch files inside `decks/<your decks>/` plus your own `decks/files-<desk>.json`. If you think the rules, the schema or the validator need changing, say so in the PR; don't change them yourself.
-5. Keep going: open the next batch's branch from `main` while the previous PR waits for review.
+5. Keep going: if your previous PR hasn't merged yet, branch the next batch **from that branch** (not from `main`), so `decks/files-<desk>.json` lists both files. Two PRs that each replace the list with one file will conflict, and a careless merge drops a whole batch.
 
 ## 9. Quality checklist (every card)
 
