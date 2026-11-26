@@ -120,8 +120,33 @@ for (let i = 0; i < bags.length; i++) for (let j = i + 1; j < bags.length; j++) 
   if (score >= 0.7) warn(`${bags[i].id} ~ ${bags[j].id}`, `headlines look like the same story (${Math.round(score * 100)}% overlap)`);
 }
 
+// Tells: patterns that let players guess the verdict without reading the story.
+for (const d of registry.decks) {
+  const cs = all.filter(c => c.deck === d.id);
+  const real = cs.filter(c => c.verdict === 'real');
+  const fake = cs.filter(c => c.verdict === 'made-up');
+  if (real.length < 5 || fake.length < 5) continue;
+  // 1. Fakes set in countries where the deck has no real card ("obscure country = fake").
+  const realCountries = new Set(real.map(c => c.country));
+  const orphan = fake.filter(c => !realCountries.has(c.country));
+  if (orphan.length / fake.length > 0.2)
+    warn(`tell: ${d.id}`, `${orphan.length}/${fake.length} made-up cards are set in countries with no real card in this deck (${[...new Set(orphan.map(c => c.country))].join(', ')}). Keep it under 20%: set fakes where real cards also happen, or add real cards there.`);
+  // 2. Spicy cards that are mostly one verdict ("18+ card = fake").
+  const sp = cs.filter(c => c.spicy);
+  if (sp.length >= 5) {
+    const spFake = sp.filter(c => c.verdict === 'made-up').length / sp.length;
+    const base = fake.length / cs.length;
+    if (Math.abs(spFake - base) > 0.25)
+      warn(`tell: ${d.id}`, `${Math.round(spFake * 100)}% of spicy cards are made up vs ${Math.round(base * 100)}% of the deck. Spicy should split like the deck does.`);
+  }
+  // 3. Length gap between real and fake headlines.
+  const mean = xs => xs.reduce((a, c) => a + words(c.headline), 0) / xs.length;
+  const gap = mean(fake) - mean(real);
+  if (Math.abs(gap) > 3) warn(`tell: ${d.id}`, `made-up headlines average ${gap > 0 ? '+' : ''}${gap.toFixed(1)} words vs real ones. Keep the gap under 3.`);
+}
+
 // Report.
-const by = (k) => all.reduce((m, c) => (m[c[k]] = (m[c[k]] || 0) + 1, m), {});
+const by =(k) => all.reduce((m, c) => (m[c[k]] = (m[c[k]] || 0) + 1, m), {});
 console.log(`\n${all.length} cards in ${files.length} batch file(s)\n`);
 for (const d of registry.decks) {
   const cs = all.filter(c => c.deck === d.id);
