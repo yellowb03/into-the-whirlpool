@@ -1,0 +1,1317 @@
+[
+  {
+    "id": "fd-germany-nutella-trailer-heist",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Thieves drive off with a parked refrigerated trailer holding twenty metric tons of chocolate hazelnut spread and toy-filled candy eggs in central Germany.",
+    "reveal": "Real. In August 2017, police in Neustadt, Hesse, hunted for a stolen semi-trailer packed with €50,000 to €70,000 of Nutella jars and Kinder Surprise eggs—the same town where five tons of Nutella vanished in 2013.",
+    "date": "2017-08",
+    "country": "DE",
+    "region": "Hesse",
+    "place": "Neustadt",
+    "topics": [
+      "food",
+      "crime",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Chocolate thieves steal 20 tons of Kinder eggs and Nutella in Germany",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/world/europe/kinder-eggs-nutella-chocolate-thieves-steal-20-tons-euros-neustadt-germany-a7893246.html",
+        "date": "2017-08-15"
+      },
+      {
+        "title": "Truck With 20 Tons Of Nutella And Chocolate Vanishes; Police Hunt For Semi's Sweets",
+        "publisher": "UALR Public Radio",
+        "url": "https://www.ualrpublicradio.org/2017-08-15/truck-with-20-tons-of-nutella-and-chocolate-vanishes-police-hunt-for-semis-sweets",
+        "date": "2017-08-15"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-netherlands-gouda-farm-heist",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Overnight burglars haul away one hundred sixty-one whole wheels of aged cheese worth twenty-one thousand euros from a Dutch dairy farm.",
+    "reveal": "Real. In March 2022, thieves stripped 1,600 kilograms of Gouda from Torenpolderkaas farm in Fijnaart, Noord-Brabant—likely destined for foreign black markets because Dutch cheese wheels carry unique domestic tracking codes.",
+    "date": "2022-03-29",
+    "country": "NL",
+    "region": "North Brabant",
+    "place": "Fijnaart",
+    "topics": [
+      "food",
+      "crime",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Gang steal 1,600 kilos of cheese from Dutch dairy farm",
+        "publisher": "DutchNews.nl",
+        "url": "https://www.dutchnews.nl/2022/04/gang-steal-1600-kilos-of-cheese-from-dutch-dairy-farm/",
+        "date": "2022-04-12"
+      },
+      {
+        "title": "Thieves steal over $22,000 of cheese in the Netherlands",
+        "publisher": "The Washington Post",
+        "url": "https://www.washingtonpost.com/nation/2022/04/14/cheese-heist-thieves-netherlands/",
+        "date": "2022-04-14"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-france-dijon-mustard-shortage",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A heatwave on Canadian farms and spring frosts in Burgundy combine to empty supermarket mustard aisles across France for months.",
+    "reveal": "Real. In 2022, western Canada's heat dome halved exports of the mustard seeds French factories rely on for Dijon mustard, leaving grocery shelves bare and driving frantic shoppers to hunt jars across borders.",
+    "date": "2022-05",
+    "country": "FR",
+    "region": "Burgundy",
+    "place": "Dijon",
+    "topics": [
+      "food",
+      "weather"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "French Dijon mustard supply hit by climate and rising costs, say producers",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/business/2022/may/19/french-dijon-mustard-supply-hit-by-climate-and-rising-costs-say-producers",
+        "date": "2022-05-19"
+      },
+      {
+        "title": "France is running out of mustard",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/2022/08/08/business-food/france-mustard-shortage",
+        "date": "2022-08-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-italy-wine-faucet-leak",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A faulty winery valve leaks pressurized sparkling red wine into municipal pipes, sending it pouring from kitchen taps and showers in twenty Italian homes.",
+    "reveal": "Real. In March 2020, roughly 1,000 liters of Lambrusco Grasparossa from Cantina Settecani flowed out of taps in Castelvetro di Modena for three hours while amused lockdown residents filled pitchers and bottles.",
+    "date": "2020-03-04",
+    "country": "IT",
+    "region": "Emilia-Romagna",
+    "place": "Castelvetro di Modena",
+    "topics": [
+      "food",
+      "drink"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Fault at winery causes Lambrusco to flow from taps in Italian village",
+        "publisher": "The Drinks Business",
+        "url": "https://www.thedrinksbusiness.com/2020/03/fault-at-winery-causes-lambrusco-to-flow-from-taps-in-italian-village/",
+        "date": "2020-03-06"
+      },
+      {
+        "title": "Real-Life Stories of Water Turning Into Wine",
+        "publisher": "Atlas Obscura",
+        "url": "https://www.atlasobscura.com/articles/real-examples-water-turning-into-wine",
+        "date": "2020-03-10"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-japan-45000-dollar-melons",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A Japanese beverage firm pays five million yen for a single pair of greenhouse cantaloupes at the season-opening wholesale fruit auction.",
+    "reveal": "Real. In May 2019, Pokka Sapporo bid ¥5 million (about $45,000) for two Yubari King melons in Sapporo to celebrate its melon soda's 10th anniversary—a symbolic PR tradition in Japan's luxury fruit market.",
+    "date": "2019-05-24",
+    "country": "JP",
+    "region": "Hokkaido",
+    "place": "Sapporo",
+    "topics": [
+      "food",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Japanese melon pair sold for $45,000",
+        "publisher": "Yeni Şafak",
+        "url": "https://en.yenisafak.com/world/japanese-melon-pair-sold-for-45000-3481867",
+        "date": "2019-05-24"
+      },
+      {
+        "title": "$200 melons: how Japan's high-end fruit reveals our attitudes to agriculture",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/food/2019/nov/05/200-melons-how-japans-high-end-fruit-reveals-our-attitudes-to-agriculture",
+        "date": "2019-11-05"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-uk-fried-chicken-999-calls",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "After a delivery contract switch shutters over seven hundred fried-chicken outlets in Britain, police urge hungry residents to stop dialing the emergency hotline.",
+    "reveal": "Real. In February 2018, KFC's switch to DHL triggered the \"#KFCCrisis\" chicken drought across over 750 UK stores, forcing London's Metropolitan Police to tweet that closed takeaways were not a 999 emergency.",
+    "date": "2018-02-20",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Whistling bus driver and KFC chicken among Met Police 999 time-wasting calls",
+        "publisher": "ITV News",
+        "url": "https://www.itv.com/news/london/2018-12-20/whistling-bus-driver-and-kfc-chicken-among-met-police-999-time-wasting-calls",
+        "date": "2018-12-20"
+      },
+      {
+        "title": "People have gone chicken crazy: what the KFC crisis means for the brand",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/business/2018/feb/24/people-have-gone-chicken-crazy-what-the-kfc-crisis-means-for-the-brand",
+        "date": "2018-02-24"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-taiwan-giant-isopod-ramen",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A Taiwanese noodle shop builds a hundred-person waitlist by steaming whole fourteen-legged deep-sea crustaceans and draping them directly atop chicken-broth ramen bowls.",
+    "reveal": "Real. In May 2023, Taipei's The Ramen Boy went viral serving NT$1,480 ($48) bowls crowned with steamed giant isopods—deep-sea woodlouse relatives diners compared to lobster and crab.",
+    "date": "2023-05-23",
+    "country": "TW",
+    "place": "Taipei",
+    "topics": [
+      "food",
+      "animals",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Taipei restaurant dishes up giant isopod noodles",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/taiwan/archives/2023/05/29/2003800606",
+        "date": "2023-05-29"
+      },
+      {
+        "title": "Noodle Shop In Taiwan Serves Ramen Dish Made With 14-Legged Deep-Sea Creature",
+        "publisher": "NDTV",
+        "url": "https://www.ndtv.com/feature/noodle-shop-in-taiwan-serves-ramen-dish-made-with-14-legged-deep-sea-creature-4065009",
+        "date": "2023-05-25"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-china-stir-fried-river-pebbles",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Night-market vendors in China go viral selling boxes of small river pebbles stir-fried with chili oil and garlic that diners suck clean and spit out.",
+    "reveal": "Real. Originating with stranded Yangtze boatmen in Hubei, \"suodiu\" (suck and toss) went viral in June 2023 at about 16 yuan ($2.30) a serving, with vendors jokingly inviting diners to keep the rocks.",
+    "date": "2023-06",
+    "country": "CN",
+    "region": "Hubei",
+    "place": "Wuhan",
+    "topics": [
+      "food",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "World's hardest dish? Stir-fried stones are China's latest street food fad",
+        "publisher": "CTV News",
+        "url": "https://www.ctvnews.ca/lifestyle/article/worlds-hardest-dish-stir-fried-stones-are-chinas-latest-street-food-fad/",
+        "date": "2023-06-27"
+      },
+      {
+        "title": "Chinese culinary craze of stir-fried stones rocks the internet",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2023/jun/21/chinese-culinary-craze-of-stir-fried-stones-rocks-the-internet",
+        "date": "2023-06-21"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-australia-2664-mcmuffin-fine",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "An airport biosecurity dog in Australia sniffs two undeclared fast-food breakfast muffins and a ham croissant inside a traveler's backpack, triggering a two-thousand-dollar fine.",
+    "reveal": "Real. In August 2022, detector dog Zinta flagged a Bali passenger's McDonald's McMuffins at Darwin Airport amid foot-and-mouth controls, earning an A$2,664 ($1,874) fine Australia's agriculture minister called \"the most expensive Maccas meal.\"",
+    "date": "2022-08-01",
+    "country": "AU",
+    "region": "Northern Territory",
+    "place": "Darwin",
+    "topics": [
+      "food",
+      "animals",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "McMuffins stashed in backpack cost traveler almost $2,000 in fines",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/mcmuffins-backpack-traveler-fine-almost-2000/",
+        "date": "2022-08-02"
+      },
+      {
+        "title": "McMuffin fine: Traveller fined $1,874 over undeclared McDonald's sandwich in luggage",
+        "publisher": "Fortune",
+        "url": "https://fortune.com/2022/08/02/mcmuffin-fine-traveller-fined-1874-dollars-over-undeclared-mcdonalds-sandwich-in-luggage/",
+        "date": "2022-08-02"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-korea-honey-butter-chip-craze",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A nationwide shortage of sweet honey-butter potato chips in South Korea leads grocers to bundle single bags with unpopular items and sparks fifty-times online markups.",
+    "reveal": "Real. After Haitai-Calbee launched Honey Butter Chips in August 2014, K-pop buzz stripped shelves bare nationwide, leaving factories running 24/7 while stores held bags \"hostage\" alongside slow-selling goods.",
+    "date": "2014-11",
+    "country": "KR",
+    "place": "Seoul",
+    "topics": [
+      "food",
+      "money",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Honey Butter Chip: South Korea's sweet-salty snack craze",
+        "publisher": "Maeil Business Newspaper",
+        "url": "https://www.mk.co.kr/en/business/11141235",
+        "date": "2024-10-16"
+      },
+      {
+        "title": "South Korea's Honey Butter Chip Craze",
+        "publisher": "The Wall Street Journal",
+        "url": "https://www.wsj.com/articles/BL-KRTB-7049",
+        "date": "2014-11-25"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-yukon-human-toe-whiskey",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A northern Canadian saloon that serves whiskey garnished with a preserved human toe quintuples its swallowing fine after a tourist gulps it down and pays cash.",
+    "reveal": "Real. In August 2013, a patron at Dawson City's Sourdough Saloon intentionally swallowed the famous Sourtoe Cocktail's donated dehydrated toe and slapped down $500, prompting the Yukon bar to hike the fine to $2,500.",
+    "date": "2013-08",
+    "country": "CA",
+    "region": "Yukon",
+    "place": "Dawson City",
+    "topics": [
+      "food",
+      "drink",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Customer swallows human toe in Dawson City bar",
+        "publisher": "CBC News",
+        "url": "https://www.cbc.ca/news/canada/north/customer-swallows-human-toe-in-dawson-city-bar-1.1331325",
+        "date": "2013-08-26"
+      },
+      {
+        "title": "Bar patron swallows human toe in cocktail",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/2013/08/28/travel/bar-patron-swallows-human-toe",
+        "date": "2013-08-28"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-taipei-toilet-bowl-cafe",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A popular Taiwanese restaurant chain seats diners on padded acrylic toilets and serves brown curry and swirled chocolate soft-serve inside miniature ceramic toilet bowls.",
+    "reveal": "Real. Founded in 2004, Taipei's Modern Toilet restaurant serves hot pots, curries, and swirled chocolate ice cream in tiny toilets—plus drinks in miniature urinals—at sink-topped glass tables.",
+    "date": "2004",
+    "country": "TW",
+    "place": "Taipei",
+    "topics": [
+      "food",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "CNN puts focus on the unique Taiwan",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/taiwan/archives/2014/01/16/2003581425",
+        "date": "2014-01-16"
+      },
+      {
+        "title": "Modern Toilet Restaurant",
+        "publisher": "Atlas Obscura",
+        "url": "https://www.atlasobscura.com/places/modern-toilet-restaurant"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-india-burger-chain-drops-tomatoes",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "After monsoon rains push tomato prices up four hundred percent in India, a global fast-food chain removes tomatoes from burgers and wraps across major regions.",
+    "reveal": "Real. In July 2023, erratic weather sent Indian tomato prices past ₹140 a kilo, forcing McDonald's restaurants across northern and eastern India to post notices temporarily dropping tomatoes from menus.",
+    "date": "2023-07-07",
+    "country": "IN",
+    "place": "New Delhi",
+    "topics": [
+      "food",
+      "weather",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "McDonald's drops tomatoes from burgers, cites 'quality concerns' amid price rise",
+        "publisher": "India Today",
+        "url": "https://www.indiatoday.in/business/story/mcdonalds-burgers-wraps-no-tomatoes-quality-concerns-price-rise-2403394-2023-07-07",
+        "date": "2023-07-07"
+      },
+      {
+        "title": "Tomato crisis hits India as rain ravages crops and prices rise 400%",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2023/jul/10/tomato-crisis-hits-india-as-rain-ravages-crops-and-prices-rise-400-percent",
+        "date": "2023-07-10"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-uk-caterpillar-cake-lawsuit",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Two British supermarket chains battle in court over lookalike chocolate caterpillar sponge cakes before settling after a viral social media hashtag campaign.",
+    "reveal": "Real. In April 2021, Marks & Spencer sued Aldi claiming \"Cuthbert the Caterpillar\" copied its 1990 icon \"Colin the Caterpillar\"; Aldi launched #FreeCuthbert before settling in February 2022 with a tweaked design.",
+    "date": "2021-04-15",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "food",
+      "law",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Marks & Spencer launches UK court action to stop Aldi selling similar caterpillar cake",
+        "publisher": "TheJournal.ie",
+        "url": "https://www.thejournal.ie/marks-and-spencer-aldi-colin-the-caterpillar-legal-action-5410562-Apr2021/",
+        "date": "2021-04-15"
+      },
+      {
+        "title": "Marks & Spencer and Aldi call truce in Colin the Caterpillar cake war",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/business/2022/feb/01/marks-spencer-and-aldi-call-truce-in-colin-the-caterpillar-cake-war",
+        "date": "2022-02-01"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-philippines-deep-fried-towel",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A major Philippine fast-food chain shuts a metropolitan branch for three days after a family ordering fried chicken tears open a battered, deep-fried blue cleaning towel.",
+    "reveal": "Real. In June 2021, a delivery customer in Taguig couldn't slice through her Jollibee Chickenjoy and uncovered a crispy-coated kitchen towel inside, forcing a public apology and a three-day store retraining closure.",
+    "date": "2021-06-03",
+    "country": "PH",
+    "region": "Metro Manila",
+    "place": "Taguig",
+    "topics": [
+      "food",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Jollibee closes Taguig branch for 3 days over 'fried towel' incident",
+        "publisher": "GMA News Online",
+        "url": "https://www.gmanetwork.com/news/money/companies/790014/jollibee-closes-taguig-branch-for-3-days-over-fried-towel-incident/story/",
+        "date": "2021-06-03"
+      },
+      {
+        "title": "No Chickenjoy: Jollibee closes Philippines outlet after woman finds fried towel in meal",
+        "publisher": "AsiaOne",
+        "url": "https://www.asiaone.com/asia/no-chickenjoy-jollibee-closes-philippines-outlet-after-woman-finds-fried-towel-meal",
+        "date": "2021-06-03"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-us-soda-points-fighter-jet",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "An American business student mails a soda giant fifteen loyalty points and a seven-hundred-thousand-dollar check demanding the military fighter jet shown in its television ad.",
+    "reveal": "Real. In 1996, a student spotted that Pepsi's catalog let shoppers buy extra points for 10 cents each and sued in Leonard v. Pepsico for the \"7,000,000 Pepsi Points\" Harrier jet—before a judge ruled the ad an obvious joke.",
+    "date": "1996",
+    "country": "US",
+    "region": "Washington",
+    "place": "Seattle",
+    "topics": [
+      "food",
+      "drink",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "1996: Man sues Pepsi for not giving him the Harrier Jet from its commercial",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/1996-man-sues-pepsi-for-not-giving-him-a-harrier-jet/",
+        "date": "2018-06-11"
+      },
+      {
+        "title": "The time Pepsi got sued for a $33m fighter jet",
+        "publisher": "The Hustle",
+        "url": "https://thehustle.co/the-time-pepsi-got-sued-for-a-33m-fighter-jet",
+        "date": "2021-02-13"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-south-africa-pineapple-beer-craze",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A pandemic liquor ban in South Africa sends fresh pineapple sales soaring nine hundred percent as locked-down residents brew homemade fruit beer and trigger yeast restrictions.",
+    "reveal": "Real. During South Africa's 2020 COVID alcohol ban, backyard pineapple-beer recipes exploded online, emptying produce shelves and prompting major supplier Anchor Yeast to pause traditional brewer's yeast distribution.",
+    "date": "2020-05",
+    "country": "ZA",
+    "place": "Johannesburg",
+    "topics": [
+      "food",
+      "drink",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "DRINKStuff SA: Anchor stops 'beer yeast' sales to abide by lockdown",
+        "publisher": "DRINKStuff SA",
+        "url": "https://www.drinkstuff-sa.co.za/anchor-stops-beer-yeast-sales-to-abide-by-lockdown/",
+        "date": "2020-05-05"
+      },
+      {
+        "title": "Pineapple Sales Soar 900% in South Africa as Home Brewing Explodes Amid Alcohol Ban",
+        "publisher": "Absolute Beer",
+        "url": "https://absolutebeer.com/lifestyle/pineapple-sales-soar-900-percent-in-south-africa-as-home-brewing-explodes-amid-alcohol-ban/",
+        "date": "2020-05-11"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-japan-inedible-cube-watermelons",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Farmers in western Japan raise cube-shaped watermelons inside transparent square boxes and harvest them unripe to sell for over one hundred dollars purely as decorative gifts.",
+    "reveal": "Real. Grown in Zentsuji, Kagawa Prefecture since the late 1970s, square watermelons are picked early before they sweeten so they stay firm as ¥10,000+ ornamental window displays rather than dessert.",
+    "date": "1978",
+    "country": "JP",
+    "region": "Kagawa",
+    "place": "Zentsuji",
+    "topics": [
+      "food",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Japan's Wildly Expensive Square Watermelons Aren't Even Edible",
+        "publisher": "The Daily Meal",
+        "url": "https://www.thedailymeal.com/1631896/expensive-square-watermelons-japan/",
+        "date": "2024-08-03"
+      },
+      {
+        "title": "Square Watermelons",
+        "publisher": "Atlas Obscura",
+        "url": "https://www.atlasobscura.com/foods/square-watermelons-japan"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-uae-pistachio-chocolate-shortage",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A viral chocolate bar stuffed with pistachio cream and shredded pastry from the United Arab Emirates helps trigger an international pistachio shortage and supermarket purchase limits.",
+    "reveal": "Real. In 2025, the global TikTok mania for \"Dubai chocolate\" collided with a tight US harvest, driving wholesale pistachio prices up sharply and prompting UK grocers like Waitrose to cap bars at two per shopper.",
+    "date": "2025-04",
+    "country": "AE",
+    "region": "Dubai",
+    "place": "Dubai",
+    "topics": [
+      "food",
+      "internet",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Dubai chocolate TikTok trend triggers international pistachio shortage and price hikes",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/life-style/dubai-chocolate-bar-tiktok-pistachio-shortage-b2736654.html",
+        "date": "2025-04-21"
+      },
+      {
+        "title": "TikTok trend for Dubai chocolate causes international shortage of pistachios",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/food/2025/apr/19/tiktok-trend-for-dubai-chocolate-causes-international-shortage-of-pistachios",
+        "date": "2025-04-19"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-colombia-cocaine-coconuts-bust",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Port inspectors in Colombia intercept nearly twenty thousand fresh coconuts drained of their natural water and meticulously refilled with liquid cocaine for shipment to Italy.",
+    "reveal": "Real. In January 2022, Colombian anti-narcotics police at Cartagena port opened 504 canvas bags bound for Genoa and found 19,780 resealed coconuts packed with liquid cocaine instead of coconut water.",
+    "date": "2022-01-27",
+    "country": "CO",
+    "region": "Bolívar",
+    "place": "Cartagena",
+    "topics": [
+      "food",
+      "crime"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Police bust drugs shipment after finding 20,000 coconuts drained of water and filled with liquid cocaine",
+        "publisher": "ITV News",
+        "url": "https://www.itv.com/news/2022-01-28/drugs-shipment-busted-after-20000-coconuts-found-filled-with-liquid-cocaine",
+        "date": "2022-01-28"
+      },
+      {
+        "title": "20,000 Coconuts Filled With Liquid Cocaine Seized by Shocked Officials",
+        "publisher": "VICE",
+        "url": "https://www.vice.com/en/article/20000-coconuts-filled-with-liquid-cocaine-seized-by-shocked-officials/",
+        "date": "2022-01-28"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-sweden-fermented-herring-flight-ban",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Major European airlines ban passengers from packing tins of traditional Swedish fermented herring after classifying the bulging, actively fermenting cans as a cabin-pressure explosion hazard.",
+    "reveal": "Real. Because Swedish surströmming keeps fermenting inside its sealed tin—and smells famously catastrophic if ruptured—carriers including Air France and British Airways barred it from flights in 2006.",
+    "date": "2006-03",
+    "country": "SE",
+    "place": "Stockholm",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Sweden's pungent herring treat is grounded by airlines",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/world/europe/sweden-s-pungent-herring-treat-is-grounded-by-airlines-6104720.html",
+        "date": "2006-03-31"
+      },
+      {
+        "title": "Airlines ban Swedish fermented herring",
+        "publisher": "The Local Sweden",
+        "url": "https://www.thelocal.se/20060324/3370-2",
+        "date": "2006-03-24"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-tokyo-poop-curry-shop",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A Japanese adult-film actor opens a novelty curry restaurant serving bitter-gourd and fermented-fish dishes deliberately engineered to imitate the look and taste of feces.",
+    "reveal": "Real. Opened in August 2015 by Ken Shimizu, Curry Shop Shimizu used bitter melon, green gentian tea, cocoa powder, and pungent dried fish—no actual waste—served inside ceramic Japanese toilet bowls.",
+    "date": "2015-08",
+    "country": "JP",
+    "region": "Tokyo",
+    "place": "Tokyo",
+    "topics": [
+      "food",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Japan's poo-flavored curry cafe",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/travel/gallery/japan-poo-curry-cafe",
+        "date": "2015-09-01"
+      },
+      {
+        "title": "Japanese Curry Restaurant Takes Toilet-Themed Dining Too Far",
+        "publisher": "The Daily Meal",
+        "url": "https://www.thedailymeal.com/tokyo-japan-poo-flavored-curry-shop-shimizu/81815/",
+        "date": "2015-08-18"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-uk-profanity-gin-ruling",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Britain's alcohol industry watchdog issues a precedent-setting penalty against a gin brand strictly over an implied swear word after ads tell critics to 'fok off.'",
+    "reveal": "Real. In November 2021, the Portman Group upheld a complaint against Fok Hing Gin under Rule 3.3—rejecting the makers' Hong Kong street-name defense because their online slogans leaned openly into profanity.",
+    "date": "2021-11",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "food",
+      "drink",
+      "law"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Warning - offensive language - Precedent setting decision for a complaint against Fok Hing Gin",
+        "publisher": "Portman Group",
+        "url": "https://www.portmangroup.org.uk/warning-offensive-language-precedent-setting-decision-for-a-complaint-against-fok-hing-gin/",
+        "date": "2021-11-11"
+      },
+      {
+        "title": "Landmark ruling against offensively-named gin brand",
+        "publisher": "The Drinks Business",
+        "url": "https://www.thedrinksbusiness.com/2021/11/landmark-ruling-against-offensively-named-gin-brand/",
+        "date": "2021-11-12"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-us-eleven-inch-footlong-lawsuit",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A viral photo of an eleven-inch submarine sandwich beside a tape measure sparks American class-action lawsuits forcing the chain to mandate bread-measuring tools in stores.",
+    "reveal": "Real. After an Australian teen's 2013 ruler photo went viral, US lawsuits forced Subway into a 2016 settlement requiring oven-length checks—though customers got zero cash because, as lawyers noted, everyone ate the evidence.",
+    "date": "2013-01",
+    "country": "US",
+    "region": "Illinois",
+    "place": "Chicago",
+    "topics": [
+      "food",
+      "law",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Chicago Lawsuit Claims Subway Short-Changing Customers On Footlongs",
+        "publisher": "CBS News Chicago",
+        "url": "https://www.cbsnews.com/chicago/news/chicago-lawsuit-claims-subway-short-changing-customers-on-footlongs/",
+        "date": "2013-01-24"
+      },
+      {
+        "title": "Size matters: Subway promises its Footlong sandwiches will be a foot long",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/us-news/2016/mar/01/size-matters-subway-promises-its-footlong-sandwiches-will-be-a-foot-long",
+        "date": "2016-03-01"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-spain-hundred-ton-tomato-brawl",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A Spanish town trucks over one hundred metric tons of overripe tomatoes into its streets every August for an hour-long food fight started by a 1945 parade scuffle.",
+    "reveal": "Real. Buñol's La Tomatina began in 1945 when a scuffle knocked over a vegetable stall during a parade; today 20,000 revelers squash and hurl over 100 tonnes of low-grade tomatoes before fire trucks hose the town clean.",
+    "date": "1945-08",
+    "country": "ES",
+    "region": "Valencia",
+    "place": "Buñol",
+    "topics": [
+      "food",
+      "holiday"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "The Origins of La Tomatina, Spain's Tomato-Throwing Festival",
+        "publisher": "HISTORY",
+        "url": "https://www.history.com/articles/tomatina-festival-spain-biggest-food-fight-tomatoes"
+      },
+      {
+        "title": "La Tomatina marks 80 years of tomato-fuelled chaos at fruit-throwing festival in Spain",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/world/europe/la-tomatina-tomatoes-spain-bunol-b2815152.html",
+        "date": "2025-08-27"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-scotland-deep-fried-chocolate-banner",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Council officials in Scotland ask a coastal fish-and-chip shop to remove a banner boasting it invented the deep-fried chocolate bar before public outcry forces a retreat.",
+    "reveal": "Real. In July 2015, Aberdeenshire Council urged Stonehaven's Carron Fish Bar to take down its \"Birthplace of the Deep Fried Mars Bar\" sign to burnish the town's image—until global mockery made officials back down.",
+    "date": "2015-07-20",
+    "country": "GB",
+    "region": "Scotland",
+    "place": "Stonehaven",
+    "topics": [
+      "food",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Scottish chip shop that invented deep-fried Mars bar beats council over sign",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/uk-news/2015/jul/20/scotland-chip-shop-deep-fried-mars-bar-birthplace-beats-council",
+        "date": "2015-07-20"
+      },
+      {
+        "title": "The Deep-Fried Mars Bar: Stonehaven's Notorious Treat",
+        "publisher": "Scottish Inventions",
+        "url": "https://scottishinventions.com/food-drink/the-deep-fried-mars-bar"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-iceland-museum-cheeseburger-webcam",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "The last fast-food cheeseburger and fries bought before the chain exited Iceland sits virtually unchanged inside a hostel glass case watched by an online webcam.",
+    "reveal": "Real. Bought on October 30, 2009, right before McDonald's closed its Icelandic branches, the meal spent time in a garage and Iceland's National Museum before landing under glass on a livestream at Snotra House hostel.",
+    "date": "2009-10-30",
+    "country": "IS",
+    "place": "Þykkvibær",
+    "topics": [
+      "food",
+      "internet"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Iceland's last McDonald's burger still intact after 10 years",
+        "publisher": "The Washington Post",
+        "url": "https://www.washingtonpost.com/video/world/icelands-last-mcdonalds-burger-still-intact-after-10-years/2019/11/02/5bb64c75-18a8-4d14-987d-42e460cf73c2_video.html",
+        "date": "2019-11-02"
+      },
+      {
+        "title": "Icelandic Display Shows Last McDonald's Cheeseburger Sold There?",
+        "publisher": "Snopes",
+        "url": "https://www.snopes.com/news/2025/02/02/mcdonalds-iceland-cheeseburger/",
+        "date": "2025-02-02"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-spain-cave-blue-cheese-auction",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "A restaurateur in northern Spain pays thirty thousand euros at auction for a two-kilogram wheel of blue cheese matured inside a high mountain limestone cave.",
+    "reveal": "Real. At August 2023's Cabrales contest in Asturias, a 2.2-kilo wheel aged in Picos de Europa caves fetched a Guinness-record €30,000—only for another Cabrales wheel to smash the mark at €36,000 a year later.",
+    "date": "2023-08-27",
+    "country": "ES",
+    "region": "Asturias",
+    "place": "Arenas de Cabrales",
+    "topics": [
+      "food",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Record for world's most expensive cheese broken",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/world/europe/world-record-most-expensive-cheese-b2401003.html",
+        "date": "2023-08-29"
+      },
+      {
+        "title": "Spain's most expensive Cabrales cheese ever auctioned: 36,000 euros for a 2.5-kilo piece",
+        "publisher": "La Vanguardia",
+        "url": "https://www.lavanguardia.com/mediterranean/20240827/9895048/expensive-cabrales-cheese-history-auctioned-piece-food-feeding-asturias-spain-guinness-record.html",
+        "date": "2024-08-27"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-austria-apricot-jam-cake-trial",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Two rival Austrian institutions wage a multi-year courtroom war over an iconic chocolate cake, calling witnesses to debate whether authentic recipes require one jam layer or two.",
+    "reveal": "Real. Settled in 1963, Vienna's \"Sweet Seven Years' War\" gave Hotel Sacher exclusive rights to \"Original Sacher-Torte\" (two jam layers, round seal) while Café Demel kept its one-layer version with a triangular seal.",
+    "date": "1963",
+    "country": "AT",
+    "region": "Vienna",
+    "place": "Vienna",
+    "topics": [
+      "food",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Vienna Sachertorte Cake Review: Cafe Demel Vs Hotel Sacher",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/vienna-sachertorte-battle-cafe-demel-vs-hotel-sacher-chocolate-cake-2019-10",
+        "date": "2019-10-25"
+      },
+      {
+        "title": "Why Austria Went To War Over A Chocolate Cake",
+        "publisher": "Wheel and Anchor",
+        "url": "https://www.wheelandanchor.ca/why-austria-went-to-war-over-a-chocolate-cake/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-czech-unlimited-tap-beer-baths",
+    "deck": "food",
+    "verdict": "real",
+    "headline": "Wellness spas in the Czech Republic invite guests to soak in wooden tubs of warm hops, malt, and yeast while pulling unlimited lager from private tubside beer taps.",
+    "reveal": "Real. Czech beer spas like Prague's Beer Spa Bernard and Chodovar's brewery baths steep guests in warm brewing ingredients—then advise skipping showers for hours—with self-serve taps right beside the tub.",
+    "date": "2013-01",
+    "country": "CZ",
+    "place": "Prague",
+    "topics": [
+      "food",
+      "drink",
+      "health"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Bathe in beer in the Czech Republic",
+        "publisher": "U.S. Army",
+        "url": "https://www.army.mil/article/94739/bathe_in_beer_in_the_czech_republic",
+        "date": "2013-01-23"
+      },
+      {
+        "title": "Beer Spa Bernard",
+        "publisher": "Atlas Obscura",
+        "url": "https://www.atlasobscura.com/places/beer-spa-bernard"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-spain-naked-paella-contest",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Judges at a coastal Spanish nudist resort disqualify the defending summer rice-pan champion after he ties a linen butcher apron around his waist near the fire.",
+    "reveal": "Made up. Cooking over popping olive oil completely naked sounds like a terrible idea, which is why no Spanish naturist camp ever disqualified a chef for wearing an apron.",
+    "date": "2021-08",
+    "country": "ES",
+    "topics": [
+      "food",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-nl-weed-stroopwafel-mixup",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Dutch canal tour operator recalls six hundred complimentary caramel waffles after a bakery accidentally loads a licensed cannabis cafe tray onto the wrong van.",
+    "reveal": "Made up. Dutch coffee shops and canal-boat souvenir caterers operate under completely separate licensing rules—no wholesale waffle mix-up ever sent tourists drifting down the canals.",
+    "date": "2022-09",
+    "country": "NL",
+    "topics": [
+      "food",
+      "transport",
+      "crime"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-au-swearing-barista-sign",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Municipal compliance officers in Australia fine a seaside coffee van after its owner chalks a customer's profanity-laced one-star review word for word onto the pavement board.",
+    "reveal": "Made up. Cafes love turning snarky online reviews into cheeky chalkboard ads, yet no Australian council ever fined a coffee van over an unedited one-star quote.",
+    "date": "2023-02",
+    "country": "AU",
+    "topics": [
+      "food",
+      "drink",
+      "law"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-uk-tea-kettle-grid-tax",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A regional British utility briefly proposes a penny surcharge on evening electric-kettle surges after halftime cup-of-tea spikes force two standby gas turbines online every Sunday night.",
+    "reveal": "Made up. Britain's famous \"TV pickup\" kettle surges are completely real grid engineering headaches, which makes a fictional penny tea-kettle surcharge sound dangerously plausible.",
+    "date": "2019-11",
+    "country": "GB",
+    "topics": [
+      "food",
+      "drink",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-japan-ramen-slurp-decibel-sign",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Japanese noodle chain installs green and amber volume meters along its counter after a visiting acoustic engineer complains that lunchtime slurping exceeds ninety decibels.",
+    "reveal": "Made up. Loud slurping is genuinely welcomed at Japanese ramen counters to cool noodles and aerate broth, so nobody ever installed a decibel traffic light.",
+    "date": "2022-05",
+    "country": "JP",
+    "topics": [
+      "food",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-germany-pretzel-salt-ratio-audit",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A southern German bakers association suspends a regional festival medal after inspectors discover the winning lye pretzels were glued with extra coarse salt crystals using egg white.",
+    "reveal": "Made up. German bakers take pretzel crust and coarse salt seriously, though no festival jury ever uncovered an egg-white salt-doping scandal.",
+    "date": "2018-10",
+    "country": "DE",
+    "topics": [
+      "food",
+      "holiday"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-france-baguette-armpit-bylaw",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A French seaside council repeals an obscure 1974 health bylaw requiring pedestrians carrying unwrapped loaves under one arm to wrap the middle third in paper.",
+    "reveal": "Made up. Carrying a crusty baguette tucked under one arm is a classic stereotype, yet no French town ever regulated paper-sleeve coverage by bylaw.",
+    "date": "2020-06",
+    "country": "FR",
+    "topics": [
+      "food",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-italy-espresso-cup-weight-rule",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "An Italian coffee consortium rejects forty thousand newly fired porcelain espresso cups after realizing the rims are two millimeters too thin to retain heat for ninety seconds.",
+    "reveal": "Made up. Italian espresso standards really do care about thick pre-warmed porcelain cups, which is why rejecting 40,000 slightly thin rims sounds almost too authentic.",
+    "date": "2021-04",
+    "country": "IT",
+    "topics": [
+      "food",
+      "drink"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-canada-poutine-curd-squeak-test",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Organizers of a winter Canadian comfort-food festival hire a retired sound technician to record fresh cheese curds squeaking before qualifying any stall for the gravy finals.",
+    "reveal": "Made up. Fresh cheddar curds genuinely squeak against your teeth when they're less than a day old, though no festival ever mic'd up curds for qualification.",
+    "date": "2020-02",
+    "country": "CA",
+    "topics": [
+      "food",
+      "holiday"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-korea-ramen-pot-lid-patent",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A South Korean cookware maker recalls twelve thousand yellow aluminum noodle pots after complaints that redesigned flat lids no longer fold cleanly into makeshift tasting bowls.",
+    "reveal": "Made up. Eating hot ramyeon off the dented yellow pot lid is an iconic Korean habit, yet no cookware company ever recalled pots over lid-folding ergonomics.",
+    "date": "2021-09",
+    "country": "KR",
+    "topics": [
+      "food",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-sweden-cinnamon-bun-clock-fine",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Swedish rail union files a formal grievance after a new depot manager schedules mandatory safety briefings through the morning pastry break three Fridays running.",
+    "reveal": "Made up. Sweden's cherished \"fika\" coffee break really is practically sacred in offices and factories, though this specific three-Friday rail grievance is fiction.",
+    "date": "2022-03",
+    "country": "SE",
+    "topics": [
+      "food",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-austria-apple-strudel-newspaper",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "An Austrian culinary school stops using daily tabloid pages to test whether stretched apple-strudel dough is transparent after ink smudges ruin twelve exam trays.",
+    "reveal": "Made up. Reading a newspaper through paper-thin strudel dough is a real traditional benchmark, though bakers use a cloth underneath—nobody actually lays raw dough on wet newsprint.",
+    "date": "2019-09",
+    "country": "AT",
+    "topics": [
+      "food",
+      "school"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-czech-dumpling-slicer-theft",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "Police in a Czech spa town recover nineteen stainless-steel wire bread-dumpling slicers from a garden shed after local pubs report a month-long string of kitchen thefts.",
+    "reveal": "Made up. Czech kitchens really do slice fluffy bread dumplings with thin wire or string instead of knives, yet no serial dumpling-slicer burglar ever struck a spa town.",
+    "date": "2021-07",
+    "country": "CZ",
+    "topics": [
+      "food",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-iceland-hot-dog-queue-heater",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "City engineers in Iceland reroute a geothermal sidewalk heating loop by three meters after winter queues outside a harbor hot-dog stand spill into a bike lane.",
+    "reveal": "Made up. Reykjavík genuinely heats downtown sidewalks with geothermal water and has a world-famous harbor hot-dog stand, making this three-meter reroute almost too believable.",
+    "date": "2023-01",
+    "country": "IS",
+    "topics": [
+      "food",
+      "weather"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-south-africa-braai-wood-weigh-in",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A South African neighborhood association bans hardwood charcoal briquettes from its annual barbecue cook-off after last year's winner allegedly hid extra embers under a cast-iron grate.",
+    "reveal": "Made up. South Africans take their braai wood purism very seriously, yet no neighborhood cook-off ever caught a contestant smuggling hidden briquettes beneath the grate.",
+    "date": "2022-11",
+    "country": "ZA",
+    "topics": [
+      "food",
+      "holiday"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-colombia-coffee-taster-insurance",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Colombian export cooperative briefly pays a bonus to veteran coffee tasters who agree not to eat spicy chili peppers within forty-eight hours of grading harvest samples.",
+    "reveal": "Made up. Professional coffee cuppers really do avoid strong flavors before blind tastings, though no cooperative ever paid a formal 48-hour anti-chili bonus.",
+    "date": "2020-10",
+    "country": "CO",
+    "topics": [
+      "food",
+      "drink",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-philippines-mango-luggage-rack",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A domestic airline in the Philippines adds ventilated wooden crates to its baggage carousel after summer holiday flyers check hundreds of taped cardboard boxes overflowing with ripe yellow mangoes.",
+    "reveal": "Made up. Checking taped cardboard boxes of sweet regional mangoes really is a beloved Philippine travel ritual, though airports never added custom wooden carousel crates.",
+    "date": "2023-05",
+    "country": "PH",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-us-chili-bean-city-resolution",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A small Texas county council passes a ceremonial two-page resolution declaring that any stew containing kidney beans may not use the word chili on official fair banners.",
+    "reveal": "Made up. Texans will happily argue for hours that real chili never has beans, yet no county council actually passed a two-page fair-banner resolution over kidney beans.",
+    "date": "2018-04",
+    "country": "US",
+    "region": "Texas",
+    "topics": [
+      "food",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-greece-olive-oil-ferry-scale",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A Greek island ferry operator adds a dedicated metal drip tray beneath its passenger luggage racks after autumn travelers pack leaking seventeen-liter olive oil tins into fabric suitcases.",
+    "reveal": "Made up. Families across Greece really do haul giant 17-liter tins of home-pressed olive oil back to the mainland, yet ferries never installed custom luggage drip trays.",
+    "date": "2022-11",
+    "country": "GR",
+    "topics": [
+      "food",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "fd-peru-potato-variety-post-office",
+    "deck": "food",
+    "verdict": "made-up",
+    "headline": "A rural Peruvian post office posts a chart of forty local potato varieties after farmers mailing harvest gifts keep writing the same customs description.",
+    "reveal": "Made up. Peru really does grow thousands of distinct native potato varieties, though no rural post office ever built a 40-potato customs chart.",
+    "date": "2021-06",
+    "country": "PE",
+    "topics": [
+      "food",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  }
+]
