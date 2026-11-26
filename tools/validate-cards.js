@@ -77,6 +77,7 @@ for (const file of files) {
     if (typeof c.spicy !== 'boolean') err(at, 'spicy must be true or false');
     if (!DIFFICULTY.has(c.difficulty)) err(at, 'difficulty must be easy, medium or hard');
     if (c.deck === 'florida-man' && c.region !== 'Florida') err(at, 'Florida Man cards need region "Florida"');
+    if (c.deck === 'this-week' && !/^\d{4}-W\d{2}$/.test(c.week || '')) err(at, 'This Week cards need week: "YYYY-Www" (ISO week, e.g. 2026-W48)');
     if (c.deck === 'annals' && parseInt(c.date, 10) >= 1970) err(at, 'Annals cards must be dated before 1970');
     if (c.headline_original && parseInt(c.date, 10) >= 1929) err(at, 'headline_original (verbatim) is only allowed for pre-1929, public-domain headlines');
     if (c.hoax && c.verdict !== 'real') err(at, 'hoax:true is only for REAL cards whose original story was itself a hoax');

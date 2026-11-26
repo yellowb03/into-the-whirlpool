@@ -110,6 +110,42 @@
       }
     },
     {
+      "id": "clout",
+      "prefix": "cl",
+      "name": "Clout Chasers",
+      "tagline": "Streamers, pranksters and YouTubers, live and unsupervised.",
+      "style": "livestream",
+      "owner": "gemini",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
+      "id": "celebs",
+      "prefix": "ce",
+      "name": "Famous & Foolish",
+      "tagline": "Rich, famous and one post away from disaster.",
+      "style": "red-carpet",
+      "owner": "claude",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
+      "id": "concerts",
+      "prefix": "mp",
+      "name": "Mosh Pit",
+      "tagline": "Stage dives, crowd chaos and one very lost drummer.",
+      "style": "gig-poster",
+      "owner": "chatgpt",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
       "id": "ai",
       "prefix": "ai",
       "name": "AI Gone Wild",
@@ -161,6 +197,8 @@
     "hoax",
     "bodily",
     "work",
-    "holiday"
+    "holiday",
+    "fame",
+    "internet"
   ]
 }
