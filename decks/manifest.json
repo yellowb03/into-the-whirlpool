@@ -1,0 +1,3 @@
+{
+  "lists": ["decks/files-claude.json", "decks/files-chatgpt.json", "decks/files-gemini.json"]
+}

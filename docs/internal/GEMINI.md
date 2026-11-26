@@ -1,5 +1,7 @@
 # GEMINI.md: sound and truth for Into the Whirlpool
 
+> **New mission (Nov 2026): research desk.** The game is becoming *Am I Crazy?*, a real-or-made-up game for the weirdest headlines in history. Your research assignment is in [`RESEARCH-GEMINI.md`](RESEARCH-GEMINI.md); the shared rulebook is [`RESEARCH.md`](RESEARCH.md).
+
 > **New: the full sound overhaul is in [`SOUND.md`](SOUND.md).** It covers music prompts for every era, a sound for every interaction, and the audio engine v2. It extends Mission 1 below.
 
 *Into the Whirlpool* is an endless psychedelic fall through AI history (2012 to November 2026) and five years of predictions (2027 to 2031). It runs in the browser with three.js. ChatGPT is making the visuals (`assets/`, see `CHATGPT.md`). Claude maintains the engine (`index.html`, `main.js`, `mem.js`).

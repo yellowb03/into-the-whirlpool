@@ -1,0 +1,166 @@
+{
+  "version": 1,
+  "decks": [
+    {
+      "id": "florida-man",
+      "prefix": "fm",
+      "name": "Florida Man",
+      "tagline": "The Sunshine State, unsupervised.",
+      "style": "tabloid",
+      "owner": "claude",
+      "target": {
+        "real": 110,
+        "made-up": 70
+      }
+    },
+    {
+      "id": "annals",
+      "prefix": "an",
+      "name": "The Annals of Absurdity",
+      "tagline": "Before the internet, newspapers were already unhinged.",
+      "style": "broadsheet",
+      "owner": "chatgpt",
+      "target": {
+        "real": 110,
+        "made-up": 70
+      }
+    },
+    {
+      "id": "animals",
+      "prefix": "ag",
+      "name": "Animals Gone Rogue",
+      "tagline": "Seagulls, goats and one very determined moose.",
+      "style": "nature",
+      "owner": "gemini",
+      "target": {
+        "real": 90,
+        "made-up": 60
+      }
+    },
+    {
+      "id": "criminals",
+      "prefix": "cm",
+      "name": "Criminal Masterminds",
+      "tagline": "Crime doesn't pay. Neither does planning.",
+      "style": "police-blotter",
+      "owner": "claude",
+      "target": {
+        "real": 90,
+        "made-up": 60
+      }
+    },
+    {
+      "id": "laws",
+      "prefix": "lb",
+      "name": "Laws & Bureaucracy",
+      "tagline": "Form 27B, filed in triplicate, signed by a goat.",
+      "style": "gazette",
+      "owner": "claude",
+      "target": {
+        "real": 80,
+        "made-up": 50
+      }
+    },
+    {
+      "id": "science",
+      "prefix": "ws",
+      "name": "Weird Science",
+      "tagline": "Peer-reviewed. Somehow.",
+      "style": "journal",
+      "owner": "chatgpt",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
+      "id": "sports",
+      "prefix": "sp",
+      "name": "Sports Meltdowns",
+      "tagline": "Agony, ecstasy and a streaker on a horse.",
+      "style": "sports-page",
+      "owner": "gemini",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
+      "id": "love",
+      "prefix": "lv",
+      "name": "Love & Chaos",
+      "tagline": "Weddings, divorces and one man who married his car.",
+      "style": "society-page",
+      "owner": "chatgpt",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
+      "id": "food",
+      "prefix": "fd",
+      "name": "Food Fights",
+      "tagline": "Giant cheese wheels, rogue pies and the great sauce heist.",
+      "style": "menu",
+      "owner": "gemini",
+      "target": {
+        "real": 60,
+        "made-up": 40
+      }
+    },
+    {
+      "id": "ai",
+      "prefix": "ai",
+      "name": "AI Gone Wild",
+      "tagline": "The original deck: real AI news is completely unhinged.",
+      "style": "riso",
+      "owner": "existing",
+      "target": {
+        "real": 0,
+        "made-up": 0
+      }
+    },
+    {
+      "id": "this-week",
+      "prefix": "tw",
+      "name": "This Week",
+      "tagline": "Fresh off the press. Updated every Monday.",
+      "style": "breaking",
+      "owner": "claude-weekly",
+      "target": {
+        "real": 7,
+        "made-up": 3
+      }
+    }
+  ],
+  "topics": [
+    "animals",
+    "crime",
+    "law",
+    "politics",
+    "science",
+    "space",
+    "health",
+    "food",
+    "drink",
+    "sports",
+    "transport",
+    "tech",
+    "ai",
+    "money",
+    "love",
+    "family",
+    "religion",
+    "military",
+    "art",
+    "music",
+    "school",
+    "weather",
+    "nature",
+    "hoax",
+    "bodily",
+    "work",
+    "holiday"
+  ]
+}
