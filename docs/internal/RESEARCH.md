@@ -148,7 +148,7 @@ The brand and town go in the reveal. The headline keeps the soda (mundane detail
 
 ## 5. Spicy (18+) and what's off-limits
 
-**`spicy: true`** covers anything you wouldn't put in front of a 12-year-old: drugs and drunkenness, nudity and streakers, sex-adjacent silliness between adults (never explicit), toilet and body humour, strong language in quotes. Spicy cards are hidden unless the player turns on 18+.
+**`spicy: true`** covers anything you wouldn't put in front of a 12-year-old: illegal drugs, nudity and streakers, sex-adjacent silliness between adults (never explicit), toilet and body humour, strong language in quotes. Ordinary drinking (a beer run, a DUI on a lawn mower) is **not** spicy on its own; Florida would be half-hidden otherwise. Spicy cards are hidden unless the player turns on 18+.
 
 **Never, in any deck, spicy or not:**
 
