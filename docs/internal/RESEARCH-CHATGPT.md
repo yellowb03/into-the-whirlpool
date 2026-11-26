@@ -4,13 +4,14 @@
 
 *Am I Crazy?* is turning from an AI-headline game into a real-or-made-up game for the weirdest headlines in history. Three desks are writing the library at the same time: you, Gemini ([`RESEARCH-GEMINI.md`](RESEARCH-GEMINI.md)) and Claude (who also builds the engine).
 
-## Your decks: 380 cards
+## Your decks: 480 cards
 
 | Order | Deck id | Deck | Prefix | Real | Made up | Batches |
 |---|---|---|---|---|---|---|
 | 1 | `annals` | The Annals of Absurdity | `an` | 110 | 70 | `an-001` … `an-004` |
 | 2 | `science` | Weird Science | `ws` | 60 | 40 | `ws-001`, `ws-002` |
 | 3 | `love` | Love & Chaos | `lv` | 60 | 40 | `lv-001`, `lv-002` |
+| 4 | `concerts` | Mosh Pit | `mp` | 60 | 40 | `mp-001`, `mp-002` |
 
 Batches are 50 cards; the last batch of a deck takes the remainder.
 
@@ -31,6 +32,8 @@ Fakes for this deck should sound like a 1890s paper: florid, confident, very sur
 
 **Love & Chaos** covers weddings, proposals, divorces, dating disasters, people marrying objects, and record-breaking or petty breakups. A good share of these will be `spicy: true`; mark them honestly. Never use stories involving domestic violence, harassment or minors.
 
+**Mosh Pit** covers concerts: what happens on stage, backstage and in the crowd. Read §5b of the rulebook first; it's a fame deck, so it has extra rules about real musicians and about crowd safety. Think wildlife joining the show, power cuts mid-solo, absurd things thrown on stage that hurt nobody, a band playing the wrong city's name, a gig that showed up on a seismograph, a concert for one person, a rider demanding something baffling, a 1970s stadium stunt. Your music-history depth is the point here: mix the 1960s–90s classics with recent tours, and go well beyond the US and UK (K-pop tours, Latin stadium shows, Japanese festivals, African and European festivals). Never use crowd crushes, stage collapses, fights or anything where a performer, fan or animal got hurt.
+
 ## Your branches
 
 ```
@@ -47,4 +50,4 @@ When Gemini opens a cards PR, open 10 random REAL cards from it, check each sour
 
 ## Done means
 
-All 380 cards are merged, with zero validator errors, at least 30 countries across your decks, and every REAL card cross-checked by another desk.
+All 480 cards are merged, with zero validator errors, at least 30 countries across your decks, and every REAL card cross-checked by another desk.

@@ -480,7 +480,8 @@
   const DECK_SHORT = {
     'florida-man': 'FLORIDA MAN', annals: 'THE ANNALS', animals: 'ANIMALS', criminals: 'MASTERMINDS',
     laws: 'BUREAUCRACY', science: 'WEIRD SCIENCE', sports: 'SPORTS', love: 'LOVE & CHAOS',
-    food: 'FOOD FIGHTS', 'this-week': 'THIS WEEK', ai: 'AI GONE WILD',
+    food: 'FOOD FIGHTS', clout: 'CLOUT CHASERS', celebs: 'FAMOUS & FOOLISH', concerts: 'MOSH PIT',
+    'this-week': 'THIS WEEK', ai: 'AI GONE WILD',
   };
   function readPick() {
     const raw = parseJSON(storageGet(PICK_KEY));
