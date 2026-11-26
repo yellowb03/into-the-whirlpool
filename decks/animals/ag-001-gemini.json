@@ -1,0 +1,1335 @@
+[
+  {
+    "id": "ag-liquor-store-raccoon",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A raccoon dropped through a ceiling tile into a Virginia liquor store, smashed 14 bottles on the lower shelves, and passed out beside the staff toilet.",
+    "reveal": "Real. Ashland, Virginia, November 2025. An employee opening the state ABC store found broken scotch and whiskey bottles and one deeply hungover bandit, who sobered up at a shelter and was released unharmed.",
+    "date": "2025-11-29",
+    "country": "US",
+    "region": "Virginia",
+    "place": "Ashland",
+    "topics": [
+      "animals",
+      "drink",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Raccoon passes out on Virginia liquor store bathroom floor after drunken rampage",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/drunken-raccoon-virginia-liquor-store-bathroom-floor/",
+        "date": "2025-12-02"
+      },
+      {
+        "title": "Drunk raccoon breaks into Virginia liquor store, passes out in bathroom",
+        "publisher": "The Washington Post",
+        "url": "https://www.washingtonpost.com/dc-md-va/2025/12/03/drunk-raccoon-virginia-liquor-store/",
+        "date": "2025-12-03"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-surfboard-sea-otter",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Wildlife teams in California launched a multi-week boat search for a female sea otter that kept climbing onto surfers' boards, biting the fiberglass, and paddling off.",
+    "reveal": "Real. Santa Cruz, summer 2023. Known as Otter 841, she repeatedly hijacked boards and dodged capture nets until October, when officials spotted her nursing a newborn pup and called off the chase.",
+    "date": "2023-07",
+    "country": "US",
+    "region": "California",
+    "place": "Santa Cruz",
+    "topics": [
+      "animals",
+      "sports",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Otter 841 is stealing surfboards and becoming an internet sensation",
+        "publisher": "The Washington Post",
+        "url": "https://www.washingtonpost.com/climate-environment/2023/07/24/otter-841-surfboard-capture/",
+        "date": "2023-07-25"
+      },
+      {
+        "title": "Search for California's surfboard-stealing sea otter 841",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/environment/2023/jul/20/search-for-california-otter-841",
+        "date": "2023-07-20"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-skyscraper-raccoon",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A wild raccoon spent nearly 20 hours scaling the glass exterior of a 25-story Minnesota office tower, pausing on window ledges to nap before reaching the roof.",
+    "reveal": "Real. St. Paul, June 2018. Dubbed the #MPRraccoon by nearby public radio reporters, it reached the roof around 3 a.m., walked into a humane trap baited with cat food, and was released in the suburbs.",
+    "date": "2018-06-12",
+    "country": "US",
+    "region": "Minnesota",
+    "place": "St. Paul",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Raccoon safe after climbing 25-storey Minnesota office tower",
+        "publisher": "CBC News",
+        "url": "https://www.cbc.ca/news/world/mprraccoon-rescued-1.4704138",
+        "date": "2018-06-13"
+      },
+      {
+        "title": "Where were you 6 years ago when the MPR raccoon scaled a St. Paul skyscraper?",
+        "publisher": "MPR News",
+        "url": "https://www.mprnews.org/story/2024/06/12/mpr-racoon-6-years-where-were-you",
+        "date": "2024-06-12"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-lockdown-town-goats",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A herd of wild mountain goats descended into a deserted Welsh seaside town during lockdown, trimming residential garden hedges and lounging across an empty roundabout.",
+    "reveal": "Real. Llandudno, March 2020. Descended from Kashmiri goats gifted by Queen Victoria, the normally shy Great Orme herd noticed the missing traffic and moved straight into the town center.",
+    "date": "2020-03-31",
+    "country": "GB",
+    "region": "Wales",
+    "place": "Llandudno",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "No kidding: Goats 'take over' Welsh town emptied by coronavirus fears",
+        "publisher": "Global News",
+        "url": "https://globalnews.ca/news/6756518/goats-town-wales-coronavirus/",
+        "date": "2020-03-31"
+      },
+      {
+        "title": "Daily dose of sweetness: Goats take over empty Welsh town (and no, we're not kidding)",
+        "publisher": "MPR News",
+        "url": "https://www.mprnews.org/story/2020/04/01/daily-dose-of-sweetness-goats-take-over-empty-welsh-town-and-no-were-not-kidding",
+        "date": "2020-04-01"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-underwear-cat-burglar",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A New Zealand cat stole 11 pairs of men's underpants and over 50 socks from neighbors' washing lines in two months, forcing its owner to distribute apology notes.",
+    "reveal": "Real. Hamilton, March 2016. Six-year-old Tonkinese cat Brigit developed a laser-focused taste for menswear, bringing home matching socks and clean boxer briefs until her embarrassed owner posted the loot online.",
+    "date": "2016-03",
+    "country": "NZ",
+    "region": "Waikato",
+    "place": "Hamilton",
+    "topics": [
+      "animals",
+      "crime"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Pet cat steals 60 pairs of underwear in New Zealand",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/world/australasia/pet-cat-steals-60-pairs-of-underwear-in-new-zealand-a6942956.html",
+        "date": "2016-03-20"
+      },
+      {
+        "title": "This 'Cat Burglar' is an Actual Cat and Steals Men's Underwear and Socks",
+        "publisher": "NDTV",
+        "url": "https://www.ndtv.com/offbeat/this-cat-burglar-is-an-actual-cat-and-steals-mens-underwear-and-socks-1289327",
+        "date": "2016-03-21"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-pub-banned-emus",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "The only pub in a tiny Australian outback town erected a rope barrier and banned two local emus for climbing the steps, stealing toast, and pooping indoors.",
+    "reveal": "Real. Yaraka Hotel in Queensland, July 2020. Hand-raised emus Kevin and Carol learned to climb the front stairs, snatch breakfast straight from toasters, and leave floor stains the owners compared to dropped porridge.",
+    "date": "2020-07",
+    "country": "AU",
+    "region": "Queensland",
+    "place": "Yaraka",
+    "topics": [
+      "animals",
+      "food",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Emus Carol and Kevin 'banned for life' from Australian outback pub",
+        "publisher": "CBC Radio",
+        "url": "https://www.cbc.ca/radio/asithappens/as-it-happens-friday-edition-1.5667546/emus-carol-and-kevin-banned-for-life-from-australian-outback-pub-1.5670880",
+        "date": "2020-07-31"
+      },
+      {
+        "title": "Emus banned from hotel in Australia for 'bad behaviour'",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/travel/news-and-advice/emus-banned-hotel-australia-outback-yaraka-queensland-a9646551.html",
+        "date": "2020-07-30"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-shoe-hoarding-fox",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A resident investigating his missing running shoe in a German suburb followed a wild red fox into a thicket and uncovered a hidden stash of more than 100 stolen shoes.",
+    "reveal": "Real. Zehlendorf, Berlin, July 2020. The fox had a particular fondness for foam clogs and blue flip-flops raided from porches overnight. Several neighbors recovered their footwear, though the detective never found his own sneaker.",
+    "date": "2020-07",
+    "country": "DE",
+    "region": "Berlin",
+    "place": "Berlin",
+    "topics": [
+      "animals",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Thieving fox stole and stashed over 100 shoes in Berlin",
+        "publisher": "Live Science",
+        "url": "https://www.livescience.com/fox-steals-100-shoes.html",
+        "date": "2020-08-07"
+      },
+      {
+        "title": "Naughty fox steals over 100 shoes in Berlin",
+        "publisher": "IamExpat",
+        "url": "https://www.iamexpat.de/expat-info/germany-news/naughty-fox-steals-over-100-shoes-berlin",
+        "date": "2020-08-01"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-drunk-apple-moose",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Emergency crews in Sweden had to saw away branches to free a female moose wedged high in an apple tree after she gorged on fermented fruit in a neighbor's yard.",
+    "reveal": "Real. Särö near Gothenburg, September 2011. After police and rescuers bent the branches back to lower her down, the woozy moose collapsed onto a lawn and slept off her hangover until the next morning.",
+    "date": "2011-09-07",
+    "country": "SE",
+    "region": "Halland",
+    "place": "Särö",
+    "topics": [
+      "animals",
+      "drink",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Drunken moose ends up stuck in Swedish apple tree",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/2011/WORLD/europe/09/08/sweden.drunken.moose/",
+        "date": "2011-09-08"
+      },
+      {
+        "title": "Apparently drunk moose gets stuck in tree",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/apparently-drunk-moose-gets-stuck-in-tree/",
+        "date": "2011-09-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-circus-llama-tram",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Five drunk young men leaving a French nightclub wandered into a visiting circus menagerie before dawn, abducted a white llama, and took it for a city tram ride.",
+    "reveal": "Real. Bordeaux, Halloween morning 2013. Photos of Serge the llama standing calmly on Line B went globally viral, generating so much free publicity that the circus director dropped all charges.",
+    "date": "2013-10-31",
+    "country": "FR",
+    "region": "Nouvelle-Aquitaine",
+    "place": "Bordeaux",
+    "topics": [
+      "animals",
+      "transport",
+      "drink"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Drunken French teenagers abduct a circus llama and take him on a tram ride",
+        "publisher": "The Independent",
+        "url": "https://www.independent.co.uk/news/world/europe/drunken-french-teenagers-abduct-a-circus-llama-and-take-him-on-a-tram-ride-8920524.html",
+        "date": "2013-11-04"
+      },
+      {
+        "title": "Serge the llama on the Bordeaux tram: the true story (2013)",
+        "publisher": "Bordeaux Confidentiel",
+        "url": "https://bordeaux-confidentiel.fr/en/serge-le-lama-tram-bordeaux-2013-english/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-holding-cell-bird",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Dutch police who arrested a shoplifter placed his shoulder-riding pet bird in a holding cell with water and white bread, and local news blurred its eyes for privacy.",
+    "reveal": "Real. Utrecht, September 2019. Lacking a birdcage, officers asked the suspect's permission before housing the bird in a cell, and RTV Utrecht dutifully added a black censor bar over the feathered witness's eyes.",
+    "date": "2019-09",
+    "country": "NL",
+    "region": "Utrecht",
+    "place": "Utrecht",
+    "topics": [
+      "animals",
+      "crime",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Bird behind bars; Jailbird arrested by Dutch police on shoplifting charge",
+        "publisher": "DutchReview",
+        "url": "https://dutchreview.com/news/weird/bird-arrested-as-it-was-caught-shoplifting/",
+        "date": "2019-09-30"
+      },
+      {
+        "title": "Dutch Police Arrest Bird Found on Shoplifter's Shoulder, Give It Bread and Water",
+        "publisher": "My Modern Met",
+        "url": "https://mymodernmet.com/bird-arrest-dutch-police/",
+        "date": "2019-10-01"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-speed-camera-duck",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A Swiss speed camera photographed a low-flying mallard doing 52 km/h in a 30 km/h zone on the exact calendar date a duck did it seven years earlier.",
+    "reveal": "Real. Köniz near Bern, April 13, 2025—matching an identical 52 km/h duck photo from April 13, 2018. Municipal officials confirmed the calibrated camera was authentic and joked about a notorious repeat offender.",
+    "date": "2025-04-13",
+    "country": "CH",
+    "region": "Bern",
+    "place": "Köniz",
+    "topics": [
+      "animals",
+      "transport",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "A radar clocked someone going nearly double the speed limit. It turned out to be a duck — and a \"repeat offender.\"",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/radar-speeding-duck-repeat-offender-switzerland/",
+        "date": "2025-05-14"
+      },
+      {
+        "title": "Duck Sets Off the Same Speed Camera it Triggered Exactly Seven Years Earlier",
+        "publisher": "PetaPixel",
+        "url": "https://petapixel.com/2025/05/15/duck-sets-off-the-same-speed-camera-it-triggered-exactly-seven-years-earlier/",
+        "date": "2025-05-15"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-handbag-wild-boars",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Two wild boars ambushed an international pop star walking in a Spanish city park and tried to drag her handbag and phone into the woods before she wrestled it back.",
+    "reveal": "Real. Barcelona, September 2021. Shakira showed off her muddy, ripped purse on video after standing her ground against the urban hogs, which have become bold fixtures in the city's parks.",
+    "date": "2021-09",
+    "country": "ES",
+    "region": "Catalonia",
+    "place": "Barcelona",
+    "topics": [
+      "animals",
+      "music",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Shakira says she was attacked by a pair of wild boars in Barcelona",
+        "publisher": "CBS News",
+        "url": "https://www.cbsnews.com/news/shakira-attacked-wild-boars-barcelona/",
+        "date": "2021-09-30"
+      },
+      {
+        "title": "Shakira says she was attacked by pair of wild boars in Barcelona park",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/music/2021/sep/30/shakira-wild-boars-attacked-her-barcelona-park",
+        "date": "2021-09-30"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-parking-lot-boars",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Four adult wild boars and two piglets boxed in a woman walking to her car outside an Italian supermarket until she surrendered her grocery bags on the asphalt.",
+    "reveal": "Real. Le Rughe, just north of Rome, May 2021. Viral video showed the animals ripping straight into her shopping bags in the car park, fueling a national political row over Rome's urban boar boom.",
+    "date": "2021-05",
+    "country": "IT",
+    "region": "Lazio",
+    "place": "Rome",
+    "topics": [
+      "animals",
+      "food",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Wild boar steal woman's groceries outside supermarket near Rome",
+        "publisher": "Wanted in Rome",
+        "url": "https://www.wantedinrome.com/news/wild-boar-steal-womans-groceries-outside-supermarket-near-rome.html",
+        "date": "2021-05-14"
+      },
+      {
+        "title": "Wild boars stop traffic, plunder garbage and disrupt politics in Rome, Italy",
+        "publisher": "The Washington Post",
+        "url": "https://www.washingtonpost.com/nation/2021/09/29/rome-wild-boar-invasion/",
+        "date": "2021-09-29"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-upper-austria-kangaroo",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Police in northern Austria launched a baffled search for an unreported animal owner after residents repeatedly photographed a lone kangaroo bounding across forests and meadows near the Czech border.",
+    "reveal": "Real. Upper Austria, September 2018. No local zoo or licensed breeder reported a missing marsupial, briefly wrecking Austria's favorite tourist-t-shirt slogan: 'No kangaroos in Austria.'",
+    "date": "2018-09",
+    "country": "AT",
+    "region": "Upper Austria",
+    "place": "Hellmonsödt",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Mystery kangaroo on the loose in Austria. That's right – Austria",
+        "publisher": "Global News",
+        "url": "https://globalnews.ca/news/4428102/austria-kangaroo/",
+        "date": "2018-09-05"
+      },
+      {
+        "title": "Kangaroo on the loose in Austria",
+        "publisher": "ABS-CBN News",
+        "url": "https://www.abs-cbn.com/classified-odd/09/04/18/kangaroo-on-the-loose-in-austria",
+        "date": "2018-09-03"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-major-general-penguin",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "More than 160 uniformed soldiers from Norway's royal guard paraded inside a Scottish zoo to formally promote a resident king penguin from brigadier to major general.",
+    "reveal": "Real. Edinburgh Zoo, August 2023. Major General Sir Nils Olav III is the third penguin in a tradition dating back to 1972 and holds a Guinness World Record as the highest-ranking penguin on Earth.",
+    "date": "2023-08-21",
+    "country": "GB",
+    "region": "Scotland",
+    "place": "Edinburgh",
+    "topics": [
+      "animals",
+      "military"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Major General Sir Nils Olav, Baron of the Bouvet Islands",
+        "publisher": "Edinburgh Zoo",
+        "url": "https://www.edinburghzoo.org.uk/news/major-general-sir-nils-olav-baron-bouvet-islands"
+      },
+      {
+        "title": "A Guard of Honour for Sir Nils Olav – the most famous king penguin in the world",
+        "publisher": "The Royal Edinburgh Military Tattoo",
+        "url": "https://www.edintattoo.co.uk/news/a-guard-of-honour-for-sir-nils-olav-the-most-famous-king-penguin-in-the-world",
+        "date": "2023-08-21"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-airport-seafood-cat",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A stray ginger cat slipped inside a chilled display case at a Russian airport shop overnight and ruined roughly $1,000 worth of gourmet squid, dried fish, and caviar.",
+    "reveal": "Real. Vladivostok International Airport, December 2014. Named Matroska, the cat became a national hero: local Communists praised her strike against 'imperialist prawn,' and a pro hockey team adopted her as a mascot.",
+    "date": "2014-12",
+    "country": "RU",
+    "region": "Primorsky Krai",
+    "place": "Vladivostok",
+    "topics": [
+      "animals",
+      "food",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Communists, Locals Defend Seafood-Guzzling Cat Over Midnight Feast in Store",
+        "publisher": "The Moscow Times",
+        "url": "https://www.themoscowtimes.com/2014/12/12/communists-locals-defend-seafood-guzzling-cat-over-midnight-feast-in-store-a42242",
+        "date": "2014-12-12"
+      },
+      {
+        "title": "WATCH: Burglar cat eats over $1000 worth of seafood",
+        "publisher": "Global News",
+        "url": "https://globalnews.ca/news/1723747/watch-burglar-cat-eats-over-1000-worth-of-seafood/",
+        "date": "2014-12-12"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-commuter-transit-dog",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "City transit officials in Turkey microchipped a stray dog after discovering it rode ferries, metro trains, and trams up to 30 kilometers a day across two continents.",
+    "reveal": "Real. Istanbul, October 2021. Boji waited politely for passengers to exit before boarding and even survived a smear campaign when transit CCTV caught a commuter planting dog poop on a seat to frame him.",
+    "date": "2021-10",
+    "country": "TR",
+    "region": "Istanbul",
+    "place": "Istanbul",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Boji the dog explores Istanbul on his own using public transportation",
+        "publisher": "CBC",
+        "url": "https://www.cbc.ca/player/play/video/1.6201918",
+        "date": "2021-10-06"
+      },
+      {
+        "title": "Meet Boji, Istanbul's commuting street dog and newest influencer",
+        "publisher": "Middle East Eye",
+        "url": "https://www.middleeasteye.net/news/boji-dog-istanbul-commuting-influencer",
+        "date": "2021-10-06"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-blackout-transformer-monkey",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A wild monkey climbed onto the roof of a Kenyan hydroelectric plant, fell onto a transformer, knocked out power across the entire country for hours, and walked away unharmed.",
+    "reveal": "Real. Gitaru Power Station, June 2016. The vervet monkey tripped a 180-megawatt cascade that blacked out Kenya nationwide before Kenya Wildlife Service officers calmly rescued the very lucky culprit.",
+    "date": "2016-06-07",
+    "country": "KE",
+    "region": "Embu",
+    "place": "Gitaru",
+    "topics": [
+      "animals",
+      "tech",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Kenya: Monkey Sparks Nationwide Blackout, Lives to Tell the Tale",
+        "publisher": "Newsweek",
+        "url": "https://www.newsweek.com/kenya-monkey-sparks-nationwide-blackout-lives-tell-tail-467775",
+        "date": "2016-06-08"
+      },
+      {
+        "title": "Nationwide blackout in Kenya after monkey trips transformer",
+        "publisher": "Times of Malta",
+        "url": "https://timesofmalta.com/article/nationwide-blackout-in-kenya-after-monkey-trips-transformer.614709",
+        "date": "2016-06-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-lockdown-street-penguins",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Endangered African penguins left their beachfront colony to waddle down deserted paved streets and sidewalks in a South African coastal town during lockdown.",
+    "reveal": "Real. Simon's Town near Cape Town, April 2020. Conservationists filmed the Boulders Beach birds taking leisurely neighborhood strolls once cars and tourists vanished from the roads.",
+    "date": "2020-04",
+    "country": "ZA",
+    "region": "Western Cape",
+    "place": "Simon's Town",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Viral Video: Penguins Waddle Around Empty Streets Amid South Africa Lockdown",
+        "publisher": "NDTV",
+        "url": "https://www.ndtv.com/offbeat/viral-video-penguins-waddle-around-empty-streets-amid-south-africa-lockdown-2214871",
+        "date": "2020-04-20"
+      },
+      {
+        "title": "COVID-19 lockdown made it easy for these penguins to venture through an empty South African town",
+        "publisher": "KTVU FOX 2",
+        "url": "https://www.ktvu.com/news/covid-19-lockdown-made-it-easy-for-these-penguins-to-venture-through-an-empty-south-african-town",
+        "date": "2020-04-20"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-suspected-spy-pigeon",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Police at an Indian port detained a pigeon for eight months on suspicion of spying for China before realizing it was a lost racing bird from Taiwan.",
+    "reveal": "Real. Mumbai, released February 2024. Caught in May 2023 with leg rings and Chinese characters inked under its wings, the bird waited in an animal hospital until police dropped espionage suspicions and freed it.",
+    "date": "2024-02",
+    "country": "IN",
+    "region": "Maharashtra",
+    "place": "Mumbai",
+    "topics": [
+      "animals",
+      "law",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "India releases pigeon accused of spying",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/world/archives/2024/02/03/2003813036",
+        "date": "2024-02-03"
+      },
+      {
+        "title": "Pigeon suspected of spying for China released in India after PETA intervention, group says",
+        "publisher": "CNN",
+        "url": "https://edition.cnn.com/2024/02/03/india/india-suspected-chinese-spy-pigeon-release-intl-hnk",
+        "date": "2024-02-04"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-wandering-yunnan-elephants",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A herd of wild Asian elephants walked 500 kilometers north out of a Chinese nature reserve, took viral roadside naps, and had to be steered home with drones and food.",
+    "reveal": "Real. Yunnan Province, 2021. The 15 elephants reached the outskirts of Kunming while authorities evacuated over 150,000 people and dropped tons of fruit to guide them safely back south—with a newborn calf in tow.",
+    "date": "2021-06",
+    "country": "CN",
+    "region": "Yunnan",
+    "place": "Kunming",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "China's wandering elephant herd rests",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/world/archives/2021/06/09/2003758865",
+        "date": "2021-06-09"
+      },
+      {
+        "title": "Elephant that walked 500 km across southern China with herd returned to reserve",
+        "publisher": "CP24",
+        "url": "https://www.cp24.com/news/world/2021/07/08/elephant-that-walked-500-km-across-southern-china-with-herd-returned-to-reserve/",
+        "date": "2021-07-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-fugitive-bay-penguin",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A one-year-old penguin scaled a rock wall at a Japanese aquarium, slipped into a river, and evaded keepers and Coast Guard patrol boats for 82 days.",
+    "reveal": "Real. Tokyo Sea Life Park, March to May 2012. Known only as Penguin 337, the Humboldt penguin thrived on wild Tokyo Bay fish for nearly three months before keepers netted it healthy on a riverbank.",
+    "date": "2012-05-24",
+    "country": "JP",
+    "region": "Tokyo",
+    "place": "Tokyo",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Japan's runaway penguin back in captivity",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/world/archives/2012/05/26/2003533784",
+        "date": "2012-05-26"
+      },
+      {
+        "title": "Japan's escaped penguin recaptured after 82 days on the run",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2012/may/25/japan-escaped-penguin-recaptured-run",
+        "date": "2012-05-25"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-seoul-traffic-zebra",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A two-year-old zebra broke through a wooden zoo fence in South Korea's capital and trotted past startled drivers at traffic lights and through narrow residential alleys for three hours.",
+    "reveal": "Real. Seoul Children's Grand Park, March 2023. Sero poked his nose into trash bins and dodged rescuers until crews cornered him in a backstreet, tranquilized him safely, and returned him with zero injuries.",
+    "date": "2023-03-23",
+    "country": "KR",
+    "region": "Seoul",
+    "place": "Seoul",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Sero the zebra back in zoo after roaming Seoul streets for 3 hours",
+        "publisher": "Korea JoongAng Daily",
+        "url": "https://www.koreajoongangdaily.com/korea/sero-the-zebra-back-in-zoo-after-roaming-seoul-streets-for-3-hours/11550665",
+        "date": "2023-03-24"
+      },
+      {
+        "title": "Video reveals escaped zebra in Seoul lost parents",
+        "publisher": "The Korea Herald",
+        "url": "https://www.koreaherald.com/article/3087194",
+        "date": "2023-03-24"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-highway-runaway-ostrich",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Police in eastern Taiwan fined a pet owner after his startled ostrich sprinted 2.5 kilometers down a highway, ran a red light, and hid in a metal factory.",
+    "reveal": "Real. Yuli Township, Hualien County, December 2025. Drivers filmed the bird weaving through traffic before factory workers helped corral it unharmed; online commenters joked someone had dropped their epic video-game mount.",
+    "date": "2025-12-22",
+    "country": "TW",
+    "region": "Hualien County",
+    "place": "Yuli",
+    "topics": [
+      "animals",
+      "transport",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Hualien man fined after ostrich runs loose",
+        "publisher": "Taipei Times",
+        "url": "https://www.taipeitimes.com/News/taiwan/archives/2025/12/23/2003849368",
+        "date": "2025-12-23"
+      },
+      {
+        "title": "落跑鴕鳥花蓮街頭狂奔 網笑：誰的「＋9史詩座騎」掉了？",
+        "publisher": "Liberty Times",
+        "url": "https://news.ltn.com.tw/news/life/breakingnews/5286333",
+        "date": "2025-12-22"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-kitchen-wall-elephant",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A wild male elephant smashed its head straight through a family's brick kitchen wall in Thailand at night, rummaged through drawers with its trunk, and knocked over cooking pans.",
+    "reveal": "Real. Hua Hin, June 2021. The repeat visitor, a local bull named Boonchuay, was attracted by kitchen smells, grabbed a plastic bag from a cabinet, and left the startled homeowners unharmed with a massive renovation bill.",
+    "date": "2021-06",
+    "country": "TH",
+    "region": "Prachuap Khiri Khan",
+    "place": "Hua Hin",
+    "topics": [
+      "animals",
+      "food",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Elephant in the room: Hua Hin family gets repeat mammoth visitor",
+        "publisher": "Bangkok Post",
+        "url": "https://www.bangkokpost.com/thailand/general/2136623/elephant-in-the-room-hua-hin-family-gets-repeat-mammoth-visitor",
+        "date": "2021-06-22"
+      },
+      {
+        "title": "Elephant that broke into Hua Hin kitchen now in memes and ads",
+        "publisher": "The Thaiger",
+        "url": "https://thethaiger.com/news/hua-hin/elephant-that-broke-into-hua-hin-kitchen-now-in-memes-and-ads",
+        "date": "2021-06-23"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-jungle-selfie-monkey",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A Malaysian student who tracked his missing smartphone to a patch of jungle behind his house opened the photo gallery to find blurry selfies taken by a wild monkey.",
+    "reveal": "Real. Batu Pahat, Johor, September 2020. After ringing his missing phone and finding it muddy beneath a palm tree, he discovered a long-tailed macaque had also recorded video of itself trying to eat the screen.",
+    "date": "2020-09",
+    "country": "MY",
+    "region": "Johor",
+    "place": "Batu Pahat",
+    "topics": [
+      "animals",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Malaysian man finds monkey's selfies and video after finding lost phone in jungle",
+        "publisher": "The Indian Express",
+        "url": "https://indianexpress.com/article/trending/trending-globally/malaysian-man-monkey-selfies-lost-phone-6598278/",
+        "date": "2020-09-16"
+      },
+      {
+        "title": "Boy finds lost phone with a series of monkey selfies in it",
+        "publisher": "India Today",
+        "url": "https://www.indiatoday.in/trending-news/story/boy-finds-lost-phone-with-a-series-of-monkey-selfies-in-it-1722479-2020-09-16",
+        "date": "2020-09-16"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-drug-raid-parrot",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Police raiding a suspected crack house in northern Brazil detained a green parrot after it shouted a warning to dealers, then refused to speak at the station.",
+    "reveal": "Real. Teresina, Piauí, April 2019. Trained to squawk 'Mamãe, polícia!' ('Mom, police!'), the loyal lookout clammed up completely for officers and reporters before being handed over to a local zoo.",
+    "date": "2019-04",
+    "country": "BR",
+    "region": "Piauí",
+    "place": "Teresina",
+    "topics": [
+      "animals",
+      "crime",
+      "law"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Brazilian police confiscate parrot trained to warn drug dealers of raid",
+        "publisher": "The Washington Post",
+        "url": "https://www.washingtonpost.com/nation/2019/04/25/mama-police-parrot-tipped-off-drug-dealers-raid-authorities-say-now-hes-custody/",
+        "date": "2019-04-29"
+      },
+      {
+        "title": "Parrot Tipped Off Drug Dealers To A Raid In Brazil, Yelled Mom, Police",
+        "publisher": "NDTV",
+        "url": "https://www.ndtv.com/offbeat/parrot-tipped-off-drug-dealers-to-a-raid-in-brazil-now-it-is-in-custody-2028644",
+        "date": "2019-04-25"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-gated-community-capybaras",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Hundreds of giant wild rodents moved into an ultra-wealthy gated community outside Argentina's capital, chewing manicured lawns and sparking a national wave of class-warfare memes.",
+    "reveal": "Real. Nordelta near Buenos Aires, August 2021. Ecologists quickly pointed out the luxury suburb had been built directly on top of the capybaras' historic wetlands—making the giant rodents the original homeowners.",
+    "date": "2021-08",
+    "country": "AR",
+    "region": "Buenos Aires",
+    "place": "Nordelta",
+    "topics": [
+      "animals",
+      "politics",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "World's largest rodents are taking over a fancy gated community in Argentina",
+        "publisher": "Live Science",
+        "url": "https://www.livescience.com/capybaras-invade-gated-community-in-argentina.html",
+        "date": "2021-09-03"
+      },
+      {
+        "title": "Argentina: Capybaras, World's Biggest Rodents, Reoccupy Rich Suburb",
+        "publisher": "Business Insider",
+        "url": "https://www.businessinsider.com/argentina-capybaras-worlds-biggest-rodents-reoccupy-rich-suburb-2021-9",
+        "date": "2021-09-05"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-bridge-foreman-dog",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "A stray dog in Paraguay caught the 5:30 a.m. workers' bus and riverboat every day to supervise construction of an international highway bridge across the border into Brazil.",
+    "reveal": "Real. Carmelo Peralta, 2025–2026. Nicknamed 'El Capataz Rubio' ('Foreman Rubio'), the stray rode both ways with Bioceanic Bridge crews in rain and cold and received an official tribute from Paraguay's public works ministry.",
+    "date": "2025-10-11",
+    "country": "PY",
+    "region": "Alto Paraguay",
+    "place": "Carmelo Peralta",
+    "topics": [
+      "animals",
+      "work",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Un trabajador más pero de cuatro patas: El rubio capataz que \"supervisa\" la obra del Puente Bioceánico",
+        "publisher": "Última Hora",
+        "url": "https://www.ultimahora.com/un-trabajador-mas-pero-de-cuatro-patas-el-rubio-capataz-que-supervisa-la-obra-del-puente-bioceanico",
+        "date": "2025-10-11"
+      },
+      {
+        "title": "Mirá el homenaje que recibió “Rubio”, el perro del Puente de la Bioceánica",
+        "publisher": "ABC Color",
+        "url": "https://www.abc.com.py/nacionales/2026/07/17/mira-el-homenaje-que-recibio-rubio-el-perro-del-puente-de-la-bioceanica/",
+        "date": "2026-07-17"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-trail-selfie-bear",
+    "deck": "animals",
+    "verdict": "real",
+    "headline": "Wildlife officials in northern Mexico set live traps for an overly friendly wild black bear after it stood on its hind legs, sniffed a hiker's hair, and posed for selfies.",
+    "reveal": "Real. Chipinque Ecological Park in Monterrey, July 2020. The hiker stayed frozen still while snapping the viral photo; officials safely caught the overly social bear weeks later and moved it to a remote reserve.",
+    "date": "2020-07",
+    "country": "MX",
+    "region": "Nuevo León",
+    "place": "Monterrey",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Mexico sets traps for friendly bear that posed for 'selfies'",
+        "publisher": "The Philadelphia Inquirer",
+        "url": "https://www.inquirer.com/news/bear-selfie-mexico-20200724.html",
+        "date": "2020-07-24"
+      },
+      {
+        "title": "Over-friendly black bear caught by Mexico wildlife officials in Nuevo León",
+        "publisher": "El Universal",
+        "url": "https://www.eluniversal.com.mx/english/over-friendly-black-bear-caught-mexico-wildlife-officials-nuevo-leon/",
+        "date": "2020-08-11"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-laundromat-badger",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "An early-morning customer at a 24-hour Oregon laundromat called animal control after discovering a wild badger curled up asleep inside an open front-loading dryer on top of warm towels.",
+    "reveal": "Made up. Though honestly, if you are a nocturnal mammal looking for a warm burrow at 5 a.m., a tumble dryer on permanent press is hard to beat.",
+    "date": "2022-02",
+    "country": "US",
+    "region": "Oregon",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-barn-cider-porcupine",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Orchard workers in Vermont arrived at 6 a.m. to find a tipsy porcupine snoozing beside a leaking hard-cider barrel, refusing to budge from a wooden workbench for three hours.",
+    "reveal": "Made up. Porcupines really do love salty wood handles and windfall apples, but this particular cider binge never made the Vermont blotter.",
+    "date": "2019-10",
+    "country": "US",
+    "region": "Vermont",
+    "topics": [
+      "animals",
+      "drink",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-ferry-ticket-raven",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Transit staff at a Canadian coastal ferry terminal installed plastic hoods on ticket kiosks after a resident raven learned to tug paper receipts out and drop them down a grate.",
+    "reveal": "Made up. Corvids are smart enough to pull off petty transit sabotage for fun, which is exactly why nobody doubted this one for a second.",
+    "date": "2023-05",
+    "country": "CA",
+    "region": "British Columbia",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-post-office-sheep",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Three escaped sheep followed a mail trolley through automatic doors into a rural Irish post office and spent 25 minutes chewing padded envelopes before a local farmer guided them out.",
+    "reveal": "Made up. No padded mailers were harmed by Irish livestock, though several real sheep have wandered into British and Irish shops over the years.",
+    "date": "2018-04",
+    "country": "IE",
+    "topics": [
+      "animals",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-sauna-door-lynx",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Three naked lakeside sauna-goers in Sweden locked themselves inside a wooden changing room for 50 minutes after a wild lynx stretched out for a nap across the porch bench.",
+    "reveal": "Made up. Wild Eurasian lynx are far too shy to claim a warm sauna bench, leaving Swedish bathers free to sprint into the snow undisturbed.",
+    "date": "2021-11",
+    "country": "SE",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-tram-depot-beaver",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Streetcar crews in Austria delayed two early-morning departures after a wild beaver dragged six wooden survey stakes across a depot switchyard overnight to start a dam between the rails.",
+    "reveal": "Made up. Beavers will instinctively try to plug anything that sounds like running water, not an electric tram depot—at least not yet.",
+    "date": "2020-05",
+    "country": "AT",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-brewery-cellar-marten",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Workers at a small German brewery called wildlife rescuers after a stone marten chewed through a plastic fermentation hose and was found wobbling behind a stack of empty crates.",
+    "reveal": "Made up. Stone martens are infamous across Germany for chewing car ignition cables, not staging unauthorized cellar tastings.",
+    "date": "2017-09",
+    "country": "DE",
+    "topics": [
+      "animals",
+      "drink"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-bakery-van-peacock",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "An escaped estate peacock hopped into the open rear doors of a parked bread delivery van in Spain and rode 14 kilometers to the next town before the driver noticed.",
+    "reveal": "Made up. Still, a quiet peacock hitchhiking among warm loaves of bread sounds far more civilized than most actual morning commuters.",
+    "date": "2022-08",
+    "country": "ES",
+    "topics": [
+      "animals",
+      "transport",
+      "food"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-bicycle-lane-swan",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "A territorial mute swan in the Netherlands halted morning commuters along a canal bike path every Tuesday until a municipal worker arrived with a blue plastic broom to escort cyclists past.",
+    "reveal": "Made up. Swans do terrorize Dutch footpaths with remarkable commitment, just not on a strict Tuesday-only schedule.",
+    "date": "2021-04",
+    "country": "NL",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-library-drop-hedgehog",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Librarians at a British town branch arrived to find a hedgehog curled fast asleep inside the outdoor metal book-drop bin on top of 19 returned paperbacks.",
+    "reveal": "Made up. No overdue fines were assessed on this fictional hedgehog, though town librarians would probably still ask it to keep the noise down.",
+    "date": "2019-09",
+    "country": "GB",
+    "topics": [
+      "animals",
+      "nature"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-bus-queue-alpaca",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "An escaped alpaca stood calmly in a suburban commuter bus queue in Argentina for 35 minutes before drivers finally coaxed it onto a grassy median using chopped carrots.",
+    "reveal": "Made up. Alpacas have impeccable posture for waiting in line, which makes this fake alarmingly easy to picture.",
+    "date": "2020-11",
+    "country": "AR",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-hardware-store-iguana",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "A large green iguana dropped from a ceiling vent onto a display of PVC pipe fittings inside a Mexican hardware store and refused to move for two hours.",
+    "reveal": "Made up. Iguanas do occasionally rain out of cold trees in Florida, but this plumbing-aisle standoff is pure fiction.",
+    "date": "2023-01",
+    "country": "MX",
+    "topics": [
+      "animals",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-tollbooth-condor",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "A juvenile Andean condor perched on the roof of a mountain highway tollbooth in Argentina for four hours, forcing attendants to collect cash fares from the opposite window.",
+    "reveal": "Made up. With a three-meter wingspan overhead, nobody would blame the attendants, even if this particular toll shift never happened.",
+    "date": "2018-07",
+    "country": "AR",
+    "topics": [
+      "animals",
+      "transport",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-karaoke-rooster-ban",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Village officials in Taiwan temporarily impounded a prize rooster after neighbors complained it began crowing non-stop whenever a nearby street speaker played an evening ballad.",
+    "reveal": "Made up. Roosters have triggered real noise disputes worldwide, but none has been officially cited as an uninvited karaoke duet partner.",
+    "date": "2024-03",
+    "country": "TW",
+    "topics": [
+      "animals",
+      "music",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-scooter-helmet-macaque",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "A wild macaque in Malaysia unclipped the plastic chin strap on a parked motorbike and hauled a white open-face helmet 30 meters up a banyan tree while shoppers watched.",
+    "reveal": "Made up. Temple macaques really do steal sunglasses and sandals to barter for snacks, so a full helmet heist is only a matter of time.",
+    "date": "2022-06",
+    "country": "MY",
+    "topics": [
+      "animals",
+      "crime",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-noodle-stall-duck",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "An escaped domestic duck began waddling into a roadside noodle stall in Thailand every morning at 6:30 a.m. to wait silently beside the same retired mechanic's plastic stool.",
+    "reveal": "Made up. Heartwarming, deadpan, and completely invented—though plenty of real street animals do keep stricter breakfast schedules than their owners.",
+    "date": "2023-09",
+    "country": "TH",
+    "topics": [
+      "animals",
+      "food"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-ferry-horn-camel",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Port workers in western Turkey moved a parked pickup truck after a tethered camel leaned across a metal railing and repeatedly pressed the steering-wheel horn with its chin.",
+    "reveal": "Made up. Camels are famously stubborn and loud enough on their own without borrowing a pickup truck's horn.",
+    "date": "2019-03",
+    "country": "TR",
+    "topics": [
+      "animals",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-market-radio-goat",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "A wandering goat at a Kenyan outdoor market chewed through a coiled power cord and dragged a battery-powered radio two alleys away while a morning talk show kept playing.",
+    "reveal": "Made up. Goats will happily sample almost any loose cable, but this travelling broadcast never actually aired.",
+    "date": "2021-07",
+    "country": "KE",
+    "topics": [
+      "animals",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-vending-hatch-tanuki",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Firefighters in Japan freed a wild raccoon dog trapped inside the bottom storage compartment of an outdoor drink vending machine after a technician left the hatch unlatched for four minutes.",
+    "reveal": "Made up. Japanese tanuki show up in odd suburban spots all the time, just not inside a stocked beverage cabinet.",
+    "date": "2024-01",
+    "country": "JP",
+    "topics": [
+      "animals",
+      "drink"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "gemini"
+  },
+  {
+    "id": "ag-ski-locker-reindeer",
+    "deck": "animals",
+    "verdict": "made-up",
+    "headline": "Staff at a rural Swedish ski lodge evacuated a ground-floor boot room for 40 minutes after a curious reindeer followed two guests indoors and began licking salt off their gloves.",
+    "reveal": "Made up. Reindeer really do crave road salt in winter, which is why this fake lodge invasion sounds almost suspiciously accurate.",
+    "date": "2022-01",
+    "country": "SE",
+    "topics": [
+      "animals",
+      "sports"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "gemini"
+  }
+]
