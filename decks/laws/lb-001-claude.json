@@ -1,0 +1,1107 @@
+[
+ {
+  "id": "lb-salmon-name-changes",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "Hundreds of people in Taiwan legally changed their names to include the word 'salmon' after a sushi chain promised free meals to anyone whose ID card said so.",
+  "reveal": "Real. Taiwan, March 2021: 331 people took part. The interior ministry begged them to stop, since everyone gets only three name changes. A year later, some were still stuck being Salmon.",
+  "date": "2021-03-17",
+  "country": "TW",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Legislators debate name-change limits after 'salmon chaos'",
+    "publisher": "Taipei Times",
+    "url": "https://taipeitimes.com/News/taiwan/archives/2022/05/28/2003778928",
+    "date": "2022-05-28"
+   },
+   {
+    "title": "Taiwan pleads with citizens not to change name to 'Salmon'",
+    "publisher": "Inquirer / AFP",
+    "url": "https://newsinfo.inquirer.net/1408437/taiwan-pleads-with-citizens-not-to-change-name-to-salmon",
+    "date": "2021-03-18"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-too-much-italian-on-menu",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A government language office warned an Italian restaurant that its menu broke the law because it contained too many Italian words, including the word 'pasta'.",
+  "reveal": "Real. Montreal, 2013: 'Pastagate'. Quebec's French-language watchdog later admitted it had been overzealous, and its head resigned within weeks.",
+  "date": "2013-02-14",
+  "country": "CA",
+  "region": "Quebec",
+  "place": "Montreal",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Language watchdog admits being overzealous on word pasta on menu",
+    "publisher": "CTV News Montreal",
+    "url": "https://montreal.ctvnews.ca/language-watchdog-admits-being-overzealous-on-word-pasta-on-menu-1.1164110"
+   },
+   {
+    "title": "'Pastagate' official resigns in Quebec",
+    "publisher": "UPI",
+    "url": "https://www.upi.com/Odd_News/2013/03/09/Pastagate-official-resigns-in-Quebec/UPI-29941362812677/",
+    "date": "2013-03-09"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-driving-licence-most-wanted",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "Police in Ireland hunted a serial traffic offender with more than 50 different addresses, until someone realised his 'name' meant driving licence in Polish.",
+  "reveal": "Real. Ireland, revealed in 2009. Officers had been copying 'Prawo Jazdy' off Polish licences as the driver's name. An internal memo called it quite embarrassing.",
+  "date": "2009-02-19",
+  "country": "IE",
+  "topics": [
+   "law",
+   "transport"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "Dictionary helps crack case of notorious Polish serial offender",
+    "publisher": "The Irish Times",
+    "url": "https://www.irishtimes.com/news/dictionary-helps-crack-case-of-notorious-polish-serial-offender-1.702863"
+   },
+   {
+    "title": "Irish cops tripped up by Prawo Jazdy dragnet",
+    "publisher": "The Register",
+    "url": "https://www.theregister.com/2009/02/19/prawo_jazdy/",
+    "date": "2009-02-19"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-forbidden-to-get-sick",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A mayor in southern Italy signed an official decree forbidding the residents of his ageing village from getting sick, with higher taxes for anyone who neglected their health.",
+  "reveal": "Real. Sellia, Calabria, 2015. Population 537, most of them over 65. The decree came with check-ups at a new health centre. Enforcement is presumably tricky.",
+  "date": "2015-08-05",
+  "country": "IT",
+  "region": "Calabria",
+  "place": "Sellia",
+  "topics": [
+   "law",
+   "health"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Calabrian village 'bans dying'",
+    "publisher": "ANSA",
+    "url": "https://ansa.it/english/news/general_news/2015/08/06/calabrian-village-bans-dying_311dbf48-4dfc-414e-a107-08228c0914d4.html",
+    "date": "2015-08-06"
+   },
+   {
+    "title": "Small Italian town in Calabria bans dying, threatens higher taxes",
+    "publisher": "International Business Times",
+    "url": "https://ibtimes.com/new-death-tax-small-italian-town-calabria-bans-dying-threatens-higher-taxes-2048040"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-cyber-minister-no-computer",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A country's newly appointed minister in charge of cybersecurity told parliament he had never used a computer in his life, because his staff had always done that for him.",
+  "reveal": "Real. Japan, 2018. He also seemed unsure what a USB drive was. One commentator joked that no hacker could ever steal his data.",
+  "date": "2018-11-14",
+  "country": "JP",
+  "topics": [
+   "politics",
+   "tech"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "Japan's new minister of cybersecurity has never used a computer",
+    "publisher": "Euronews",
+    "url": "https://www.euronews.com/2018/11/16/japan-s-new-minister-of-cybersecurity-has-never-used-a-computer-ever",
+    "date": "2018-11-16"
+   },
+   {
+    "title": "'I've never used a computer,' says Japan's new cybersecurity minister",
+    "publisher": "The Irish Times",
+    "url": "https://www.irishtimes.com/news/world/asia-pacific/i-ve-never-used-a-computer-says-japan-s-new-cybersecurity-minister-1.3698624"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-whole-country-younger",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "An entire country became one or two years younger overnight when a new law took effect, scrapping its traditional way of counting people's ages.",
+  "reveal": "Real. South Korea, 28 June 2023. Under 'Korean age', babies were one at birth and everyone aged a year every 1 January, so a December baby could be two within days.",
+  "date": "2023-06-28",
+  "country": "KR",
+  "topics": [
+   "law",
+   "family"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "South Koreans become a year or two younger as traditional way of counting age scrapped",
+    "publisher": "Inquirer / Reuters",
+    "url": "https://newsinfo.inquirer.net/?p=1794302",
+    "date": "2023-06-28"
+   },
+   {
+    "title": "South Koreans get younger as traditional age system dropped",
+    "publisher": "Philstar / AFP",
+    "url": "https://www.philstar.com/world/2023/06/28/2277204/south-koreans-get-younger-traditional-age-system-dropped",
+    "date": "2023-06-28"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-lonely-guinea-pig-law",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A European country made it illegal to keep just one guinea pig, ruling the animals are too social to live alone, and rent-a-guinea-pig services soon followed.",
+  "reveal": "Real. Switzerland's 2008 animal-welfare rules. When one pet dies, owners can rent a companion for the survivor instead of breaking the law.",
+  "date": "2008-09",
+  "country": "CH",
+  "topics": [
+   "law",
+   "animals"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Rent a guinea pig in Switzerland",
+    "publisher": "PRI / The World",
+    "url": "https://www.pri.org/stories/2011-09-21/rent-guinea-pig-switzerland",
+    "date": "2011-09-21"
+   },
+   {
+    "title": "QuickCheck: Is it illegal to own just one guinea pig in Switzerland?",
+    "publisher": "The Star",
+    "url": "https://thestar.com.my/news/true-or-not/2022/10/18/quickcheck-is-it-illegal-to-own-just-one-guinea-pig-in-switzerland",
+    "date": "2022-10-18"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-longest-word-repealed",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A German state repealed an old beef-labelling law and, in doing so, wiped out what linguists considered the longest genuine word in the German language.",
+  "reveal": "Real. 2013. Farewell to the 63-letter Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz, made obsolete when the EU dropped a cattle-testing rule. Germans can now breathe.",
+  "date": "2013-06-03",
+  "country": "DE",
+  "region": "Mecklenburg-Vorpommern",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Law change kills Germany's longest word",
+    "publisher": "AP via 6abc",
+    "url": "https://6abc.com/archive/9126852/",
+    "date": "2013-06-04"
+   },
+   {
+    "title": "European Union regulations spell end for Germany's longest word",
+    "publisher": "NZ Herald",
+    "url": "https://nzherald.co.nz/world/european-union-regulations-spell-end-for-germanys-longest-word/SJXH5DYAZW35NXYEHPQFKPMH2I"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-village-renames-itself",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A tiny Austrian village voted to officially change its name after decades of tourists posing for photos at its road sign, and repeatedly stealing it.",
+  "reveal": "Real. On 1 January 2021, Fucking, Upper Austria, became Fugging. The sign had already been set in concrete to stop thefts.",
+  "date": "2020-11-26",
+  "country": "AT",
+  "region": "Upper Austria",
+  "place": "Fugging",
+  "topics": [
+   "law",
+   "transport"
+  ],
+  "spicy": true,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "Austrian village of F**king renames itself Fugging after unwanted attention",
+    "publisher": "Euronews",
+    "url": "https://www.euronews.com/2020/11/26/austrian-village-of-f-king-renames-itself-fugging-after-unwanted-attention",
+    "date": "2020-11-26"
+   },
+   {
+    "title": "Austria bids farewell to Fucking after a millennium of misunderstandings",
+    "publisher": "The Irish Times",
+    "url": "https://www.irishtimes.com/news/world/europe/austria-bids-farewell-to-fucking-after-a-millennium-of-misunderstandings-1.4421439"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-officially-dead-18-years",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A farmer in India spent 18 years trying to convince the government he was alive after a relative bribed an official to register him as dead and took his land.",
+  "reveal": "Real. Uttar Pradesh, 1976 to 1994. He added 'Mritak' (deceased) to his name, founded an association for the officially dead and later won an Ig Nobel prize.",
+  "date": "1994",
+  "country": "IN",
+  "region": "Uttar Pradesh",
+  "place": "Azamgarh",
+  "topics": [
+   "law",
+   "family",
+   "money"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "sources": [
+   {
+    "title": "'Dead' fight for life in UP",
+    "publisher": "Dawn",
+    "url": "https://www.dawn.com/news/193047/"
+   },
+   {
+    "title": "India's land of the living dead",
+    "publisher": "Mail & Guardian",
+    "url": "https://mg.co.za/article/2006-05-19-indias-land-of-the-living-dead",
+    "date": "2006-05-19"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-burrito-not-a-sandwich",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A judge was asked to decide whether a burrito counts as a sandwich, and ruled that it does not, citing a dictionary and sworn testimony from a chef.",
+  "reveal": "Real. Massachusetts, 2006. A bakery chain's lease banned rival sandwich shops from its mall, so it tried to block a burrito restaurant. The ruling came down to two slices of bread.",
+  "date": "2006-11",
+  "country": "US",
+  "region": "Massachusetts",
+  "place": "Worcester",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "Panera loses lawsuit to Qdoba over lease issue",
+    "publisher": "Fast Casual",
+    "url": "https://www.fastcasual.com/news/panera-loses-lawsuit-to-qdoba-over-lease-issue/",
+    "date": "2006-11-14"
+   },
+   {
+    "title": "Massachusetts judge settles dispute by ruling burrito is not a sandwich",
+    "publisher": "Fox News / AP",
+    "url": "https://foxnews.com/story/massachusetts-judge-settles-dispute-by-ruling-burrito-is-not-a-sandwich.amp"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-541-days-no-government",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A European country went 541 days without forming a government after an election, setting a world record, while daily life carried on more or less as normal.",
+  "reveal": "Real. Belgium, 2010 to 2011. A caretaker government kept the lights on, and some Belgians celebrated passing the previous record with parties.",
+  "date": "2011-12-06",
+  "country": "BE",
+  "topics": [
+   "politics",
+   "law"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Longest time without a government in peacetime",
+    "publisher": "Guinness World Records",
+    "url": "https://www.guinnessworldrecords.com/world-records/96893-longest-time-without-a-government-in-peacetime"
+   },
+   {
+    "title": "Belgium marks 'political record'",
+    "publisher": "Al Jazeera",
+    "url": "https://www.aljazeera.com/news/2011/2/17/belgium-marks-political-record",
+    "date": "2011-02-17"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-cucumber-curvature-rules",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "Rules that limited how much a top-grade cucumber was allowed to bend, no more than 10mm for every 10cm of length, were officially scrapped after two decades.",
+  "reveal": "Real. European Union, July 2009. Marketing standards for 26 fruits and vegetables went. The agriculture commissioner welcomed back the curved cucumber and the knobbly carrot.",
+  "date": "2009-07-01",
+  "country": "BE",
+  "region": "Brussels",
+  "place": "Brussels",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Ugly fruit and vegetables return",
+    "publisher": "The Irish Times",
+    "url": "https://www.irishtimes.com/news/ugly-fruit-and-vegetables-return-1.842642"
+   },
+   {
+    "title": "Europe in a pickle over rules for crooked cucumbers",
+    "publisher": "NZ Herald",
+    "url": "https://nzherald.co.nz/lifestyle/europe-in-a-pickle-over-rules-for-crooked-cucumbers/E3XASH55LZGTACURLDWQVA42SI"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-unpronounceable-protest-name",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "Parents fined for failing to register their son's name tried to call him a 43-character string of consonants ending in 11116, which they said was pronounced 'Albin'.",
+  "reveal": "Real. Sweden, 1996. The court rejected it. Their next attempt, the single letter 'A', also pronounced Albin, was rejected too.",
+  "date": "1996-05",
+  "country": "SE",
+  "region": "Halland",
+  "place": "Halmstad",
+  "topics": [
+   "law",
+   "family"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "An Apple by any other name",
+    "publisher": "Maclean's",
+    "url": "https://macleans.ca/culture/an-apple-by-any-other-name/"
+   },
+   {
+    "title": "Nutella, Smelly Head and other names you can't call your child",
+    "publisher": "The Week",
+    "url": "https://theweek.com/people/62270/nutella-smelly-head-and-other-names-you-cant-call-your-child"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-hashtag-sharp-word",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A national terminology commission officially replaced the word 'hashtag' in all government documents with a home-grown term meaning 'sharp word'.",
+  "reveal": "Real. France, 2013: the hashtag became the 'mot-dièse'. Critics pointed out that a dièse is the musical sharp sign, which slants the wrong way.",
+  "date": "2013-01-23",
+  "country": "FR",
+  "topics": [
+   "law",
+   "tech"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "Mon Dieu! A 'hashtag' is now a 'mot-dièse' in France",
+    "publisher": "NPR",
+    "url": "https://www.npr.org/sections/thetwo-way/2013/01/25/170285910/mon-dieu-a-hashtag-is-now-a-mot-di-se-in-france",
+    "date": "2013-01-25"
+   },
+   {
+    "title": "France bins Twitter's 'hashtag' for Gallic word",
+    "publisher": "The Local",
+    "url": "https://www.thelocal.com/20130123/france-bins-twitters-hashtag-for-gallic-version",
+    "date": "2013-01-23"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-rejected-baby-names-list",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A government published its list of baby names rejected by officials, including a full stop, '4Real', 'Mafia No Fear' and 'Lucifer'.",
+  "reveal": "Real. New Zealand, 2013. Names can't be offensive, absurdly long or sound like a title, which is why 'Justice' was the most-rejected name of all.",
+  "date": "2013-05-01",
+  "country": "NZ",
+  "topics": [
+   "law",
+   "family"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "'4Real'? New Zealand reveals banned baby names",
+    "publisher": "Dawn / AFP",
+    "url": "https://www.dawn.com/news/1025932",
+    "date": "2013-05-01"
+   },
+   {
+    "title": "Banned babies' names list updated in New Zealand",
+    "publisher": "The Irish Times",
+    "url": "https://www.irishtimes.com/news/banned-babies-names-list-updated-in-new-zealand-1.1380350"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-time-travel-dramas-discouraged",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A national broadcasting regulator discouraged television dramas about time travel, saying they disrespected history and lacked positive thoughts and meaning.",
+  "reveal": "Real. China, 2011. Shows about modern people slipping back into imperial courts had become huge hits. The guidance came out on 1 April and was not a joke.",
+  "date": "2011-04-01",
+  "country": "CN",
+  "topics": [
+   "law",
+   "art"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "China bans time travel",
+    "publisher": "The Diplomat",
+    "url": "https://thediplomat.com/2011/04/china-bans-time-travel",
+    "date": "2011-04"
+   },
+   {
+    "title": "China bans time travel films and shows",
+    "publisher": "Backstage / The Hollywood Reporter",
+    "url": "https://www.backstage.com/magazine/article/china-bans-time-travel-films-shows-56415/"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-no-planet-destroying-station",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A government formally turned down a citizens' petition to build a planet-destroying space station, citing the cost and saying it 'does not support blowing up planets'.",
+  "reveal": "Real. United States, 2013. More than 34,000 people signed. The White House reply put the price at over $850 quadrillion and noted a single pilot could destroy the thing anyway.",
+  "date": "2013-01-11",
+  "country": "US",
+  "region": "District of Columbia",
+  "place": "Washington",
+  "topics": [
+   "politics",
+   "space"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "White House responds to Death Star petition",
+    "publisher": "TechCrunch",
+    "url": "https://techcrunch.com/2013/01/11/white-house-responds-to-death-star-petition-obama-does-not-support-blowing-up-planets",
+    "date": "2013-01-11"
+   },
+   {
+    "title": "No 'Death Star' for U.S. military, White House says",
+    "publisher": "Scientific American",
+    "url": "https://www.scientificamerican.com/article/no-death-star-for-us-military/"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-weather-agency-nickname",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A national weather agency spent about $220,000 on a rebrand, then asked journalists to stop using its well-known nickname in the middle of a flood crisis.",
+  "reveal": "Real. Australia's Bureau of Meteorology, 2022. It hadn't reserved its new social media handles, which other people grabbed first. Two days later it said everyone could call it whatever they liked.",
+  "date": "2022-10-18",
+  "country": "AU",
+  "topics": [
+   "politics",
+   "weather"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "'It's ridiculous': Bureau of Meteorology's rebrand racked up $220k bill",
+    "publisher": "The Canberra Times",
+    "url": "https://www.canberratimes.com.au/story/7948806/its-ridiculous-bureau-of-meteorologys-rebrand-racked-up-220k-bill/"
+   },
+   {
+    "title": "The Bureau of Meteorology reneges on rebrand after online roasting",
+    "publisher": "B&T",
+    "url": "https://www.bandt.com.au/the-bureau-of-meteorology-reneges-on-rebrand-after-it-gets-roasted-online/"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-snake-swallowed-the-money",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "An exam-board clerk told auditors that 36 million in cash missing from her office vault had been swallowed by a mysterious snake.",
+  "reveal": "Real. Makurdi, Nigeria, 2018: about $100,000 in naira. The anti-corruption agency tweeted that it shows no mercy for money-swallowing snakes. She later denied blaming the snake.",
+  "date": "2018-02-10",
+  "country": "NG",
+  "region": "Benue",
+  "place": "Makurdi",
+  "topics": [
+   "law",
+   "animals",
+   "money"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "sources": [
+   {
+    "title": "Nigerians react as snake is blamed for $100,000 missing state funds",
+    "publisher": "Africanews",
+    "url": "https://www.africanews.com/2018/02/11/nigerians-react-as-snake-is-blamed-for-100000-missing-state-funds",
+    "date": "2018-02-11"
+   },
+   {
+    "title": "JAMB clerk: I never said snake swallowed it",
+    "publisher": "TheCable",
+    "url": "https://www.thecable.ng/missing-36m-i-didnt-say-snake-swallowed-any-money-says-jamb-sales-clerk"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-rats-drank-seized-liquor",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "Police in an Indian state with a total ban on alcohol said rats had drunk most of the confiscated liquor in their storerooms, roughly 900,000 litres.",
+  "reveal": "Real. Bihar, 2017. Officers said the rodents gnawed through the bottle caps. A senior officer responded by ordering breathalyser tests for his own staff.",
+  "date": "2017-05-04",
+  "country": "IN",
+  "region": "Bihar",
+  "place": "Patna",
+  "topics": [
+   "law",
+   "animals",
+   "drink"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Rats drink 900,000 litres of alcohol in Bihar: Police",
+    "publisher": "Khaleej Times / PTI",
+    "url": "https://www.khaleejtimes.com/article/rats-drink-900000-litres-of-alcohol-in-bihar-police",
+    "date": "2017-05-05"
+   },
+   {
+    "title": "'Rats drank nearly 1 million litres of confiscated alcohol in India's Bihar'",
+    "publisher": "The Express Tribune",
+    "url": "https://tribune.com.pk/story/1402833/entertainment",
+    "date": "2017-05-06"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-war-on-floppy-disks",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A government declared victory in its 'war on floppy disks' after scrapping more than 1,000 regulations that still required them for official paperwork.",
+  "reveal": "Real. Japan, June 2024. The digital minister announced the win himself. One rule, about vehicle recycling, still needed a floppy. Next on his list: fax machines.",
+  "date": "2024-06-28",
+  "country": "JP",
+  "topics": [
+   "law",
+   "tech"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "sources": [
+   {
+    "title": "Japan's digital minister declares victory against floppy disks",
+    "publisher": "The Register",
+    "url": "https://www.theregister.com/2024/07/03/japan_floppy_disk_victory/",
+    "date": "2024-07-03"
+   },
+   {
+    "title": "Japanese gov celebrates demise of the floppy disk",
+    "publisher": "Tom's Hardware",
+    "url": "https://www.tomshardware.com/pc-components/storage/japanese-gov-celebrates-demise-of-the-floppy-disk-1000-regulations-requiring-their-use-have-been-scrapped"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-plane-raffle-without-plane",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A country held a national raffle for its unwanted presidential jet, except the winners didn't get the jet, just cash, and the plane stayed parked in its hangar.",
+  "reveal": "Real. Mexico, September 2020. A hundred winning tickets shared about $95 million in prize money. The Boeing 787 was still pictured on every ticket and still unsold.",
+  "date": "2020-09-15",
+  "country": "MX",
+  "region": "Mexico City",
+  "place": "Mexico City",
+  "topics": [
+   "politics",
+   "money",
+   "transport"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Mexico to raffle off huge presidential jet, sort of",
+    "publisher": "Al Jazeera",
+    "url": "https://www.aljazeera.com/amp/news/2020/2/7/mexico-to-raffle-off-huge-presidential-jet-sort-of",
+    "date": "2020-02-07"
+   },
+   {
+    "title": "Mexico holds symbolic raffle for unwanted presidential jet",
+    "publisher": "Gulf News / Reuters",
+    "url": "https://gulfnews.com/photos/business-photos/mexico-holds-symbolic-raffle-for-unwanted-presidential-jet-1.1600233208288",
+    "date": "2020-09-15"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-registered-owner-of-sun",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A woman in Spain registered herself at a notary's office as the legal owner of the Sun and announced plans to charge everyone who used it.",
+  "reveal": "Real. Galicia, 2010. She argued the space treaty stops countries, not people, from claiming stars. She later sued an auction site for blocking her sales of plots on the Sun.",
+  "date": "2010-11",
+  "country": "ES",
+  "region": "Galicia",
+  "topics": [
+   "law",
+   "space",
+   "money"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Spanish woman claims ownership of the Sun",
+    "publisher": "Geo News / AFP",
+    "url": "https://www.geo.tv/latest/13474-spanish-woman-claims-ownership-of-the-sun"
+   },
+   {
+    "title": "Spaniard sues eBay over right to sell the Sun",
+    "publisher": "The Register",
+    "url": "https://www.theregister.co.uk/2015/06/05/ebat_sun_lawsuit/",
+    "date": "2015-06-05"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-superhero-deed-poll",
+  "deck": "laws",
+  "verdict": "real",
+  "headline": "A 19-year-old paid about £10 to legally change his name to a 13-word sentence naming six comic-book superheroes and claiming he was faster than all of them combined.",
+  "reveal": "Real. Glastonbury, England, 2008. His legal name: Captain Fantastic Faster Than Superman Spiderman Batman Wolverine Hulk And The Flash Combined. He said he wanted to be unique.",
+  "date": "2008-11",
+  "country": "GB",
+  "region": "England",
+  "place": "Glastonbury",
+  "topics": [
+   "law",
+   "art"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "sources": [
+   {
+    "title": "Teen's 'fantastic' new name super-long",
+    "publisher": "UPI",
+    "url": "https://www.upi.com/Teens-Fantastic-new-name-Super-long/90361225751268/",
+    "date": "2008-11-03"
+   },
+   {
+    "title": "Teen's 'fantastic' new name",
+    "publisher": "Bdaily",
+    "url": "https://bdaily.co.uk/articles/2008/11/05/teens-fantastic-new-name",
+    "date": "2008-11-05"
+   }
+  ],
+  "verified": "2026-11-26",
+  "author": "claude"
+ },
+ {
+  "id": "lb-blood-donor-duel",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A court in Paraguay ruled that a sword duel between two neighbours over a fence had been legal, because both men were registered blood donors.",
+  "reveal": "Made up, and a famous internet myth. Paraguay never allowed duels for blood donors. Its neighbour Uruguay really did tolerate duelling between 1920 and 1992, though.",
+  "date": "2014-06",
+  "country": "PY",
+  "topics": [
+   "law"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "author": "claude"
+ },
+ {
+  "id": "lb-pencil-shed-permit",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A municipal office in Germany rejected a man's planning application for a garden shed because the drawing had been submitted in pencil rather than ink.",
+  "reveal": "Made up. Plausible enough that several German readers just nodded.",
+  "date": "2017-04",
+  "country": "DE",
+  "topics": [
+   "law"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "author": "claude"
+ },
+ {
+  "id": "lb-fax-to-switch-to-email",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Japan's tax agency faxed 14,000 businesses asking them to switch to email for all future correspondence, and requested that they confirm by fax.",
+  "reveal": "Made up. Japan really did fight a long war on floppy disks, though.",
+  "date": "2021-09",
+  "country": "JP",
+  "topics": [
+   "law",
+   "tech"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-roundabout-tree-park",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A council in England spent two years and £40,000 deciding whether a roundabout with a single tree on it legally counted as a public park.",
+  "reveal": "Made up. The tree declined to comment.",
+  "date": "2016-03",
+  "country": "GB",
+  "topics": [
+   "law",
+   "nature"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-exclamation-mark-middle-name",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A county clerk in Ohio refused to issue a marriage licence because the groom's legal middle name was a single exclamation mark.",
+  "reveal": "Made up. Punctuation names do get rejected around the world, but this wedding never happened.",
+  "date": "2018-08",
+  "country": "US",
+  "region": "Ohio",
+  "topics": [
+   "law",
+   "love"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-baguette-length-fine",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "French inspectors fined a bakery for selling baguettes two centimetres shorter than the length printed on its price board.",
+  "reveal": "Made up. Though France really does regulate what may legally be called traditional bread.",
+  "date": "2019-05",
+  "country": "FR",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "author": "claude"
+ },
+ {
+  "id": "lb-phone-number-candidate",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Brazil's electoral court rejected a council candidate whose chosen ballot name was just a 14-digit phone number, ruling it 'advertising, not a name'.",
+  "reveal": "Made up. Brazilian ballot names are wild, but not this wild yet.",
+  "date": "2020-10",
+  "country": "BR",
+  "topics": [
+   "politics",
+   "law"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-scarecrow-building-permit",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "An Australian council told a farmer he needed a building permit for his scarecrow because, at 2.6 metres, it exceeded the height limit for a garden structure.",
+  "reveal": "Made up. The crows remain unregulated.",
+  "date": "2019-02",
+  "country": "AU",
+  "topics": [
+   "law",
+   "nature"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-houseboat-brick-lifebuoy",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Dutch officials ruled that a houseboat painted to look like a brick house still legally counted as a boat and ordered its owner to mount a lifebuoy by the front door.",
+  "reveal": "Made up. A lifebuoy by the front door would still be good advice in the Netherlands.",
+  "date": "2018-07",
+  "country": "NL",
+  "topics": [
+   "law",
+   "transport"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-vending-machine-residency",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A district office in Seoul granted honorary residency to a 40-year-old vending machine after neighbours petitioned to stop it being removed.",
+  "reveal": "Made up. A beloved vending machine is very believable; the paperwork is not.",
+  "date": "2022-04",
+  "country": "KR",
+  "topics": [
+   "law",
+   "food"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-alphabet-surname",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Taiwan's household registration office rejected a man's request to change his surname to all 26 letters of the English alphabet, written in order.",
+  "reveal": "Made up. Taiwan's real name-change chaos involved salmon.",
+  "date": "2019-08",
+  "country": "TW",
+  "topics": [
+   "law"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "author": "claude"
+ },
+ {
+  "id": "lb-on-leave-since-2009",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A railway office in India stopped a clerk's salary for 11 years because his attendance register said 'on leave', even though he came to work every day.",
+  "reveal": "Made up. Indian bureaucracy has produced stranger, and true, cases of people declared dead.",
+  "date": "2020-01",
+  "country": "IN",
+  "topics": [
+   "law",
+   "work"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "author": "claude"
+ },
+ {
+  "id": "lb-wifi-password-name",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A man in Mexico legally changed his name to his home Wi-Fi password so he would never forget it, then had to change both after friends kept logging on.",
+  "reveal": "Made up. Please do not try this.",
+  "date": "2021-07",
+  "country": "MX",
+  "topics": [
+   "law",
+   "tech"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-goldfish-fishing-licence",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "A Canadian province issued a fishing licence to a pet goldfish after its owner applied online as a joke and the form was approved automatically.",
+  "reveal": "Made up. Automated forms have approved sillier things, but not this one.",
+  "date": "2017-11",
+  "country": "CA",
+  "topics": [
+   "law",
+   "animals",
+   "tech"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-sheep-on-census",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Irish officials listed a sheep as a member of a household after its farmer filled in the national census form for 'everyone who slept here last night'.",
+  "reveal": "Made up. The sheep would have had to list its occupation.",
+  "date": "2016-04",
+  "country": "IE",
+  "topics": [
+   "law",
+   "animals"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-parked-car-speeding",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "South Africa's traffic department issued a speeding ticket to a parked car, recording its speed as 0 km/h in a 60 zone.",
+  "reveal": "Made up. Camera glitches are real; this one isn't.",
+  "date": "2019-03",
+  "country": "ZA",
+  "topics": [
+   "law",
+   "transport"
+  ],
+  "spicy": false,
+  "difficulty": "easy",
+  "author": "claude"
+ },
+ {
+  "id": "lb-camel-on-payroll",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Auditors in Egypt found that a camel had been listed as a full-time employee of a museum for six years, with its salary paid into its owner's account.",
+  "reveal": "Made up. Payroll ghosts are common worldwide, but they are usually human.",
+  "date": "2016-12",
+  "country": "EG",
+  "topics": [
+   "law",
+   "animals",
+   "money"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "author": "claude"
+ },
+ {
+  "id": "lb-goat-loan-collateral",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Kenya's parliament spent an afternoon debating whether a goat could be accepted as collateral for a government small-business loan.",
+  "reveal": "Made up. Many Kenyan farmers would argue a goat is better collateral than most.",
+  "date": "2019-06",
+  "country": "KE",
+  "topics": [
+   "politics",
+   "animals",
+   "money"
+  ],
+  "spicy": false,
+  "difficulty": "hard",
+  "author": "claude"
+ },
+ {
+  "id": "lb-letter-in-verse-returned",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Spain's postal service returned a letter to its sender because the address had been written as a rhyming poem, which a sorting office said it could not process.",
+  "reveal": "Made up. A real Spanish post office would probably have enjoyed it.",
+  "date": "2018-02",
+  "country": "ES",
+  "topics": [
+   "law",
+   "art"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ },
+ {
+  "id": "lb-moustache-passport-photo",
+  "deck": "laws",
+  "verdict": "made-up",
+  "headline": "Argentina's passport office rejected an applicant's photo because his moustache extended beyond the frame, asking him to trim it or resubmit.",
+  "reveal": "Made up. Passport photo rules are strict everywhere, but nobody has been asked to trim for one. Yet.",
+  "date": "2017-09",
+  "country": "AR",
+  "topics": [
+   "law"
+  ],
+  "spicy": false,
+  "difficulty": "medium",
+  "author": "claude"
+ }
+]
