@@ -21,10 +21,13 @@ Players pick a **deck**. The whirlpool stays as the background, and each deck ge
 | `animals` | Animals Gone Rogue | `ag` | Gemini | 90 | 60 |
 | `sports` | Sports Meltdowns | `sp` | Gemini | 60 | 40 |
 | `food` | Food Fights (food and drink chaos, heists, records, festivals) | `fd` | Gemini | 60 | 40 |
+| `clout` | Clout Chasers (streamers, YouTubers, influencers, pranksters) | `cl` | Gemini | 60 | 40 |
+| `celebs` | Famous & Foolish (celebrities: dumb posts, quotes, purchases, stunts) | `ce` | Claude | 60 | 40 |
+| `concerts` | Mosh Pit (concerts: on stage, backstage, in the crowd) | `mp` | ChatGPT | 60 | 40 |
 | `ai` | AI Gone Wild (the existing 244 cards) | `ai` | done | | |
 | `this-week` | This Week (refreshed every Monday) | `tw` | Claude | | |
 
-That's about 1,190 new cards on top of the 244 AI cards. **Only write cards for your own desk's decks.** Found a great story for another desk? Put it under "Leads for other desks" in your PR description.
+That's about 1,490 new cards on top of the 244 AI cards. **Only write cards for your own desk's decks.** Found a great story for another desk? Put it under "Leads for other desks" in your PR description.
 
 Three modes are built from **fields on every card**, so the fields aren't optional:
 
@@ -40,7 +43,7 @@ Each desk writes its decks in **batches of 50 cards, one pull request per batch.
 
 ### Spread (applies to every deck)
 
-- **No more than 35% of a deck from the US** (Florida Man excepted). Aim for 40+ countries per desk. Go looking in the UK, Ireland, Australia, New Zealand, Canada, India, Japan, China, **Taiwan**, Korea, the Philippines, Germany, France, Italy, Spain, the Nordics, Russia, Brazil, Argentina, **Paraguay**, Mexico, Colombia, Chile, Nigeria, Kenya, South Africa and Egypt. Non-English sources are fine if they're reputable; write the card in English.
+- **No more than 35% of a deck from the US** (Florida Man excepted; the three fame decks get 40%, see §5b). Aim for 40+ countries per desk. Go looking in the UK, Ireland, Australia, New Zealand, Canada, India, Japan, China, **Taiwan**, Korea, the Philippines, Germany, France, Italy, Spain, the Nordics, Russia, Brazil, Argentina, **Paraguay**, Mexico, Colombia, Chile, Nigeria, Kenya, South Africa and Egypt. Non-English sources are fine if they're reputable; write the card in English.
 - **Spread across time.** Annals: 1700s to 1969, with at least 40 cards before 1900. Other decks: mostly 1980 to now, with some older classics.
 - **Spicy:** about 15–20% of each deck can be `spicy: true` (see §5).
 - **Difficulty:** roughly a third each of `easy`, `medium` and `hard` (your guess at how many players get fooled: easy < 30%, medium 30–60%, hard > 60%).
@@ -116,6 +119,7 @@ Add every new batch path to **your own desk's list**: `decks/files-claude.json`,
 | `topics` | yes | 1–3 from the list in `decks/decks.json` |
 | `spicy` | yes | `true` or `false` (see §5) |
 | `difficulty` | yes | `easy`, `medium` or `hard` |
+| `week` | This Week only | ISO week the card belongs to, e.g. `"2026-W48"`. The This Week deck always shows the newest week; older weeks retire into Shuffle Everything automatically. |
 | `hoax` | optional | `true` only on REAL cards where the original outlet's story was itself a hoax, prank or tall tale |
 | `headline_original` | optional | The verbatim original headline, **only for pre-1929 publications** (public domain). Shown as a clipping on the reveal. |
 | `sources` | real only | 1–3 objects `{ title, publisher, url, date }`. `https://` only. **Two independent outlets wherever possible.** |
@@ -134,7 +138,10 @@ The game only works if real and fake cards are **indistinguishable by style**. P
 4. **Same length.** Real and fake headlines should have the same length distribution. Don't let fakes be shorter or neater.
 5. **Attribution symmetry.** If real crime cards say "police said", fakes say it too.
 6. **Fakes must be exactly as absurd as reality, not more.** The best fakes are stories that *feel* like they must have happened. Test each one on yourself: if it's obviously a joke, sharpen it; if it's boring, make it weirder. Don't go full surrealism (no talking animals, no impossible physics), unless it's the Annals deck, where 1800s papers really did print sea serpents.
-7. **Write real cards from the facts, not the original headline.** Read the article, then write a fresh headline in your own words. Never paste a modern headline, and never copy more than a few words from any article into a reveal. The exception is `headline_original` for pre-1929 clippings.
+7. **Country symmetry.** Players notice fast when the obscure countries are always the fakes. In each deck, set at most 20% of your fakes in countries that have no real card in that deck. Put most fakes where real cards also happen (the UK, Japan, Germany, Brazil…), and when you want a fake in Mongolia, find a real Mongolian story too. The validator warns about this (`tell:` lines).
+8. **Spicy symmetry.** Spicy cards should split real/fake like the rest of the deck. If most of your spicy cards are fakes, the 18+ toggle turns into a cheat sheet. And remember: alcohol alone (a drunk moose, a whisky flask) is not spicy.
+9. **Weird beats notable.** A card has to be funny, odd or unbelievable, not just a historical first. "The first electric streetlight" is trivia; "a railway let a baboon work the signal levers" is a card.
+10. **Write real cards from the facts, not the original headline.** Read the article, then write a fresh headline in your own words. Never paste a modern headline, and never copy more than a few words from any article into a reveal. The exception is `headline_original` for pre-1929 clippings.
 
 ### Example: making a real card
 
@@ -160,6 +167,34 @@ The brand and town go in the reveal. The headline keeps the soda (mundane detail
 - Real private individuals' names, mugshots or identifying details. "A 23-year-old man", never his name. Public figures (politicians, athletes, celebrities) may be named **in the reveal of real cards only**.
 - Cases where the person was later acquitted or cleared. If in doubt, skip the story.
 - Stories that are currently disputed, or debunked by Snopes, AP, Reuters Fact Check or Full Fact. Check viral classics there first: lots of famous "real" weird news is fake.
+
+## 5b. The fame decks: Clout Chasers, Famous & Foolish, Mosh Pit
+
+These three decks are about **real, famous, named people**, so they get extra rules on top of §5 and §6.
+
+**Headlines describe, never name.** Same as everywhere: "a Grammy-winning rapper", "a streamer with 10 million followers", "a heavy-metal frontman", "a K-pop idol". The name goes in the reveal of real cards. Describe real people at the level a fan would recognise *after* the reveal, not before: role, country, genre, rough size of fame.
+
+**Fakes are about nobody.** A made-up card must not point at any real person, even without a name:
+
+1. Use generic descriptors that fit dozens of people ("a Hollywood actor", "a Brazilian pop star", "a Twitch streamer"). Never stack details until only one real person fits (a signature song, a famous ex, a well-known catchphrase, a known feud, a specific award count, a band's real name).
+2. Fakes stay **harmless and dumb**: a silly purchase, a baffling quote, a stage mishap, a stunt that backfired, a bizarre rider demand, a fan-meet gone sideways. Never make up crimes, drugs, arrests, sex, health, religion, politics, debts, breakups, feuds or anything that would hurt someone's reputation if it got screenshotted without the MADE UP stamp.
+3. Never write a fake quote that a reader could attach to a real person.
+
+**Real cards: only what's on the record.** The person said it, posted it or did it in public, and reputable outlets reported it. Good material: posts and quotes they own, interviews, award-show moments, purchases they announced, stunts, tour riders, things that happened on stage.
+
+- **No allegations, lawsuits, arrests or court cases** in these decks, unless the charge is trivial and undisputed (a streamer fined for jaywalking on stream is fine; anything with a victim isn't).
+- **No health, addiction, mental-health crises, pregnancies, deaths, divorces or relationship drama**, even if the celebrity posted it themselves.
+- **Nobody under 18**, not even famous kids or teenage streamers. If they were under 18 when it happened, skip it.
+
+**Clout Chasers extra:** no pranks that hurt, scared or humiliated a bystander, no fake emergencies (swatting, bomb hoaxes, fake kidnappings), no pranks on vulnerable people (homeless people, the elderly, children), no harassment of private people on stream. The best cards are where **the prankster** ends up the punchline.
+
+**Mosh Pit extra:** no crowd crushes, stampedes, stage collapses with injuries, fights, assaults on performers (including objects that hurt them) or anything where an animal was harmed. Great material: wildlife joining the show, power cuts, weird things thrown on stage that hurt nobody, proposals, bands forgetting their own songs, gigs in absurd places, concerts that registered on seismographs, noise complaints from three towns away, riders, wrong-city shout-outs. Stage-invading streakers are `spicy`.
+
+**Where to look:** Variety, The Hollywood Reporter, Billboard, Rolling Stone, NME, Pitchfork, Consequence, Stereogum, People, Entertainment Weekly, BBC Entertainment, Guardian music, the AP entertainment wire, Soompi and Korea JoongAng Daily for K-pop, Dexerto, Kotaku, Polygon, The Verge and PC Gamer for streamers. **Tabloids** (Daily Mail, The Sun, Mirror, TMZ, Page Six) can be a second source, never the only one. The celebrity's own post never counts as a source, but a reputable outlet reporting the post does.
+
+**Country** is where it happened. For a post or an interview, it's where the person is based.
+
+**Spread:** these worlds lean American, so the US cap is **40%** here (Gemini's Clout Chasers: 30%). Hunt K-pop, J-pop, Bollywood, Nollywood, Latin music, UK grime, Brazilian funk, Taiwanese and Japanese streamers, Korean variety TV, European festival culture.
 
 ## 6. Hard rules for MADE UP cards
 
@@ -194,7 +229,7 @@ Use reputable outlets: wire services (AP, Reuters, AFP, UPI), national broadcast
    - the validator's summary block,
    - **Leads for other desks:** good stories you found for decks that aren't yours.
 4. One batch per PR, 50 cards. Only touch files inside `decks/<your decks>/` plus your own `decks/files-<desk>.json`. If you think the rules, the schema or the validator need changing, say so in the PR; don't change them yourself.
-5. Keep going: open the next batch's branch from `main` while the previous PR waits for review.
+5. Keep going: if your previous PR hasn't merged yet, branch the next batch **from that branch** (not from `main`), so `decks/files-<desk>.json` lists both files. Two PRs that each replace the list with one file will conflict, and a careless merge drops a whole batch.
 
 ## 9. Quality checklist (every card)
 
@@ -205,4 +240,5 @@ Use reputable outlets: wire services (AP, Reuters, AFP, UPI), national broadcast
 - [ ] Made up: no real people, brands or small towns; not a real story with one detail changed.
 - [ ] `date` and `country` are accurate enough for the Where & When bonus.
 - [ ] `spicy` is set honestly.
+- [ ] Fame decks: no fake that points at one real person; no real card about allegations, health, relationships or anyone under 18.
 - [ ] The reveal makes you want to read the next card.

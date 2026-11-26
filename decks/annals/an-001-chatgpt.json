@@ -1,0 +1,1288 @@
+[
+  {
+    "id": "an-bottle-conjurer",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A theatre advertisement promised that a performer would climb into an ordinary wine bottle onstage and sing from inside it.",
+    "reveal": "Real headline, fake story. The Haymarket theatre sold out. The performer never appeared, and the audience tore up the theatre. The papers had advertised a hoax.",
+    "date": "1749-01-11",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "art",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "London’s Most Ridiculous Riot?",
+        "publisher": "Londonist",
+        "url": "https://londonist.com/london/history/london-s-most-ridiculous-riot",
+        "date": "2020-09-11"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true
+  },
+  {
+    "id": "an-blindfolded-bell-test",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A town auditioned three new market bells and chose the one its councillors could still hear with their heads inside flour sacks.",
+    "reveal": "Made up. The bell test is invented. The sacks were supposed to mimic the noise inside the market hall. The minutes would have needed a second witness.",
+    "date": "1787-06",
+    "country": "NL",
+    "topics": [
+      "politics",
+      "music",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "North Holland"
+  },
+  {
+    "id": "an-garden-palace-night-shift",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An exhibition hall was so far behind schedule by April that builders started working at night by electric light.",
+    "reveal": "Real. Sydney’s Garden Palace was due to open for the International Exhibition in September 1879. Electric lamps extended the working day while carpenters hurried to finish a building with a dome that dominated the harbour skyline.",
+    "date": "1879-04",
+    "country": "AU",
+    "region": "New South Wales",
+    "place": "Sydney",
+    "topics": [
+      "tech",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The Australian Museum and the 1879 International Exhibition",
+        "publisher": "Australian Museum",
+        "url": "https://museum-publications.australian.museum/media/dd/Uploads/Documents/38352/ams370_vXIX_12_lowres.7d758c0.pdf"
+      },
+      {
+        "title": "Printing plate, certificate of award, Sydney International Exhibition",
+        "publisher": "Powerhouse Museum",
+        "url": "https://collection.powerhouse.com.au/object/376284"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-eleven-blank-ballots",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "Election clerks set aside eleven blank ballots after finding that some voters had been given slips cut from a weather notice.",
+    "reveal": "Made up. The ballot mix-up is invented. The slips would have been blank on one side and able to predict rain on the other.",
+    "date": "1871-10",
+    "country": "AT",
+    "topics": [
+      "politics",
+      "law",
+      "weather"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Tyrol"
+  },
+  {
+    "id": "an-xray-ring-photograph",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper announced a new kind of photography that showed the bones in a hand and still picked up the ring.",
+    "reveal": "Real. Vienna’s Die Presse put the news of Wilhelm Röntgen’s X-rays on its front page. A ring showed up on the famous hand radiograph along with the bones. News of the discovery spread worldwide.",
+    "date": "1896-01-05",
+    "country": "AT",
+    "region": "Vienna",
+    "place": "Vienna",
+    "topics": [
+      "science",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Wilhelm Conrad Röntgen exhibition catalogue",
+        "publisher": "University of Würzburg",
+        "url": "https://www.uni-wuerzburg.de/fileadmin/uniwue/Presse/pdf-Dateien/Roentgen-Ausstellungskatalog_en.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "Eine sensationelle Entdeckung"
+  },
+  {
+    "id": "an-moon-beaver-fires",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A city newspaper described beavers that walked on two legs and had built huts with fires burning inside them on the moon.",
+    "reveal": "Real headline, fake story. The New York Sun’s lunar expedition happened entirely on paper. Its reporter inferred the fires from smoke above the huts. The beavers never had to answer for their chimneys.",
+    "date": "1835-08",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "space",
+      "animals",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "The Great Moon Hoax of 1835, part 3",
+        "publisher": "New York Sun, archived by Museum of Hoaxes",
+        "url": "https://hoaxes.org/text/display/the_great_moon_hoax_of_1835_text/P2"
+      },
+      {
+        "title": "The Great Moon Hoax is published in the New York Sun",
+        "publisher": "HISTORY",
+        "url": "https://www.history.com/this-day-in-history/august-25/the-great-moon-hoax"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true
+  },
+  {
+    "id": "an-town-band-rent-silence",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A brass band agreed to charge half its usual fee if the town supplied a rehearsal room and left it empty on Thursdays.",
+    "reveal": "Made up. The agreement is invented. The fee was supposed to buy the town a reliably quiet Thursday and a noisier rest of the week.",
+    "date": "1882-11",
+    "country": "PT",
+    "topics": [
+      "music",
+      "money",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Coimbra"
+  },
+  {
+    "id": "an-motorcar-wedding-spectators",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A bride and groom took a motorcar to their wedding ceremony, drawing a crowd and a spectator who brought a camera.",
+    "reveal": "Real. A Taiwan Nichinichi Shinpō report described the ride from near Yuanshan Park to Monga in Taipei. Motorcars were still unusual enough that the ride attracted its own crowd.",
+    "date": "1912-11-02",
+    "country": "TW",
+    "region": "Taipei",
+    "place": "Taipei",
+    "topics": [
+      "love",
+      "transport",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "第六章 日治時期臺灣漢人婚禮的變遷機制之分析",
+        "publisher": "National Taiwan Library",
+        "url": "https://www.ntl.edu.tw/public/ntl/4216/%E5%BC%B5%E7%B6%AD%E6%AD%A3%E5%85%A8%E6%96%87.pdf"
+      },
+      {
+        "title": "邁向「文明」：日治前期臺灣漢人的婚俗變遷（1895–1920）",
+        "publisher": "Taiwan Historica",
+        "url": "https://ws.th.gov.tw/002/TH/tjpdf20241015/var/www/html/new_site/05publish/03publishquery/02journal/tj/401065107.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "新式結婚"
+  },
+  {
+    "id": "an-dog-license-counter-signature",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A borough clerk asked dog owners to bring a paw print with each licence application and kept an ink pad at the counter.",
+    "reveal": "Made up. The paw-print requirement is invented. The ink pad would have had a short career, especially on wet mornings.",
+    "date": "1868-03",
+    "country": "IE",
+    "topics": [
+      "animals",
+      "law",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "County Cork"
+  },
+  {
+    "id": "an-ice-palace-mock-attack",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A winter carnival put up a palace made of ice blocks in the town square and staged an attack on it.",
+    "reveal": "Real. Montréal’s first winter carnival gave residents half a day off. The ice palace in Dominion Square was the centerpiece, and the mock attack was the main event.",
+    "date": "1883-02",
+    "country": "CA",
+    "region": "Quebec",
+    "place": "Montréal",
+    "topics": [
+      "holiday",
+      "weather",
+      "art"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Montreal’s Carnival",
+        "publisher": "The Evening Mercury, archived by Memorial University of Newfoundland",
+        "url": "https://dai.mun.ca/pdfs/eveherald/EveningMercury18830212.pdf",
+        "date": "1883-02-12"
+      },
+      {
+        "title": "Carnivals during the terms of Jean-Louis Beaudry",
+        "publisher": "Archives de Montréal",
+        "url": "https://www2.ville.montreal.qc.ca/archives/democratie/democratie_fr/media/documents/apprentis/journaux/beaudry_en.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-penny-envelope-caricatures",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A new prepaid penny envelope was so widely caricatured that the post office replaced its illustrated design the following year.",
+    "reveal": "Real. The Mulready stationery arrived alongside the Penny Black. Artists parodied the busy design, and the Post Office replaced it in 1841. The prepaid envelope survived the illustration.",
+    "date": "1840-05",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "art",
+      "money",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Pop It in the Post",
+        "publisher": "The Postal Museum",
+        "url": "https://www.postalmuseum.org/wp-content/uploads/2017/02/Pop-It-In-The-Post-resource.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-laundry-codes-on-radio",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A radio station read out eighty numbers from a laundry ledger after a listener offered airtime money to reunite customers with their shirts.",
+    "reveal": "Made up. The broadcast is invented. Customers were supposed to listen with their laundry tickets in hand and stop the announcer if they recognized a number.",
+    "date": "1934-04",
+    "country": "AU",
+    "topics": [
+      "tech",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Victoria"
+  },
+  {
+    "id": "an-cardiff-giant-tent",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Visitors paid admission to a tent on a farm to see what had been dug up as a ten-foot petrified man.",
+    "reveal": "Real. The Cardiff Giant was carved from gypsum and buried on purpose. When P. T. Barnum couldn’t get the original, he exhibited a copy. The public could now choose between two fakes.",
+    "date": "1869-10",
+    "country": "US",
+    "region": "New York",
+    "place": "Cardiff",
+    "topics": [
+      "art",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "The Cardiff Giant Fools the Nation, 145 Years Ago",
+        "publisher": "HISTORY",
+        "url": "https://www.history.com/articles/the-cardiff-giant-fools-the-nation-145-years-ago"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-flask-in-alderman-hat",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "An alderman poured whisky from his top hat after a budget vote, showing reporters a flask fitted into the lining.",
+    "reveal": "Made up. The flask and the budget vote are invented. The hat would have been one more place for the clerk to check for refreshments.",
+    "date": "1886-11",
+    "country": "GB",
+    "topics": [
+      "drink",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Scotland"
+  },
+  {
+    "id": "an-rabbit-speculation-tax",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A city tax on keeping rabbits sent prices falling after collectors and speculators had been paying high prices for unusual breeds.",
+    "reveal": "Real. In Meiji-era Tokyo, newspapers followed a speculative boom in fancy rabbits. A December tax notice helped end it. The Japan Weekly Mail compared the collapsed market to the Dutch tulip craze.",
+    "date": "1873-12",
+    "country": "JP",
+    "region": "Tokyo",
+    "place": "Tokyo",
+    "topics": [
+      "animals",
+      "money",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Rabbit Speculation in Early Meiji Japan",
+        "publisher": "University of Tokyo",
+        "url": "https://repository.dl.itc.u-tokyo.ac.jp/record/31144/files/edu_51_30.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-cinema-above-drugstore",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A drugstore’s mezzanine hosted a public motion-picture show with a 50-centavo admission charge and room for only a few dozen people.",
+    "reveal": "Real. Audiences in Mexico City saw early moving pictures upstairs at the Droguería Plateros. The room seated about 30 to 40 people. Special gala screenings later charged double and showed more films.",
+    "date": "1896-08-14",
+    "country": "MX",
+    "region": "Mexico City",
+    "place": "Mexico City",
+    "topics": [
+      "art",
+      "money",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "La primera función de cine en México",
+        "publisher": "El Universal",
+        "url": "https://www.eluniversal.com.mx/entrada-de-opinion/colaboracion/el-apunte/2017/08/14/la-primera-funcion-de-cine-en-mexico/",
+        "date": "2017-08-14"
+      },
+      {
+        "title": "La industria cinematográfica y los derechos de autor",
+        "publisher": "Universidad Nacional Autónoma de México",
+        "url": "https://tesiunamdocumentos.dgb.unam.mx/pd2001/289979/289979.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-beard-length-supper",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "An inn advertised a supper priced by the inch of each guest’s beard and promised to leave a ruler by the till.",
+    "reveal": "Made up. The supper offer is invented. Trimming a beard at the table would have turned out to be the cheapest course.",
+    "date": "1856-01",
+    "country": "FR",
+    "topics": [
+      "food",
+      "money",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Brittany"
+  },
+  {
+    "id": "an-torch-arm-preview",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Visitors to a world’s fair could see the torch-bearing arm of a giant statue years before the rest of it went on display.",
+    "reveal": "Real. The Statue of Liberty’s right arm and torch went to Philadelphia for the 1876 Centennial Exhibition. The finished statue opened in New York Harbor ten years later.",
+    "date": "1876",
+    "country": "US",
+    "region": "Pennsylvania",
+    "place": "Philadelphia",
+    "topics": [
+      "art",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Liberty Island Chronology",
+        "publisher": "National Park Service",
+        "url": "https://home.nps.gov/stli/learn/historyculture/liberty-island-a-chronology.htm"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-bicycle-liberation-of-rough-roads",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper promoting a cycling race reported that one club outing had taken eight hours to cover 54 kilometres.",
+    "reveal": "Real. Asunción’s El Diario reported on the club’s ride out to San Bernardino. That was where the cyclists came up with the race to San Lorenzo and back, which the paper sponsored.",
+    "date": "1927-10",
+    "country": "PY",
+    "region": "Asunción",
+    "place": "Asunción",
+    "topics": [
+      "sports",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Una carrera a los tumbos",
+        "publisher": "ABC Color",
+        "url": "https://www.abc.com.py/edicion-impresa/suplementos/abc-revista/2019/11/10/una-carrera-a-los-tumbos/",
+        "date": "2019-11-10"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-bare-rehearsal-lawn",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A gymnastics club moved its outdoor rehearsal to six in the morning after neighbours objected to members exercising without clothes.",
+    "reveal": "Made up. The rehearsal is invented. The club’s solution would have rested on nobody else in town owning an alarm clock.",
+    "date": "1892-07",
+    "country": "DK",
+    "topics": [
+      "sports",
+      "bodily",
+      "work"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Zealand"
+  },
+  {
+    "id": "an-railway-two-noons",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A city had two noons in one day after the railroads introduced standard time and the clocks had to be set back.",
+    "reveal": "Real. New York’s new railway time put noon about four minutes later than its old local time. The New York Times described residents hearing the midday bells twice.",
+    "date": "1883-11-18",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "transport",
+      "tech",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The Day Clocks Changed Across America",
+        "publisher": "TIME",
+        "url": "https://time.com/5730146/standardized-time/"
+      },
+      {
+        "title": "The Day of Two Noons",
+        "publisher": "Library of Congress",
+        "url": "https://guides.loc.gov/this-month-in-business-history/november/day-of-two-noons"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-tower-elevators-late",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A fairground tower opened before its elevators did, leaving visitors to climb 360 steps just to reach the first floor.",
+    "reveal": "Real. The Eiffel Tower opened to the public on May 15. The lifts started on May 26. Anyone who wanted the second floor in the meantime faced another 380 steps on a narrow spiral staircase.",
+    "date": "1889-05-15",
+    "country": "FR",
+    "region": "Île-de-France",
+    "place": "Paris",
+    "topics": [
+      "tech",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "The stairs: discover the Eiffel Tower in a new way",
+        "publisher": "Société d’Exploitation de la Tour Eiffel",
+        "url": "https://www.toureiffel.paris/en/news/visit/take-stairs-and-discover-eiffel-tower-new-way"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-lost-property-broth-lid",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A railway porter wrote to the papers offering twelve lost soup tureens to anyone who could produce the matching lids.",
+    "reveal": "Made up. The notice is invented. The porter supposedly had all the bowls and wanted the passengers to do the sorting.",
+    "date": "1895-10",
+    "country": "NZ",
+    "topics": [
+      "food",
+      "transport",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Otago"
+  },
+  {
+    "id": "an-pocket-flask-in-compass",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "Officials at a walking race barred a contestant after finding that his pocket compass carried enough brandy for two small drinks.",
+    "reveal": "Made up. The race and compass are invented. The contestant’s defence was supposed to be that he hadn’t put anything in the rules about refreshments.",
+    "date": "1893-05",
+    "country": "CA",
+    "topics": [
+      "drink",
+      "sports",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Nova Scotia"
+  },
+  {
+    "id": "an-opera-by-two-telephones",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Visitors to an electrical exhibition held a telephone receiver to each ear to hear an opera more than a mile away.",
+    "reveal": "Real. When the opera was playing at the Palais Garnier, listeners at the exhibition could hear it using two receivers. Clément Ader’s demonstration put the best seat in the house in another building.",
+    "date": "1881",
+    "country": "FR",
+    "region": "Île-de-France",
+    "place": "Paris",
+    "topics": [
+      "music",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The International Exhibition and Congress of Electricity at Paris",
+        "publisher": "Nature",
+        "url": "https://www.nature.com/articles/024533a0",
+        "date": "1881-10-01"
+      },
+      {
+        "title": "Clément Ader and the Théâtrophone",
+        "publisher": "Musée des Arts et Métiers",
+        "url": "https://www.arts-et-metiers.net/sites/arts-et-metiers/files/2021-10/field_media_document-4086-cnam-avion_c.ader_.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-balloon-barnyard-passengers",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A sheep, a duck and a rooster took off in a wicker cage beneath a balloon while the royal family watched.",
+    "reveal": "Real. The Montgolfier brothers launched the balloon at Versailles. All three passengers made it back unhurt. The royal family stayed on the ground for this one.",
+    "date": "1783-09-19",
+    "country": "FR",
+    "region": "Île-de-France",
+    "place": "Versailles",
+    "topics": [
+      "animals",
+      "science",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Expérience fait à Versailles le 19 Sept 1783",
+        "publisher": "Smithsonian National Air and Space Museum",
+        "url": "https://airandspace.si.edu/media/1051685"
+      },
+      {
+        "title": "Montgolfier balloon ascent, Versailles",
+        "publisher": "Royal Aeronautical Society",
+        "url": "https://raes.soutron.net/Portal/Default/en-GB/RecordView/Index/1117084"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-ginger-clock-subscription",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A baker offered to repair the parish clock in exchange for the right to sell gingerbread whenever it struck the hour.",
+    "reveal": "Made up. The subscription offer is invented. Every hour would have started with a bell and ended with crumbs.",
+    "date": "1812-11",
+    "country": "SE",
+    "topics": [
+      "food",
+      "money",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Skåne"
+  },
+  {
+    "id": "an-secondhand-captain-town-hall",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A man in a secondhand army uniform stopped two squads of soldiers and ordered them to accompany him to the town hall.",
+    "reveal": "Real. The impostor took charge of Köpenick town hall and seized the municipal cash. The soldiers obeyed his uniform. The story became a public embarrassment and eventually a stage play.",
+    "date": "1906-10-16",
+    "country": "DE",
+    "region": "Berlin",
+    "place": "Berlin",
+    "topics": [
+      "crime",
+      "politics",
+      "military"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "The ‘Captain of Köpenick’ and the Transformation of German Criminal Justice, 1891–1914",
+        "publisher": "Central European History",
+        "url": "https://www.cambridge.org/core/journals/central-european-history/article/abs/captain-of-kopenick-and-the-transformation-of-german-criminal-justice-18911914/D79503288EB017DAA6D1692AA6752CB3"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-sleeve-petition-sizes",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A guild of tailors sent a tax appeal embroidered on a jacket sleeve and enclosed a stamped envelope for the office’s reply.",
+    "reveal": "Made up. The guild’s appeal is invented. Its members would still have had one sleeve left for an appeal to a higher office.",
+    "date": "1854-03",
+    "country": "DE",
+    "topics": [
+      "work",
+      "law",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Saxony"
+  },
+  {
+    "id": "an-mammoth-cheese-rail-tour",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A town sent a 22,000-pound cheese to a world’s fair by rail and published a timetable so spectators could see it pass.",
+    "reveal": "Real. Perth, Ontario, made the Mammoth Cheese for the Chicago World’s Fair. It traveled on open railcars so people could actually see it. The trip had the logistics of a royal tour.",
+    "date": "1893-04",
+    "country": "CA",
+    "region": "Ontario",
+    "place": "Perth",
+    "topics": [
+      "food",
+      "transport",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Bound for Chicago",
+        "publisher": "Churcher’s Railway Pages, 1893 press clippings",
+        "url": "https://churcher.crcml.org/circle/Papers%20by%20Year/1893.pdf",
+        "date": "1893-04-17"
+      },
+      {
+        "title": "An Historical and Descriptive Account of the Dairying Industry of Canada",
+        "publisher": "Government of Canada",
+        "url": "https://publications.gc.ca/collections/collection_2016/aac-aafc/agrhist/A12-3-28-1911-eng.pdf",
+        "date": "1911"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-railway-carriage-bristles",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A trial railway propelled passengers with air, fitting the carriage with bristles that brushed the inside of the tunnel to keep pressure in.",
+    "reveal": "Real. The Crystal Palace railway in Sydenham used a steam-powered fan to send its carriage through a tunnel. The brush around the carriage made an almost airtight seal. The brakes were ordinary.",
+    "date": "1864",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "transport",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The Pneumatic Railway at the Crystal Palace",
+        "publisher": "St. John’s Daily News, archived by Memorial University of Newfoundland",
+        "url": "https://dai.mun.ca/pdfs/sjdailynews/TheStJohnsDailyNews18640930.pdf",
+        "date": "1864-09-30"
+      },
+      {
+        "title": "Report of Society Meeting",
+        "publisher": "London Underground Railway Society",
+        "url": "https://www.lurs.org.uk/04%20dec%20REPORT%20OF%20SOCIETY%20MEETING.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "The Pneumatic Railway at the Crystal Palace"
+  },
+  {
+    "id": "an-soap-price-edition",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A weekly newspaper offered bundles of soap instead of change after its proprietor ran out of small coins on market day.",
+    "reveal": "Made up. The newspaper’s offer is invented. Regular subscribers would have had a strong incentive to arrive with the exact change.",
+    "date": "1846-02",
+    "country": "IT",
+    "topics": [
+      "money",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Tuscany"
+  },
+  {
+    "id": "an-postal-tube-black-cat",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A black cat went through a city’s new pneumatic mail system in a carrier sent after an imitation peach.",
+    "reveal": "Real. At New York’s postal-tube debut, the first carrier held a Bible, a flag and a copy of the Constitution. Then came the imitation peach and the cat. The postal service’s account offers no explanation for the cat.",
+    "date": "1897-10",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "animals",
+      "tech",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Pneumatic Tubes",
+        "publisher": "United States Postal Service",
+        "url": "https://about.usps.com/who/profile/history/pdf/pneumatic-tubes.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-bridge-opening-reserve-plank",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A village opened its new footbridge with one plank missing so the mayor could fit the last piece himself after lunch.",
+    "reveal": "Made up. The ceremony is invented. The bridge committee would have had to spend the morning guarding the gap with a broom handle.",
+    "date": "1877-09",
+    "country": "NO",
+    "topics": [
+      "politics",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Vestland"
+  },
+  {
+    "id": "an-atlantic-balloon-extra",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper issued an extra edition claiming that eight men had crossed the ocean in a steerable balloon in 75 hours.",
+    "reveal": "Real headline, fake story. The New York Sun printed Edgar Allan Poe’s account as news. He supplied a detailed voyage and a landing near Charleston. There had been no crossing.",
+    "date": "1844-04-13",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "transport",
+      "tech",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The Balloon Hoax",
+        "publisher": "New York Sun, transcribed by Edgar Allan Poe Society of Baltimore",
+        "url": "https://www.eapoe.org/works/cmprs/pt049c03.htm",
+        "date": "1844-04-13"
+      },
+      {
+        "title": "19th-Century Hoaxes (1800–1850)",
+        "publisher": "Museum of Hoaxes",
+        "url": "https://hoaxes.org/archive/display/category/1800-1850/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true,
+    "headline_original": "ATLANTIC CROSSED IN THREE DAYS!"
+  },
+  {
+    "id": "an-traffic-ten-minute-switch",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A country ordered drivers to stop at ten minutes to five in the morning before switching to the other side of the road.",
+    "reveal": "Real. Sweden switched to right-hand traffic at 5 a.m. The country had prepared motorists for the change with a publicity campaign that even had its own song.",
+    "date": "1967-09-03",
+    "country": "SE",
+    "region": "Stockholm County",
+    "place": "Stockholm",
+    "topics": [
+      "law",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Dagen H: the day Sweden switched to driving on the right – archive, 1967",
+        "publisher": "The Guardian",
+        "url": "https://www.theguardian.com/world/2022/sep/07/dagen-h-sweden-switches-to-driving-on-the-right-1967"
+      },
+      {
+        "title": "Historiskt filbyte 50 år senare",
+        "publisher": "SVT Nyheter",
+        "url": "https://www.svt.se/nyheter/inrikes/historiskt-filbyte-50-ar-senare"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-theatre-door-whisperers",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A theatre paid two ushers to repeat the actors’ lines through its side doors for patrons who could only afford standing tickets.",
+    "reveal": "Made up. The ushers are invented. Anyone at the side doors would have heard a second performance slightly behind the first.",
+    "date": "1884-09",
+    "country": "AR",
+    "topics": [
+      "art",
+      "work",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Buenos Aires Province"
+  },
+  {
+    "id": "an-balloon-gasworks-takeoff",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An acrobat and a balloonist took off from a gasworks after filling their balloon with 20,000 cubic feet of coal gas.",
+    "reveal": "Real. In Calcutta, the acrobat Ram Chandra Chatterjee became the first Indian to fly in a balloon. He later bought the balloon and renamed it The City of Calcutta.",
+    "date": "1889-04-10",
+    "country": "IN",
+    "region": "West Bengal",
+    "place": "Kolkata",
+    "topics": [
+      "transport",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Yesterdate: This day from Kolkata’s past, April 10, 1889",
+        "publisher": "The Telegraph India",
+        "url": "https://www.telegraphindia.com/amp/my-kolkata/news/yesterdate-this-day-from-kolkatas-past-april-10-1889/cid/2012288",
+        "date": "2024-04-10"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-outhouse-auction-occupant",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A farm auctioneer delayed the sale of a cedar privy for twenty minutes after discovering that a bidder was still using it.",
+    "reveal": "Made up. The auction is invented. Buyers were supposed to inspect the lot before bidding. One of them simply took the instruction too far.",
+    "date": "1891-09",
+    "country": "AU",
+    "topics": [
+      "bodily",
+      "money"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "South Australia"
+  },
+  {
+    "id": "an-island-pigeon-post",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Two pigeon mail services competed to carry messages from an island, with one issuing triangular stamps to pay for the flights.",
+    "reveal": "Real. Pigeon post on Great Barrier Island could get a message to Auckland faster than a steamer. The rival services issued differently shaped stamps. Te Papa has examples from both.",
+    "date": "1899",
+    "country": "NZ",
+    "region": "Auckland",
+    "place": "Aotea / Great Barrier Island",
+    "topics": [
+      "animals",
+      "transport",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Great Barrier Island Pigeon Post Collection",
+        "publisher": "Museum of New Zealand Te Papa Tongarewa",
+        "url": "https://collections.tepapa.govt.nz/topic/11039"
+      },
+      {
+        "title": "This New Zealand Island’s Pigeon Mail Stamps Are Still Prized",
+        "publisher": "Smithsonian Magazine",
+        "url": "https://www.smithsonianmag.com/smart-news/new-zealand-islands-pigeon-mail-stamps-are-still-prized-180965342/",
+        "date": "2017-11-01"
+      },
+      {
+        "title": "Aotea Great Barrier Island Historic Heritage Survey, Appendix 1",
+        "publisher": "Auckland Council",
+        "url": "https://new.aucklandcouncil.govt.nz/content/dam/ac/docs/arts-culture-heritage/aotea-great-barrier-island-historic-heritage-survey-appendix-1.1.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-exhibition-penny-toilets",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A world’s fair charged a penny for its new flushing toilets and threw in a comb and a shoe shine.",
+    "reveal": "Real. The Great Exhibition’s public conveniences at the Crystal Palace were a paid attraction in their own right. More than 800,000 people paid, and a towel was also included.",
+    "date": "1851",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "bodily",
+      "money",
+      "tech"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Innovations in toilet design",
+        "publisher": "The National Archives",
+        "url": "https://www.portals.livewp.nationalarchives.gov.uk/explore-the-collection/explore-by-topic/business-finance-and-innovation/toilet-design/"
+      },
+      {
+        "title": "Spending a Penny: A Photographic Exploration of England’s Public Toilets",
+        "publisher": "Historic England",
+        "url": "https://historicengland.org.uk/images-books/archive/collections/photographs/spending-a-penny/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-rain-saucers-town-clock",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A port council ordered six porcelain saucers for its clock tower so a caretaker could check which way rain was blowing.",
+    "reveal": "Made up. The saucer order is invented. It calls for six pieces of crockery and a caretaker willing to keep climbing up to inspect them.",
+    "date": "1874-04",
+    "country": "PT",
+    "topics": [
+      "weather",
+      "tech",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Porto"
+  },
+  {
+    "id": "an-parliament-sewage-curtains",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Parliament tried to keep out the smell of sewage by soaking its curtains in a chlorine compound during a hot summer.",
+    "reveal": "Real. Raw sewage in the Thames made London’s Houses of Parliament difficult to work in. Moving parliamentary business to Oxford or St Albans was considered. For the moment, Parliament tried the curtains.",
+    "date": "1858",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "politics",
+      "bodily",
+      "weather"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Estimate of expense River Thames Purification Bill 1866",
+        "publisher": "UK Parliament",
+        "url": "https://www.parliament.uk/about/living-heritage/building/palace/estatehistory/from-the-parliamentary-collections/thames/estimatethamespurification/"
+      },
+      {
+        "title": "The Great Stink of 1858",
+        "publisher": "London Museum",
+        "url": "https://www.londonmuseum.org.uk/collections/london-stories/great-stink-of-1858/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-nightshirt-observatory",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "An observatory stationed a clerk on its roof in a nightshirt and slippers to count how many people mistook him for a ghost.",
+    "reveal": "Made up. The observatory and its clerk are invented. The observers were supposed to write down the sighting time. Nobody was supposed to ask about the slippers.",
+    "date": "1838-08",
+    "country": "DK",
+    "topics": [
+      "space",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Capital Region"
+  },
+  {
+    "id": "an-motorcar-garter-insulation",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A woman making a long trip in a three-wheeled motorcar used a garter to insulate a wire when the vehicle developed trouble.",
+    "reveal": "Real. Bertha Benz drove from Mannheim to Pforzheim. She also used her hatpin to clear a fuel line and bought the car’s fuel from a pharmacy. The trip did wonders for the motorcar’s publicity.",
+    "date": "1888-08",
+    "country": "DE",
+    "region": "Baden-Württemberg",
+    "place": "Mannheim",
+    "topics": [
+      "tech",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "With hatpin, garter and 3 hp: Bertha Benz drives into the automotive age",
+        "publisher": "German Patent and Trade Mark Office",
+        "url": "https://www.deutsches-patent-und-markenamt.de/english/our_office/publications/ingeniouswomen/berthabenz_1/index.html"
+      },
+      {
+        "title": "Bertha Benz",
+        "publisher": "Mercedes-Benz Group",
+        "url": "https://group.mercedes-benz.com/company/tradition/founders-pioneers/bertha-benz.html"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-petition-270-metres",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Petitioners glued their signature sheets together and delivered Parliament a single roll of paper more than 270 metres long.",
+    "reveal": "Real. The largest 1893 New Zealand suffrage petition carried more than 25,000 signatures. Kate Sheppard helped organize it, and women won the vote that year. The petition could have run the length of several city blocks.",
+    "date": "1893-07-28",
+    "country": "NZ",
+    "region": "Wellington",
+    "place": "Wellington",
+    "topics": [
+      "law",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "About the suffrage petition",
+        "publisher": "NZHistory",
+        "url": "https://nzhistory.govt.nz/page/about-suffrage-petition"
+      },
+      {
+        "title": "‘A monster’ petition! 125th anniversary of the suffrage petition",
+        "publisher": "New Zealand Parliament",
+        "url": "https://www3.parliament.nz/mi/get-involved/features/a-monster-petition-125th-anniversary-of-the-suffrage-petition/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-pub-closing-sentinel",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A hotel put a dressmaker’s dummy in a window with a pint of ale to announce that the bar had closed.",
+    "reveal": "Made up. The dummy is invented. The publican was supposed to turn it to face the wall when the bar reopened.",
+    "date": "1909-02",
+    "country": "ZA",
+    "topics": [
+      "drink",
+      "law",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Western Cape"
+  },
+  {
+    "id": "an-speeding-bicycle-pursuit",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A policeman on a bicycle chased a motorist who had driven a horseless carriage at eight miles an hour and took him to court.",
+    "reveal": "Real. The case in Kent earned Britain’s first successful speeding prosecution. The fine was one shilling plus costs. At the alleged speed, a bicycle was an entirely reasonable pursuit vehicle.",
+    "date": "1896-01-28",
+    "country": "GB",
+    "region": "Kent",
+    "place": "Paddock Wood",
+    "topics": [
+      "law",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "First person charged with a speeding offence",
+        "publisher": "Guinness World Records",
+        "url": "https://www.guinnessworldrecords.com/world-records/414379-first-person-charged-with-a-speeding-offence"
+      },
+      {
+        "title": "Motoring Firsts",
+        "publisher": "National Motor Museum",
+        "url": "https://nationalmotormuseum.org.uk/help-centre/motoring-firsts/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-seventy-two-day-reporter",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper reported that a reporter had circled the world in 72 days, six hours and ten minutes.",
+    "reveal": "Real. Nellie Bly beat the eighty days in Jules Verne’s novel. The Pittsburgh Commercial Gazette put her time at 72 days, six hours and ten minutes. The Library of Congress records a time 74 seconds longer.",
+    "date": "1890-01-25",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "transport",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Nellie Bly’s Feat",
+        "publisher": "Pittsburgh Commercial Gazette, archived by Waynesburg University",
+        "url": "https://www.waynesburg.edu/media/1269/download",
+        "date": "1890-01-27"
+      },
+      {
+        "title": "Today in History – January 25",
+        "publisher": "Library of Congress",
+        "url": "https://www.loc.gov/item/today-in-history/january-25"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "NELLIE BLY’S FEAT."
+  },
+  {
+    "id": "an-bathtub-political-tax",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper said that a state had once put a 30-dollar annual tax on bathtubs after the fixtures became controversial.",
+    "reveal": "Real headline, fake story. The New York Evening Mail published H. L. Mencken’s invented history of the bathtub. The Virginia tax was part of the joke, along with the claim that a president finally made tubs respectable.",
+    "date": "1917-12-28",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "bodily",
+      "law",
+      "hoax"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "A Neglected Anniversary",
+        "publisher": "New York Evening Mail, transcribed by Museum of Hoaxes",
+        "url": "https://hoaxes.org/text/display/a_neglected_anniversary_text",
+        "date": "1917-12-28"
+      },
+      {
+        "title": "The Bath Tub Hoax",
+        "publisher": "Early American Industries Association",
+        "url": "https://www.eaia.us/post/the-bath-tub-hoax"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true,
+    "headline_original": "A Neglected Anniversary"
+  }
+]

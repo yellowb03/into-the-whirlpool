@@ -22,7 +22,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "An illusionist advertised acts of sleight of hand with live music between them and promised that the performance room would be well aired.",
-    "reveal": "The New-York Journal carried the ad in 1770. The performer was selling novelty, a concert between tricks, and enough ventilation to sit through the whole thing.",
+    "reveal": "Real. The New-York Journal carried the ad in 1770. The performer was selling novelty, a concert between tricks, and enough ventilation to sit through the whole thing.",
     "date": "1770-10-25",
     "country": "US",
     "region": "New York",
@@ -66,7 +66,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A new railway took passengers from a capital to its seaport in 28 minutes, with the last train leaving at nine.",
-    "reveal": "The Lima–Callao line ran about fourteen kilometres and made four stops between its terminals. The last departure from Lima was at nine in the evening.",
+    "reveal": "Real. The Lima–Callao line ran about fourteen kilometres and made four stops between its terminals. The last departure from Lima was at nine in the evening.",
     "date": "1851-05-17",
     "country": "PE",
     "region": "Lima",
@@ -92,7 +92,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "An engineering crew making a barrier across a bay closed the last gap and logged the moment at two minutes past one.",
-    "reveal": "The Netherlands’ Afsluitdijk finally blocked the gap at De Vlieter at 13:02. The barrier separated the Zuiderzee from the sea, leaving a new inland lake behind it.",
+    "reveal": "Real. The Netherlands’ Afsluitdijk finally blocked the gap at De Vlieter at 13:02. The barrier separated the Zuiderzee from the sea, leaving a new inland lake behind it.",
     "date": "1932-05-28",
     "country": "NL",
     "region": "North Holland",
@@ -126,7 +126,7 @@
     "headline": "A pottery tested chamber pots for a hotel contract by putting them on a piano and asking a clerk to play three low notes.",
     "reveal": "Made up. The trial is invented. The contract supposedly called for pots that could sit below a hotel piano without rattling through the recital.",
     "date": "1894-03",
-    "country": "BE",
+    "country": "FR",
     "topics": [
       "bodily",
       "tech",
@@ -135,7 +135,7 @@
     "spicy": true,
     "difficulty": "hard",
     "author": "chatgpt",
-    "region": "Wallonia"
+    "region": "Burgundy"
   },
   {
     "id": "an-weather-station-bread-oven",
@@ -144,7 +144,7 @@
     "headline": "A newspaper withdrew its morning temperature after discovering its correspondent had read the thermometer beside a bakery oven at opening time.",
     "reveal": "Made up. The weather error is invented. The correspondent was supposed to keep the thermometer by an outside door. The bakery did have a door.",
     "date": "1872-07",
-    "country": "EE",
+    "country": "NO",
     "topics": [
       "weather",
       "food",
@@ -153,7 +153,7 @@
     "spicy": false,
     "difficulty": "hard",
     "author": "chatgpt",
-    "region": "Harju County"
+    "region": "Oslo"
   },
   {
     "id": "an-window-blind-dance-contest",
@@ -178,7 +178,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A city newspaper printed a resident’s proclamation naming himself emperor, about ten days after the regular election for state offices.",
-    "reveal": "San Francisco’s Daily Evening Bulletin ran Joshua Norton’s declaration. Norton went on issuing proclamations, and the city came to know him as Emperor Norton.",
+    "reveal": "Real. San Francisco’s Daily Evening Bulletin ran Joshua Norton’s declaration. Norton went on issuing proclamations, and the city came to know him as Emperor Norton.",
     "date": "1859-09-17",
     "country": "US",
     "region": "California",
@@ -211,7 +211,7 @@
     "headline": "A school rented its brass bell to three traders on market day and announced lessons would begin as soon as the bell came back.",
     "reveal": "Made up. The rental is invented. The school was supposed to spend the proceeds on a second bell, which would have doubled its rental stock.",
     "date": "1864-04",
-    "country": "CR",
+    "country": "PE",
     "topics": [
       "school",
       "money",
@@ -220,14 +220,14 @@
     "spicy": false,
     "difficulty": "easy",
     "author": "chatgpt",
-    "region": "Cartago Province"
+    "region": "Lima"
   },
   {
     "id": "an-frost-fair-presses",
     "deck": "annals",
     "verdict": "real",
     "headline": "Printers set up presses on a frozen river and sold sheets bearing customers’ names inside decorative borders for a few pennies.",
-    "reveal": "At the Thames Frost Fair, printers sold souvenirs directly on the ice. London Museum has a copy of Frostiana printed there on February 5, alongside other keepsakes.",
+    "reveal": "Real. At the Thames Frost Fair, printers sold souvenirs directly on the ice. London Museum has a copy of Frostiana printed there on February 5, alongside other keepsakes.",
     "date": "1814-02-05",
     "country": "GB",
     "region": "England",
@@ -259,7 +259,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "Journalists asked a wireless telegraph inventor to send himself a cheer from a transmitter on a different floor of the building.",
-    "reveal": "At Guglielmo Marconi’s Rome demonstration, a presenter asked the press to choose the test message. The reporters picked ‘Long live Marconi.’ The inventor smiled, and the signal went through walls and floors.",
+    "reveal": "Real. At Guglielmo Marconi’s Rome demonstration, a presenter asked the press to choose the test message. The reporters picked ‘Long live Marconi.’ The inventor smiled, and the signal went through walls and floors.",
     "date": "1897-07-05",
     "country": "IT",
     "region": "Lazio",
@@ -286,7 +286,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A silk portrait that looked like a printed engraving was woven on a loom controlled by about 24,000 punched cards.",
-    "reveal": "The 1839 portrait of Joseph-Marie Jacquard was woven in Lyon on the machine he helped develop. About two feet of fabric took a stack of instructions that could fill a room.",
+    "reveal": "Real. The 1839 portrait of Joseph-Marie Jacquard was woven in Lyon on the machine he helped develop. About two feet of fabric took a stack of instructions that could fill a room.",
     "date": "1839",
     "country": "FR",
     "region": "Auvergne-Rhône-Alpes",
@@ -318,7 +318,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A brewery built a beer bottle 26 metres tall for an exhibition, with a viewing platform tucked into the bottle cap.",
-    "reveal": "Copenhagen’s Nordic Exhibition had a giant Tuborg bottle overlooking the grounds. It was an advertisement that visitors could go inside, and it outlasted the exhibition itself.",
+    "reveal": "Real. Copenhagen’s Nordic Exhibition had a giant Tuborg bottle overlooking the grounds. It was an advertisement that visitors could go inside, and it outlasted the exhibition itself.",
     "date": "1888",
     "country": "DK",
     "region": "Capital Region",
@@ -331,11 +331,6 @@
     "spicy": false,
     "difficulty": "hard",
     "sources": [
-      {
-        "title": "Giant Tuborg Bottle in Hellerup",
-        "publisher": "Tuborg",
-        "url": "https://www.tuborg.com/en/since-1880/giant-bottle/"
-      },
       {
         "title": "Historical account of the 1888 exhibition",
         "publisher": "Danskernes Historie Online",
@@ -385,7 +380,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A newly declared republic flew a flag with stripes and 21 stars from a newspaper office and replaced it within a week.",
-    "reveal": "Brazil briefly used an American-style striped flag with 21 stars. One was flown at the newspaper A Cidade do Rio. The decree adopting the green, yellow and blue design followed on November 19.",
+    "reveal": "Real. Brazil briefly used an American-style striped flag with 21 stars. One was flown at the newspaper A Cidade do Rio. The decree adopting the green, yellow and blue design followed on November 19.",
     "date": "1889-11-15",
     "country": "BR",
     "region": "Rio de Janeiro",
@@ -417,7 +412,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A capital’s first live giraffe set off a fashion for giraffe-themed goods that extended to dinnerware and irons for pressing clothes.",
-    "reveal": "Zarafa arrived at the Paris menagerie in 1827 and became an attraction. The National Museum of Natural History documents the craze through prints, crockery and even a flatiron.",
+    "reveal": "Real. Zarafa arrived at the Paris menagerie in 1827 and became an attraction. The National Museum of Natural History documents the craze through prints, crockery and even a flatiron.",
     "date": "1827-06",
     "country": "FR",
     "region": "Île-de-France",
@@ -446,7 +441,7 @@
     "headline": "A publican began issuing numbered claim tickets for the privy after losing count of who had been waiting outside for more than ten minutes.",
     "reveal": "Made up. The queue is invented. The ticket was supposed to guarantee one turn, provided the person ahead of you hadn’t gone back for another pint.",
     "date": "1891-12",
-    "country": "JM",
+    "country": "IE",
     "topics": [
       "bodily",
       "drink",
@@ -455,7 +450,7 @@
     "spicy": true,
     "difficulty": "medium",
     "author": "chatgpt",
-    "region": "Kingston Parish"
+    "region": "County Cork"
   },
   {
     "id": "an-borrowed-trousers-late-edition",
@@ -480,7 +475,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A queen’s 98-word greeting took about sixteen hours to reach the other end of a newly opened telegraph cable across the ocean.",
-    "reveal": "Queen Victoria sent her greeting to U.S. President James Buchanan through the cable linking Ireland and Newfoundland. It took less time than a ship, and the cable stopped working after only a few weeks.",
+    "reveal": "Real. Queen Victoria sent her greeting to U.S. President James Buchanan through the cable linking Ireland and Newfoundland. It took less time than a ship, and the cable stopped working after only a few weeks.",
     "date": "1858-08-16",
     "country": "IE",
     "region": "County Kerry",
@@ -511,7 +506,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "An empress travelled aboard the yacht that led a procession of ships through a new canal, with dozens of warships following.",
-    "reveal": "The Suez Canal opened with the French imperial yacht L’Aigle at the head of the procession. The Suez Canal Authority counts 77 ships behind it, including 50 warships.",
+    "reveal": "Real. The Suez Canal opened with the French imperial yacht L’Aigle at the head of the procession. The Suez Canal Authority counts 77 ships behind it, including 50 warships.",
     "date": "1869-11-17",
     "country": "EG",
     "region": "Port Said",
@@ -543,7 +538,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "An emperor toured a new underground railway in a carriage fitted with specially polished glass windows and numbered twenty in the fleet.",
-    "reveal": "Franz Joseph rode Budapest’s new underground on May 8. His royal car was specially decorated. The rest of the city had already been able to ride the line for six days.",
+    "reveal": "Real. Franz Joseph rode Budapest’s new underground on May 8. His royal car was specially decorated. The rest of the city had already been able to ride the line for six days.",
     "date": "1896-05-08",
     "country": "HU",
     "region": "Budapest",
@@ -575,7 +570,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A television network switched from football to a scheduled film, and viewers missed the home team scoring twice in nine seconds.",
-    "reveal": "NBC cut away to Heidi while the New York Jets were ahead. The Oakland Raiders scored twice in nine seconds and won 43–32. East Coast viewers missed the comeback.",
+    "reveal": "Real. NBC cut away to Heidi while the New York Jets were ahead. The Oakland Raiders scored twice in nine seconds and won 43–32. East Coast viewers missed the comeback.",
     "date": "1968-11-17",
     "country": "US",
     "region": "California",
@@ -607,7 +602,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A newspaper published a complaint from a Christmas Day walker who saw several bathers cross a river without their swimming clothes.",
-    "reveal": "The Lyttelton Times ran the letter four days later. The river was the Heathcote at Opawa, and the paper filed the complaint under ‘Indecency.’",
+    "reveal": "Real. The Lyttelton Times ran the letter four days later. The river was the Heathcote at Opawa, and the paper filed the complaint under ‘Indecency.’",
     "date": "1896-12-25",
     "country": "NZ",
     "region": "Canterbury",
@@ -637,7 +632,7 @@
     "headline": "A harbour office tried out new signal flags by sending a boat before dawn and lending its crew the only lantern.",
     "reveal": "Made up. The clerks would have needed the lantern back before they could see which flag they were holding.",
     "date": "1849-05",
-    "country": "HR",
+    "country": "IT",
     "topics": [
       "transport",
       "work"
@@ -645,7 +640,7 @@
     "spicy": false,
     "difficulty": "hard",
     "author": "chatgpt",
-    "region": "Istria"
+    "region": "Liguria"
   },
   {
     "id": "an-ministers-hats-waiting-room",
@@ -654,7 +649,7 @@
     "headline": "Officials set aside a waiting room for ministers’ hats and hired a clerk to match each visitor’s appointment slip to a hatband.",
     "reveal": "Made up. The appointment system is invented. A minister who misplaced the slip would have had to describe his hat to get it back.",
     "date": "1847-02",
-    "country": "TR",
+    "country": "HU",
     "topics": [
       "politics",
       "work"
@@ -662,7 +657,7 @@
     "spicy": false,
     "difficulty": "medium",
     "author": "chatgpt",
-    "region": "Istanbul"
+    "region": "Budapest"
   },
   {
     "id": "an-empty-frame-wins-prize",
@@ -689,7 +684,7 @@
     "headline": "A building inspector found six new chimneys on a hotel roof and asked the builder to point out a single fireplace.",
     "reveal": "Made up. The inspection is invented. The builder was supposed to have added the chimneys at the owner’s request after the plans were approved.",
     "date": "1893-11",
-    "country": "CO",
+    "country": "PY",
     "topics": [
       "law",
       "work"
@@ -697,7 +692,7 @@
     "spicy": false,
     "difficulty": "hard",
     "author": "chatgpt",
-    "region": "Cundinamarca"
+    "region": "Asunción"
   },
   {
     "id": "an-ticket-printed-on-herring",
@@ -706,7 +701,7 @@
     "headline": "A fish market stamped stall numbers onto herring wrappers and invited buyers to return the paper for a chance at a free barrel.",
     "reveal": "Made up. The market scheme is invented. Customers were supposed to dry the wrappers at home and bring them to the Saturday drawing.",
     "date": "1860-02",
-    "country": "FI",
+    "country": "SE",
     "topics": [
       "food",
       "money",
@@ -715,14 +710,14 @@
     "spicy": false,
     "difficulty": "easy",
     "author": "chatgpt",
-    "region": "Uusimaa"
+    "region": "Skåne"
   },
   {
     "id": "an-steam-elevator-between-streets",
     "deck": "annals",
     "verdict": "real",
     "headline": "A city opened a steam-powered elevator between two levels of its downtown streets and ran it on steam for five years.",
-    "reveal": "Lisbon’s Santa Justa lift opened in July 1902. The tall public elevator linked the lower streets and the Carmo area, and its motors went electric in November 1907.",
+    "reveal": "Real. Lisbon’s Santa Justa lift opened in July 1902. The tall public elevator linked the lower streets and the Carmo area, and its motors went electric in November 1907.",
     "date": "1902-07-10",
     "country": "PT",
     "region": "Lisbon",
@@ -748,7 +743,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "Winners at an international athletics competition were given silver medals and olive branches, with no gold medals awarded for first place.",
-    "reveal": "At the 1896 Athens Olympics, first place earned silver and second place a bronze or copper medal. Medals for the top three places became standard a few Games later.",
+    "reveal": "Real. At the 1896 Athens Olympics, first place earned silver and second place a bronze or copper medal. Medals for the top three places became standard a few Games later.",
     "date": "1896-04",
     "country": "GR",
     "region": "Attica",
@@ -774,7 +769,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "Four councillors and the town clerk resigned after a borough elected its first woman mayor, the day after a national election.",
-    "reveal": "Elizabeth Yates became mayor of Onehunga in November 1893. She was the first woman to serve as mayor anywhere in the British Empire. Five people quit, and she chaired the council anyway.",
+    "reveal": "Real. Elizabeth Yates became mayor of Onehunga in November 1893. She was the first woman to serve as mayor anywhere in the British Empire. Five people quit, and she chaired the council anyway.",
     "date": "1893-11-29",
     "country": "NZ",
     "region": "Auckland",
@@ -805,7 +800,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "An underground railway ran dimly lit carriages with slit windows and high upholstered backs, earning the cars the nickname padded cells.",
-    "reveal": "The City and South London Railway opened in 1890 with electric locomotives. The carriages were low and narrow, and the little windows did almost nothing for the view.",
+    "reveal": "Real. The City and South London Railway opened in 1890 with electric locomotives. The carriages were low and narrow, and the little windows did almost nothing for the view.",
     "date": "1890",
     "country": "GB",
     "region": "England",
@@ -838,7 +833,7 @@
     "headline": "A hat shop offered a discount to customers who could guess their own hat size through a keyhole before going inside for a fitting.",
     "reveal": "Made up. The shop offer is invented. An assistant was meant to hold a different hat up to the keyhole each morning.",
     "date": "1877-03",
-    "country": "LT",
+    "country": "AT",
     "topics": [
       "work",
       "money"
@@ -846,14 +841,14 @@
     "spicy": false,
     "difficulty": "hard",
     "author": "chatgpt",
-    "region": "Vilnius"
+    "region": "Vienna"
   },
   {
     "id": "an-steep-tram-five-stops",
     "deck": "annals",
     "verdict": "real",
     "headline": "A cable tram climbed a steep hillside in just over a kilometre, yet the short route had five stops between its terminals.",
-    "reveal": "The Peak Tram opened in Hong Kong on May 30, 1888. Its original cable route stretched 1,350 metres. The timetable and fares were published in the local press.",
+    "reveal": "Real. The Peak Tram opened in Hong Kong on May 30, 1888. Its original cable route stretched 1,350 metres. The timetable and fares were published in the local press.",
     "date": "1888-05-30",
     "country": "HK",
     "region": "Hong Kong Island",
@@ -885,7 +880,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "Riding a department store elevator became a leisure outing, with a uniformed attendant operating the lift and room for twelve passengers.",
-    "reveal": "At Hayashi Department Store in Tainan, the elevator was as much an attraction as the merchandise. The modern replacement runs along the historic guides and carries six passengers.",
+    "reveal": "Real. At Hayashi Department Store in Tainan, the elevator was as much an attraction as the merchandise. The modern replacement runs along the historic guides and carries six passengers.",
     "date": "1932",
     "country": "TW",
     "region": "Tainan",
@@ -916,7 +911,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "About 12,000 spectators came to a ski-jumping contest whose takeoff ramp had been made out of branches covered with snow.",
-    "reveal": "The first Holmenkollen jumping competition took place in 1892. The event’s organizers record a longest jump of 21.5 metres. For the ramp, the builders had made do with branches and snow.",
+    "reveal": "Real. The first Holmenkollen jumping competition took place in 1892. The event’s organizers record a longest jump of 21.5 metres. For the ramp, the builders had made do with branches and snow.",
     "date": "1892",
     "country": "NO",
     "region": "Oslo",
@@ -945,7 +940,7 @@
     "headline": "A town clerk returned three marriage applications because the office stamp showed two crossed brooms reserved for applications to sweep chimneys.",
     "reveal": "Made up. The clerk was supposed to be using the only stamp the office owned. That would have made for a long week at the chimney counter.",
     "date": "1857-05",
-    "country": "RO",
+    "country": "DK",
     "topics": [
       "love",
       "law",
@@ -954,7 +949,7 @@
     "spicy": false,
     "difficulty": "medium",
     "author": "chatgpt",
-    "region": "Transylvania"
+    "region": "Zealand"
   },
   {
     "id": "an-wig-rental-club",
@@ -997,7 +992,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A cotton mill lit its premises with 36 electric lamps while the surrounding city still relied on gas for street lighting.",
-    "reveal": "The Garden Reach Cotton Mills lit up in Calcutta in June 1881. Nearly sixteen years passed before the city issued the licence for a public electric supply.",
+    "reveal": "Real. The Garden Reach Cotton Mills lit up in Calcutta in June 1881. Nearly sixteen years passed before the city issued the licence for a public electric supply.",
     "date": "1881-06-30",
     "country": "IN",
     "region": "West Bengal",
@@ -1028,7 +1023,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A capital ran mule and horse trams on tracks built for locomotives, seating about twenty passengers on benches across the carriage.",
-    "reveal": "Asunción’s first tram business began in 1872. The animal-drawn cars used rails that had connected the port to the central railway station.",
+    "reveal": "Real. Asunción’s first tram business began in 1872. The animal-drawn cars used rails that had connected the port to the central railway station.",
     "date": "1872",
     "country": "PY",
     "region": "Asunción",
@@ -1072,7 +1067,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A skate maker exhibited a chair on rollers and advertised the chair sledge alongside his patented roller skates in the newspaper.",
-    "reveal": "The roller chair-sledge went on display at Melbourne’s 1866 Intercolonial Exhibition. The same maker sold roller skates from a shop near the post office.",
+    "reveal": "Real. The roller chair-sledge went on display at Melbourne’s 1866 Intercolonial Exhibition. The same maker sold roller skates from a shop near the post office.",
     "date": "1866-10",
     "country": "AU",
     "region": "Victoria",
@@ -1098,7 +1093,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A brewery sent a guarded truck with two cases of beer to the president’s residence at one minute past midnight.",
-    "reveal": "The Abner-Drury Brewery sent beer to the White House the minute legal sales resumed in Washington. Reporters came along. President Franklin D. Roosevelt was asleep.",
+    "reveal": "Real. The Abner-Drury Brewery sent beer to the White House the minute legal sales resumed in Washington. Reporters came along. President Franklin D. Roosevelt was asleep.",
     "date": "1933-04-07",
     "country": "US",
     "region": "District of Columbia",
@@ -1125,7 +1120,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A library sent its janitor out to deliver books in a horse-drawn wagon fitted to carry two hundred volumes.",
-    "reveal": "Washington County’s library began sending a book wagon out of Hagerstown under librarian Mary Titcomb. Its driver had been the library janitor. The 1910 census recorded his new job as book missionary.",
+    "reveal": "Real. Washington County’s library began sending a book wagon out of Hagerstown under librarian Mary Titcomb. Its driver had been the library janitor. The 1910 census recorded his new job as book missionary.",
     "date": "1905",
     "country": "US",
     "region": "Maryland",
@@ -1157,7 +1152,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A newspaper reported that a railway signalman worked the telegraph himself and had a baboon pull the levers according to his instructions.",
-    "reveal": "Lake Wakatip Mail printed the account of Jack, the baboon who worked at Uitenhage. Local photographs show Jack at the signals beside his handler.",
+    "reveal": "Real. Lake Wakatip Mail printed the account of Jack, the baboon who worked at Uitenhage. Local photographs show Jack at the signals beside his handler.",
     "date": "1890-09-26",
     "country": "ZA",
     "region": "Eastern Cape",
@@ -1191,7 +1186,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A government divided the day into ten hours and later invited clockmakers to come up with practical ways to keep the new time.",
-    "reveal": "Revolutionary France assigned 100 minutes to each hour and 100 seconds to each minute. Few clocks were made to the new standard, and the decimal hour was suspended in 1795.",
+    "reveal": "Real. Revolutionary France assigned 100 minutes to each hour and 100 seconds to each minute. Few clocks were made to the new standard, and the decimal hour was suspended in 1795.",
     "date": "1793-10-05",
     "country": "FR",
     "region": "Île-de-France",
@@ -1218,7 +1213,7 @@
     "deck": "annals",
     "verdict": "real",
     "headline": "A museum advertised a possible monster’s skull in the paper and gave visitors two days to inspect it between ten and three.",
-    "reveal": "The Australian Museum showed the skull as a possible bunyip. It drew attention in Sydney’s papers, and early examination found molars like a young horse’s.",
+    "reveal": "Real. The Australian Museum showed the skull as a possible bunyip. It drew attention in Sydney’s papers, and early examination found molars like a young horse’s.",
     "date": "1847-07",
     "country": "AU",
     "region": "New South Wales",
