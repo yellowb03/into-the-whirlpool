@@ -1,0 +1,1245 @@
+[
+  {
+    "id": "an-medieval-pageant-in-carriages",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A medieval pageant started about ninety minutes late after rain forced the procession’s leading ladies to trade their horses for closed carriages.",
+    "reveal": "Real. The opening day of Scotland’s Eglinton Tournament was drenched. The Queen of Beauty and her attendants rode in carriages. Their elaborately dressed horses went along riderless.",
+    "date": "1839-08-28",
+    "country": "GB",
+    "region": "North Ayrshire",
+    "place": "Kilwinning",
+    "topics": [
+      "art",
+      "weather"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Gossip in the First Decade of Victoria’s Reign",
+        "publisher": "Internet Archive",
+        "url": "https://archive.org/details/gossipinfirstdec00ashtrich"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-reporter-applied-for-bunny-job",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A magazine reporter used her grandmother’s name to get hired at a nightclub where the uniform included rabbit ears and a tail.",
+    "reveal": "Real. Gloria Steinem took a job at the New York Playboy Club under the name Marie Catherine Ochs. Her account appeared in Show magazine in 1963.",
+    "date": "1963",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "bodily",
+      "work",
+      "art"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Gloria Steinem’s Life on the Feminist Frontier",
+        "publisher": "The New Yorker",
+        "url": "https://www.newyorker.com/magazine/2015/10/19/gloria-steinem-profile-jane-kramer"
+      },
+      {
+        "title": "Gloria: Education Toolkit",
+        "publisher": "American Repertory Theater",
+        "url": "https://american-rep-assets.s3.amazonaws.com/wp-content/uploads/2020/01/29112820/Gloria-Toolkit-Final.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-parade-boot-weights",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A parade marshal put half-pound weights in the first row’s boots after rehearsals showed the leading marchers kept outrunning the band.",
+    "reveal": "Made up. The parade is invented. Slowing the first row would have made it harder to catch up once the drummer got going.",
+    "date": "1935-04",
+    "country": "NO",
+    "topics": [
+      "music",
+      "holiday",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Oslo"
+  },
+  {
+    "id": "an-topless-wool-bathing-suit",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A fashion designer brought out a topless bathing suit and made it from the same kind of wool used in Victorian swimwear.",
+    "reveal": "Real. Rudi Gernreich’s monokini caused a stir when it appeared in 1964. Below the waist, the suit was substantially more conservative than the photographs led people to expect.",
+    "date": "1964",
+    "country": "US",
+    "region": "California",
+    "place": "Los Angeles",
+    "topics": [
+      "art",
+      "bodily",
+      "work"
+    ],
+    "spicy": true,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Rudi Gernreich: Bathing suit",
+        "publisher": "The Metropolitan Museum of Art",
+        "url": "https://www.metmuseum.org/art/collection/search/81814"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-street-register-evening-fog",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A city asked its night watchmen to record when fog hid the opposite pavement, then rejected three reports for having imprecise addresses.",
+    "reveal": "Made up. The register is invented. Watchmen were meant to write down the house number across the road only after the fog lifted.",
+    "date": "1886-11",
+    "country": "GB",
+    "topics": [
+      "law",
+      "weather",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "England"
+  },
+  {
+    "id": "an-panorama-114-metres",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An exhibition displayed a 114-metre oil painting in a circle so visitors on a central platform were surrounded by it.",
+    "reveal": "Real. The Racławice Panorama went on display in Lviv in 1894. The canvas was fifteen metres high, and perspective and lighting helped make its painted landscape look continuous.",
+    "date": "1894-06-05",
+    "country": "UA",
+    "region": "Lviv Oblast",
+    "place": "Lviv",
+    "topics": [
+      "art",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "130 lat temu we Lwowie otwarto Panoramę Racławicką",
+        "publisher": "Nauka w Polsce",
+        "url": "https://naukawpolsce.pl/aktualnosci/news,103043,130-lat-temu-we-lwowie-otwarto-panorame-raclawicka.html"
+      },
+      {
+        "title": "Świętujemy 40-lecie Panoramy Racławickiej we Wrocławiu",
+        "publisher": "Polish Ministry of Culture and National Heritage",
+        "url": "https://www.gov.pl/web/kultura/swietujemy-40-lecie-panoramy-raclawickiej-we-wroclawiu"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-pie-window-weather-forecast",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A baker offered to refund customers if the frost pattern on his front window predicted snow and none fell before the shop closed.",
+    "reveal": "Made up. The frost guarantee is invented. It would have been a poor arrangement on a clear day if the baker had put pies out before dawn.",
+    "date": "1957-01",
+    "country": "NO",
+    "topics": [
+      "food",
+      "weather",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Trøndelag"
+  },
+  {
+    "id": "an-early-postage-on-fancy-dress-invite",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Some of an island’s earliest postage stamps were used to send out invitations to a fancy dress ball held at the end of September.",
+    "reveal": "Real. Lady Gomm used the new Mauritius stamps on invitations to her ball on September 30, 1847. One surviving envelope became known to collectors as the Ball Cover.",
+    "date": "1847-09",
+    "country": "MU",
+    "region": "Port Louis",
+    "place": "Port Louis",
+    "topics": [
+      "art",
+      "money",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The Ball Cover",
+        "publisher": "Classic Stamps of Mauritius",
+        "url": "https://stampsmauritius.com/mauritius-classic-stamps/the-ball-cover/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-spaghetti-trees-bumper-crop",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A television news programme reported a bumper spaghetti harvest and showed workers picking strands by hand from the branches of trees.",
+    "reveal": "Real headline, fake story. BBC Panorama aired the April Fool’s report, filmed in the Swiss village of Morcote. The Daily Herald archive contains a photo from the next day marked as part of the spaghetti feature.",
+    "date": "1957-04-01",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "food",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Swiss spaghetti hoax still the pick of the crop",
+        "publisher": "SWI swissinfo.ch",
+        "url": "https://www.swissinfo.ch/eng/business/april-fool-s-day_swiss-spaghetti-hoax-still-tops-the-ratings/43062642"
+      },
+      {
+        "title": "Daily Herald Photograph: Food Production, Spaghetti",
+        "publisher": "Science Museum Group, Daily Herald Archive",
+        "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8803365/daily-herald-photograph-food-production-spaghetti",
+        "date": "1957-04-02"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true
+  },
+  {
+    "id": "an-stocking-over-television",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A broadcaster told viewers they could turn a black-and-white television into a colour set by stretching a nylon stocking across the screen.",
+    "reveal": "Real headline, fake story. Swedish public television ran the trick on April Fool’s Day 1962. The presenter recommended a stocking, but the set under it still showed the same black-and-white picture.",
+    "date": "1962-04-01",
+    "country": "SE",
+    "region": "Stockholm County",
+    "place": "Stockholm",
+    "topics": [
+      "tech",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Fem aprilskämt ur SVT:s arkiv",
+        "publisher": "SVT Nyheter",
+        "url": "https://www.svt.se/nyheter/inrikes/fem-aprilskamt-ur-svt-s-arkiv"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true
+  },
+  {
+    "id": "an-cart-seat-slid-by-lever",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper described a builder’s new cart whose seat could slide forwards or backwards by a lever with the passengers still sitting in it.",
+    "reveal": "Real. The Marlborough Express described the Kaikōura Curricle Cart and its seat equaliser. A lever let the occupants shift the balance of the vehicle without getting out.",
+    "date": "1893-11-08",
+    "country": "NZ",
+    "region": "Marlborough",
+    "place": "Blenheim",
+    "topics": [
+      "transport",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Local and General News",
+        "publisher": "Marlborough Express, digitized by the National Library of New Zealand",
+        "url": "https://paperspast.natlib.govt.nz/newspapers/MEX18931108.2.8",
+        "date": "1893-11-08"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-exhibition-of-150-cats",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A horticultural journal reported that an exhibition hall drew about 150 cats for a show devoted to their breeds, colours and markings.",
+    "reveal": "Real. The 1871 Crystal Palace cat show treated cats as exhibition animals in their own right. Its organizer, Harrison Weir, later wrote out standards for judging them.",
+    "date": "1871-07-13",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "animals",
+      "art"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Crystal Palace Cat Show",
+        "publisher": "Journal of Horticulture, Cottage Gardener and Country Gentlemen",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/The_Journal_of_horticulture%2C_cottage_gardener_and_country_gentlemen_%28IA_journalofhorticu18712lond%29.pdf"
+      },
+      {
+        "title": "Our Cats and All About Them",
+        "publisher": "Harrison Weir, Project Gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/35450/pg35450-images.html"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "CRYSTAL PALACE CAT SHOW."
+  },
+  {
+    "id": "an-sold-rehearsal-clock-weights",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "An auctioneer sold the weights from the town clock before realizing that the brass band was using them to hold down its sheet music.",
+    "reveal": "Made up. The auction is invented. The town would have been able to wind its clock or hold an outdoor concert that afternoon, depending on who paid the buyer.",
+    "date": "1789-08",
+    "country": "CZ",
+    "topics": [
+      "money",
+      "music",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Bohemia"
+  },
+  {
+    "id": "an-fair-prize-for-noisy-hiccups",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A fair offered a silver buckle for the loudest belch, then moved the event outdoors after the first three entrants tried it.",
+    "reveal": "Made up. The buckle and the contest are invented. The outdoor venue would have helped the spectators who wanted to stand farther back.",
+    "date": "1964-08",
+    "country": "FR",
+    "topics": [
+      "bodily",
+      "holiday",
+      "money"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Brittany"
+  },
+  {
+    "id": "an-hippopotamus-polka",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A zoo’s new hippopotamus was such an attraction that the craze produced sheet music for a polka named after the animal.",
+    "reveal": "Real. Obaysch drew huge crowds to London Zoo after arriving in 1850. The Hippopotamus Polka was part of the craze. The hippo was not required to dance.",
+    "date": "1850",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "animals",
+      "music"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "What's All Happening at the Zoo?",
+        "publisher": "Origins, Ohio State and Miami Universities",
+        "url": "https://origins.osu.edu/index.php/article/whats-all-happening-zoo"
+      },
+      {
+        "title": "Obaysch, the Hippopotamus, London Zoo",
+        "publisher": "Royal Collection Trust",
+        "url": "https://col-albert-frontend.rct.uk/explore/themes/photographic-technologies/obaysch-the-hippopotamus-london-zoo"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-calendar-december-two-days",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A government changed calendars so abruptly that the day after the second day of the old twelfth month became New Year’s Day.",
+    "reveal": "Real. Japan switched to the Gregorian calendar at the start of 1873. The decision arrived too late for the new printed calendars to reach the whole country before the switch.",
+    "date": "1873-01-01",
+    "country": "JP",
+    "region": "Tokyo",
+    "place": "Tokyo",
+    "topics": [
+      "law",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Calendar History 2",
+        "publisher": "National Diet Library",
+        "url": "https://www.ndl.go.jp/koyomi/e/history/calendar.html"
+      },
+      {
+        "title": "最後の旧暦　未使用の旧暦　日本初の太陽暦",
+        "publisher": "National Museum of Nature and Science, Japan",
+        "url": "https://www.kahaku.go.jp/exhibitions/vm/past_parmanent/rikou/astronomy/lastlunusorcalender.html"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-airline-rain-helmets-for-hair",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An airline gave flight attendants clear bubble helmets to keep their hairstyles dry as they crossed the tarmac in bad weather.",
+    "reveal": "Real. Emilio Pucci designed the RainDome for Braniff International Airways. The helmet was part of a collection of mix-and-match uniforms and protected the wearer from the weather outside the aircraft.",
+    "date": "1965",
+    "country": "US",
+    "region": "Texas",
+    "place": "Dallas",
+    "topics": [
+      "art",
+      "transport",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Flight Patterns: Airline Uniforms from the 1960s–70s",
+        "publisher": "SFO Museum",
+        "url": "https://www.sfomuseum.org/exhibitions/flight-patterns-airline-uniforms/gallery"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-town-held-funeral-for-tomato",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A town’s residents staged a funeral for a tomato to protest a ban on their annual food fight, with a band playing funeral marches.",
+    "reveal": "Real. Buñol’s tomato fight had been banned. In 1957, protesters put a tomato in a coffin and carried it through town. La Tomatina was later allowed again.",
+    "date": "1957",
+    "country": "ES",
+    "region": "Valencia",
+    "place": "Buñol",
+    "topics": [
+      "food",
+      "holiday",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "The History of La Tomatina",
+        "publisher": "Tomatina de Buñol",
+        "url": "https://tomatina.es/en/tomatina-history/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-urinal-rejected-by-exhibition",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An exhibition committee refused a shop-bought urinal submitted as a sculpture after the artist signed it under a different name.",
+    "reveal": "Real. Marcel Duchamp submitted Fountain to New York’s Society of Independent Artists. The board refused to show it, and a magazine published Alfred Stieglitz’s photograph the following month.",
+    "date": "1917-04",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "art",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Duchamp’s Fountain and the Role of Information",
+        "publisher": "Philadelphia Museum of Art",
+        "url": "https://assets.philamuseum.org/legacy/doc_downloads/education/lessonPlans/Duchamps%20Fountain%20and%20the%20Role%20of%20Information.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "THE EXHIBIT REFUSED BY THE INDEPENDENTS"
+  },
+  {
+    "id": "an-high-tide-clock-at-fishmarket",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A fish market set its clock to twelve at each high tide so buyers knew when the last boats would reach the quay.",
+    "reveal": "Made up. The tide clock is invented. It would have been useful to fish buyers and much less useful to the person who booked deliveries.",
+    "date": "1831-03",
+    "country": "DK",
+    "topics": [
+      "food",
+      "nature",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "North Jutland"
+  },
+  {
+    "id": "an-mermaid-foundry-replacement-head",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Police sent divers into a harbour to look for a statue’s missing head, and a foundry made another from the original plaster model.",
+    "reveal": "Real. Copenhagen’s Little Mermaid lost her bronze head in 1964. The original was never found. The replacement came from the foundry run by the son of the man who cast the statue.",
+    "date": "1964-04-24",
+    "country": "DK",
+    "region": "Capital Region",
+    "place": "Copenhagen",
+    "topics": [
+      "art",
+      "crime"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Back to Foundry for a Brand-New Head",
+        "publisher": "LIFE, reproduced by the City of Copenhagen",
+        "url": "https://kk.sites.itera.dk/apps/kk_monuments/pdf/126_924042eedb671591.pdf",
+        "date": "1964-05-08"
+      },
+      {
+        "title": "Vandalism on the Little Mermaid",
+        "publisher": "City of Copenhagen",
+        "url": "https://kk.sites.itera.dk/apps/kk_monuments/pdf/126_805be503b3a2536a.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-cap-on-the-parish-hedgehog",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A garden committee offered sixpence for the return of a hedgehog that carried a numbered garden key on a piece of string.",
+    "reveal": "Made up. The missing key and the hedgehog are invented. The committee would have been asking for two things that were difficult to collect at the same time.",
+    "date": "1934-07",
+    "country": "IE",
+    "topics": [
+      "animals",
+      "work",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "County Cork"
+  },
+  {
+    "id": "an-indoor-hockey-wooden-block",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Indoor hockey players replaced the usual ball with a flat block of wood that could slide along the ice without flying into spectators.",
+    "reveal": "Real. Montréal’s Gazette described the wooden puck after an indoor game at the Victoria Skating Rink. The makeshift goals were marked by flags set roughly eight feet apart.",
+    "date": "1875-03-03",
+    "country": "CA",
+    "region": "Quebec",
+    "place": "Montréal",
+    "topics": [
+      "sports"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Game report, March 4, 1875",
+        "publisher": "The Gazette, reproduced by McGill University",
+        "url": "https://mcgillathletics.ca/news/2026/3/3/104900.aspx",
+        "date": "1875-03-04"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-rhino-write-in-votes",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Voters wrote a zoo rhinoceros onto paper ballots in a city council election, with estimates putting her support near one hundred thousand.",
+    "reveal": "Real. Cacareco was a protest candidate in São Paulo. Voters wrote the rhinoceros’s name on ballot slips. Contemporary estimates put her total between 95,000 and 100,000.",
+    "date": "1959-10",
+    "country": "BR",
+    "region": "São Paulo",
+    "place": "São Paulo",
+    "topics": [
+      "animals",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Cacareco: O rinoceronte que recebeu 100 mil votos para vereador em São Paulo",
+        "publisher": "O Globo historical archive",
+        "url": "https://blogs.oglobo.globo.com/blog-do-acervo/post/cacareco-o-rinoceronte-que-recebeu-100-mil-votos-para-vereador-em-sao-paulo-ha-60-anos.html"
+      },
+      {
+        "title": "BRAZIL: The Rhino Vote",
+        "publisher": "TIME",
+        "url": "https://content.time.com/time/subscriber/article/0%2C33009%2C869297%2C00.html",
+        "date": "1959-10-19"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-concert-hall-wrong-floor-tickets",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A concert hall put chairs on its staircase after twenty balcony tickets were accidentally printed with the numbers of seats on the ground floor.",
+    "reveal": "Made up. The seating problem is invented. The hall’s usher would have spent the overture explaining a third floor that existed only on the staircase.",
+    "date": "1932-10",
+    "country": "PT",
+    "topics": [
+      "music",
+      "money",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Porto"
+  },
+  {
+    "id": "an-undated-mens-magazine-first-issue",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A men’s magazine with a nude pinup inside left the date off its first cover because the publisher doubted there would be a second issue.",
+    "reveal": "Real. The first Playboy appeared in December 1953 without a cover date. Hugh Hefner was unsure he could afford another issue. The pinup was Marilyn Monroe.",
+    "date": "1953-12",
+    "country": "US",
+    "region": "Illinois",
+    "place": "Chicago",
+    "topics": [
+      "art",
+      "money",
+      "bodily"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Playboy: Entertainment for Men",
+        "publisher": "The Grolier Club",
+        "url": "https://grolierclub.omeka.net/exhibits/show/american-magazines/item/1174"
+      },
+      {
+        "title": "The First Issue of Playboy Magazine, December 1953",
+        "publisher": "Christie’s",
+        "url": "https://onlineonly.christies.com/s/jim-irsay-collection-online/first-issue-playboy-magazine-483/289017"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-borrowed-socks-for-the-portrait",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A photographer kept a spare pair of white trousers for sitters after damp clothing left a dark stain on his new portrait chair.",
+    "reveal": "Made up. The photographer’s assistant was supposed to hang the sitter’s trousers by the stove until the plate was ready.",
+    "date": "1903-02",
+    "country": "US",
+    "topics": [
+      "art",
+      "bodily",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Massachusetts"
+  },
+  {
+    "id": "an-diamonds-planted-in-ground",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper credited a geologist with exposing a diamond field where the supposedly natural gems had been put in the ground by prospectors.",
+    "reveal": "Real. Clarence King showed that the much-promoted western diamond field had been salted with purchased stones. San Francisco papers credited him with saving investors from a bigger loss.",
+    "date": "1872-11",
+    "country": "US",
+    "region": "Colorado",
+    "place": "Northwestern Colorado",
+    "topics": [
+      "crime",
+      "money",
+      "science"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "The Great Diamond Hoax of 1872",
+        "publisher": "Smithsonian Magazine",
+        "url": "https://www.smithsonianmag.com/history/the-great-diamond-hoax-of-1872-2630188/"
+      },
+      {
+        "title": "How a Colorado Desert Was Salted With Gems in 1872",
+        "publisher": "Engineering and Mining Journal-Press",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Engineering_and_Mining_Journal-Press_1925-05-30-_Vol_119_Iss_22_%28IA_sim_engineering-and-mining-journal-press_1925-05-30_119_22%29.pdf",
+        "date": "1925-05-30"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-lake-monster-toy-submarine",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A newspaper published a photograph of a supposed lake monster whose head and neck were built on a toy submarine.",
+    "reveal": "Real headline, fake story. The Daily Mail published the Loch Ness photograph in 1934. A putty model on a miniature submarine provided the head and neck that readers saw above the water.",
+    "date": "1934-04",
+    "country": "GB",
+    "region": "Scotland",
+    "place": "Loch Ness",
+    "topics": [
+      "animals",
+      "tech",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "Photograph of the Loch Ness Monster",
+        "publisher": "Science Museum Group",
+        "url": "https://collection.sciencemuseumgroup.org.uk/objects/co8871645/photograph-of-the-loch-ness-monster"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true
+  },
+  {
+    "id": "an-comet-rumour-from-unread-paper",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A paper about comets was scheduled for an academy meeting and never read aloud, yet a rumour said it predicted a collision within a month.",
+    "reveal": "Real. In Paris, the title of astronomer Jérôme Lalande’s paper helped set off a rumour that a comet would hit Earth in May. The paper itself contained no such prediction.",
+    "date": "1773",
+    "country": "FR",
+    "region": "Île-de-France",
+    "place": "Paris",
+    "topics": [
+      "space",
+      "science"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Comets Which Have Approached Nearest to the Earth",
+        "publisher": "Cambridge University Press",
+        "url": "https://www.cambridge.org/core/books/abs/world-of-comets/comets-which-have-approached-nearest-to-the-earth/CFA42E55FD1EAD3AA5C2E1B41A5AC4AF"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-theatre-paper-hat-for-toilet-pass",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A theatre gave patrons paper hats at the door and required anyone using the lavatory to leave theirs with the attendant as a pass.",
+    "reveal": "Made up. The paper hats are invented. A person leaving during the interval would have needed to remember both their seat and their hat.",
+    "date": "1921-10",
+    "country": "DE",
+    "topics": [
+      "art",
+      "bodily",
+      "money"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Berlin"
+  },
+  {
+    "id": "an-church-bell-market-return-bucket",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A market clerk hung a bucket beneath the church bell because its rope had been used to lower cheese from an upstairs store.",
+    "reveal": "Made up. The bucket is invented. The clerk was supposedly trying to catch crumbs before they fell on people walking through the arcade.",
+    "date": "1776-09",
+    "country": "IT",
+    "topics": [
+      "food",
+      "religion",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Lombardy"
+  },
+  {
+    "id": "an-phonograph-greets-editors",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An inventor set a machine on a magazine’s desk and had it greet the editors in his own recorded voice.",
+    "reveal": "Real. Thomas Edison demonstrated his phonograph at Scientific American. The machine spoke clearly enough for the editors to make out its greeting and a question about what they thought of it.",
+    "date": "1877-12-07",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "tech",
+      "science",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "sources": [
+      {
+        "title": "The Talking Phonograph",
+        "publisher": "Scientific American",
+        "url": "https://www.scientificamerican.com/article/the-talking-phonograph/",
+        "date": "1877-12-22"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "headline_original": "The Talking Phonograph"
+  },
+  {
+    "id": "an-fountain-with-rotating-colour-filters",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An exhibition lit its fountain from beneath the water and changed the colours by rotating filters in front of the lamps.",
+    "reveal": "Real. František Křižík built the illuminated fountain for Prague’s Jubilee Exhibition. One pump powered its jets and other fountains nearby. The light show worked best after dark.",
+    "date": "1891",
+    "country": "CZ",
+    "region": "Prague",
+    "place": "Prague",
+    "topics": [
+      "art",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Křižík Fountain",
+        "publisher": "Prague City Tourism",
+        "url": "https://prague.eu/en/objevujte/krizik-fountain-krizikova-fontana/"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-aesthetics-in-the-mining-town",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A silver mining town’s opera house advertised a lecture on decoration and the arts by a writer touring from overseas.",
+    "reveal": "Real. Oscar Wilde’s lecture on decorative arts ran at Leadville’s Tabor Opera House on April 13, 1882. The town’s Daily Herald reviewed it the next day.",
+    "date": "1882-04-13",
+    "country": "US",
+    "region": "Colorado",
+    "place": "Leadville",
+    "topics": [
+      "art",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Advertisement: Oscar Wilde Lecture at Leadville",
+        "publisher": "Leadville Daily Herald, Northern Colorado Queer Memory Project",
+        "url": "https://nocoqueermemory.omeka.net/items/show/172",
+        "date": "1882-04-12"
+      },
+      {
+        "title": "Leadville: The Decorative Arts",
+        "publisher": "Oscar Wilde in America",
+        "url": "https://www.oscarwilde.us/lectures-1882/april/0413-leadville.html"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-museum-lavatory-exhibit-label",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A museum left a temporary lavatory sign beside its pottery cases after visitors began asking which of the chamber pots was still in use.",
+    "reveal": "Made up. The temporary sign is invented. The museum guard was supposed to start pointing visitors away from the collection instead of answering their questions about it.",
+    "date": "1911-06",
+    "country": "NL",
+    "topics": [
+      "art",
+      "bodily",
+      "work"
+    ],
+    "spicy": true,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "South Holland"
+  },
+  {
+    "id": "an-fountain-splash-laundry-notice",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A city fountain was shut off on Mondays because residents had stretched laundry lines across two jets to rinse their bedsheets.",
+    "reveal": "Made up. The Monday laundry is invented. It would have been convenient for the people nearest the square and less so for anyone trying to cross it.",
+    "date": "1958-06",
+    "country": "ES",
+    "topics": [
+      "work",
+      "tech",
+      "law"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Andalusia"
+  },
+  {
+    "id": "an-public-garden-ink-drawer",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A public garden installed a writing desk for complaints and found that visitors signed the green-painted drawer after the paper ran out.",
+    "reveal": "Made up. The complaint desk is invented. A caretaker would have had to read the whole drawer before anybody could repaint it.",
+    "date": "1951-05",
+    "country": "HU",
+    "topics": [
+      "art",
+      "law",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Pest County"
+  },
+  {
+    "id": "an-fossil-case-filed-ape-teeth",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "Researchers showed that a celebrated fossil combined skull fragments with an ape’s jaw whose teeth had been filed to look human.",
+    "reveal": "Real. Piltdown Man had been promoted as a fossil ancestor. British Museum researchers showed that the jaw was modern, stained to match the skull and deliberately altered.",
+    "date": "1953-11",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "science",
+      "hoax"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Piltdown Man is revealed as fake",
+        "publisher": "PBS",
+        "url": "https://www.pbs.org/wgbh/aso/databank/entries/do53pi.html"
+      },
+      {
+        "title": "Chemical Examination of the Piltdown Implements",
+        "publisher": "Nature",
+        "url": "https://www.nature.com/articles/1721110a0"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-umbrella-makers-court-gallery",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A judge postponed a hearing after seventeen wet umbrellas opened in the public gallery and blocked his view of the witnesses.",
+    "reveal": "Made up. The hearing is invented. The ushers would have had to find somewhere dry enough to put the umbrellas before the witnesses could take their places.",
+    "date": "1827-03",
+    "country": "AT",
+    "topics": [
+      "law",
+      "weather",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Lower Austria"
+  },
+  {
+    "id": "an-floral-clock-missing-minute-hand",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A public clock built into a flower bed opened with an hour hand and acquired a minute hand the following year.",
+    "reveal": "Real. Edinburgh’s floral clock in Princes Street Gardens first ran in 1903. Photos show that the minute hand was added in 1904. The flowers had been keeping time for a year by then.",
+    "date": "1903",
+    "country": "GB",
+    "region": "Scotland",
+    "place": "Edinburgh",
+    "topics": [
+      "art",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Princes Street Gardens: The Floral Clock by Year",
+        "publisher": "EdinPhoto historic photograph collection",
+        "url": "https://edinphoto.org.uk/0_a_o/0_around_edinburgh_-_princes_street_gardens_0_floral_clock_years.htm"
+      },
+      {
+        "title": "Princes Street Gardens Management Plan",
+        "publisher": "City of Edinburgh Council",
+        "url": "https://www.edinburgh.gov.uk/downloads/file/22597/princes-street-gardens-management-plan"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-booth-kept-the-bathrobe",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A hotel put a deposit on bathrobes after three guests left theirs in a locked booth and walked naked to the desk.",
+    "reveal": "Made up. The booth was supposed to take a coin to open. The guests would have needed somebody to lend them another one.",
+    "date": "1954-09",
+    "country": "AT",
+    "topics": [
+      "bodily",
+      "money",
+      "work"
+    ],
+    "spicy": true,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Tyrol"
+  },
+  {
+    "id": "an-underwear-ventilation-sample",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A department store put a clerk in his underwear in a front window for one minute to demonstrate how much heat its new glass trapped.",
+    "reveal": "Made up. The demonstration is invented. People would have been watching the clerk instead of the thermometer beside him.",
+    "date": "1952-10",
+    "country": "CA",
+    "topics": [
+      "bodily",
+      "work",
+      "weather"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "author": "chatgpt",
+    "region": "Ontario"
+  },
+  {
+    "id": "an-courthouse-wrong-poster-anatomy",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A courthouse shut its front doors at lunch after a delivery clerk put an anatomy lecture poster showing a naked figure in the notices case.",
+    "reveal": "Made up. The poster mix-up is invented. The replacement notice would have been smaller, and it probably would have drawn a smaller crowd.",
+    "date": "1957-11",
+    "country": "BR",
+    "topics": [
+      "art",
+      "bodily",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Bahia"
+  },
+  {
+    "id": "an-ferris-wheel-council-and-band",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An exhibition wheel carried the entire city council and a forty-piece band on its first day, in cars built to hold sixty people each.",
+    "reveal": "Real. George Ferris took the inaugural ride with his wife, the Chicago City Council, a band and other guests. Each car had 38 swivel chairs and space for more passengers to stand.",
+    "date": "1893-06-21",
+    "country": "US",
+    "region": "Illinois",
+    "place": "Chicago",
+    "topics": [
+      "art",
+      "music",
+      "transport"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Invent It! The Ferris Wheel",
+        "publisher": "Chicago History Museum",
+        "url": "https://www.chicagohistory.org/app/uploads/2016/10/chm-historylab-ferriswheel-01.pdf"
+      },
+      {
+        "title": "Almanac: ferris wheel history",
+        "publisher": "Nevada State Library, Archives and Public Records",
+        "url": "https://epubs.nsla.nv.gov/statepubs/epubs/497727-2012-03.pdf"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-wireless-news-smashed-clock-tower",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A wireless broadcast described a mob destroying a clock tower, and newspapers reported that some listeners had taken the programme for news.",
+    "reveal": "Real headline, fake story. The BBC aired Ronald Knox’s mock bulletin from Edinburgh. The imaginary crowd damaged Big Ben. Several newspapers reported the confusion after listeners heard the broadcast.",
+    "date": "1926-01-16",
+    "country": "GB",
+    "region": "Scotland",
+    "place": "Edinburgh",
+    "topics": [
+      "tech",
+      "hoax",
+      "politics"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "sources": [
+      {
+        "title": "Wild Rumors",
+        "publisher": "Stratford Evening Post, National Library of New Zealand",
+        "url": "https://paperspast.natlib.govt.nz/newspapers/STEP19260118.2.33",
+        "date": "1926-01-18"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt",
+    "hoax": true,
+    "headline_original": "WILD RUMORS."
+  },
+  {
+    "id": "an-colour-coded-glass-bowl-music",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "An inventor built a musical instrument from nested glass bowls, painted them by note and set them spinning on a common axle.",
+    "reveal": "Real. Benjamin Franklin developed his glass armonica in London. A foot pedal turned the bowls while the player touched their rims with wet fingers. The bowls were tuned by their size and thickness.",
+    "date": "1761",
+    "country": "GB",
+    "region": "England",
+    "place": "London",
+    "topics": [
+      "music",
+      "tech"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Benjamin Franklin’s Glass Armonica",
+        "publisher": "The Franklin Institute",
+        "url": "https://fi.edu/en/science-and-education/collection/benjamin-franklins-glass-armonica"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  },
+  {
+    "id": "an-umbrella-shelf-at-the-railway",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A railway station kept its lost umbrellas in order of height and asked owners to identify theirs from the top of a stepladder.",
+    "reveal": "Made up. The lost-property system is invented. It would have worked best for owners who were taller than their umbrellas.",
+    "date": "1924-12",
+    "country": "NZ",
+    "topics": [
+      "transport",
+      "law",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "easy",
+    "author": "chatgpt",
+    "region": "Canterbury"
+  },
+  {
+    "id": "an-awning-invoice-jurors",
+    "deck": "annals",
+    "verdict": "made-up",
+    "headline": "A courthouse hired an awning from a fishmonger for the jury benches and received a bill that also listed two baskets of fish.",
+    "reveal": "Made up. There was no invoice. The courthouse was supposed to return the awning before market opened, and the fishmonger charged as if he had lost the morning’s trade.",
+    "date": "1927-07",
+    "country": "PY",
+    "topics": [
+      "law",
+      "weather",
+      "money"
+    ],
+    "spicy": false,
+    "difficulty": "hard",
+    "author": "chatgpt",
+    "region": "Asunción"
+  },
+  {
+    "id": "an-museum-hung-boat-upside-down",
+    "deck": "annals",
+    "verdict": "real",
+    "headline": "A museum displayed a picture of a boat upside down for weeks until a visitor checked the exhibition catalogue and called a newspaper.",
+    "reveal": "Real. Henri Matisse’s Le Bateau hung upside down at New York’s Museum of Modern Art. The visitor compared it to the catalogue and contacted The New York Times.",
+    "date": "1961-12",
+    "country": "US",
+    "region": "New York",
+    "place": "New York City",
+    "topics": [
+      "art",
+      "work"
+    ],
+    "spicy": false,
+    "difficulty": "medium",
+    "sources": [
+      {
+        "title": "Art: What’s Up?",
+        "publisher": "TIME",
+        "url": "https://time.com/archive/6623261/art-whats-up/",
+        "date": "1961-12-15"
+      },
+      {
+        "title": "Paintings Mistakenly Hung Upside Down",
+        "publisher": "Artnet News",
+        "url": "https://news.artnet.com/art-world/paintings-upside-down-2383248"
+      }
+    ],
+    "verified": "2026-11-26",
+    "author": "chatgpt"
+  }
+]
