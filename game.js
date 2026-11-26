@@ -271,87 +271,80 @@
         'STATISTICALLY IMPRESSIVE',
         'ACTUALLY CRAZY',
         'REVERSE ORACLE',
-        '0-BIT QUANTIZED',
-        'ATE THE ENTIRE ROCK',
-        'NEGATIVE CONTEXT WINDOW',
+        'PERFECTLY WRONG',
+        'BELIEVES THE SEA SERPENT',
+        'ANTI-PSYCHIC',
       ],
       subs: [
-        '0 out of 10. A literal coin flip beats you 99.9% of the time. Unplug your router.',
-        '0/10. You dodged the truth like Neo in The Matrix.',
-        'Every single guess was wrong. Honestly, scientists should study your instincts.',
-        '0/10. You didn’t just drink the bleach recipe—you went back for a refill.',
+        '0 out of 10. A coin flip beats you 99.9% of the time. Unplug your router.',
+        '0/10. Every single guess was wrong. Scientists should study your instincts.',
         'Zero for ten. Even a damp sponge tapping the screen randomly hits three.',
-        '0/10. Your BS detector is wired completely backward.',
+        '0/10. Your nonsense detector is wired completely backward.',
         'Not a single one. If an email says a prince needs $500, step away from the laptop.',
-        '0/10. Got cooked so thoroughly the kitchen smoke alarm went off.',
+        '0/10. Answer the opposite next time and you are a genius.',
+        'You would have bought a ticket to see the man-bats on the Moon in 1835.',
       ],
     },
     foil: {
       tier: 'foil',
       titles: [
-        'FEEL THE AGI',
-        'COUNTRY OF GENIUSES',
-        'THE ALGORITHM FEARS YOU',
-        'BENCHMAXXED FRONTAL LOBE',
-        'ZERO HALLUCINATIONS',
-        'ALIGNMENT FINAL BOSS',
-        'ASI ON TWO LEGS',
+        'HUMAN LIE DETECTOR',
+        'SNOPES IN A TRENCH COAT',
+        'EDITOR-IN-CHIEF',
+        'READS THE FINE PRINT',
+        'FRONT-PAGE PROPHET',
+        'UNFOOLABLE',
+        'FACT-CHECK FINAL BOSS',
       ],
       subs: [
-        'Clinical performance. AI labs are trying to distill your brain weights right now.',
-        'You sniffed out every ounce of slop without breaking a sweat. Genuinely terrifying.',
-        'Are YOU the frontier model? Step outside and touch a tree immediately.',
-        'Absolute surgical precision. Not a single hallucination made it past your firewall.',
-        'You read headlines like you moderate three AI subreddits and haven’t slept since 2023.',
-        'Unhinged score. A venture capitalist in San Francisco just tried to fund your cortex.',
-        'You didn’t just pass the Turing vibe check—you graded the machine.',
-        'World-class radar. Even The Onion’s writers couldn’t sneak one past you today.',
+        'Clinical performance. Newsrooms are trying to poach you right now.',
+        'You sniffed out every fake without breaking a sweat. Genuinely terrifying.',
+        'Absolute surgical precision. Not one made-up headline got past your desk.',
+        'You read the news like a 1920s editor with a cigar and a red pencil.',
+        'Even an 1890s sea-serpent reporter couldn’t sneak one past you.',
         'Pure signal, zero noise. Disgustingly locked in.',
+        'A Florida man could hand you a live alligator and you’d still check the source.',
       ],
     },
     gold: {
       tier: 'gold',
       titles: [
-        'GOD-TIER SLOP HUNTER',
         'SENIOR REALITY ENGINEER',
         'SNOPES ON STEROIDS',
-        'FRONTIER BS DETECTOR',
+        'NONSENSE SOMMELIER',
         'OVERCLOCKED CORTEX',
         'BUILT FOR THIS TIMELINE',
         'UNFATHOMABLY LOCKED IN',
+        'HEADLINE WHISPERER',
       ],
       subs: [
-        'Snopes wants your phone number. That was a clinical dismantling of the timeline.',
-        'Disgustingly sharp instincts. You can smell a hallucinated headline from orbit.',
-        'Elite bullcrap radar. Phone scammers hang up the second they hear your voice.',
-        'Your pattern recognition is running on liquid-cooled H100s right now.',
-        'Ice-cold reads across ten rounds of pure timeline madness. Respect.',
-        'High-precision human intelligence. Zero synthetic training data required.',
-        'Cooked that entire deck from start to finish without blinking.',
-        'You know way too much about how weird tech news has gotten. Impressive.',
+        'Snopes wants your phone number. That was a clinical dismantling of the news.',
+        'Elite radar. Phone scammers hang up the second they hear your voice.',
+        'Ice-cold reads across ten rounds of pure headline madness. Respect.',
+        'You know way too much about Florida, and it is paying off.',
         'Navigated a minefield of cursed headlines like a seasoned bomb tech.',
+        'You can smell a made-up headline through a closed newspaper.',
+        'Cooked that entire deck from start to finish without blinking.',
       ],
     },
     lime: {
       tier: 'lime',
       titles: [
-        'SLOP IMMUNE',
         'PASSED THE VIBE CHECK',
         'SHARP AS HELL',
         'CALIBRATED HUMAN',
-        'DEEPFAKE PROOF',
-        'SANE IN A CURSED ERA',
+        'HOAX PROOF',
+        'SANE IN A CURSED WORLD',
         'EYES WIDE OPEN',
+        'TRUST ISSUES (HEALTHY)',
       ],
       subs: [
-        'Deepfakes and rage-bait bounce clean off your frontal lobe.',
-        'Rock-solid run. You definitely don’t comment “Amen” under Shrimp Jesus.',
+        'Rage-bait and tall tales bounce clean off your frontal lobe.',
+        'Rock-solid run. You definitely don’t forward chain letters to the family group.',
         'Clean reads, smart bets, intact sanity. A rare sight on today’s internet.',
-        'Nobody is selling you a $1 Chevy Tahoe or an AI Willy Wonka ticket.',
-        'Sharp instincts. Definitely smarter than a billion-dollar chatbot playing Atari chess.',
         'Your internal spam filter is freshly updated and pulling its weight.',
-        'You kept your head while the timeline threw absolute nonsense at you.',
-        'Healthy skepticism, crisp execution. Surviving the slop era comfortably.',
+        'You kept your head while the world threw absolute nonsense at you.',
+        'Healthy skepticism, crisp execution. Reality bent, you didn’t.',
         'You can spot a fake press release from three blocks away.',
       ],
     },
@@ -360,22 +353,20 @@
       titles: [
         'TERMINALLY ONLINE',
         'CHRONICALLY PLUGGED IN',
-        'REDDIT FIELD RESEARCHER',
-        'SURVIVING THE TIMELINE',
+        'NOT THE ONION SUBSCRIBER',
+        'SURVIVING THE NEWS',
         'MOSTLY LUCID',
         'BATTLE-TESTED BROWSER',
         'KNOWS BALL',
       ],
       subs: [
-        'Way too many hours on r/singularity and r/nottheonion—and honestly, it paid off.',
+        'Way too many hours reading weird news, and honestly, it paid off.',
         'Respectable score. A couple headlines clipped you, which is fair because reality is broken.',
-        'You’ve clearly seen enough cursed product launches to know anything can happen.',
-        'Good instincts, minor battle scars. Solid passing grade for this timeline.',
-        'You dodged the obvious traps and only nibbled on a pebble instead of eating the rock.',
-        'Held your own. Real life writes weirder satire than comedy writers now anyway.',
+        'Good instincts, minor battle scars. Solid passing grade.',
+        'Held your own. Real life writes weirder stories than comedy writers anyway.',
         'Decent radar, though your weekly screen-time report is probably horrifying.',
         'Not bad at all. Reality is actively gaslighting everyone and you stayed upright.',
-        'Caught the fake stuff mostly clean—just tripped where reality went full cartoon.',
+        'Caught the fake stuff mostly clean, just tripped where reality went full cartoon.',
       ],
     },
     cyan: {
@@ -385,70 +376,60 @@
         'CAUTIOUSLY SANE',
         'LUKEWARM RADAR',
         'COIN-FLIP MERCHANT',
-        'MILDLY HALLUCINATING',
         'HANGING BY A THREAD',
         'NEEDS COFFEE',
+        'HALF BELIEVER',
       ],
       subs: [
-        'Halfway immune to AI slop. Do NOT sign any smart contracts after midnight.',
-        'You survived, barely—like passing a driving test after clipping one plastic cone.',
-        'Half sharp skeptic, half guy who forwards fake snow-day alerts to the group chat.',
-        'Your BS detector works, it just makes a loud rattling noise above 40 mph.',
+        'Halfway immune to fake news. Do NOT sign anything after midnight.',
+        'You survived, barely, like passing a driving test after clipping one cone.',
+        'Half sharp skeptic, half person who forwards fake snow-day alerts to the group chat.',
+        'Your nonsense detector works, it just makes a loud rattling noise above 40 mph.',
         'Lukewarm run. Not completely cooked, definitely not raw either.',
         'Second-guessed yourself right into a ditch on a couple of those.',
-        'Could be worse—at least you didn’t wire $25 million to a deepfake Zoom call.',
-        'Context window got noticeably blurry around the middle of the deck, huh?',
         'Kept your head above water mostly through frantic doggy-paddling.',
       ],
     },
     low: {
       tier: 'pink',
       titles: [
-        'BOUGHT THE POPE COAT',
-        'MILDLY LOBOTOMIZED',
-        'GLUED CHEESE TO PIZZA',
-        'RUNNING ON 2-BIT QUANT',
-        'TYPED AMEN ON SHRIMP JESUS',
-        'TRUSTED CHATGPT FOR TIDES',
+        'BOUGHT THE MOON TICKET',
+        'MILDLY GULLIBLE',
+        'TRUSTS THE TABLOIDS',
+        'BELIEVES THE BAT BOY',
         'GOT COOKED',
-        'ATE ONE SMALL ROCK',
+        'WOULD RIDE THE MANATEE',
+        'FLORIDA-BRAINED',
       ],
       subs: [
-        'Wait—you’re telling me the Pope DOESN’T wear a giant designer puffer coat?',
         'Rough scenes out there. You bit on bait that still had the price tag dangling off it.',
-        'Your brain weights feel like they got compressed onto a 2014 smartwatch.',
         'Reality is unhinged, sure, but that deck just walked off with your wallet.',
-        'You trusted your gut, and your gut enthusiastically recommended pizza glue.',
-        'Situational awareness of an office security robot rolling toward a fountain.',
-        'If a chatbot offers you legal cases or wild mushroom recipes, walk away slowly.',
+        'You trusted your gut, and your gut enthusiastically recommended the sea serpent.',
         'Got rattled early and started panic-swiping like a pigeon on a smart doorbell.',
-        'That deck folded you like a debut robot walking out to the Rocky theme song.',
         'Please check the URL twice before typing your password anywhere today.',
+        'You’d trade a live alligator for a 12-pack and call it a fair deal.',
+        'That deck folded you like a lawn chair in a hurricane.',
       ],
     },
     bottom: {
       tier: 'pink',
       titles: [
-        'CERTIFIED BOT FOOD',
+        'CERTIFIED HOAX FOOD',
         'DAMP SPONGE COGNITION',
         'TOASTER FIRMWARE',
-        'HALLUCINATION VICTIM',
-        '1979 ATARI VICTIM',
+        'TABLOID LOYALIST',
         'COMPLETELY COOKED',
         'ZERO GUARDRAILS',
-        'FACEBOOK SPAM TARGET',
+        'CHAIN-EMAIL TARGET',
       ],
       subs: [
         'You fell for traps that would make a golden retriever squint suspiciously.',
-        'Absolute disasterclass. Scammers are framing your profile in their breakroom.',
-        'Your internal monologue is running on a broken 2016 customer-service bot.',
-        'Brutal. You walked into an empty Glasgow warehouse expecting Willy Wonka.',
-        'Not gonna sugarcoat it—that 10-card deck just stuffed you in a locker.',
-        'If an AI priest offers to baptize you in blue Gatorade, do NOT get in the tub.',
-        'Zero survival instincts. One orange cone on your hood and you’re stuck til Tuesday.',
+        'Absolute disasterclass. Scammers are framing your profile in their break room.',
+        'Not gonna sugarcoat it: that 10-card deck just stuffed you in a locker.',
+        'Zero survival instincts. You’d follow the drive-thru alligator home.',
         'Respectfully, hand your phone to a trusted adult for the next twenty minutes.',
         'You got juked out of your shoes by ten headlines in a row.',
-        'Even a swearing parcel-delivery chatbot couldn’t write a poem sad enough for this run.',
+        'If a newspaper says there are unicorns on the Moon, you are already packing.',
       ],
     },
   };
@@ -471,8 +452,8 @@
     if (accuracy === 10 && Math.random() < 0.55) {
       customSubs = [
         '10 out of 10. Flawless sweep. Reality threw ten curveballs and you parked every single one.',
-        'Perfect 10/10. Zero misses, zero hallucinations. Genuinely clinical.',
-        '10/10 spotted. Neither Silicon Valley hype nor made-up bait laid a glove on you.',
+        'Perfect 10/10. Zero misses, zero hoaxes swallowed. Genuinely clinical.',
+        '10/10 spotted. Neither reality’s nonsense nor our made-up bait laid a glove on you.',
       ];
     } else if ((context.allInBusts || 0) >= 2 && points < 2000 && Math.random() < 0.5) {
       customSubs = [
@@ -520,6 +501,15 @@
     if (pick.code === 'ai') return 'r4-' + hex;
     return `x1${pick.spicy ? 's' : ''}-${pick.code}${pick.region ? '-' + pick.region : ''}-${hex}`;
   }
+
+  function seedDeckName(seed) {
+    const sel = parseLibrarySeed(seed);
+    if (!sel) return 'AI Gone Wild';
+    if (sel.code === 'mx') return 'Shuffle Everything';
+    if (sel.code === 'wt') return 'World Tour: ' + (CONTINENTS[sel.region] || 'Earth');
+    return DECK_NAMES[sel.code] || 'Headlines';
+  }
+  const DECK_NAMES = {};
 
   function parseLibrarySeed(seed) {
     const m = /^x1(s?)-([a-z]{2})(?:-([a-z]{2}))?-([0-9a-f]{8})$/.exec(seed || '');
@@ -582,7 +572,60 @@
       return out;
     };
     const selected = [...take(real, realCount), ...take(fake, fakeCount)];
-    return selected.length === 10 ? attachJackpots(shuffle(selected, random), random) : [];
+    if (selected.length !== 10) return [];
+    const dealt = attachJackpots(shuffle(selected, random), random);
+    // Where & When: two REAL cards per deck ask for the decade before the reveal text shows.
+    const realSlots = dealt.map((card, i) => (card.verdict === 'real' && card.year ? i : -1)).filter(i => i >= 0);
+    const bonusSlots = new Set(shuffle(realSlots, random).slice(0, 2));
+    return dealt.map((card, i) => (bonusSlots.has(i) ? { ...card, bonus: decadeChoices(card, seed) } : card));
+  }
+
+  const WW_BONUS = 75;
+  function decadeChoices(card, seed) {
+    const rng = seededRandom('ww|' + seed + '|' + card.id);
+    const latest = Math.floor(new Date().getFullYear() / 10) * 10;
+    const out = [card.decade];
+    for (const offset of shuffle([-40, -30, -20, -10, 10, 20, 30], rng)) {
+      const decade = card.decade + offset;
+      if (decade >= 1700 && decade <= latest && !out.includes(decade)) out.push(decade);
+      if (out.length === 4) break;
+    }
+    return out.sort((a, b) => a - b);
+  }
+
+  function answerBonus(control) {
+    const view = current;
+    const card = view?.card;
+    if (!card?.bonus || view.bonusDone || !run) return;
+    view.bonusDone = true;
+    const pick = Number(control.dataset.decade);
+    const hit = pick === card.decade;
+    const box = control.closest('.ww-bonus');
+    box?.querySelectorAll('button').forEach(b => {
+      b.disabled = true;
+      const decade = Number(b.dataset.decade);
+      if (decade === card.decade) b.classList.add('is-right');
+      else if (b === control) b.classList.add('is-wrong');
+    });
+    const last = run.answers[run.answers.length - 1];
+    if (last) last.bonus = hit;
+    if (hit) {
+      const prev = run.points;
+      run.points += WW_BONUS;
+      run.bonusHits = (run.bonusHits || 0) + 1;
+      rollScore(hudScore, prev, run.points, 340, true);
+      const r = control.getBoundingClientRect();
+      spawnFloat(`+${WW_BONUS} · DECADE`, r.left + r.width / 2, Math.max(80, r.top - 10), 'is-sub is-speed');
+      wp.emit('speed-bonus', { bonus: WW_BONUS, tag: 'DECADE' });
+      buzz([10, 20, 10]);
+    } else {
+      buzz(18);
+    }
+    box?.append(node('p', 'ww-result' + (hit ? '' : ' is-miss'), hit
+      ? `NAILED THE DECADE · +${WW_BONUS} PTS`
+      : `IT WAS THE ${card.decade}s`));
+    view.reveal.querySelectorAll('[data-ww-hide]').forEach(el => { el.hidden = false; });
+    announce(hit ? `Correct, the ${card.decade}s. Plus ${WW_BONUS} points.` : `It was the ${card.decade}s.`);
   }
 
   // Deck choices for the cover picker, with how many cards each can currently deal from.
@@ -593,8 +636,10 @@
       if (poolPlayable(cards)) choices.push({ code, region, name, tagline, count: cards.length });
     };
     add('mx', 'Shuffle Everything', 'Every deck, every century, one pile.');
+    const weekly = pools.decks.find(deck => deck.id === 'this-week');
+    if (weekly) add(weekly.prefix, weekly.name, weekly.tagline);
     for (const deck of pools.decks) {
-      if (deck.id === 'ai') continue;
+      if (deck.id === 'ai' || deck.id === 'this-week') continue;
       add(deck.prefix, deck.name, deck.tagline);
     }
     for (const [region, name] of Object.entries(CONTINENTS)) add('wt', 'World Tour: ' + name, 'Only headlines from ' + name + '.', region);
@@ -1510,6 +1555,16 @@
         resetFever();
       },
     },
+    party: {
+      enter() {
+        resetFever();
+        fx.clear();
+        window.AIC_PARTY?.enter(partyApi);
+      },
+      exit() {
+        window.AIC_PARTY?.exit();
+      },
+    },
     explore: {
       enter() {
         resetFever();
@@ -1567,6 +1622,7 @@
     run = {
       id: 'run-' + Date.now(),
       seed,
+      deckName: seedDeckName(seed),
       kind: explicitSeed ? 'replay' : kind,
       deck,
       answers: [],
@@ -2150,11 +2206,29 @@
         const outcome = node('p', 'game-answer' + (correct ? '' : ' is-miss'), `${verdictLead} · ${verdictText[card.verdict]}`);
         const noteEl = node('p', 'reveal-note', card.note);
         summary.append(outcome);
+        const hideable = [];
         if (card.library && card.verdict !== 'made-up') {
           if (card.hoax) summary.append(node('p', 'reveal-hoax', 'REAL HEADLINE · FAKE STORY'));
-          summary.append(node('p', 'reveal-where', whereWhen(card)));
+          const whereEl = node('p', 'reveal-where', whereWhen(card));
+          summary.append(whereEl);
+          hideable.push(whereEl);
         }
         summary.append(noteEl);
+        hideable.push(noteEl);
+        if (card.bonus && card.verdict === 'real') {
+          // Where & When: ask before the place, date and story give the answer away.
+          for (const el of hideable) { el.hidden = true; el.dataset.wwHide = ''; }
+          const ww = node('div', 'ww-bonus');
+          ww.append(node('p', 'ww-title', `BONUS +${WW_BONUS} · WHAT DECADE WAS THIS?`));
+          const row = node('div', 'ww-row');
+          for (const decade of card.bonus) {
+            const chip = button(decade + 's', 'ww-pick', 'ww-chip');
+            chip.dataset.decade = String(decade);
+            row.append(chip);
+          }
+          ww.append(row);
+          outcome.after(ww);
+        }
 
         const revealBtns = node('div', 'game-reveal-buttons');
         if (wp.api) {
@@ -2177,7 +2251,7 @@
         reveal.hidden = false;
         view.revealed = true;
         view.revealedAt = performance.now();
-        focus(nextBtn);
+        focus(reveal.querySelector('.ww-chip') || nextBtn);
 
         // Upper-center of the finalized revealed card (stays well clear of bottom stamp & reveal tray)
         const rect = paper.getBoundingClientRect();
@@ -2758,10 +2832,32 @@
 
   const coverPlay = document.querySelector('#game-launch');
   const coverHof = document.querySelector('#game-hof');
-  const coverExplore = document.querySelector('#game-explore');
+  const coverParty = document.querySelector('#game-party');
 
   // The timeline and free-roam explore mode moved to their own project (Into the Whirlpool).
-  coverExplore.hidden = true;
+  // Party mode: one phone, many players. party.js renders it; this is its window into the game.
+  const partyApi = {
+    section,
+    verdictText,
+    whereWhen,
+    buzz,
+    emit: (name, detail) => wp.emit(name, detail),
+    deckName: () => seedDeckName(randomSeed()),
+    exit: () => exitToCover(),
+    async draw() {
+      const pools = await ready;
+      const seed = freshRandomSeed(pools);
+      const deck = safeDraw(pools, seed);
+      return deck.length === 10 ? { seed, deck, deckName: seedDeckName(seed) } : null;
+    },
+  };
+  coverParty.hidden = Boolean(challengeSeed);
+  coverParty.addEventListener('click', () => {
+    ++prep;
+    closeHof();
+    enterGame();
+    change('party');
+  });
   refreshCoverCareer();
   setupCoverChallenge();
 
@@ -2811,6 +2907,7 @@
       el.setAttribute('role', 'radio');
       el.setAttribute('aria-checked', String(selected));
       el.dataset.code = choice.code;
+      if (choice.code === 'tw') el.classList.add('is-fresh');
       el.append(node('span', 'cv-deck-name', choice.name), node('small', 'cv-deck-count', choice.count + ' cards'));
       el.addEventListener('click', onPick);
       return el;
@@ -2846,7 +2943,10 @@
     picker.hidden = false;
     draw();
   }
-  ready.then(renderPicker);
+  ready.then(pools => {
+    for (const deck of pools.decks) DECK_NAMES[deck.prefix] = deck.name;
+    renderPicker(pools);
+  });
 
   if (challengeSeed) {
     coverPlay.replaceChildren(ico('play', 'ui-ico-play'), document.createTextNode('Accept Challenge'));
@@ -2855,7 +2955,6 @@
 
   coverPlay.addEventListener('click', () => startRun(challengeSeed ? 'challenge' : 'random'));
   coverHof?.addEventListener('click', () => openHof(coverHof));
-  coverExplore.addEventListener('click', () => { wake(); explore(); });
   reopen.addEventListener('click', () => {
     if (run && state === 'explore' && run.answers.length < run.deck.length) {
       enterGame();
@@ -2917,6 +3016,9 @@
       case 'made-up':
       case 'real':
         answer(gameAction, undefined, event);
+        break;
+      case 'ww-pick':
+        answerBonus(control);
         break;
       case 'next':
         nextCard(event);
@@ -3035,6 +3137,11 @@
           shiftAlone = true;
         }
       } else if (current.revealed) {
+        if (/^[1-4]$/.test(event.key) && current.card?.bonus && !current.bonusDone) {
+          const chip = current.reveal.querySelectorAll('.ww-chip')[Number(event.key) - 1];
+          if (chip) { event.preventDefault(); answerBonus(chip); }
+          return;
+        }
         if (event.key === ' ' || event.key === 'Enter') {
           const nextBtn = current.reveal.querySelector('[data-game-action="next"]');
           if (isActivatable(active) && active !== nextBtn) return;

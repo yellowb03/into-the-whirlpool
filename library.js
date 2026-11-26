@@ -59,6 +59,7 @@
       difficulty: raw.difficulty || 'medium',
       sources,
       slug: raw.id,
+      week: typeof raw.week === 'string' && /^\d{4}-W\d{2}$/.test(raw.week) ? raw.week : '',
       library: true,
     };
   }
@@ -80,6 +81,16 @@
         if (!card || seen.has(card.id)) continue;
         seen.add(card.id);
         cards.push(card);
+      }
+    }
+    // This Week shows only the newest week. Older weeks retire into the general pile
+    // (still in Shuffle Everything and World Tour, just not in the This Week deck).
+    const weeks = cards.filter(c => c.deck === 'this-week' && c.week).map(c => c.week).sort();
+    const latest = weeks[weeks.length - 1] || '';
+    for (const card of cards) {
+      if (card.deck === 'this-week' && card.week !== latest) {
+        card.deck = 'archive';
+        card.deckName = 'From the archive';
       }
     }
     // Stable order (by id) so nothing depends on the order desks merged their batches in.

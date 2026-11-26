@@ -116,6 +116,7 @@ Add every new batch path to **your own desk's list**: `decks/files-claude.json`,
 | `topics` | yes | 1–3 from the list in `decks/decks.json` |
 | `spicy` | yes | `true` or `false` (see §5) |
 | `difficulty` | yes | `easy`, `medium` or `hard` |
+| `week` | This Week only | ISO week the card belongs to, e.g. `"2026-W48"`. The This Week deck always shows the newest week; older weeks retire into Shuffle Everything automatically. |
 | `hoax` | optional | `true` only on REAL cards where the original outlet's story was itself a hoax, prank or tall tale |
 | `headline_original` | optional | The verbatim original headline, **only for pre-1929 publications** (public domain). Shown as a clipping on the reveal. |
 | `sources` | real only | 1–3 objects `{ title, publisher, url, date }`. `https://` only. **Two independent outlets wherever possible.** |

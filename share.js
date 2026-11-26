@@ -152,19 +152,20 @@
   // ---------- share text ----------
 
   function shareText(result = {}) {
-    const { answers = [], seed = '', points = 0, score = 0, handle = '' } = result;
+    const { answers = [], seed = '', points = 0, score = 0, handle = '', deckName = '' } = result;
     const daily = dailyLabel(result);
     const vs = challengeInfo(result);
     const cardNo = fooledCardNumber(result);
 
     const dailyTitle = daily ? ' ' + daily.toLowerCase().replace(/\b[a-z]/g, ch => ch.toUpperCase()) : '';
-    const head = `Am I Crazy?${dailyTitle} 🧠 ${score}/10 · ${formatPts(points)} pts`;
+    const deckTitle = deckName ? ' · ' + deckName : '';
+    const head = `Am I Crazy?${deckTitle}${dailyTitle} 🧠 ${score}/10 · ${formatPts(points)} pts`;
 
     let hook;
     if (vs?.won) hook = `Cooked ${vs.by} by ${formatPts(vs.diff)} pts ⚔️`;
     else if (vs?.tied) hook = `Exact dead tie with ${vs.by} 🤝`;
     else if (vs) hook = `${vs.by} got me by ${formatPts(-vs.diff)} pts — somebody avenge me`;
-    else if (score >= 10) hook = `"${rankTitle(result)}" · 10/10, zero hallucinations 🧠`;
+    else if (score >= 10) hook = `"${rankTitle(result)}" · 10/10, fooled by nothing 🧠`;
     else if (score === 0) hook = `"${rankTitle(result)}" · 0/10, statistically impressive 💀`;
     else if (cardNo) hook = `"${rankTitle(result)}" · card #${cardNo} cooked me 💀`;
     else hook = `"${rankTitle(result)}"`;
@@ -501,7 +502,7 @@
     if (vs?.won) hook = `COOKED ${vs.by} BY ${formatPts(vs.diff)} PTS`;
     else if (vs?.tied) hook = `EXACT DEAD HEAT WITH ${vs.by}`;
     else if (vs) hook = `${vs.by} GOT ME BY ${formatPts(-vs.diff)}. AVENGE ME.`;
-    else if (score >= 10) hook = '10/10 FLAWLESS. ZERO HALLUCINATIONS.';
+    else if (score >= 10) hook = '10/10 FLAWLESS. UNFOOLABLE.';
     else if (score === 0) hook = '0/10. STATISTICALLY IMPRESSIVE DISASTER.';
     else if (cardNo) hook = `CARD #${cardNo} COOKED ME. GOOD LUCK.`;
     else hook = 'REAL NEWS IS A FEVER DREAM.';
